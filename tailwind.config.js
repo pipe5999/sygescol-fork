@@ -8,5 +8,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: ["@tailwindcss/jit", require("tailwind-scrollbar-hide")],
 }
