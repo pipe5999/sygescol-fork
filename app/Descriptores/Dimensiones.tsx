@@ -1,13 +1,18 @@
 "use client";
 import Image from "next/image";
 import React from "react";
+import ReactSelect from "react-select";
 
-const Dimensiones = () => {
+type Props = {
+  title: string;
+};
+
+const Dimensiones = ({ title }: Props) => {
   return (
     <>
       <div>
         <h1 className="uppercase bg-blue-200 text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1">
-          Cognitiva
+          {title}
         </h1>
         <div>
           <h1 className="font-medium bg-blue-100 py-1 rounded-bl-lg rounded-br-lg">
@@ -19,7 +24,7 @@ const Dimensiones = () => {
               <Image
                 width={100}
                 height={100}
-                src="/Descriptores/emojiSuperior.png"
+                src="/Descriptores/caraSuperior.png"
                 alt="Imagen Desempeño"
               />
             </div>
@@ -28,7 +33,7 @@ const Dimensiones = () => {
               <Image
                 width={100}
                 height={100}
-                src="/Descriptores/emojiAlto.png"
+                src="/Descriptores/caraAlto.png"
                 alt="Imagen Desempeño"
               />
             </div>
@@ -37,7 +42,7 @@ const Dimensiones = () => {
               <Image
                 width={100}
                 height={100}
-                src="/Descriptores/emojiBasico.png"
+                src="/Descriptores/caraBasico.png"
                 alt="Imagen Desempeño"
               />
             </div>
@@ -46,7 +51,7 @@ const Dimensiones = () => {
               <Image
                 width={100}
                 height={100}
-                src="/Descriptores/emojiBajo.png"
+                src="/Descriptores/caraBajo.png"
                 alt="Imagen Desempeño"
               />
             </div>
@@ -54,10 +59,10 @@ const Dimensiones = () => {
           <div className="border grid grid-cols-2 gap-2 p-1 items-center">
             <div>
               <h1 className="font-medium text-lg">Proceso</h1>
-              {/* <ReactSelect
+              <ReactSelect
                 className="whitespace-nowrap"
-                placeholder="Seleccione una opción"
-              /> */}
+                placeholder="Seleccione un proceso"
+              />
             </div>
             <div>
               <p className="text-justify">
