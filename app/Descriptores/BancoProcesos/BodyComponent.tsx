@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { TiPlus } from "react-icons/ti";
 import ReactSelect from "react-select";
+import DataTable from "react-data-table-component";
+import { customStyles } from "../../../utils/CustomStylesTables";
 
 function BodyComponent() {
   const [showModal, setShowModal] = useState(false);
@@ -25,6 +27,21 @@ function BodyComponent() {
     },
   ];
 
+  const columns = [
+    {
+      name: "Desempeño",
+    },
+    {
+      name: "Proceso",
+    },
+  ];
+
+  const data = [
+    {
+      name: "data",
+    },
+  ];
+
   function handleClick() {
     setShowModal(true);
   }
@@ -42,6 +59,19 @@ function BodyComponent() {
             Agregar Proceso
             <TiPlus className="text-[150%]" />
           </button>
+        </div>
+
+        <div className="my-4">
+          <DataTable
+            title="Lista de Procesos"
+            data={data}
+            columns={columns}
+            customStyles={customStyles}
+            pagination
+            responsive
+            noDataComponent="No hay datos"
+            paginationPerPage={7}
+          />
         </div>
 
         {/* Modal Add Proceso */}
@@ -83,9 +113,6 @@ function BodyComponent() {
             </div>
           </div>
         )}
-        <div>
-          <p>Lista de Procesos</p>
-        </div>
       </div>
       <style jsx>{`
         .modal-overlay {

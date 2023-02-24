@@ -11,16 +11,16 @@ const Dimensiones = ({ title }: Props) => {
   return (
     <>
       <div>
-        <h1 className="uppercase bg-blue-200 text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1">
+        <h1 className="uppercase bg-blue-200 lg:text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1">
           {title}
         </h1>
         <div>
-          <h1 className="font-medium bg-blue-100 py-1 rounded-bl-lg rounded-br-lg">
+          <h1 className="font-medium lg:text-base bg-blue-100 py-1 rounded-bl-lg rounded-br-lg">
             Desempeño Nacional
           </h1>
-          <div className="flex flex-row justify-between my-2">
+          <div className="flex flex-row justify-between my-2 gap-2">
             <div className="bg-blue-50 rounded-lg">
-              <h1 className="font-medium">Superior</h1>
+              <h1 className="lg:text-base font-medium">Superior</h1>
               <Image
                 width={100}
                 height={100}
@@ -29,7 +29,7 @@ const Dimensiones = ({ title }: Props) => {
               />
             </div>
             <div className="bg-green-100 rounded-lg">
-              <h1 className="font-medium">Alto</h1>
+              <h1 className="lg:text-base font-medium">Alto</h1>
               <Image
                 width={100}
                 height={100}
@@ -38,7 +38,7 @@ const Dimensiones = ({ title }: Props) => {
               />
             </div>
             <div className="bg-blue-50 rounded-lg">
-              <h1 className="font-medium">Básico</h1>
+              <h1 className="lg:text-base font-medium">Básico</h1>
               <Image
                 width={100}
                 height={100}
@@ -47,7 +47,7 @@ const Dimensiones = ({ title }: Props) => {
               />
             </div>
             <div className="bg-blue-50 rounded-lg">
-              <h1 className="font-medium">Bajo</h1>
+              <h1 className="lg:text-base font-medium">Bajo</h1>
               <Image
                 width={100}
                 height={100}
@@ -56,7 +56,7 @@ const Dimensiones = ({ title }: Props) => {
               />
             </div>
           </div>
-          <div className="border grid grid-cols-2 gap-2 p-1 items-center">
+          <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">
             <div>
               <h1 className="font-medium text-lg">Proceso</h1>
               <ReactSelect
@@ -65,13 +65,13 @@ const Dimensiones = ({ title }: Props) => {
               />
             </div>
             <div>
-              <p className="text-justify">
+              <p className="text-left">
                 Escribir algunas letras y dibuja círculos, identifica algunos
                 colores y dibuja figuras más complejas.
               </p>
             </div>
           </div>
-          <div className="border grid grid-cols-2 gap-2 p-1 items-center">
+          <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">
             <div>
               <h1 className="font-medium text-lg">Observaciones</h1>
             </div>
