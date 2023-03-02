@@ -1,37 +1,52 @@
 "use client";
-import axios from "axios";
+import "../styles/globals.css";
+
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import "../styles/globals.css";
 import Header from "./Header";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const data: any = useSearchParams();
+  const [User, setUser] = useState(null);
+  const props = useSearchParams();
   const getDatos = async () => {
-    await axios
-      .post("/api/Login/BaseInfoUser", {
-        docente: data.get("d"),
-        colegio: data.get("c"),
-      })
+    let col = props.get("c");
+    let doc = props.get("d");
+    // console.log("Estos son los props-->", doc, col);
+    await fetch(`/api/Login?docente=${doc}&colegio=${col}`)
+      .then((res) => res.json())
       .then((res) => {
-        if (res.status == 200) {
-          localStorage.setItem(
-            "datosColegio",
-            JSON.stringify(res?.data?.colegio || [])
-          );
-        }
+        console.log(res);
+        localStorage.setItem("datosColegio", JSON.stringify(res.colegio));
+        localStorage.setItem("datosUsu", JSON.stringify(res.datosUsu));
+        localStorage.setItem("Dimesiones", JSON.stringify(res.dimesion));
+        localStorage.setItem("Grupo", JSON.stringify(res.Grupo));
+        setUser(res.datosUsu);
       });
   };
   useEffect(() => {
-    getDatos();
-  }, []);
+    if (!User && !localStorage?.datosUsu) {
+      getDatos();
+    }
+    if (User || localStorage?.datosUsu) {
+      setUser(User || localStorage?.datosUsu);
+    }
+  }, [User]);
   return (
-    <html>
+    <html lang="es">
       <head />
-      <Header>{children}</Header>
+      <body>
+        {User && (
+          <>
+            <Header>{children}</Header>
+          </>
+        )}
+
+        {!User && <p>no loged</p>}
+      </body>
     </html>
   );
 }

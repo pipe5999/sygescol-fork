@@ -2,6 +2,17 @@ import mysql from "mysql2";
 
 // años actual
 const date = new Date().getFullYear();
+const connection0 = mysql.createPool({
+  host: process.env.APP_SERVER,
+  user: process.env.APP_USER,
+  password: process.env.APP_PASSWORD,
+  port: 3306,
+  database: `${process.env.APP_DATABASE}`,
+  waitForConnections: true,
+  connectionLimit: 5,
+  queueLimit: 0,
+
+})
 const connection1 = mysql.createPool({
   host: process.env.APP_SERVER,
   user: process.env.APP_USER1,
@@ -73,6 +84,7 @@ const connection7 = mysql.createPool({
   queueLimit: 0,
 });
 export {
+  connection0,
   connection1,
   connection2,
   connection3,
