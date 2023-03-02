@@ -1,11 +1,18 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactSelect from "react-select";
 import Dimensiones from "./Dimensiones";
 
 const BodyComponent = () => {
   const [desempeño, setDesempeño] = useState(null);
+  const [datoDimensiones, setDatos] = useState({} as any);
+  const GetInfoBase = () => {
+    setDatos(JSON?.parse(localStorage?.Dimensiones || {}));
+  };
+  useEffect(() => {
+    GetInfoBase();
+  }, []);
   return (
     <div className="container mx-auto text-center px-4 mb-4">
       <div className="uppercase text-center font-bold lg:text-2xl py-4 bg-blue-800 text-white rounded-lg">
