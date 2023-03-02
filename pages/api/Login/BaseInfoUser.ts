@@ -4,13 +4,13 @@ type ErrorData = {
     body: string;
 }
 export default async function Banco(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== "POST") {
+    if (req.method !== "GET") {
         res.status(500).json({ body: "Method Not Allowed" })
         return;
     }
     try {
-        console.log(req.body)
-        const { colegio, docente } = req?.body
+        console.log(req.query)
+        const { colegio, docente }: any = req?.query
         const connection = conecctions[colegio];
         const [loginDcne]: any = await connection.query(`SELECT CONCAT(dcne_ape1,' ',dcne_ape2,' ',dcne_nom1,' ',dcne_nom2) AS nombre, dcne.i AS Id FROM usuario INNER JOIN dcne ON usu_fk = dcne.i WHERE usu_fk = ${docente}`);
         const [datosGrupo]: any = await connection.query(`SELECT DISTINCT grupo_nombre FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${docente}`);
