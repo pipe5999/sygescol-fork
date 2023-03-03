@@ -13,14 +13,14 @@ function BodyComponent() {
         <DimensionAbreviatura title="dcm" supTitle="DIMENSIÓN COMUNICATIVA" />
         <DimensionAbreviatura title="dcr" supTitle="DIMENSIÓN CORPORAL" />
       </div>
-      <div className="flex flex-row uppercase items-center">
-        <div className="rounded-lg border-2 border-blue-600 text-center w-[20%] py-2 px-4">
+      <div className="flex flex-col lg:flex-row uppercase items-center">
+        <div className="rounded-lg border-2 border-blue-600 text-center w-full py-2 px-4">
           #DIMENSION#
         </div>
-        <div className="rounded-lg border-2 border-blue-600 text-center w-[50%] py-2 px-4">
+        <div className="rounded-lg border-2 border-blue-600 text-center w-full py-2 px-4">
           #Periodo Académico#
         </div>
-        <div className="rounded-lg border-2 border-blue-600 text-center w-[30%] py-2 px-4">
+        <div className="rounded-lg border-2 border-blue-600 text-center w-full py-2 px-4">
           #Grupo y Grado#
         </div>
       </div>

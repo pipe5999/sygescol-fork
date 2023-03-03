@@ -29,9 +29,9 @@ export default function RootLayout({
       });
   };
   useEffect(() => {
-    // if (!User && !localStorage?.datosUsu) {
-    //   getDatos();
-    // }
+    if (!User && !localStorage?.datosUsu) {
+      getDatos();
+    }
     if (User || localStorage?.datosUsu) {
       setUser(User || localStorage?.datosUsu);
     }
@@ -45,9 +45,9 @@ export default function RootLayout({
             <Header>{children}</Header>
           </>
         )}
-        {!User && <Login />}
+        {/* {!User && <Login />} */}
 
-        {/* {!User && <p>no loged</p>} */}
+        {!User && <p>no loged</p>}
       </body>
     </html>
   );

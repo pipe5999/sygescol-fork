@@ -9,9 +9,12 @@ type Props = {
 const Header = ({ children }: Props) => {
   return (
     <div className="flex flex-row justify-end">
-      <div className="fixed top-0 left-0 w-[10%] md:w-[16%] border-r-white border-r-2 bg-blue-900 h-screen flex flex-col items-center p-3">
-        <div className="gap-2 w-full p-2 bg-blue-600 rounded-lg lg:flex lg:flex-row flex-col items-center">
-          <div className="lg:w-[50%] m-auto md:mb-2 lg:mb-0">
+      <div className="fixed top-0 left-0 w-[16%] border-r-white border-r-2 bg-blue-900 h-screen flex flex-col items-center p-3">
+        <div className="gap-2 w-full p-2 bg-blue-600 rounded-lg lg:flex lg:flex-row flex-col items-center justify-center">
+          <div
+            style={{ textAlign: "-webkit-center" }}
+            className="lg:w-[50%] m-auto"
+          >
             <Image
               style={{ filter: "drop-shadow(0px 0px 6px white)" }}
               width={80}
@@ -20,7 +23,7 @@ const Header = ({ children }: Props) => {
               alt=""
             />
           </div>
-          <div className="hidden md:block w-full lg:flex lg:flex-col items-center text-center">
+          <div className="hidden md:block w-full lg:flex lg:flex-col items-center text-center mt-2">
             <h1 className="font-bold text-white text-xs lg:text-[1rem] uppercase leading-none">
               Miguel Angel Olarte Hernandez
             </h1>

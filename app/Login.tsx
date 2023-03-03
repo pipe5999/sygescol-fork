@@ -1,15 +1,19 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 
 function Login() {
   return (
     <>
       {/* component */}
-      <section className="flex flex-col md:flex-row h-screen items-center">
-        <div className="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-          <img
-            src="https://source.unsplash.com/institute"
-            className="w-full h-full object-cover"
+      <section className="flex lg:flex-row w-full h-full items-center">
+        <div className="hidden lg:block">
+          <Image
+            style={{ filter: "blur(0.6rem)" }}
+            src="/fondoLogin.jpg"
+            width={1200}
+            height={800}
+            alt="fondoLogin"
           />
         </div>
         <div
