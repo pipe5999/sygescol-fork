@@ -50,7 +50,7 @@ function BodyComponent() {
   return (
     <>
       <div className="container mx-auto text-center px-4 mb-4">
-        <div className="flex flex-row justify-around items-center uppercase text-center font-bold lg:text-2xl py-4 px-4 bg-blue-800 text-white rounded-lg">
+        <div className="flex flex-row justify-around items-center uppercase text-center font-bold lg:text-2xl py-4 px-4 bg-blue-900 text-white rounded-lg">
           Banco de Procesos para los Descriptores
           <button
             onClick={handleClick}
@@ -78,7 +78,7 @@ function BodyComponent() {
         {showModal && (
           <div className="modal-overlay">
             <div className="modal">
-              <h2 className="bg-blue-800 rounded-lg font-medium text-white py-1">
+              <h2 className="bg-blue-900 rounded-lg font-medium text-white py-1">
                 Agregar proceso
               </h2>
               <div className="flex flex-row items-center gap-2 my-3">

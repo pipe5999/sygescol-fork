@@ -1,6 +1,6 @@
-import { connection1, connection2, connection3, connection4, connection5, connection6, connection7 } from "../config/db";
+import { connection0, connection1, connection2, connection3, connection4, connection5, connection6, connection7 } from "../config/db";
 export const conecctions = [
-    "",
+    connection0.promise(),
     connection1.promise(),
     connection2.promise(),
     connection3.promise(),
