@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "./Header";
+import Login from "./Login";
 
 export default function RootLayout({
   children,
@@ -28,9 +29,9 @@ export default function RootLayout({
       });
   };
   useEffect(() => {
-    if (!User && !localStorage?.datosUsu) {
-      getDatos();
-    }
+    // if (!User && !localStorage?.datosUsu) {
+    //   getDatos();
+    // }
     if (User || localStorage?.datosUsu) {
       setUser(User || localStorage?.datosUsu);
     }
@@ -44,8 +45,9 @@ export default function RootLayout({
             <Header>{children}</Header>
           </>
         )}
+        {!User && <Login />}
 
-        {!User && <p>no loged</p>}
+        {/* {!User && <p>no loged</p>} */}
       </body>
     </html>
   );

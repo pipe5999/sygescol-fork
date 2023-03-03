@@ -4,8 +4,8 @@ import DimensionAbreviatura from "./DimensionAbreviatura";
 
 function BodyComponent() {
   return (
-    <div className="px-4 container mx-auto">
-      <div className="uppercase text-center font-bold lg:text-2xl py-4 bg-blue-900 text-white rounded-lg">
+    <>
+      <div className="uppercase text-center font-bold lg:text-2xl py-4 bg-blue-900 text-white rounded-b-[1.6rem]">
         Planilla de Calificaciones para el Nivel Escolar Preescolar
       </div>
       <div className="flex flex-wrap md:flex-nowrap flex-row !place-content-center items-center justify-between mt-2">
@@ -24,8 +24,8 @@ function BodyComponent() {
           #Grupo y Grado#
         </div>
       </div>
-      <div>table</div>
-    </div>
+      {/* <div>table</div> */}
+    </>
   );
 }
 
