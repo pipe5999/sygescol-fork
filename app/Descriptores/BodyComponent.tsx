@@ -8,7 +8,7 @@ import Dimensiones from "./Dimensiones";
 const BodyComponent = () => {
   const [desempeño, setDesempeño] = useState(null);
   const [datoDimensiones, setDatos] = useState({} as any);
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(null as any);
   const GetInfoBase = () => {
     setDatos(JSON?.parse(localStorage?.Dimesiones || {}));
   };
@@ -29,7 +29,7 @@ const BodyComponent = () => {
             datoDimensiones?.map((dim: any, key: number) => {
               return (
                 <Dimensiones
-                  title={dim?.nombreAsigna}
+                  dimension={dim}
                   posicion={key}
                   open={open}
                   setOpen={setOpen}

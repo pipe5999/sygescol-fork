@@ -23,6 +23,7 @@ export default function RootLayout({
         localStorage.setItem("datosUsu", JSON.stringify(res.datosUsu));
         localStorage.setItem("Dimesiones", JSON.stringify(res.dimesion));
         localStorage.setItem("Grupo", JSON.stringify(res.Grupo));
+        localStorage.setItem("colegio", props.get("c") || "");
         setUser(res.datosUsu);
       });
   };

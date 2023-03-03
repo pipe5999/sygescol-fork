@@ -1,30 +1,88 @@
 "use client";
+import axios from "axios";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactSelect from "react-select";
 import { Open } from "../../typings";
+import BodyComponent from "./BancoProcesos/BodyComponent";
 
 type Props = {
-  title: string;
+  dimension: any;
   open: number;
   posicion: number;
   setOpen: any;
 };
 
-const Dimensiones = ({ title, open, posicion, setOpen }: Props) => {
+const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
+  const nacional = [
+    {
+      id: 1,
+      img: "caraSuperior",
+      title: "Superior",
+    },
+    {
+      id: 2,
+      img: "caraAlto",
+      title: "Alto",
+    },
+    {
+      id: 3,
+      img: "caraBasico",
+      title: "Básico",
+    },
+    {
+      id: 4,
+      img: "caraBajo",
+      title: "Bajo",
+    },
+  ];
+  const [dimensiones, setDimensiones] = useState({} as any);
+  const [informacion, setInformacion] = useState(null as any);
+  const [banco, setBanco] = useState(false);
+  const GetProcesos = async () => {
+    await axios
+      .get(
+        `/api/ProcesosEvaluacion/ProcesoCargado?cg=${dimensiones?.cga}&e=${
+          dimensiones?.escala
+        }&c=${localStorage.getItem("colegio")}`
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          setInformacion({ ...res.data });
+        }
+      });
+  };
+  useEffect(() => {
+    console.log(dimensiones.length);
+    if (dimensiones?.cga && dimensiones?.escala) {
+      GetProcesos();
+    }
+  }, [dimensiones?.escala]);
   return (
     <>
+      {banco && (
+        <BodyComponent
+          setShow={setBanco}
+          cga={dimensiones?.cga || 0}
+          colegio={localStorage?.getItem("colegio") || 0}
+          escala={dimensiones?.escala || 0}
+        />
+      )}
       <div>
         <h1
           className={`uppercase bg-blue-200 lg:text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1 cursor-pointer ${
             open == posicion && "bg-green-800"
           }`}
           onClick={() => {
-            console.log(posicion);
             setOpen(posicion);
+            setDimensiones({
+              ...dimensiones,
+              ["id"]: dimension?.idAsig,
+              ["cga"]: dimension.CgaId,
+            });
           }}
         >
-          {title}
+          {dimension?.nombreAsigna}
         </h1>
         {open == posicion && (
           <>
@@ -33,74 +91,73 @@ const Dimensiones = ({ title, open, posicion, setOpen }: Props) => {
                 Desempeño Nacional
               </h1>
               <div className="flex flex-row justify-between my-2 gap-2">
-                <div className="bg-blue-50 rounded-lg">
-                  <h1 className="lg:text-base font-medium">Superior</h1>
-                  <Image
-                    width={100}
-                    height={100}
-                    src="/Descriptores/caraSuperior.png"
-                    alt="Imagen Desempeño"
-                  />
-                </div>
-                <div className="bg-green-100 rounded-lg">
-                  <h1 className="lg:text-base font-medium">Alto</h1>
-                  <Image
-                    width={100}
-                    height={100}
-                    src="/Descriptores/caraAlto.png"
-                    alt="Imagen Desempeño"
-                  />
-                </div>
-                <div className="bg-blue-50 rounded-lg">
-                  <h1 className="lg:text-base font-medium">Básico</h1>
-                  <Image
-                    width={100}
-                    height={100}
-                    src="/Descriptores/caraBasico.png"
-                    alt="Imagen Desempeño"
-                  />
-                </div>
-                <div className="bg-blue-50 rounded-lg">
-                  <h1 className="lg:text-base font-medium">Bajo</h1>
-                  <Image
-                    width={100}
-                    height={100}
-                    src="/Descriptores/caraBajo.png"
-                    alt="Imagen Desempeño"
-                  />
-                </div>
+                {nacional.map((nac) => {
+                  return (
+                    <div
+                      className={`${
+                        dimensiones?.escala == nac?.id && nac?.id < 3
+                          ? "bg-green-600"
+                          : dimensiones?.escala == nac?.id && nac?.id > 2
+                          ? "bg-red-600"
+                          : "bg-blue-50"
+                      } rounded-lg cursor-pointer`}
+                      onClick={() =>
+                        setDimensiones({ ...dimensiones, ["escala"]: nac?.id })
+                      }
+                    >
+                      <h1 className="lg:text-base font-medium">{nac.title}</h1>
+                      <Image
+                        width={100}
+                        height={100}
+                        src={`/Descriptores/${nac.img}.png`}
+                        alt="Imagen Desempeño"
+                      />
+                    </div>
+                  );
+                })}
               </div>
-              <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">
-                <div>
-                  <h1 className="font-medium text-lg">Proceso</h1>
-                  <ReactSelect
-                    className="whitespace-nowrap"
-                    placeholder="Seleccione un proceso"
-                  />
-                </div>
-                <div>
-                  <p className="text-left">
-                    Escribir algunas letras y dibuja círculos, identifica
-                    algunos colores y dibuja figuras más complejas.
-                  </p>
-                </div>
-              </div>
-              <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">
-                <div>
-                  <h1 className="font-medium text-lg">Observaciones</h1>
-                </div>
-                <div>
-                  <p className="text-justify">
-                    Canten canciones. Las canciones ayudan a que los niños
-                    trabajen la memoria por eso animá a los niños a cantar
-                    contigo
-                  </p>
-                </div>
-              </div>
+              {informacion && (
+                <>
+                  <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">
+                    <div>
+                      <h1 className="font-medium text-lg">Proceso</h1>
+                      <button
+                        className="bg-blue-500 p-2 text-white rounded-md font-bold"
+                        onClick={(e) => {
+                          e.preventDefault;
+                          setBanco(true);
+                        }}
+                      >
+                        Banco de procesos
+                      </button>
+                      {/* <ReactSelect
+                        className="whitespace-nowrap"
+                        placeholder="Seleccione un proceso"
+                      /> */}
+                    </div>
+                    <div>
+                      <p className="text-left">
+                        {informacion?.Proceso?.texto ||
+                          "No existe un proceso registrado"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">
+                    <div>
+                      <h1 className="font-medium text-lg">Observaciones</h1>
+                    </div>
+                    <div>
+                      <p className="text-justify"></p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
-            <button className="text-white text-lg bg-green-700/80 hover:bg-green-700 font-medium hover:font-bold rounded-bl-lg rounded-br-lg p-2 w-full">
-              Guardar Registros
-            </button>
+            {informacion && (
+              <button className="text-white text-lg bg-green-700/80 hover:bg-green-700 font-medium hover:font-bold rounded-bl-lg rounded-br-lg p-2 w-full">
+                Guardar Registros
+              </button>
+            )}
           </>
         )}
       </div>
