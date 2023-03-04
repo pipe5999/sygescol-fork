@@ -449,10 +449,9 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 11",
+          subTitle: "11.Parámetros para el control y vigencias de tiempos",
+
           interno: [
-            {
-              subTitle: "11.Parámetros para el control y vigencias de tiempos",
-            },
             {
               idParametro: "240",
               tipoParametro:
