@@ -29,9 +29,9 @@ export default function RootLayout({
       });
   };
   useEffect(() => {
-    if (!User && !localStorage?.datosUsu) {
-      getDatos();
-    }
+    // if (!User && !localStorage?.datosUsu) {
+    //   getDatos();
+    // }
     if (User || localStorage?.datosUsu) {
       setUser(User || localStorage?.datosUsu);
     }

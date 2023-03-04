@@ -9,7 +9,7 @@ type Props = {
 const Header = ({ children }: Props) => {
   return (
     <div className="flex flex-row justify-end">
-      <div className="fixed top-0 left-0 w-[16%] border-r-white border-r-2 bg-blue-900 h-screen flex flex-col items-center p-3">
+      <div className="fixed top-0 left-0 w-[15%] md:w-[18%] lg:w-[20%] border-r-white border-r-2 bg-blue-900 h-screen flex flex-col items-center p-3">
         <div className="gap-2 w-full p-2 bg-blue-600 rounded-lg lg:flex lg:flex-row flex-col items-center justify-center">
           <div
             style={{ textAlign: "-webkit-center" }}
