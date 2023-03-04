@@ -50,7 +50,7 @@ function BodyComponent() {
   return (
     <>
       <div className="container mx-auto text-center px-4 mb-4">
-        <div className="flex flex-row justify-around items-center uppercase text-center font-bold lg:text-2xl py-4 px-4 bg-blue-900 text-white rounded-lg">
+        <div className="flex flex-row justify-around items-center uppercase text-center font-bold lg:text-2xl py-4 px-4 bg-blue-900 text-white rounded-b-[1.6rem]">
           Banco de Procesos para los Descriptores
           <button
             onClick={handleClick}
@@ -141,7 +141,6 @@ function BodyComponent() {
           font-size: 1.5rem;
         }
       `}</style>
-      ;
     </>
   );
 }
