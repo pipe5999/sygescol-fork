@@ -2,9 +2,14 @@ import React from "react";
 
 type Props = {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  ParametroCliked: {
+    Principal: string;
+  };
 };
 
-export default function ShowModal({ setVisible }: Props) {
+export default function ShowModal({ setVisible, ParametroCliked }: Props) {
+  console.log("ParametroCliked", ParametroCliked);
+
   return (
     <>
       <div
@@ -16,10 +21,7 @@ export default function ShowModal({ setVisible }: Props) {
         <div className="overflow-x-auto p-3">
           <div className="overflow-hidden rounded-lg border border-gray-400 shadow-md m-5">
             <div className="flex justify-center text-gray-300  bg-blue-900 border-solid rounded-md text-md font_bold  mb-2 px-4 py-1">
-              <h1 className="text-bold">
-                1. PARÁMETROS PARA ESTABLECER CRITERIOS DE EVALUACIÓN Y
-                PROMOCIÓN
-              </h1>
+              <h1 className="text-bold">{ParametroCliked.Principal}</h1>
             </div>
             <table className="min-w-full table-auto rounded-lg ">
               <thead className="">

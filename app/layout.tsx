@@ -39,13 +39,15 @@ export default function RootLayout({
     <html lang="es">
       <head />
       <body>
-        {User && (
+        {/* {User && (
           <>
             <Header>{children}</Header>
           </>
         )}
 
-        {!User && <p>no loged</p>}
+        {!User && <p>no loged</p>} */}
+
+        <Header>{children}</Header>
       </body>
     </html>
   );
