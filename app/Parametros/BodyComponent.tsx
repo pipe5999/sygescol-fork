@@ -1,12 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import DefinidosPor from "./DefinidosPor";
+import DetallesParametro from "./DetallesParametro";
 import Header from "./Header";
 import ItemParametro from "./ItemParametro";
+import Parametro1 from "./ParametroUno152";
 import ShowModal from "./ShowModal";
 
 function BodyComponent() {
   const [visibelModal, setVisible] = useState(false as any);
+  const [ModalDetalle, setModalDetalle] = useState(false as any);
 
   const [ParametroCliked, setParametroCliked] = useState({} as {});
   const [Menu, setMenu] = useState([
@@ -16,11 +19,9 @@ function BodyComponent() {
       ParametrosInternos: [
         {
           title: "Parámetro 1",
+          subTitle:
+            "1. Parámetros para establecer criterios de evaluación y promoción",
           interno: [
-            {
-              subTitle:
-                "1. Parámetros para establecer criterios de evaluación y promoción",
-            },
             {
               idParametro: "152",
               tipoParametro: "Definición de procesos de evaluación según SIEPE",
@@ -57,10 +58,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 4",
+          subTitle: "4.Parámetros para el control y registro de calificaciones",
           interno: [
-            {
-              subTitle: "",
-            },
             {
               idParametro: "56",
               tipoParametro:
@@ -135,10 +134,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 6",
+          subTitle: "6.Parámetros para casos de Promoción de estudiantes",
           interno: [
-            {
-              subTitle: "Parámetros para casos de Promoción de estudiantes",
-            },
             {
               idParametro: "108",
               tipoParametro:
@@ -196,11 +193,9 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 7",
+          subTitle:
+            "7.Parámetros  para el control de Reportes, Constancias y Certificados.",
           interno: [
-            {
-              subTitle:
-                "7.PARÁMETROS PARA CONTROL DE REPORTES, CONSTANCIAS Y CERTIFICADOS",
-            },
             {
               idParametro: "75",
               tipoParametro:
@@ -264,10 +259,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 8",
+          subTitle: "8.Parámetros para Interacción con los acudientes",
           interno: [
-            {
-              subTitle: "8.Parámetros para Interacción con los acudientes",
-            },
             {
               idParametro: "91",
               tipoParametro:
@@ -282,10 +275,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 10",
+          subTitle: "10.Parámetros para Ativación de Módulos Nuevos",
           interno: [
-            {
-              subTitle: "10.Parámetros para Ativación de módulos nuevos",
-            },
             {
               idParametro: "128",
               tipoParametro: "Módulo Recursos Institucionales.",
@@ -303,10 +294,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 13",
+          subTitle: "13.Parámetros para la Asignación de Integrantes",
           interno: [
-            {
-              subTitle: "13.Parámetros para la Asignación de Integrantes",
-            },
             {
               idParametro: "144",
               tipoParametro: "Integrantes del Consejo Académico.",
@@ -332,11 +321,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 14",
+          subTitle: "14. Parámetros para definir aspectos del Plan de Estudios",
           interno: [
-            {
-              subtitle:
-                "14. Parámetros para definir aspectos del Plan de Estudios",
-            },
             {
               idParametro: "168",
               tipoParametro:
@@ -350,8 +336,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 15",
+          subTitle: "15. Parámetros para el control de cierre de año",
           interno: [
-            { subTitle: "15. Parámetros para el control de cierre de año" },
             {
               idParametro: "137",
               tipoParametro:
@@ -361,8 +347,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 23",
+          subTitle: "23. Responsabilidades del perfil del Coordinador.",
           interno: [
-            { subTitle: "23. Responsabilidades del perfil del Coordinador." },
             {
               idParametro: "301",
               tipoParametro:
@@ -378,8 +364,8 @@ function BodyComponent() {
       ParametrosInternos: [
         {
           title: "Parámetro 2",
+          subTitle: "2. Parámetros para matrículas",
           interno: [
-            { subTitle: "2. Parámetros para matrículas" },
             {
               idParametro: "68",
               tipoParametro: "Configuración de la matrícula provisional.",
@@ -450,7 +436,6 @@ function BodyComponent() {
         {
           title: "Parámetro 11",
           subTitle: "11.Parámetros para el control y vigencias de tiempos",
-
           interno: [
             {
               idParametro: "240",
@@ -474,11 +459,9 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 12",
+          subTitle:
+            "12. Parámetros para la automatización de procesos asignados al Sistema",
           interno: [
-            {
-              subTitle:
-                "12. Parámetros para la automatización de procesos asignados al Sistema",
-            },
             {
               idParametro: "142",
               tipoParametro:
@@ -492,11 +475,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 21",
+          subTitle: "21.Parámetros para el control de borrado de matrículas",
           interno: [
-            {
-              subTitle:
-                "21.Parámetros para el control de borrado de matrículas",
-            },
             {
               idParametro: "296",
               tipoParametro:
@@ -512,10 +492,8 @@ function BodyComponent() {
       ParametrosInternos: [
         {
           title: "Parámetro 5",
+          subTitle: "5. Parámetros para Horarios",
           interno: [
-            {
-              subTitle: "5. Parámetros para Horarios",
-            },
             {
               idParametro: "70",
               tipoParametro: "Número de semanas por modalidad",
@@ -549,11 +527,9 @@ function BodyComponent() {
       ParametrosInternos: [
         {
           title: "Parámetro 22",
+          subTitle:
+            "22. Parámetros para el control de gobierno Escolar (No presencial.)",
           interno: [
-            {
-              subTitle:
-                "22. Parámetros para el control de gobierno Escolar (No presencial.)",
-            },
             {
               idParametro: "300",
               tipoParametro:
@@ -568,10 +544,8 @@ function BodyComponent() {
       ParametrosInternos: [
         {
           title: "Parámetro 3",
+          subTitle: "3. Parámetros para el registro de Inacistencias",
           interno: [
-            {
-              subTitle: "3. Parámetros para el registro de Inacistencias",
-            },
             {
               idParametro: "14",
               tipoParametro: "Forma de Ingreso de Inasistencias a estudiantes.",
@@ -596,8 +570,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 9",
+          subTitle: "9. Parámetros para sesión de fotografía",
           interno: [
-            { subTitle: "9. Parámetros para sesión de fotografía" },
             {
               idParametro: "105",
               tipoParametro:
@@ -617,10 +591,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 16",
+          subTitle: "Parámetros para el año 2023.",
           interno: [
-            {
-              subTitle: "Parámetros para el año 2023.",
-            },
             {
               idParametro: "162",
               tipoParametro:
@@ -635,8 +607,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 17",
+          subTitle: " Parámetrso para el control de dispositivos móviles",
           interno: [
-            { subTitle: " Parámetrso para el control de dispositivos móviles" },
             {
               idParametro: "244",
               tipoParametro: "Ingreso a la App de Sygescol 2017.",
@@ -650,8 +622,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 18",
+          subTitle: "Parámetros del PAE",
           interno: [
-            { subTitle: "Parámetros del PAE" },
             {
               idParametro: "251",
               tipoParametro: "Parámetros PAE.",
@@ -660,8 +632,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 19",
+          subTitle: "19.Parámetros para el Transporte escolar",
           interno: [
-            { subTitle: "19.Parámetros para el Transporte escolar" },
             {
               idParametro: "254",
               tipoParametro: "parametros del transporte escolar",
@@ -670,10 +642,8 @@ function BodyComponent() {
         },
         {
           title: "Parámetro 20",
+          subTitle: "20.Parámetros para el control de Inscripciones",
           interno: [
-            {
-              subTitle: "20.Parámetros para el control de Inscripciones",
-            },
             {
               idParametro: "251",
               tipoParametro: "Parámetros para el control de inscripciones",
@@ -699,7 +669,7 @@ function BodyComponent() {
                         onClick={() => {
                           setVisible(true);
                           setParametroCliked({
-                            Title: ParametrosInterno.title,
+                            Title: ParametrosInterno.subTitle,
                             Interno: ParametrosInterno.interno,
                             Principal: item.Principal,
                           });
@@ -707,6 +677,7 @@ function BodyComponent() {
                         }}
                       >
                         <ItemParametro
+                          setVisible={setVisible}
                           key={key}
                           title={ParametrosInterno.title}
                         />
@@ -735,8 +706,15 @@ function BodyComponent() {
       <Header />
       {/* <DefinidosPor /> */}
       {/* <ItemParametro setVisible={setVisible} /> */}
-
       {ParametrosGlobales()}
+      <div
+        onClick={() => {
+          setModalDetalle(true);
+        }}
+      >
+        {/* <Parametro1 setModalDetalle={setModalDetalle} /> */}
+        {/* {<DetallesParametro setModalDetalle={setModalDetalle} />} */}
+      </div>
     </>
   );
 }

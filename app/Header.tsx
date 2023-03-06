@@ -113,7 +113,7 @@ const Header = ({ children }: Props) => {
       </div>
 
       {/* Contenido lado derecho */}
-      <div className="w-[84%]">{children}</div>
+      <div className="w-[80%]">{children}</div>
     </div>
   );
 };

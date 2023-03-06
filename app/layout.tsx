@@ -47,7 +47,7 @@ export default function RootLayout({
         )}
         {/* {!User && <Login />} */}
 
-        {!User && <p>no loged</p>} */}
+        {/* {!User && <p>no loged</p>} */}
 
         <Header>{children}</Header>
       </body>
