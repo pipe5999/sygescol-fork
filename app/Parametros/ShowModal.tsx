@@ -1,4 +1,5 @@
 import React from "react";
+import ModalAplica from "./ModalAplica";
 
 type Props = {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,18 +14,26 @@ export default function ShowModal({
 }: Props) {
   console.log("ParametroCliked", ParametroCliked);
 
+  const [ShowAccep, setShowAccep] = React.useState({
+    show: false,
+    info: {},
+  });
+
   return (
     <>
-      <div
-        onClick={() => {
-          setVisible(false);
-        }}
-        className=" fixed inset-0 z-50  bg-gray-900 bg-opacity-50 flex justify-center items-center"
-      >
+      {ShowAccep.show && (
+        <ModalAplica setShowAccep={setShowAccep} ShowAccep={ShowAccep} />
+      )}
+      <div className=" fixed inset-0 z-50  bg-gray-900 bg-opacity-50 flex justify-center items-center">
         <div className="overflow-auto max-h-screen p-3">
           <div className="rounded-lg border border-gray-400 shadow-md m-5">
             <div className="flex justify-center  text-gray-300  bg-cyan-900 border-solid rounded-md text-md font-bold   px-4 py-1">
-              <h1 className="fond-bold text-lg text-center ">
+              <h1
+                onClick={() => {
+                  setVisible(false);
+                }}
+                className="fond-bold text-lg text-center "
+              >
                 {ParametroCliked.Title}
               </h1>
             </div>
@@ -63,8 +72,14 @@ export default function ShowModal({
                           {" "}
                           <div className="flex flex-row">
                             <svg
-                              onClick={() => {
-                                setAplica(true);
+                              onClick={(e) => {
+                                e.preventDefault();
+
+                                setShowAccep({
+                                  ...ShowAccep,
+                                  show: true,
+                                  info: { ...item },
+                                });
                               }}
                               className="stroke-black hover:stroke-green-500"
                               stroke="currentColor"
