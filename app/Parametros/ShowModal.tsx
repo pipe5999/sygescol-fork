@@ -3,7 +3,7 @@ import ModalAplica from "./ModalAplica";
 
 type Props = {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setAplica: React.Dispatch<React.SetStateAction<boolean>>;
+  setAplica?: React.Dispatch<React.SetStateAction<boolean>>;
   ParametroCliked: any;
 };
 

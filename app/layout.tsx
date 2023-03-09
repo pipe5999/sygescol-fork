@@ -12,22 +12,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [User, setUser] = useState(null);
-  const props: any = useSearchParams();
-  const getDatos = async () => {
-    let col = props?.get("c");
-    let doc = props?.get("d");
-    // console.log("Estos son los props-->", doc, col);
-    await fetch(`/api/Login?docente=${doc}&colegio=${col}`)
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem("datosColegio", JSON.stringify(res.colegio));
-        localStorage.setItem("datosUsu", JSON.stringify(res.datosUsu));
-        localStorage.setItem("Dimesiones", JSON.stringify(res.dimesion));
-        localStorage.setItem("Grupo", JSON.stringify(res.Grupo));
-        setUser(res.datosUsu);
-      });
-  };
   useEffect(() => {
     // if (!User && !localStorage?.datosUsu) {
     //   getDatos();
@@ -44,12 +28,12 @@ export default function RootLayout({
           <>
             <Header>{children}</Header>
           </>
-        )}
-        {/* {!User && <Login />} */}
+        )} */}
+        {!User && <Login set={setUser} />}
 
-        {/* {!User && <p>no loged</p>} */}
+        {/* {!User && <p>no loged</p>}  */}
 
-        <Header>{children}</Header>
+        {User && <Header>{children}</Header>}
       </body>
     </html>
   );

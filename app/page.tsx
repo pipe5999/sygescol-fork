@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 function HomePage() {
   const [datosColegio, setDatos] = useState({} as any);
   const GetInfoBase = () => {
-    // setDatos(JSON.parse(localStorage?.datosColegio || {}));
+    setDatos(JSON.parse(localStorage?.datosColegio || {}));
   };
   useEffect(() => {
     GetInfoBase();

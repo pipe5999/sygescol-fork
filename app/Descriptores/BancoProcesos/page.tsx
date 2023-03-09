@@ -6,7 +6,7 @@ interface Props {}
 function Page(props: Props) {
   const {} = props;
 
-  return <BodyComponent />;
+  return <></>;
 }
 
 export default Page;

@@ -8,7 +8,7 @@ import Dimensiones from "./Dimensiones";
 const BodyComponent = () => {
   const [desempeño, setDesempeño] = useState(null);
   const [datoDimensiones, setDatos] = useState({} as any);
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(null as any);
   const GetInfoBase = () => {
     setDatos(JSON?.parse(localStorage?.Dimesiones || {}));
   };
@@ -20,7 +20,7 @@ const BodyComponent = () => {
       <div className="uppercase text-center font-bold lg:text-2xl py-4 bg-blue-900 text-white rounded-b-2xl">
         Registro de Descriptores para el Nivel Preescolar
       </div>
-      <div>
+      <div className="p-2">
         <h1 className="font-bold lg:text-2xl text-blue-800 mt-3 mb-1">
           DIMENSIONES
         </h1>
@@ -29,7 +29,7 @@ const BodyComponent = () => {
             datoDimensiones?.map((dim: any, key: number) => {
               return (
                 <Dimensiones
-                  title={dim?.nombreAsigna}
+                  dimension={dim}
                   posicion={key}
                   open={open}
                   setOpen={setOpen}

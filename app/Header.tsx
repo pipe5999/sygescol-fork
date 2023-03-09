@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MenuItem from "./CompMenu/MenuItem";
 
 type Props = {
@@ -7,6 +8,13 @@ type Props = {
 };
 
 const Header = ({ children }: Props) => {
+  const [dataHeader, setHeader] = useState({} as any);
+  const setDatos = () => {
+    setHeader(JSON.parse(localStorage?.datosUsu || {}));
+  };
+  useEffect(() => {
+    setDatos();
+  }, []);
   return (
     <div className="flex flex-row justify-end">
       <div className="fixed top-0 left-0 w-[15%] md:w-[18%] lg:w-[20%] border-r-white border-r-2 bg-blue-900 h-screen flex flex-col items-center p-3">
@@ -22,11 +30,11 @@ const Header = ({ children }: Props) => {
           </div>
           <div className="hidden md:block w-full lg:flex lg:flex-col items-center text-center mt-2">
             <h1 className="font-bold text-white text-xs lg:text-[1rem] uppercase leading-none">
-              Miguel Angel Olarte Hernandez
+              {dataHeader[0]?.nombre}
             </h1>
             <hr className="w-full border-white border-dashed border-[2px] rounded-full my-2" />
             <p className="text-base p-0 font-normal leading-none m-0 text-white">
-              Administrador del Sistema
+              Docente
             </p>
           </div>
         </div>
@@ -48,7 +56,7 @@ const Header = ({ children }: Props) => {
               }
               submenu="Inicio"
             />
-            <MenuItem
+            {/* <MenuItem
               link="/Descriptores/BancoProcesos"
               icono={
                 <svg
@@ -64,7 +72,7 @@ const Header = ({ children }: Props) => {
                 </svg>
               }
               submenu="Banco de Procesos"
-            />
+            /> */}
             <MenuItem
               link="/Descriptores"
               icono={
