@@ -29,11 +29,13 @@ export default function RootLayout({
             <Header>{children}</Header>
           </>
         )} */}
-        {!User && <Login set={setUser} />}
+        {/* {!User && <Login set={setUser} />} */}
 
         {/* {!User && <p>no loged</p>}  */}
 
-        {User && <Header>{children}</Header>}
+        {/* {User && <Header>{children}</Header>} */}
+
+        <Header>{children}</Header>
       </body>
     </html>
   );

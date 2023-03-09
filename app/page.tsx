@@ -8,7 +8,7 @@ function HomePage() {
     setDatos(JSON.parse(localStorage?.datosColegio || {}));
   };
   useEffect(() => {
-    GetInfoBase();
+    // GetInfoBase();
   }, []);
   const year = new Date();
   return (
