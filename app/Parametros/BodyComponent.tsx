@@ -76,10 +76,10 @@ function BodyComponent() {
           setModalDetalle(true);
         }}
       >
-        {/* {<Parametro1 setModalDetalle={setModalDetalle} />} */}
+        {<Parametro1 setModalDetalle={setModalDetalle} />}
         {/* {<DetallesParametro setModalDetalle={setModalDetalle} />} */}
       </div>
-      {/* <CardsPreguntas /> */}
+      <CardsPreguntas />
     </>
   );
 }
