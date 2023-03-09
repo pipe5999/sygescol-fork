@@ -1,7 +1,7 @@
 import React from "react";
 
 type Props = {
-  setVisible?: any;
+  setVisible: any;
   title: string;
 };
 
@@ -10,12 +10,14 @@ function ItemParametro({ setVisible, title }: Props) {
     <>
       <div className="group relative mx-auto w-64 overflow-hidden rounded-[16px] bg-gray-300 p-[1px] transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-red-500 hover:via-orange-600 hover:to-green-500">
         <div className="group-hover:animate-spin-slow invisible absolute -top-40 -bottom-40 left-10 right-10 bg-gradient-to-r from-transparent via-white/90 to-transparent group-hover:visible"></div>
-        <div className="relative rounded-[15px] items-center bg-white hover:bg-[#070e55] hover:text-white p-6">
+        <div className="relative rounded-[15px] items-center bg-white hover:bg-[#f45757] hover:text-white p-6">
           <div className="space-y-4 flex flex-col items-center  text-cyan-900 hover:text-white  ">
             <h3 className="text-center font-semibold">{title}</h3>
             <button className="text-4xl  text-center items-center font-semibold text-cyan-800 hover:text-white">
               <svg
-                onClick={() => setVisible(true)}
+                onClick={() => {
+                  setVisible(true);
+                }}
                 stroke="currentColor"
                 fill="currentColor"
                 stroke-width="0"
