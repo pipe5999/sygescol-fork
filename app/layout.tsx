@@ -12,7 +12,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [User, setUser] = useState(null);
-
   useEffect(() => {
     // if (!User && !localStorage?.datosUsu) {
     //   getDatos();
@@ -25,14 +24,16 @@ export default function RootLayout({
     <html lang="es">
       <head />
       <body>
-        {User && (
+        {/* {User && (
           <>
             <Header>{children}</Header>
           </>
-        )}
-        {!User && <Login />}
+        )} */}
+        {!User && <Login set={setUser} />}
 
-        {/* {!User && <p>no loged</p>} */}
+        {/* {!User && <p>no loged</p>}  */}
+
+        {User && <Header>{children}</Header>}
       </body>
     </html>
   );

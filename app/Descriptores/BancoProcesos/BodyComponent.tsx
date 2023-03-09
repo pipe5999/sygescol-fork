@@ -11,10 +11,13 @@ export type Props = {
   escala: number;
   colegio: any;
   setShow: any;
+  setCont: any;
 };
-function BodyComponent({ cga, escala, colegio, setShow }: Props) {
+function BodyComponent({ cga, escala, colegio, setShow, setCont }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState([{}] as any);
+  const [values, setValues] = useState({} as any);
+  const [contador, setContador] = useState(0);
   const getData = async () => {
     axios
       .get(
@@ -26,7 +29,7 @@ function BodyComponent({ cga, escala, colegio, setShow }: Props) {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [contador]);
   let desempeño = [
     {
       value: 1,
@@ -46,24 +49,73 @@ function BodyComponent({ cga, escala, colegio, setShow }: Props) {
     },
   ];
 
-  const columns = [
+  const columns: any = [
     {
-      name: "Desempeño",
+      name: "Desempeño Nacional",
+      selector: (row: any) => (
+        <div className="text-justify text-lg">
+          {desempeño[parseInt(row.escala) - 1]?.label || ""}
+        </div>
+      ),
+      sortable: true,
+      wrap: true,
     },
     {
       name: "Proceso",
+      selector: (row: any) => (
+        <div className="text-justify text-lg">{row.texto || ""}</div>
+      ),
+      sortable: true,
+      wrap: true,
     },
     {
       name: "Operaciones",
+      selector: (row: any) => (
+        <>
+          <div className="flex justify-center w-full">
+            <button
+              className="p-2 text-white text-lg rounded-md bg-blue-700 font-bold"
+              title="Seleccionar"
+              onClick={() => handleAsign(row.id)}
+            >
+              Seleccionar Proceso
+            </button>
+          </div>
+        </>
+      ),
     },
   ];
-
-  // const data = [
-  //   {
-  //     name: "data",
-  //   },
-  // ];
-
+  const handleSave = async () => {
+    if (!values?.escala) {
+      alert(
+        "Debe seleccionar la Escala Nacional a la cual desea asociar el proceso"
+      );
+      return false;
+    }
+    if (!values?.texto) {
+      alert("Debe ingresar el texto del proceso");
+      return false;
+    }
+    axios
+      .get(
+        `/api/ProcesosEvaluacion/Banco/Save?colegio=${localStorage.colegio}&cga=${cga}&escala=${values.escala}&texto=${values.texto}`
+      )
+      .then((res: any) => {
+        alert(res.data?.body);
+        setContador(contador + 1);
+        setShowModal(false);
+      });
+  };
+  const handleAsign = async (id: any) => {
+    axios
+      .get(
+        `/api/ProcesosEvaluacion/Asignar?cga=${cga}&escala=${escala}&colegio=${colegio}&id=${id}`
+      )
+      .then((res: any) => {
+        setCont(contador + 1);
+        setShow(false);
+      });
+  };
   function handleClick() {
     setShowModal(true);
   }
@@ -122,20 +174,31 @@ function BodyComponent({ cga, escala, colegio, setShow }: Props) {
                         className="w-full text-left"
                         placeholder="Seleccione un desempeño"
                         options={desempeño}
+                        onChange={(e: any) => {
+                          setValues({ ...values, ["escala"]: e.value });
+                        }}
                       />
                     </div>
                     <div className="flex flex-row items-center gap-2 my-3">
                       <p className="text-lg font-medium">Proceso:</p>
-                      <input
+                      <textarea
                         className="w-full border-[1px] border-gray-500 p-2 rounded-lg focus-visible:border-double focus-visible:border-[#2684FF] focus-visible:border-[0.4rem] focus-visible:outline-[#2684FF]/10"
-                        type="text"
-                        name="Nombre"
+                        name="texto"
                         id="Nombre"
                         placeholder="Ingrese un proceso"
+                        onChange={(e: any) => {
+                          setValues({
+                            ...values,
+                            [e.target.name]: e.target.value,
+                          });
+                        }}
                       />
                     </div>
                     <div className="flex flex-row justify-center gap-4">
-                      <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                      <button
+                        className="border-2 border-blue-600 text-blue-600 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                        onClick={() => handleSave()}
+                      >
                         Agregar
                       </button>
                       <button

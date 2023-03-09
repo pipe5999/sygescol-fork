@@ -1,9 +1,11 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 import React, { useState } from "react";
 import ReactSelect from "react-select";
-
-function Login() {
+export type Props = {
+  set: any;
+};
+function Login({ set }: Props) {
   const [data, setData] = useState({} as any);
   const colegios = [
     { label: "Seleccione", value: 0 },
@@ -31,16 +33,20 @@ function Login() {
         localStorage.setItem("Dimesiones", JSON.stringify(res.dimesion));
         localStorage.setItem("Grupo", JSON.stringify(res.Grupo));
         localStorage.setItem("colegio", data.Colegio || "");
+        set(res.datosUsu);
       });
   };
   return (
     <>
       {/* component */}
-      <section className="flex flex-col md:flex-row h-screen items-center">
-        <div className="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-          <img
-            src="https://source.unsplash.com/random"
-            className="w-full h-full object-cover"
+      <section className="flex lg:flex-row w-full h-full items-center">
+        <div className="hidden lg:block">
+          <Image
+            style={{ filter: "blur(0.6rem)" }}
+            src="/fondoLogin.jpg"
+            width={1200}
+            height={800}
+            alt="fondoLogin"
           />
         </div>
         <div
@@ -48,24 +54,26 @@ function Login() {
     flex items-center justify-center"
         >
           <div className="w-full h-100">
-            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
-              Log in to your account
+            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12 text-center">
+              Bienvenido a <br />
+              <b>
+                <span className="text-blue-600">Sygescol Online</span>
+              </b>
             </h1>
             <form className="mt-6" action="#" method="POST">
               <div>
-                <label className="block text-gray-700">Email Address</label>
+                <label className="block text-gray-700">Usuario</label>
                 <input
                   onChange={(e: any) =>
                     setData({ ...data, [e.target.name]: e.target.value })
                   }
                   type="text"
                   name="usuario"
-                  placeholder="Enter Email Address"
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                 />
               </div>
               <div className="mt-4">
-                <label className="block text-gray-700">Password</label>
+                <label className="block text-gray-700">Contraseña</label>
                 <input
                   onChange={(e: any) =>
                     setData({ ...data, [e.target.name]: e.target.value })
@@ -78,14 +86,15 @@ function Login() {
             focus:bg-white focus:outline-none"
                 />
               </div>
-              <div className="text-right mt-2">
+              {/* <div className="text-right mt-2">
                 <a
                   href="#"
                   className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
                 >
                   Forgot Password?
                 </a>
-              </div>
+              </div> */}
+              <hr className="my-6 border-gray-300 w-full" />
               <div>
                 <ReactSelect
                   onChange={(e: any) =>
@@ -104,11 +113,10 @@ function Login() {
                   getDatos();
                 }}
               >
-                Log In
+                Iniciar Sesión
               </button>
             </form>
-            <hr className="my-6 border-gray-300 w-full" />
-            <button
+            {/* <button
               type="button"
               className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
             >
@@ -147,8 +155,8 @@ function Login() {
                 </svg>
                 <span className="ml-4">Log in with Google</span>
               </div>
-            </button>
-            <p className="mt-8">
+            </button> */}
+            {/* <p className="mt-8">
               Need an account?{" "}
               <a
                 href="#"
@@ -156,7 +164,7 @@ function Login() {
               >
                 Create an account
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
       </section>

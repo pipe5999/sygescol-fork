@@ -39,6 +39,7 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
   const [dimensiones, setDimensiones] = useState({} as any);
   const [informacion, setInformacion] = useState(null as any);
   const [banco, setBanco] = useState(false);
+  const [contador, setContador] = useState(0);
   const GetProcesos = async () => {
     await axios
       .get(
@@ -57,11 +58,12 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
     if (dimensiones?.cga && dimensiones?.escala) {
       GetProcesos();
     }
-  }, [dimensiones?.escala]);
+  }, [dimensiones?.escala, contador]);
   return (
     <>
       {banco && (
         <BodyComponent
+          setCont={setContador}
           setShow={setBanco}
           cga={dimensiones?.cga || 0}
           colegio={localStorage?.getItem("colegio") || 0}
@@ -136,10 +138,18 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
                       /> */}
                     </div>
                     <div>
-                      <p className="text-left">
+                      {informacion &&
+                        informacion.map((inf: any, key: number) => {
+                          return (
+                            <>
+                              <button>Proceso {key + 1}</button>
+                            </>
+                          );
+                        })}
+                      {/* <p className="text-left">
                         {informacion?.Proceso?.texto ||
                           "No existe un proceso registrado"}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">

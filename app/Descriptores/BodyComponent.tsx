@@ -20,7 +20,7 @@ const BodyComponent = () => {
       <div className="uppercase text-center font-bold lg:text-2xl py-4 bg-blue-900 text-white rounded-b-2xl">
         Registro de Descriptores para el Nivel Preescolar
       </div>
-      <div>
+      <div className="p-2">
         <h1 className="font-bold lg:text-2xl text-blue-800 mt-3 mb-1">
           DIMENSIONES
         </h1>

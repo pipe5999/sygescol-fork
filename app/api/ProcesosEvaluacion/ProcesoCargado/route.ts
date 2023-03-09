@@ -14,7 +14,7 @@ export async function GET(req:any){
         const [periodo]:any = await conexion.query(`SELECT per_id FROM periodo_academicos WHERE nivel = 1 AND inicio_ing_notas <= '${hoy}' AND fin_ing_notas >= '${hoy}'`)
         const [procesos]:any = await conexion.query(`SELECT texto, Pe.escala, Pe.periodo, Pe.cga FROM newProcesosEvaluacion AS Pe INNER JOIN newBancoProcesos AS BP WHERE Pe.grado = ${grupo[0]?.grado_base} AND Pe.grupo = ${grupo[0]?.grupo_id} AND Pe.periodo = ${periodo[0]?.per_id} AND Pe.escala = ${escala}`)
         
-        return NextResponse.json({Proceso: {...procesos}},{status: 200})
+        return NextResponse.json(procesos,{status: 200})
     } catch (error) {
         console.log(error)
         return NextResponse.json({body: "Error al consultar la información"},{status: 400})
