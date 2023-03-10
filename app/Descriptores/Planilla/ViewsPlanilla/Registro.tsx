@@ -100,13 +100,37 @@ function Registro({ estudiante, escala, cga, show }: Props) {
       ),
     },
   ];
-  const handleAsign = (id: any) => {
-    alert("Proceso asignado Exitosamente");
-    show(false);
+  const handleAsign = async (id: any) => {
+    axios
+      .get(
+        `/api/Planilla/Registros/Procesos/Save?e=${estudiante}&c=${localStorage.getItem(
+          "colegio"
+        )}&p=${id}`
+      )
+      .then((res) => {
+        alert(res.data.body);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Existe un error al guardar la información");
+      });
+    // show(false);
   };
   const handleAsign2 = (id: any) => {
-    alert("Observación asignada Exitosamente");
-    show(false);
+    axios
+      .get(
+        `/api/Planilla/Registros/Observaciones/Save?e=${estudiante}&c=${localStorage.getItem(
+          "colegio"
+        )}&o=${id}`
+      )
+      .then((res) => {
+        alert(res.data.body);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Existe un error al guardar la información");
+      });
+    // show(false);
   };
   useEffect(() => {
     // console.log("entre");
