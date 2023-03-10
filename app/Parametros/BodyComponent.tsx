@@ -75,11 +75,7 @@ function BodyComponent() {
         onClick={() => {
           setModalDetalle(true);
         }}
-      >
-        {/* {<Parametro1 setModalDetalle={setModalDetalle} />} */}
-        {/* {<DetallesParametro setModalDetalle={setModalDetalle} />} */}
-      </div>
-      {/* <CardsPreguntas /> */}
+      ></div>
     </>
   );
 }
