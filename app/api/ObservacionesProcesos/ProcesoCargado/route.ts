@@ -12,7 +12,7 @@ export async function GET(req:any){
         const conexion = conecctions[colegio]
         const [grupo]:any = await conexion.query(`SELECT grupo_id, grado_base FROM v_grupos INNER JOIN cga ON cga.b = v_grupos.grupo_id WHERE cga.i = ${cga}`)
         const [periodo]:any = await conexion.query(`SELECT per_id FROM periodo_academicos WHERE nivel = 1 AND inicio_ing_notas <= '${hoy}' AND fin_ing_notas >= '${hoy}'`)
-        const [procesos]:any = await conexion.query(`SELECT Pe.id AS id,texto, Pe.escala, Pe.periodo, Pe.cga FROM newProcesosEvaluacion AS Pe INNER JOIN newBancoProcesos AS BP ON Pe.relacionBanco = BP.id WHERE Pe.grado = ${grupo[0]?.grado_base} AND Pe.grupo = ${grupo[0]?.grupo_id} AND Pe.periodo = ${periodo[0]?.per_id} AND Pe.escala = ${escala} AND Pe.cga = ${cga}`)
+        const [procesos]:any = await conexion.query(`SELECT Pe.id AS id,texto, Pe.escala, Pe.periodo, Pe.cga FROM newObservacionesProcesos AS Pe INNER JOIN newBancoObservacionesProcesos AS BP ON Pe.relacionBanco = BP.id WHERE Pe.grado = ${grupo[0]?.grado_base} AND Pe.grupo = ${grupo[0]?.grupo_id} AND Pe.periodo = ${periodo[0]?.per_id} AND Pe.escala = ${escala} AND Pe.cga = ${cga}`)
         
         return NextResponse.json({Proceso: procesos || []},{status: 200})
     } catch (error) {

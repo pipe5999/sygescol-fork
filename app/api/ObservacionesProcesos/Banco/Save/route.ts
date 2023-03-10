@@ -17,7 +17,7 @@ export async function GET(req:any) {
         INNER JOIN v_grupos ON periodo_academicos.per_con_id = v_grupos.per_con_id
         INNER JOIN grados ON periodo_academicos.nivel = grados.nivel AND v_grupos.grado_base = grados.id_grado
         WHERE v_grupos.grupo_id = ${dataCga[0]?.b} AND periodo_academicos.inicio_ing_notas <= CURDATE() AND fin_ing_notas >= CURDATE() `)
-        const [guarda]:any = await conexion.query(`INSERT INTO newBancoProcesos(texto,docente,grado,periodo,cga,escala) VALUES('${texto}','${dataCga[0]?.g || 0}','${periodo[0]?.grado_base}','${periodo[0]?.per_id}','${dataCga[0]?.i}','${escala}')`)
+        const [guarda]:any = await conexion.query(`INSERT INTO newBancoObservacionesProcesos(texto,docente,grado,periodo,cga,escala) VALUES('${texto}','${dataCga[0]?.g || 0}','${periodo[0]?.grado_base}','${periodo[0]?.per_id}','${dataCga[0]?.i}','${escala}')`)
         return NextResponse.json({body: "Información Guardada con Exitó"},{status:200})
     }catch(error){
         console.log(error)
