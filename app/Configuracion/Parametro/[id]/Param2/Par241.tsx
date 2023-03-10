@@ -19,7 +19,7 @@ export default function Par241() {
     <div>
       {/* <Parametro1 />
       <CardsPreguntas /> */}
-      {data?.infoParametros?.conf_nom_ver}
+      {data?.infoParametros?.TipoParam}
     </div>
   );
 }
