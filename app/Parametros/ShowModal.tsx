@@ -49,7 +49,7 @@ export default function ShowModal({
                 </tr>
               </thead>
               <tbody className="bg-gray-200  border-gray-100 hover:bg-violet-300">
-                {ParametroCliked?.Interno?.map((item: any) => {
+                {ParametroCliked?.Interno?.map((item: any, key: any) => {
                   if (item?.idParametro) {
                     return (
                       <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
@@ -93,6 +93,10 @@ export default function ShowModal({
                               rel="noopener noreferrer"
                               href={`/Configuracion/Parametro/${
                                 item.idParametro || 0
+                              }?IndexPrincipal=${
+                                ParametroCliked?.IndexPrincipal
+                              }&IndexSecundario=${
+                                ParametroCliked?.IndexSecundario
                               }`}
                             >
                               <svg

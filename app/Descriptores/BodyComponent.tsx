@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Open } from "../../typings";
 import Dimensiones from "./Dimensiones";
 
 const BodyComponent = () => {
@@ -9,7 +7,11 @@ const BodyComponent = () => {
   const [datoDimensiones, setDatos] = useState({} as any);
   const [open, setOpen] = useState(null as any);
   const GetInfoBase = () => {
-    setDatos(JSON?.parse(localStorage?.Dimesiones || {}));
+    if (localStorage?.Dimesiones?.length > 0) {
+      setDatos(JSON.parse(localStorage?.Dimesiones || []));
+    } else {
+      setDatos({});
+    }
   };
   useEffect(() => {
     GetInfoBase();

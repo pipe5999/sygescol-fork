@@ -31,7 +31,7 @@ function HomePage() {
                     (datosColegio?.urlColegio &&
                       `${
                         datosColegio?.urlColegio
-                      }sygescol${year.getFullYear()}/images/escudo.gif`) ||
+                      }/sygescol${year.getFullYear()}/images/escudo.gif`) ||
                     ""
                   }
                   alt="Escudo Col"
@@ -61,7 +61,7 @@ function HomePage() {
                     (datosColegio?.urlColegio &&
                       `${
                         datosColegio?.urlColegio
-                      }sygescol${year.getFullYear()}/images/ivhorsnet.gif`) ||
+                      }/sygescol${year.getFullYear()}/images/ivhorsnet.gif`) ||
                     ""
                   }
                   alt="Escudo Col"

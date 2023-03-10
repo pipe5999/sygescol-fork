@@ -27,7 +27,7 @@ function BodyComponent() {
               <DefinidosPor key={key} Titulo={item.Principal} />
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 drop-shadow-lg px-8">
                 {item?.ParametrosInternos?.map(
-                  (ParametrosInterno: any, key: number) => {
+                  (ParametrosInterno: any, keySecundario: number) => {
                     return (
                       <div
                         onClick={() => {
@@ -36,6 +36,8 @@ function BodyComponent() {
                             Title: ParametrosInterno.subTitle,
                             Interno: ParametrosInterno.interno,
                             Principal: item.Principal,
+                            IndexPrincipal: key,
+                            IndexSecundario: keySecundario,
                           });
                           // setMenu(item.ParametrosInternos);
                         }}
