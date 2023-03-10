@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DimensionAbreviatura from "./DimensionAbreviatura";
 
@@ -7,9 +8,28 @@ function BodyComponent() {
   const [open, setOpen] = useState(null as any);
   const [data, setData] = useState({} as any);
   const [dimension, setDimension] = useState({} as any);
-  const GetInfoBase = () => {
+  const GetInfoBase = async () => {
     setDatos(JSON?.parse(localStorage?.Dimesiones || {}));
-    setData({ ...data, grupo: JSON?.parse(localStorage?.Grupo || {}) });
+    const info = await axios
+      .get(
+        `/api/Planilla/BaseInfo?colegio=${localStorage.getItem(
+          "colegio"
+        )}&grupo=${JSON?.parse(localStorage?.Grupo)?.grupo_id}`
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          return res.data;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Existe un error al consultar los estudiantes");
+      });
+    setData({
+      ...data,
+      grupo: JSON?.parse(localStorage?.Grupo || {}),
+      info: info,
+    });
   };
   useEffect(() => {
     GetInfoBase();
@@ -45,7 +65,33 @@ function BodyComponent() {
           Grupo: {data && data?.grupo?.grupo_nombre}
         </div>
       </div>
-      {/* <div>table</div> */}
+      <div className="grid grid-cols-5 ">
+        <div className="bg-blue-300 text-center">
+          <h1 className="p-2 font-bold">Foto</h1>
+        </div>
+        <div className="bg-blue-300 text-center">
+          <h1 className="p-2 font-bold">Código</h1>
+        </div>
+        <div className="bg-blue-300 text-center">
+          <h1 className="p-2 font-bold">Estudiante</h1>
+        </div>
+        <div className="bg-blue-300 text-center">
+          <h1 className="p-2 font-bold">Desempeño Nacional</h1>
+        </div>
+        <div className="bg-blue-300 text-center">
+          <h1 className="p-2 font-bold">Consulta del Registro Efectuado</h1>
+        </div>
+        {data?.info &&
+          data?.info?.alumnos?.map((inf: any) => (
+            <>
+              <div></div>
+              <div className="p-2 font-bold text-center">{inf?.codigo}</div>
+              <div className="p-2 font-bold">{inf?.nombre}</div>
+              <div></div>
+              <div></div>
+            </>
+          ))}
+      </div>
     </>
   );
 }
