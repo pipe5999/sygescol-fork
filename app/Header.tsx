@@ -10,12 +10,12 @@ type Props = {
 const Header = ({ children }: Props) => {
   const [dataHeader, setHeader] = useState({} as any);
 
-  // const setDatos = () => {
-  //   setHeader(JSON.parse(localStorage?.datosUsu || {}));
-  // };
+  const setDatos = () => {
+    setHeader(JSON.parse(localStorage?.datosUsu || {}));
+  };
 
   useEffect(() => {
-    // setDatos();
+    setDatos();
   }, []);
   return (
     <div className="flex flex-row justify-end">
