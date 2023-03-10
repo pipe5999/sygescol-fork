@@ -4,7 +4,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ReactSelect from "react-select";
 import { Open } from "../../typings";
+import Banco from "./BancoObservaciones/Banco";
 import BodyComponent from "./BancoProcesos/BodyComponent";
+import Observacion from "./ViewDetails/Observacion";
+import Proceso from "./ViewDetails/Proceso";
 
 type Props = {
   dimension: any;
@@ -37,30 +40,64 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
     },
   ];
   const [dimensiones, setDimensiones] = useState({} as any);
-  const [informacion, setInformacion] = useState(null as any);
+  const [informacion, setInformacion] = useState({} as any);
+  const [view, setView] = useState(false);
+  const [viewObser, setViewObser] = useState(false);
+
+  const [proceso, setProceso] = useState({
+    proceso: 0,
+    observacion: 0,
+  } as any);
   const [banco, setBanco] = useState(false);
+  const [observaciones, setObser] = useState(false);
   const [contador, setContador] = useState(0);
   const GetProcesos = async () => {
-    await axios
+    const proceso = await axios
       .get(
         `/api/ProcesosEvaluacion/ProcesoCargado?cg=${dimensiones?.cga}&e=${
           dimensiones?.escala
         }&c=${localStorage.getItem("colegio")}`
       )
       .then((res) => {
+        // console.log(res);
         if (res.status == 200) {
-          setInformacion({ ...res.data });
+          return res.data?.Proceso;
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Existe un error al consultar los procesos");
       });
+    const Observaciones = await axios
+      .get(
+        `/api/ObservacionesProcesos/ProcesoCargado?cg=${dimensiones?.cga}&e=${
+          dimensiones?.escala
+        }&c=${localStorage.getItem("colegio")}`
+      )
+      .then((res) => {
+        // console.log(res);
+        if (res.status == 200) {
+          return res.data?.Proceso;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Existe un error al consultar los procesos");
+      });
+    setInformacion({ ["Observaciones"]: Observaciones, ["procesos"]: proceso });
   };
   useEffect(() => {
-    console.log(dimensiones.length);
+    // console.log(dimensiones.length);
     if (dimensiones?.cga && dimensiones?.escala) {
       GetProcesos();
     }
   }, [dimensiones?.escala, contador]);
   return (
     <>
+      {viewObser && (
+        <Observacion id={proceso.observacion} showModal={setViewObser} />
+      )}
+      {view && <Proceso showModal={setView} id={proceso.proceso} />}
       {banco && (
         <BodyComponent
           setCont={setContador}
@@ -70,10 +107,19 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
           escala={dimensiones?.escala || 0}
         />
       )}
+      {observaciones && (
+        <Banco
+          setCont={setContador}
+          setShow={setObser}
+          cga={dimensiones?.cga || 0}
+          colegio={localStorage?.getItem("colegio") || 0}
+          escala={dimensiones?.escala || 0}
+        />
+      )}
       <div>
         <h1
-          className={`uppercase bg-blue-200 lg:text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1 cursor-pointer ${
-            open == posicion && "bg-green-800"
+          className={`uppercase  bg-blue-200 lg:text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1 cursor-pointer ${
+            open == posicion && "bg-green-800 text-white"
           }`}
           onClick={() => {
             setOpen(posicion);
@@ -130,44 +176,76 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
                           setBanco(true);
                         }}
                       >
-                        Banco de procesos
+                        Banco de <br /> Procesos
                       </button>
-                      {/* <ReactSelect
-                        className="whitespace-nowrap"
-                        placeholder="Seleccione un proceso"
-                      /> */}
                     </div>
-                    <div>
-                      {informacion &&
-                        informacion.map((inf: any, key: number) => {
+                    <div className="flex flex-wrap gap-2">
+                      {(informacion?.procesos?.length > 0 &&
+                        informacion.procesos.map((inf: any, key: number) => {
                           return (
                             <>
-                              <button>Proceso {key + 1}</button>
+                              <button
+                                className="bg-green-500 font-bold p-2 text-sm rounded-md text-white"
+                                onClick={() => {
+                                  setProceso({ ...proceso, proceso: inf?.id });
+                                  setView(true);
+                                }}
+                              >
+                                Proceso {key + 1}
+                              </button>
                             </>
                           );
-                        })}
-                      {/* <p className="text-left">
-                        {informacion?.Proceso?.texto ||
-                          "No existe un proceso registrado"}
-                      </p> */}
+                        })) || (
+                        <p className="text-left">
+                          No existen procesos asignados
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="border grid lg:grid-cols-2 gap-2 p-1 items-center">
                     <div>
                       <h1 className="font-medium text-lg">Observaciones</h1>
+                      <button
+                        className="bg-blue-500 p-2 text-white rounded-md font-bold"
+                        onClick={(e) => {
+                          e.preventDefault;
+                          setObser(true);
+                        }}
+                      >
+                        Banco de <br /> Observaciones
+                      </button>
                     </div>
-                    <div>
-                      <p className="text-justify"></p>
+                    <div className="flex flex-wrap gap-2">
+                      {(informacion?.Observaciones?.length > 0 &&
+                        informacion.Observaciones.map(
+                          (inf: any, key: number) => {
+                            return (
+                              <>
+                                <button
+                                  className="bg-green-500 font-bold p-2 text-sm rounded-md text-white"
+                                  onClick={() => {
+                                    setProceso({
+                                      ...proceso,
+                                      observacion: inf?.id,
+                                    });
+                                    setViewObser(true);
+                                  }}
+                                >
+                                  Proceso {key + 1}
+                                </button>
+                              </>
+                            );
+                          }
+                        )) || (
+                        <p className="text-left">
+                          No existen observaciones asignadas
+                        </p>
+                      )}
                     </div>
                   </div>
                 </>
               )}
             </div>
-            {informacion && (
-              <button className="text-white text-lg bg-green-700/80 hover:bg-green-700 font-medium hover:font-bold rounded-bl-lg rounded-br-lg p-2 w-full">
-                Guardar Registros
-              </button>
-            )}
           </>
         )}
       </div>

@@ -1,7 +1,25 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
+import getDataParametro from "../../../../../utils/GetParametro";
 
-function Par167() {
-  return <div>Par167</div>;
+export default function Par167() {
+  const [data, setData] = React.useState({} as any);
+
+  console.log(data);
+
+  useEffect(() => {
+    const GetInfo = async () => {
+      const resultado = await getDataParametro(167, 2);
+      setData(resultado);
+    };
+    GetInfo();
+  }, []);
+
+  return (
+    <div>
+      {/* <Parametro1 />
+      <CardsPreguntas /> */}
+      {data?.infoParametros?.conf_nom_ver}
+    </div>
+  );
 }
-
-export default Par167;

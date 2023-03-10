@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import ReactSelect from "react-select";
 import { Open } from "../../typings";
 import Dimensiones from "./Dimensiones";
 

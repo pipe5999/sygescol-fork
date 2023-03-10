@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["sygescol.iefranciscomiranda.edu.co"],
+    domains: ["sygescol.iefranciscomiranda.edu.co", "sygescol.ietjoaquinparis.sistemasivhorsnet.com"],
   },
   experimental: {
     appDir: true,

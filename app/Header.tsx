@@ -10,12 +10,12 @@ type Props = {
 const Header = ({ children }: Props) => {
   const [dataHeader, setHeader] = useState({} as any);
 
-  // const setDatos = () => {
-  //   setHeader(JSON.parse(localStorage?.datosUsu || {}));
-  // };
+  const setDatos = () => {
+    setHeader(JSON.parse(localStorage?.datosUsu || {}));
+  };
 
   useEffect(() => {
-    // setDatos();
+    setDatos();
   }, []);
   return (
     <div className="flex flex-row justify-end">
@@ -102,9 +102,14 @@ const Header = ({ children }: Props) => {
               }
               submenu="Planilla Descriptores"
             />
-            <MenuItem
-              link=""
-              icono={
+            <div
+              className="cursor-pointer border-2 border-blue-600 p-2 hover:bg-blue-600 hover:border-l-4 hover:border-l-white text-white rounded flex items-center gap-2 transition-all duration-200"
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
+            >
+              <div>
                 <svg
                   className="h-5 w-5 !fill-white"
                   viewBox="0 0 512 512"
@@ -112,9 +117,11 @@ const Header = ({ children }: Props) => {
                 >
                   <path d="M256 48C140.559 48 48 140.559 48 256c0 115.436 92.559 208 208 208 115.435 0 208-92.564 208-208 0-115.441-92.564-208-208-208zm104.002 282.881l-29.12 29.117L256 285.117l-74.881 74.881-29.121-29.117L226.881 256l-74.883-74.881 29.121-29.116L256 226.881l74.881-74.878 29.12 29.116L285.119 256l74.883 74.881z"></path>
                 </svg>
-              }
-              submenu="Cerrar Sesión"
-            />
+              </div>
+              <h1 className="truncate uppercase lg:text-sm !leading-none">
+                Cerrar Sesión
+              </h1>
+            </div>
           </div>
         </div>
       </div>
