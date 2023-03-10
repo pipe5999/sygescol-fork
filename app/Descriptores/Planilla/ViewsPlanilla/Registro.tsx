@@ -50,6 +50,32 @@ function Registro({ estudiante, escala, cga, show }: Props) {
 
   const columns: any = [
     {
+      name: "Observacion",
+      selector: (row: any) => (
+        <div className="text-justify text-lg">{row.texto || ""}</div>
+      ),
+      sortable: true,
+      wrap: true,
+    },
+    {
+      name: "Operaciones",
+      selector: (row: any) => (
+        <>
+          <div className="flex justify-center w-full">
+            <button
+              className="p-2 text-white text-lg rounded-md bg-blue-700 font-bold"
+              title="Seleccionar"
+              onClick={() => handleAsign2(row.id)}
+            >
+              Seleccionar Observación
+            </button>
+          </div>
+        </>
+      ),
+    },
+  ];
+  const columns2: any = [
+    {
       name: "Proceso",
       selector: (row: any) => (
         <div className="text-justify text-lg">{row.texto || ""}</div>
@@ -67,7 +93,7 @@ function Registro({ estudiante, escala, cga, show }: Props) {
               title="Seleccionar"
               onClick={() => handleAsign(row.id)}
             >
-              Seleccionar Observación
+              Seleccionar Proceso
             </button>
           </div>
         </>
@@ -76,6 +102,10 @@ function Registro({ estudiante, escala, cga, show }: Props) {
   ];
   const handleAsign = (id: any) => {
     alert("Proceso asignado Exitosamente");
+    show(false);
+  };
+  const handleAsign2 = (id: any) => {
+    alert("Observación asignada Exitosamente");
     show(false);
   };
   useEffect(() => {
@@ -97,7 +127,7 @@ function Registro({ estudiante, escala, cga, show }: Props) {
                 <DataTable
                   title="Lista de Procesos"
                   data={data?.Procesos}
-                  columns={columns}
+                  columns={columns2}
                   customStyles={customStyles}
                   pagination
                   responsive
