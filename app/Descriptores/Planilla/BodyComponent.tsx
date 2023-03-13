@@ -7,6 +7,7 @@ import { customStyles } from "../../../utils/CustomStylesTables";
 import DimensionAbreviatura from "./DimensionAbreviatura";
 import Registro from "./ViewsPlanilla/Registro";
 import { Lightbox } from "react-modal-image";
+import ShowRegistro from "./ViewsPlanilla/ShowRegistro";
 
 function BodyComponent() {
   const nacional = [
@@ -40,6 +41,10 @@ function BodyComponent() {
   const [data, setData] = useState({} as any);
   const [dimension, setDimension] = useState({} as any);
   const [image, setImage] = useState(null);
+  const [view, setView] = useState({
+    open: false,
+    id: 0,
+  } as any);
   const [show, setShow] = useState(false);
   const GetInfoBase = async () => {
     setDatos(JSON?.parse(localStorage?.Dimesiones || {}));
@@ -164,12 +169,9 @@ function BodyComponent() {
             </button>
             <button
               className="p-2 text-center font-bold bg-blue-600 text-white rounded-md hover:bg-blue-400"
-              disabled={estudent.indexOf(row.matricula) >= 0 ? false : true}
-              // onClick={() => {
-              //   if (estudent.indexOf(row.matricula) >= 0) {
-              //     openRegistro(row.matricula, escala[key]);
-              //   }
-              // }}
+              onClick={() => {
+                setView({ id: row.matricula, open: true });
+              }}
             >
               Ver Registro
             </button>
@@ -194,6 +196,9 @@ function BodyComponent() {
           hideZoom={true}
           showRotate={false}
         />
+      )}
+      {view.open && (
+        <ShowRegistro id={view.id} show={setView} cga={dimension.CgaId} />
       )}
       {registro && (
         <Registro
@@ -245,37 +250,6 @@ function BodyComponent() {
           paginationComponentOptions={paginationComponentOptions}
         />
       </div>
-      {/* <div className="grid grid-cols-5 mt-4">
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Foto</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Código</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Estudiante</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Desempeño Nacional</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Consulta del Registro Efectuado</h1>
-        </div>
-        {data?.info &&
-          data?.info?.alumnos?.map((inf: any, key: number) => (
-            <>
-              <div></div>
-              <div className="p-2 font-bold text-center">{inf?.codigo}</div>
-              <div className="p-2 font-bold">{inf?.nombre}</div>
-              <div className="p-2 font-bold">
-                
-              </div>
-              <div className="p-2 text-center flex items-center justify-center">
-              
-              </div>
-            </>
-          ))}
-      </div> */}
     </>
   );
 }
