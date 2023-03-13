@@ -47,55 +47,75 @@ function Login({ set }: Props) {
         {/*---------------*/}
 
         {/* Inicio de Seccion */}
-        <div className="w-96 lg:w-[30%] mx-auto bg-white flex flex-col justify-center p-6">
+        <div className="relative w-96 lg:w-[30%] mx-auto bg-white flex flex-col justify-center p-6 overflow-hidden">
           {/* onda en Celular */}
-          <h1 className="opacity-60 text-center text-blue-900 font-bold text-2xl uppercase mb-3">
-            Inicio de Sesión
-          </h1>
-          <h1 className="block lg:hidden text-xl font-bold text-center mb-4">
-            Bienvenido a <br />
-            <b className="text-blue-600">Sygescol Online</b>
-          </h1>
-          <div>
-            <ReactSelect
-              onChange={(e: any) => setData({ ...data, ["Colegio"]: e.value })}
-              options={colegios}
-              placeholder="Seleccione su Institución"
-            />
-          </div>
-          <form className="mt-6" action="#" method="POST">
-            <label className="block text-gray-700">Usuario</label>
-            <input
-              onChange={(e: any) =>
-                setData({ ...data, [e.target.name]: e.target.value })
-              }
-              type="text"
-              name="usuario"
-              className="border-2 border-gray-300 w-full p-3 rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
-            />
-            <label className="mt-3 block text-gray-700">Contraseña</label>
-            <input
-              onChange={(e: any) =>
-                setData({ ...data, [e.target.name]: e.target.value })
-              }
-              name="pass"
-              type="password"
-              placeholder="Enter Password"
-              minLength={6}
-              className="border-2 border-gray-300 w-full p-3 rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
-            />
+          <div
+            className="z-0 block lg:hidden waves fixed bottom-0 left-0 right-0 h-[300px] bg-blue-800"
+            style={{
+              transition: "500ms",
+            }}
+          />
 
-            <button
-              type="submit"
-              className="w-full block bg-blue-800 hover:bg-blue-900 text-white font-semibold rounded-lg px-4 py-3 mt-6"
-              onClick={(e: any) => {
-                e.preventDefault();
-                getDatos();
-              }}
-            >
-              Iniciar Sesión
-            </button>
-          </form>
+          <div className="z-10">
+            <h1 className="opacity-60 text-center text-white lg:text-blue-900 font-bold text-2xl uppercase mb-3">
+              Inicio de Sesión
+            </h1>
+            <h1 className="text-white block lg:hidden text-xl font-bold text-center mb-4">
+              Bienvenido a <br />
+              <b className="text-blue-500">Sygescol Online</b>
+            </h1>
+            <div>
+              <ReactSelect
+                onChange={(e: any) =>
+                  setData({ ...data, ["Colegio"]: e.value })
+                }
+                options={colegios}
+                placeholder="Seleccione su Institución"
+              />
+            </div>
+            <form className="mt-6" action="#" method="POST">
+              <div className="flex flex-col gap-3">
+                <div>
+                  <label className="block text-white lg:text-blue-900 font-medium lg:text-base">
+                    Usuario
+                  </label>
+                  <input
+                    onChange={(e: any) =>
+                      setData({ ...data, [e.target.name]: e.target.value })
+                    }
+                    type="text"
+                    name="usuario"
+                    className="border-2 border-gray-300 w-full p-3 rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-white lg:text-blue-900 font-medium lg:text-base">
+                    Contraseña
+                  </label>
+                  <input
+                    onChange={(e: any) =>
+                      setData({ ...data, [e.target.name]: e.target.value })
+                    }
+                    name="pass"
+                    type="password"
+                    placeholder="Enter Password"
+                    minLength={6}
+                    className="border-2 border-gray-300 w-full p-3 rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="border-2 border-white lg:border-none w-full block bg-blue-800 hover:bg-blue-900 text-white font-semibold rounded-lg px-4 py-3 mt-6"
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  getDatos();
+                }}
+              >
+                Iniciar Sesión
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 

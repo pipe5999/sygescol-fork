@@ -13,8 +13,16 @@ const CompRazones = ({ image, alt, title, titleCompleto }: Props) => {
     <>
       <li className="bg-[#1e3a8a] cursor-pointer border-2 border-white">
         <img src={image} alt={alt} />
-        <div className="myDIV lg:text-lg">{title}</div>
-        <div className="hide lg:whitespace-normal lg:text-lg">
+        <div
+          style={{ fontSize: "clamp(18px,2.5vw,22px)" }}
+          className="myDIV font-medium h-8"
+        >
+          {title}
+        </div>
+        <div
+          style={{ fontSize: "clamp(18px,2.5vw,22px)" }}
+          className="hide lg:whitespace-normal font-medium"
+        >
           {titleCompleto}
         </div>
       </li>
@@ -56,6 +64,18 @@ const CompRazones = ({ image, alt, title, titleCompleto }: Props) => {
           max-width: 900px;
           margin: 0 auto;
           padding: 0 10px;
+        }
+
+        @keyframes waves {
+          .hide {
+            display: none;
+            transition: visibility 15s, opacity 0.5s linear;
+          }
+
+          .myDIV:hover + .hide {
+            display: block;
+            color: white;
+          }
         }
       `}</style>
     </>

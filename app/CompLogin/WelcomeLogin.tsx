@@ -9,7 +9,6 @@ function WelcomeLogin() {
         {/* ondas */}
         <div
           style={{
-            // boxShadow: "inset(0 0 50px #0000007f)",
             transition: "500ms",
           }}
           className="waves absolute bottom-0 left-0 right-0 h-[300px] bg-blue-800"
