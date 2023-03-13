@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Parametros } from "../../utils/Parametros";
-import CardsPreguntas from "./CardsPreguntas";
+import CardsPreguntas from "../Configuracion/CardsPreguntas";
 import DefinidosPor from "./DefinidosPor";
-import DetallesParametro from "./DetallesParametro";
+import DetallesParametro from "../Configuracion/DetallesParametro";
 import Header from "./Header";
 import ItemParametro from "./ItemParametro";
 import Parametro1 from "./ParametroUno152";

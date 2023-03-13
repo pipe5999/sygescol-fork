@@ -2,9 +2,9 @@ import React from "react";
 
 export default function CardsPreguntas() {
   return (
-    <div className="flex flex-row">
-      <div className="w-full md:w-64 justify-center items-center bg-gray-200 shadow-lg rounded-lg flex flex-col m-5">
-        <div className="w-full flex items-center justify-center bg-blue-800 p-4 rounded-t-lg border-dashed border-2 border-white ">
+    <div className="grid grid-cols-3 gap-2">
+      <div className="w-full md:w-64 justify-center items-center bg-gray-50  border-gray-300 shadow-lg rounded-lg flex flex-col m-5">
+        <div className="w-full flex items-center justify-center bg-sky-900 p-4 rounded-t-lg border-dotted border-2 border-white ">
           <div className="flex flex-col items-center">
             {/* <img
               style={{ filter: "drop-shadow(0px 0px 6px white)" }}
@@ -37,9 +37,9 @@ export default function CardsPreguntas() {
                 <input type="radio" value="planilla11" name="opcion" />
                 <h1>Planilla 1.1</h1>
                 <svg
-                  className="cursor-pointer"
+                  className="cursor-pointer fill-teal-900"
                   stroke="currentColor"
-                  fill="currentColor"
+                  fill=""
                   strokeWidth={0}
                   viewBox="0 0 24 24"
                   aria-hidden="true"

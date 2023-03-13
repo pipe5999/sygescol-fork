@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect } from "react";
 import getDataParametro from "../../../../../utils/GetParametro";
-import DetallesParametro from "../../../../Parametros/DetallesParametro";
-import ModalDetalle from "../../../../Parametros/ModalDetalle";
+import DetallesParametro from "../../../DetallesParametro";
+import CardsPreguntas from "../../../CardsPreguntas";
+import HeaderParam from "../../../HeaderParam";
 
 export default function Par65() {
   const [data, setData] = React.useState({} as any);
@@ -20,10 +21,12 @@ export default function Par65() {
   return (
     <div>
       {/* <Parametro1 />
-      <CardsPreguntas /> */}
-      {data?.infoParametros?.TipoParam}
+
+      {/* {data?.infoParametros?.TipoParam} */}
+      <HeaderParam infoParams={data} />
       <DetallesParametro infoParams={data} />
       {/* <ModalDetalle InfoParametro={data.infoParametros} /> */}
+      <CardsPreguntas />
     </div>
   );
 }
