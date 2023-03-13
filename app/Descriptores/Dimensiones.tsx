@@ -95,9 +95,21 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
   return (
     <>
       {viewObser && (
-        <Observacion id={proceso.observacion} showModal={setViewObser} />
+        <Observacion
+          id={proceso.observacion}
+          showModal={setViewObser}
+          setContador={setContador}
+          contador={contador}
+        />
       )}
-      {view && <Proceso showModal={setView} id={proceso.proceso} />}
+      {view && (
+        <Proceso
+          showModal={setView}
+          id={proceso.proceso}
+          setContador={setContador}
+          contador={contador}
+        />
+      )}
       {banco && (
         <BodyComponent
           setCont={setContador}

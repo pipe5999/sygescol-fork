@@ -11,8 +11,7 @@ export async function GET(req:any) {
 
     try{
         const conexion = conecctions[colegio]
-        const [dataCga]:any = await conexion.query(`SELECT * FROM cga WHERE i = ${cga}`);
-        console.log(dataCga)
+        const [dataCga]:any = await conexion.query(`SELECT * FROM cga WHERE i = ${cga}`)
         const [periodo]:any = await conexion.query(`SELECT per_id,grado_base FROM periodo_academicos
         INNER JOIN v_grupos ON periodo_academicos.per_con_id = v_grupos.per_con_id
         INNER JOIN grados ON periodo_academicos.nivel = grados.nivel AND v_grupos.grado_base = grados.id_grado

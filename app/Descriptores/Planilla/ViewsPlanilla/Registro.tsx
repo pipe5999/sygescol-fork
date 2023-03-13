@@ -17,12 +17,12 @@ function Registro({ estudiante, escala, cga, show }: Props) {
       .get(
         `/api/ProcesosEvaluacion/ProcesoCargado?cg=${cga}&e=${escala}&c=${localStorage.getItem(
           "colegio"
-        )}`
+        )}&i=${estudiante}`
       )
       .then((res) => {
         // console.log(res);
         if (res.status == 200) {
-          return res.data?.Proceso;
+          return res.data?.procesosAsig;
         }
       })
       .catch((error) => {
@@ -33,12 +33,12 @@ function Registro({ estudiante, escala, cga, show }: Props) {
       .get(
         `/api/ObservacionesProcesos/ProcesoCargado?cg=${cga}&e=${escala}&c=${localStorage.getItem(
           "colegio"
-        )}`
+        )}&i=${estudiante}`
       )
       .then((res) => {
         // console.log(res);
         if (res.status == 200) {
-          return res.data?.Proceso;
+          return res.data?.procesosAsig;
         }
       })
       .catch((error) => {
