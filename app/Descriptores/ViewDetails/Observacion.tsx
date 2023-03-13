@@ -4,9 +4,39 @@ import React, { useEffect, useState } from "react";
 export type Props = {
   showModal: any;
   id: any;
+  contador: any;
+  setContador: any;
 };
-function Observacion({ showModal, id }: Props) {
+function Observacion({ showModal, id, contador, setContador }: Props) {
   const [data, setData] = useState({} as any);
+  const handleDelete = async () => {
+    const acepta = confirm("¿Esta seguro que desea eliminar este proceso?");
+    if (acepta) {
+      try {
+        axios
+          .get(
+            `/api/ObservacionesProcesos/Delete?i=${id}&c=${localStorage.getItem(
+              "colegio"
+            )}`
+          )
+          .then((res) => {
+            // console.log(res.data);
+            if (res.status == 200) {
+              alert(res.data.body);
+              setContador(contador + 1);
+              showModal(false);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Existe un error en la eliminación de la observación");
+          });
+      } catch (error) {
+        console.log(error);
+        alert("Existe un error en la eliminación de la observación");
+      }
+    }
+  };
   const getData = async () => {
     await axios
       .get(
@@ -74,6 +104,14 @@ function Observacion({ showModal, id }: Props) {
             </div>
           </div>
           <div className="flex flex-row justify-center gap-4">
+            <button
+              className="border-2 border-red-600 text-red-600 hover:bg-red-800 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+              onClick={() => {
+                handleDelete();
+              }}
+            >
+              Eliminar
+            </button>
             <button
               onClick={() => showModal(false)}
               className="border-2 border-blue-600 text-blue-600 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"

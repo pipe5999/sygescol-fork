@@ -2,8 +2,12 @@
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
+import { customStyles } from "../../../utils/CustomStylesTables";
 import DimensionAbreviatura from "./DimensionAbreviatura";
 import Registro from "./ViewsPlanilla/Registro";
+import { Lightbox } from "react-modal-image";
+import ShowRegistro from "./ViewsPlanilla/ShowRegistro";
 
 function BodyComponent() {
   const nacional = [
@@ -36,6 +40,12 @@ function BodyComponent() {
   const [escala, setEscala] = useState([] as any);
   const [data, setData] = useState({} as any);
   const [dimension, setDimension] = useState({} as any);
+  const [image, setImage] = useState(null);
+  const [view, setView] = useState({
+    open: false,
+    id: 0,
+  } as any);
+  const [show, setShow] = useState(false);
   const GetInfoBase = async () => {
     setDatos(JSON?.parse(localStorage?.Dimesiones || {}));
     const info = await axios
@@ -63,11 +73,133 @@ function BodyComponent() {
     setDataEnvia({ Desempeño: desempeño, Estudiante: estudiante });
     setRegistro(true);
   };
+
+  const paginationComponentOptions = {
+    rowsPerPageText: "Filas por página",
+    rangeSeparatorText: "de",
+    selectAllRowsItem: true,
+    selectAllRowsItemText: "Todos",
+  };
+
+  const columns: any = [
+    {
+      name: "Foto",
+      selector: (row: any) => (
+        <>
+          <Image
+            onClick={() => {
+              setImage(row.foto);
+              setShow(true);
+            }}
+            className="rounded-full cursor-pointer"
+            src={row.foto}
+            alt="foto Estu"
+            width={65}
+            height={65}
+            title="De click para relizar zoom a la imagen"
+          />
+        </>
+      ),
+    },
+    {
+      name: "Código",
+      selector: (row: any) => row.codigo,
+    },
+    {
+      name: "Nombre",
+      selector: (row: any) => row.nombre,
+      sortable: true,
+      wrap: true,
+    },
+    {
+      name: "Desempeño Nacional",
+      selector: (row: any, key: number) => (
+        <>
+          <div className="flex flex-row justify-between my-2 gap-2 lg:gap-0.5">
+            {nacional.map((nac) => {
+              return (
+                <div
+                  className={`rounded-lg cursor-pointer ${
+                    escala[key] == nac?.id && nac?.id < 3
+                      ? "bg-green-600"
+                      : escala[key] == nac?.id && nac?.id > 2
+                      ? "bg-red-600"
+                      : "bg-blue-100"
+                  } 2xl:p-2 p-0`}
+                  onClick={() => {
+                    if (dimension?.CgaId) {
+                      const dat = [...escala];
+                      const newEst = [...estudent];
+                      newEst[key] = row.matricula;
+                      dat[key] = nac?.id;
+                      setEscala(dat);
+                      setEstudent(newEst);
+                    }
+                  }}
+                >
+                  <h1 className="lg:text-base font-medium">{nac.title}</h1>
+                  <Image
+                    width={50}
+                    height={50}
+                    src={`/Descriptores/${nac.img}.png`}
+                    alt="Imagen Desempeño"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ),
+    },
+    {
+      name: "Consulta del registro Efectuado",
+      selector: (row: any, key: number) => (
+        <>
+          <div className="flex flex-wrap gap-2">
+            <button
+              className="p-2 text-center font-bold bg-blue-600 text-white rounded-md hover:bg-blue-400"
+              disabled={estudent.indexOf(row.matricula) >= 0 ? false : true}
+              onClick={() => {
+                if (estudent.indexOf(row.matricula) >= 0) {
+                  openRegistro(row.matricula, escala[key]);
+                }
+              }}
+            >
+              Asignar Registro
+            </button>
+            <button
+              className="p-2 text-center font-bold bg-blue-600 text-white rounded-md hover:bg-blue-400"
+              onClick={() => {
+                setView({ id: row.matricula, open: true });
+              }}
+            >
+              Ver Registro
+            </button>
+          </div>
+        </>
+      ),
+    },
+  ];
   useEffect(() => {
     GetInfoBase();
   }, []);
   return (
     <>
+      {show && (
+        <Lightbox
+          large={image}
+          onClose={() => {
+            setImage(null);
+            setShow(false);
+          }}
+          hideDownload={true}
+          hideZoom={true}
+          showRotate={false}
+        />
+      )}
+      {view.open && (
+        <ShowRegistro id={view.id} show={setView} cga={dimension.CgaId} />
+      )}
       {registro && (
         <Registro
           cga={dimension.CgaId}
@@ -105,80 +237,18 @@ function BodyComponent() {
           Grupo: {data && data?.grupo?.grupo_nombre}
         </div>
       </div>
-      <div className="grid grid-cols-5 mt-4">
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Foto</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Código</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Estudiante</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Desempeño Nacional</h1>
-        </div>
-        <div className="bg-blue-300 text-center">
-          <h1 className="p-2 font-bold">Consulta del Registro Efectuado</h1>
-        </div>
-        {data?.info &&
-          data?.info?.alumnos?.map((inf: any, key: number) => (
-            <>
-              <div></div>
-              <div className="p-2 font-bold text-center">{inf?.codigo}</div>
-              <div className="p-2 font-bold">{inf?.nombre}</div>
-              <div className="p-2 font-bold">
-                <div className="flex flex-row justify-between my-2 gap-2 lg:gap-0.5">
-                  {nacional.map((nac) => {
-                    return (
-                      <div
-                        className={`rounded-lg cursor-pointer ${
-                          escala[key] == nac?.id && nac?.id < 3
-                            ? "bg-green-600"
-                            : escala[key] == nac?.id && nac?.id > 2
-                            ? "bg-red-600"
-                            : "bg-blue-100"
-                        } 2xl:p-2 p-0`}
-                        onClick={() => {
-                          if (dimension?.CgaId) {
-                            const dat = [...escala];
-                            const newEst = [...estudent];
-                            newEst[key] = inf.matricula;
-                            dat[key] = nac?.id;
-                            setEscala(dat);
-                            setEstudent(newEst);
-                          }
-                        }}
-                      >
-                        <h1 className="lg:text-base font-medium">
-                          {nac.title}
-                        </h1>
-                        <Image
-                          width={50}
-                          height={50}
-                          src={`/Descriptores/${nac.img}.png`}
-                          alt="Imagen Desempeño"
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="p-2 text-center flex items-center justify-center">
-                <button
-                  className="p-2 text-center font-bold bg-blue-600 text-white rounded-md hover:bg-blue-400"
-                  disabled={estudent.indexOf(inf.matricula) >= 0 ? false : true}
-                  onClick={() => {
-                    if (estudent.indexOf(inf.matricula) >= 0) {
-                      openRegistro(inf.matricula, escala[key]);
-                    }
-                  }}
-                >
-                  VER REGISTRO
-                </button>
-              </div>
-            </>
-          ))}
+      <div className="my-4">
+        <DataTable
+          title="Lista de Procesos"
+          data={data?.info?.alumnos}
+          columns={columns}
+          customStyles={customStyles}
+          pagination
+          responsive
+          noDataComponent="Cargando Información"
+          paginationPerPage={4}
+          paginationComponentOptions={paginationComponentOptions}
+        />
       </div>
     </>
   );
