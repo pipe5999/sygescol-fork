@@ -12,7 +12,7 @@ export async function GET(req: any, { params: { id } }: any) {
     const conexion = conecctions[colegio];
 
     const [infoParametros]: any = await conexion.query(
-      `SELECT * FROM conf_sygescol WHERE conf_id IN (${id})`
+      `SELECT conf_descri as Description, conf_id as Id, conf_nom_ver as TipoParam FROM conf_sygescol WHERE conf_id IN (${id})`
     );
 
     console.log("infoParametros", infoParametros);

@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Parametros } from "../../utils/Parametros";
-import CardsPreguntas from "./CardsPreguntas";
+import CardsPreguntas from "../Configuracion/CardsPreguntas";
 import DefinidosPor from "./DefinidosPor";
-import DetallesParametro from "./DetallesParametro";
+import DetallesParametro from "../Configuracion/DetallesParametro";
 import Header from "./Header";
 import ItemParametro from "./ItemParametro";
 import Parametro1 from "./ParametroUno152";
@@ -27,7 +27,7 @@ function BodyComponent() {
               <DefinidosPor key={key} Titulo={item.Principal} />
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 drop-shadow-lg px-8">
                 {item?.ParametrosInternos?.map(
-                  (ParametrosInterno: any, key: number) => {
+                  (ParametrosInterno: any, keySecundario: number) => {
                     return (
                       <div
                         onClick={() => {
@@ -36,6 +36,8 @@ function BodyComponent() {
                             Title: ParametrosInterno.subTitle,
                             Interno: ParametrosInterno.interno,
                             Principal: item.Principal,
+                            IndexPrincipal: key,
+                            IndexSecundario: keySecundario,
                           });
                           // setMenu(item.ParametrosInternos);
                         }}

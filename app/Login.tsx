@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import ReactSelect from "react-select";
+import WelcomeLogin from "./CompLogin/WelcomeLogin";
 export type Props = {
   set: any;
 };
@@ -38,76 +39,74 @@ function Login({ set }: Props) {
   };
   return (
     <>
-      {/* component */}
-      <section className="flex lg:flex-row w-full h-full items-center">
-        <div className="hidden lg:block">
-          <Image
-            style={{ filter: "blur(0.6rem)" }}
-            src="/fondoLogin.jpg"
-            width={1200}
-            height={800}
-            alt="fondoLogin"
-          />
+      <div className="flex lg:flex-row w-full h-screen">
+        {/* Bienvenido Sygescol */}
+        <div className="hidden w-[70%] lg:flex flex-row lg:flex-col">
+          <WelcomeLogin />
         </div>
-        <div
-          className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
-    flex items-center justify-center"
-        >
-          <div className="w-full h-100">
-            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12 text-center">
-              Bienvenido a <br />
-              <b>
-                <span className="text-blue-600">Sygescol Online</span>
-              </b>
+        {/*---------------*/}
+
+        {/* Inicio de Seccion */}
+        <div className="relative w-96 lg:w-[30%] mx-auto bg-white flex flex-col justify-center p-6 overflow-hidden">
+          {/* onda en Celular */}
+          <div
+            className="z-0 block lg:hidden waves fixed bottom-0 left-0 right-0 h-[300px] bg-blue-800"
+            style={{
+              transition: "500ms",
+            }}
+          />
+
+          <div className="z-10">
+            <h1 className="opacity-60 text-center text-white lg:text-blue-900 font-bold text-2xl uppercase mb-3">
+              Inicio de Sesión
             </h1>
+            <h1 className="text-white block lg:hidden text-xl font-bold text-center mb-4">
+              Bienvenido a <br />
+              <b className="text-blue-500">Sygescol Online</b>
+            </h1>
+            <div>
+              <ReactSelect
+                onChange={(e: any) =>
+                  setData({ ...data, ["Colegio"]: e.value })
+                }
+                options={colegios}
+                placeholder="Seleccione su Institución"
+              />
+            </div>
             <form className="mt-6" action="#" method="POST">
-              <div>
-                <label className="block text-gray-700">Usuario</label>
-                <input
-                  onChange={(e: any) =>
-                    setData({ ...data, [e.target.name]: e.target.value })
-                  }
-                  type="text"
-                  name="usuario"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                />
-              </div>
-              <div className="mt-4">
-                <label className="block text-gray-700">Contraseña</label>
-                <input
-                  onChange={(e: any) =>
-                    setData({ ...data, [e.target.name]: e.target.value })
-                  }
-                  name="pass"
-                  type="password"
-                  placeholder="Enter Password"
-                  minLength={6}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-            focus:bg-white focus:outline-none"
-                />
-              </div>
-              {/* <div className="text-right mt-2">
-                <a
-                  href="#"
-                  className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
-                >
-                  Forgot Password?
-                </a>
-              </div> */}
-              <hr className="my-6 border-gray-300 w-full" />
-              <div>
-                <ReactSelect
-                  onChange={(e: any) =>
-                    setData({ ...data, ["Colegio"]: e.value })
-                  }
-                  options={colegios}
-                  placeholder="Seleccione su Institución"
-                />
+              <div className="flex flex-col gap-3">
+                <div>
+                  <label className="block text-white lg:text-blue-900 font-medium lg:text-base">
+                    Usuario
+                  </label>
+                  <input
+                    onChange={(e: any) =>
+                      setData({ ...data, [e.target.name]: e.target.value })
+                    }
+                    type="text"
+                    name="usuario"
+                    className="border-2 border-gray-300 w-full p-3 rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-white lg:text-blue-900 font-medium lg:text-base">
+                    Contraseña
+                  </label>
+                  <input
+                    onChange={(e: any) =>
+                      setData({ ...data, [e.target.name]: e.target.value })
+                    }
+                    name="pass"
+                    type="password"
+                    placeholder="Enter Password"
+                    minLength={6}
+                    className="border-2 border-gray-300 w-full p-3 rounded-lg bg-gray-200 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
               </div>
               <button
                 type="submit"
-                className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
-          px-4 py-3 mt-6"
+                className="border-2 border-white lg:border-none w-full block bg-blue-800 hover:bg-blue-900 text-white font-semibold rounded-lg px-4 py-3 mt-6"
                 onClick={(e: any) => {
                   e.preventDefault();
                   getDatos();
@@ -116,58 +115,58 @@ function Login({ set }: Props) {
                 Iniciar Sesión
               </button>
             </form>
-            {/* <button
-              type="button"
-              className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
-            >
-              <div className="flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  className="w-6 h-6"
-                  viewBox="0 0 48 48"
-                >
-                  <defs>
-                    <path
-                      id="a"
-                      d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"
-                    />
-                  </defs>
-                  <clipPath id="b">
-                    <use xlinkHref="#a" overflow="visible" />
-                  </clipPath>
-                  <path clipPath="url(#b)" fill="#FBBC05" d="M0 37V11l17 13z" />
-                  <path
-                    clipPath="url(#b)"
-                    fill="#EA4335"
-                    d="M0 11l17 13 7-6.1L48 14V0H0z"
-                  />
-                  <path
-                    clipPath="url(#b)"
-                    fill="#34A853"
-                    d="M0 37l30-23 7.9 1L48 0v48H0z"
-                  />
-                  <path
-                    clipPath="url(#b)"
-                    fill="#4285F4"
-                    d="M48 48L17 24l-4-3 35-10z"
-                  />
-                </svg>
-                <span className="ml-4">Log in with Google</span>
-              </div>
-            </button> */}
-            {/* <p className="mt-8">
-              Need an account?{" "}
-              <a
-                href="#"
-                className="text-blue-500 hover:text-blue-700 font-semibold"
-              >
-                Create an account
-              </a>
-            </p> */}
           </div>
         </div>
-      </section>
+      </div>
+
+      <style jsx>{`
+        .waves::before,
+        .waves::after {
+          content: "";
+          position: absolute;
+          width: 300vw;
+          height: 300vw;
+          top: -65vw;
+          left: 50%;
+          transform: translate(-50%, -75%);
+        }
+
+        .waves::before {
+          border-radius: 44%;
+          background: #183283;
+          animation: waves 8s linear infinite;
+        }
+
+        .waves::after {
+          border-radius: 44%;
+          background: #0e215c;
+          animation: waves 15s linear infinite;
+        }
+
+        @keyframes waves {
+          0% {
+            transform: translate(-50%, -75%) rotate(0deg);
+          }
+
+          100% {
+            transform: translate(-50%, -75%) rotate(360deg);
+          }
+
+          .hide {
+            display: none;
+            transition: visibility 15s, opacity 0.5s linear;
+          }
+
+          .myDIV:hover + .hide {
+            display: block;
+            color: white;
+          }
+
+          .enter-right {
+            transition: opacity 0.5 ease-out, transform 0.5s ease-out;
+          }
+        }
+      `}</style>
     </>
   );
 }
