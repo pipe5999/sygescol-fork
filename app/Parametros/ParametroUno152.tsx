@@ -37,36 +37,6 @@ export default function Parametro1({ setModalDetalle }: Props) {
         </div>
       </div>
       <div className="px-4">
-        <div>
-          <h3 className="rounded-md border-2 border-cyan-900 w-1/3 font-bold text-cyan-700 text-center  ">
-            ¿Qué Tipo de proceso aplicará?{" "}
-          </h3>
-          <select name="" id="" className="border-cyan-900 mb-2">
-            <option value="">Seleccione</option>
-            <option value="">Competencias</option>
-            <option value="">Desempeños</option>
-            <option value="">Logros</option>
-            <option value="">Otros</option>
-          </select>
-        </div>
-        <div className="my-4">
-          <h3 className="rounded-md border-2 border-cyan-900 w-60 font-bold mt-2 text-cyan-700 text-center">
-            Proceso de desarollo{" "}
-          </h3>
-          <p className="">
-            ¿El docente deberá conceptualizar el proceso en el sistema?
-          </p>
-          <input type="radio" value="Si" name="opcion" /> Sí
-          <input type="radio" value="No" name="opcion" /> No
-        </div>
-        <div className="my-2">
-          <h3 className="rounded-md border-2 border-cyan-900 w-1/3 font-bold mt-2 text-cyan-700 text-center ">
-            ¿El docente deberá registrar desriptores para cada uno FOR -DEB-
-            REC?{" "}
-          </h3>
-          <input type="radio" value="Si" name="opcion" /> Sí
-          <input type="radio" value="No" name="opcion" /> No
-        </div>
         <div className="my-2">
           <h3 className=" rounded-md border-2 border-cyan-900 w-60 font-bold mt-2 text-cyan-700 text-center ">
             Registro de superaciones por periodo
