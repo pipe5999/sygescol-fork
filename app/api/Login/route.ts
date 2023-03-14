@@ -17,7 +17,7 @@ export async function GET(req: any) {
             const [loginDcne]: any = await conexion.query(`SELECT CONCAT(dcne_ape1,' ',dcne_ape2,' ',dcne_nom1,' ',dcne_nom2) AS nombre, dcne.i AS Id FROM usuario INNER JOIN dcne ON usu_fk = dcne.i WHERE usu_fk = ${docente}`);
             const [datosGrupo]: any = await conexion.query(`SELECT DISTINCT grupo_nombre, grupo_id, grado_base FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${docente}`);
             const [dimensiones]: any = await conexion.query(`SELECT aintrs.i AS idAsig, aintrs.b AS nombreAsigna, cga.i AS CgaId, aintrs.a AS Abreviatura FROM cga INNER JOIN aintrs ON cga.a = aintrs.i WHERE cga.g = ${docente}`)
-            const [datosColegio]: any = await conexion.query(`SELECT b AS nombreInst, a AS urlEscudo, uu AS urlColegio FROM clrp`);
+            const [datosColegio]: any = await conexion.query(`SELECT b AS nombreInst, a AS urlEscudo, uu AS urlColegio, e AS telefono1, n AS telefono2, nn AS icfes, tt AS dane, c AS resolucion, fx AS fax, nit_institucion AS nit, resol_sem AS resolucionSem FROM clrp`);
             return NextResponse.json({ 
                 datosUsu: loginDcne,
                 Grupo: datosGrupo[0],
