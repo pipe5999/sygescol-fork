@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "./Header";
 import Login from "./Login";
+import Head from "./head";
 
 export default function RootLayout({
   children,
@@ -22,6 +23,7 @@ export default function RootLayout({
   }, [User]);
   return (
     <html lang="es">
+      <Head />
       <head />
       <body>
         {/* {User && (
@@ -31,7 +33,7 @@ export default function RootLayout({
         )} */}
         {!User && <Login set={setUser} />}
 
-        {/* {!User && <p>no loged</p>}  */}
+        {/* {!User && <p>no loged</p>} */}
 
         {User && <Header>{children}</Header>}
 
