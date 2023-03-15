@@ -192,7 +192,6 @@ export default function Par152() {
                   />
                 </svg>
               </div>
-              <img src="Parametros/EscuelaNueva.png" />
             </div>
           </div>
         </div>
