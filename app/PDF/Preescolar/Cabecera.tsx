@@ -19,7 +19,7 @@ const Cabecera = ({ data }: Props) => {
     marginHeader: {
       border: "2px solid black",
       width: "96%",
-      height: "18%",
+      height: "12%",
       marginTop: "2%",
       marginLeft: "2%",
       display: "flex",
@@ -33,26 +33,65 @@ const Cabecera = ({ data }: Props) => {
       marginVertical: 15,
       marginHorizontal: 100,
     },
-    grid: {
-      display: "grid",
-      "grid-template-columns": "1fr 1fr",
-      "grid-template-rows": "1fr 1fr 1fr",
-      gap: "0px 0px",
+    table: {
+      display: "table" as any,
+      width: "auto",
+      heigth: "100%",
+      borderStyle: "solid",
+      borderWidth: 0,
+      borderRightWidth: 0,
+      borderBottomWidth: 0,
+      margin: "1%",
+    },
+    table2: {
+      display: "table" as any,
+      width: "auto",
+      heigth: "100%",
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderRightWidth: 0,
+      borderBottomWidth: 0,
+      margin: "1%",
+    },
+    tableRow: {
+      // margin: "auto",
+      flexDirection: "row",
+    },
+    tableColImage: {
+      width: "10%",
       height: "100%",
-      padding: "2%",
-      // border: "1px solid black",
+      borderStyle: "solid",
+      borderWidth: 0,
+      borderLeftWidth: 0,
+      borderTopWidth: 0,
     },
-    ImageClass: {
-      "grid-area": " 1 / 1 / 4 / 2",
-      width: "100px",
-      height: "100px",
-      border: "1px solid black",
+    tableColText: {
+      width: "90%",
+      margin: "auto",
+      borderStyle: "solid",
+      borderWidth: 0,
+      borderLeftWidth: 0,
+      borderTopWidth: 0,
     },
-    Colegio: {
-      "grid-area": "1 / 2 / 2 / 3",
+    tableCell: {
+      margin: "auto",
+      marginTop: 5,
+      fontSize: 10,
+      padding: "3%",
       fontWeight: "bold",
-      fontSize: "15px",
-      border: "1px solid black",
+    },
+    containerFoto: {
+      width: "20%",
+      height: 120,
+      border: 1,
+      marginLeft: "2%",
+      marginTop: "3%",
+    },
+    foto: {
+      width: 105,
+      border: 1,
+      margin: "auto",
+      height: 120,
     },
   };
   return (
@@ -60,26 +99,172 @@ const Cabecera = ({ data }: Props) => {
       <Page size={"LEGAL"} style={{ padding: "1rem" }}>
         <View style={style.marginDocument}>
           <View style={style.marginHeader}>
-            <View style={style.grid}>
-              <Image src="/Escudos/escudo.jpg" style={style.ImageClass} />
-              <Text style={style.Colegio}>{data?.nombreInst}</Text>
-              {/* <div class="Image"></div>
-  <div class="Colegio"></div>
-  <div class="Resolucion"></div>
-  <div class="Nit-Dane"></div> */}
+            <View style={style.table}>
+              <View style={style.tableRow}>
+                <View style={style.tableColImage}>
+                  <View style={style.tableCell}>
+                    <Image
+                      src="/Escudos/escudo.jpg"
+                      style={{ width: 100, height: 100 }}
+                    />
+                  </View>
+                </View>
+                <View style={style.tableColText}>
+                  <Text
+                    style={
+                      (style.tableCell,
+                      {
+                        fontSize: 20,
+                        marginLeft: 60,
+                        fontWeight: 700,
+                      })
+                    }
+                  >
+                    {data?.nombreInst}
+                  </Text>
+                  <Text
+                    style={
+                      (style.tableCell,
+                      {
+                        fontSize: 16,
+                        marginLeft: 80,
+                        fontWeight: 700,
+                      })
+                    }
+                  >
+                    {data?.resolucionSem}
+                  </Text>
+                  <Text
+                    style={
+                      (style.tableCell,
+                      {
+                        fontSize: 15,
+                        marginLeft: 110,
+                        fontWeight: 700,
+                      })
+                    }
+                  >
+                    Nit:
+                    {data?.nit} Dane: {data?.dane}
+                  </Text>
+                </View>
+              </View>
             </View>
-            {/* <
-            <View style={style.containerHeader}>
-              
-              <Text style={{ fontSize: "12px" } as any}>
-                {data?.resolucionSem}
-              </Text>
-              <Text style={{ fontSize: "12px", width: "57%" }}>
-                Nit:
-                {data?.nit}
-                Dane: {data?.dane}
-              </Text>
-            </View> */}
+          </View>
+          <View style={style.table}>
+            <View style={style.tableRow}>
+              <View style={style.containerFoto}>
+                <View>
+                  <Image src="/no_imagen.jpg" />
+                </View>
+              </View>
+              <View style={style.tableColText}>
+                <Text
+                  style={
+                    (style.tableCell,
+                    {
+                      fontSize: 15,
+                      marginLeft: 60,
+                      fontWeight: 700,
+                    })
+                  }
+                >
+                  DESARROLLO DEL PROCESO PEDAGÓGICO
+                </Text>
+                <View style={(style.table2, { marginTop: "3%" })}>
+                  <View style={style.tableRow}>
+                    <View
+                      style={{
+                        border: 1,
+                        width: 60,
+                        marginLeft: 40,
+                        padding: 1,
+                        backgroundColor: "#EBEBEB",
+                      }}
+                    >
+                      <Text
+                        style={
+                          (style.tableCell,
+                          {
+                            fontSize: 10,
+                            fontWeight: 700,
+                            margin: "auto",
+                          })
+                        }
+                      >
+                        Documento
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        border: 1,
+                        width: 200,
+                        marginLeft: -1,
+                        padding: 1,
+                        backgroundColor: "#EBEBEB",
+                      }}
+                    >
+                      <Text
+                        style={
+                          (style.tableCell,
+                          {
+                            fontSize: 10,
+                            fontWeight: 700,
+                            margin: "auto",
+                          })
+                        }
+                      >
+                        Nombres y Apellidos
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        border: 1,
+                        width: 45,
+                        marginLeft: -1,
+                        padding: 1,
+                        backgroundColor: "#EBEBEB",
+                      }}
+                    >
+                      <Text
+                        style={
+                          (style.tableCell,
+                          {
+                            fontSize: 10,
+                            fontWeight: 700,
+                            margin: "auto",
+                          })
+                        }
+                      >
+                        Periodo
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        border: 1,
+                        width: 55,
+                        marginLeft: -1,
+                        padding: 1,
+                        backgroundColor: "#EBEBEB",
+                      }}
+                    >
+                      <Text
+                        style={
+                          (style.tableCell,
+                          {
+                            fontSize: 10,
+                            fontWeight: 700,
+                            margin: "auto",
+                          })
+                        }
+                      >
+                        Grupo
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </Page>
