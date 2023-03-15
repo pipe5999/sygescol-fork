@@ -17,7 +17,7 @@ export default function RootLayout({
     // if (!User && !localStorage?.datosUsu) {
     //   getDatos();
     // }
-    if (User || localStorage?.datosUsu) {
+    if (User || localStorage?.datosUsu != "undefined") {
       setUser(User || localStorage?.datosUsu);
     }
   }, [User]);
