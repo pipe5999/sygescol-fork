@@ -17,6 +17,7 @@ function Login({ set }: Props) {
     { label: "I.E. Leonidas Rubio Villegas", value: 5 },
     { label: "I.E.T. Joaquín París", value: 6 },
     { label: "I.E.T Francisco de Miranda", value: 7 },
+    { label: "I.E. Miguel de Cervantes Saavedra", value: 8 },
   ];
   const getDatos = async () => {
     await fetch(

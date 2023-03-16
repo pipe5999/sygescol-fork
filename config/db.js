@@ -83,6 +83,16 @@ const connection7 = mysql.createPool({
   connectionLimit: 5,
   queueLimit: 0,
 });
+const connection8 = mysql.createPool({
+  host: process.env.APP_SERVER,
+  user: process.env.APP_USER8,
+  password: process.env.APP_PASSWORD8,
+  port: 3306,
+  database: `${process.env.APP_DATABASE8}${date}`,
+  waitForConnections: true,
+  connectionLimit: 5,
+  queueLimit: 0,
+});
 export {
   connection0,
   connection1,
@@ -92,4 +102,5 @@ export {
   connection5,
   connection6,
   connection7,
+  connection8,
 };

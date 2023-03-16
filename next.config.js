@@ -6,6 +6,8 @@ module.exports = {
       "sygescol.iefranciscomiranda.edu.co",
       "sygescol.ietjoaquinparis.sistemasivhorsnet.com",
       "ietsagradafamilia.edu.co",
+      "sygescol.iemiguelcervantessaavedra.sistemasivhorsnet.com",
+      "ensiibague.edu.co"
     ],
   },
   experimental: {

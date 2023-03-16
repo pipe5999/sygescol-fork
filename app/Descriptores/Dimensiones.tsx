@@ -113,6 +113,7 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
       {banco && (
         <BodyComponent
           setCont={setContador}
+          contador1={contador}
           setShow={setBanco}
           cga={dimensiones?.cga || 0}
           colegio={localStorage?.getItem("colegio") || 0}
@@ -122,6 +123,7 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
       {observaciones && (
         <Banco
           setCont={setContador}
+          contador1={contador}
           setShow={setObser}
           cga={dimensiones?.cga || 0}
           colegio={localStorage?.getItem("colegio") || 0}
