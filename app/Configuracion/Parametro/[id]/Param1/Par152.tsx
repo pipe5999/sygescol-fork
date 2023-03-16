@@ -7,6 +7,7 @@ import Select from "react-select";
 import { useForm } from "react-hook-form";
 import CardsPreguntas from "../../../CardsPreguntas";
 import { YesOrNot } from "../../../../../utils/OptionsParams";
+import ModalImage from "react-modal-image";
 
 type FormData = {
   NombrePlanilla: any;
@@ -239,14 +240,22 @@ export default function Par152() {
             onChange={(e: any) => {
               console.log(e);
 
-              e.value == "Otros" && setEleccion(true);
+              e.value == "Otros" ? setEleccion(true) : setEleccion(false);
             }}
             options={TipoProceso}
             placeholder="Seleccione"
             className="w-full p-4 text-center"
           />
-          {Eleccion == true && (
-            <input type="text" name="" id="" placeholder="Cual" />
+          {Eleccion && (
+            <div className=" text-center p-4 flex flex-col">
+              <label>Cúal</label>
+              <input
+                type="text"
+                name=""
+                id=""
+                className="h-8 rounded-md shadow-lg ring-1 ring-slate-200"
+              />
+            </div>
           )}
         </CardsPreguntas>
         <CardsPreguntas
@@ -307,13 +316,69 @@ export default function Par152() {
           <Select options={YesOrNot} placeholder="Seleccione" />
         </CardsPreguntas>
         <CardsPreguntas
-          titulo="Tipos de planillas que se debe habliitar a los profesores"
+          titulo="Tipos de planillas que se debe habliitar a los profesores 1"
           parrafo="Para la modalidad tradicional en los niveles de la básica y Media"
         >
+          <div className="flex flex-row justify-center gap-2 mb-3 ">
+            <ModalImage
+              small={"/Parametros/planilla1.1.png"}
+              large={"/Parametros/planilla1.1.png"}
+              alt="Planilla 1.1!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+            <ModalImage
+              small={"/Parametros/planilla1.2.png"}
+              large={"/Parametros/planilla1.2.png"}
+              alt="Planilla 1.2!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+            <ModalImage
+              small={"/Parametros/planilla1.3.png"}
+              large={"/Parametros/planilla1.3.png"}
+              alt="Planilla 1.3!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+            <ModalImage
+              small={"/Parametros/planilla1.4.png"}
+              large={"/Parametros/planilla1.4.png"}
+              alt="Planilla 1.4!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+          </div>
           <Select options={TipoPlanilla} placeholder="Seleccione" />
-          <p>Para la modalidad tradicional en los niveles de Preescolar</p>
+          <p className="text-justify p-4">
+            Para la modalidad tradicional en los niveles de Preescolar
+          </p>
+          <div className="flex flex-row justify-center gap-2 mb-2 ">
+            <ModalImage
+              small={"/Parametros/planilla2.1.png"}
+              large={"/Parametros/planilla2.1.png"}
+              alt="Planilla 2.1!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+            <ModalImage
+              small={"/Parametros/planilla2.2.png"}
+              large={"/Parametros/planilla2.2.png"}
+              alt="Planilla 2.2!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+            <ModalImage
+              small={"/Parametros/planilla2.3.png"}
+              large={"/Parametros/planilla2.3.png"}
+              alt="Planilla 2.3!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+            <ModalImage
+              small={"/Parametros/planilla2.4.png"}
+              large={"/Parametros/planilla2.4.png"}
+              alt="Planilla 2.4!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />
+          </div>
           <Select options={TipoPlanillaPreescolar} placeholder="Seleccione" />
-          <p>El registro de la Valoración, incluye Desempeños Nacionales</p>
+          <p className="text-justify p-4">
+            El registro de la Valoración, incluye Desempeños Nacionales
+          </p>
           <Select options={YesOrNot} placeholder="Seleccione" />
 
           <form>
@@ -327,59 +392,32 @@ export default function Par152() {
             />
           </form>
         </CardsPreguntas>
-        <CardsPreguntas titulo="Tipos de planillas que se debe habliitar a los profesores">
-          <p>
+        <CardsPreguntas titulo="Tipos de planillas que se debe habliitar a los profesores 2">
+          <p className="text-justify">
             Para la modalidad Escuela Unitaria (Escuela Nueva) Solo hay un
             modelo de planilla
           </p>
-
-          <svg
-            onClick={(e) => {
-              e.preventDefault();
-              setEscualaNuevaPlanilla(true);
-            }}
-            className="cursor-pointer fill-teal-900"
-            stroke="currentColor"
-            fill=""
-            strokeWidth={0}
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            height="1.5em"
-            width="2em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <p>
+          <div className="flex justify-center my-2">
+            <ModalImage
+              small={"/Parametros/EscuelaNueva.png"}
+              large={"/Parametros/EscuelaNueva.png"}
+              alt="¡Planilla Escuela Nueva!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+            />{" "}
+          </div>
+          <p className="text-justify">
             Para la modalidad Aceleración del Aprendizaje Solo hay un modelo de
             planilla
           </p>
-          <svg
-            onClick={(e) => {
-              e.preventDefault();
-              setPlanillaAceleracion(true);
-            }}
-            className="cursor-pointer fill-teal-900"
-            stroke="currentColor"
-            fill=""
-            strokeWidth={0}
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            height="1.5em"
-            width="2em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-              clipRule="evenodd"
+          <div className=" flex justify-center my-2">
+            <ModalImage
+              small={"/Parametros/PlanillaAceleracion.png"}
+              large={"/Parametros/PlanillaAceleracion.png"}
+              alt="¡Planilla Aceleración!"
+              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
             />
-          </svg>
-          <p>
+          </div>
+          <p className="text-justify">
             Para los estudiantes de INCLUSIÓN, la Institución Educativa autoriza
             colocar el prefijo INCLUSÍON junto al nombre del estudiante, en las
             planillas

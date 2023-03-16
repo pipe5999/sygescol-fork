@@ -6,7 +6,7 @@ import DefinidosPor from "./DefinidosPor";
 import DetallesParametro from "../Configuracion/DetallesParametro";
 import Header from "./Header";
 import ItemParametro from "./ItemParametro";
-import Parametro1 from "./ParametroUno152";
+
 import ShowModal from "./ShowModal";
 
 function BodyComponent() {
