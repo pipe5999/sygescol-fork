@@ -8,7 +8,9 @@ const Firmas = ({ firma }: Props) => {
     <>
       <View style={{ width: "100%" }}>
         <View style={{ marginHorizontal: "auto" }}>
-          <Image style={{ width: 150, height: "auto" }} src={firma} />
+          {firma && (
+            <Image style={{ width: 150, height: "auto" }} src={firma || ""} />
+          )}
         </View>
         <Text style={{ margin: "auto", marginTop: -50 }}>
           _________________
