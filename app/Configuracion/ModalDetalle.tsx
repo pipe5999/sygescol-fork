@@ -7,7 +7,7 @@ const ModalDetalle = ({
 
   return (
     <div className=" fixed inset-0 z-100  bg-gray-900 bg-opacity-50 flex justify-center items-center">
-      <div className=" max-h-screen p-3 w-1/2 ">
+      <div className="sm:max-h-[50%] sm:w-full lg:max-h-screen p-3 lg:w-1/2  ">
         <div className="rounded-lg border border-gray-400 shadow-md m-5">
           <div className="flex justify-center flex-col   bg-gray-100 border-solid rounded-md text-md font-bold   px-4 py-1">
             <div className="flex justify-end bg-cyan-800 rounded-t-md p-4">
@@ -30,7 +30,7 @@ const ModalDetalle = ({
               </svg>
             </div>
             <div className="bg-cyan-800 rounded-b-md mb-2 text-gray-100 font-bold p-2">
-              <h1 className="fond-bold text-lg text-center uppercase">
+              <h1 className="sm:text-sm  lg:fond-bold lg:text-lg text-center uppercase">
                 {infoParams?.infoParametros?.TipoParam || ""}
               </h1>
             </div>

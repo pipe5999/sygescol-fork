@@ -1,11 +1,18 @@
-import React, { Children } from "react";
+import React, { useState } from "react";
 
 export default function CardsPreguntas({ children, titulo, parrafo }: any) {
+  const [ShowPreguntas, setShowPreguntas] = useState(false);
+
   return (
-    <div className="grid grid-cols-3 gap-2">
-      <div className="w-full md:w-72 justify-center items-center bg-gray-50  border-gray-300 shadow-lg rounded-lg flex flex-col m-5">
-        <div className="w-full flex items-center justify-center bg-sky-900 p-4 rounded-t-lg border-dotted border-2 border-white ">
-          <div className="flex flex-col  items-center">
+    <div className="">
+      <div className="w-full md:w-72 justify-center items-center bg-gray-50  border-gray-300 shadow-lg rounded-lg flex flex-col ">
+        <div className="w-full flex items-center justify-center bg-sky-900 p-4 rounded-t-lg rounded-b-lg border-dotted border-2 border-white ">
+          <div
+            onClick={() => {
+              setShowPreguntas(!ShowPreguntas);
+            }}
+            className="flex flex-col  items-center"
+          >
             <svg
               className="fill-white"
               viewBox="0 0 448 512"
@@ -19,12 +26,16 @@ export default function CardsPreguntas({ children, titulo, parrafo }: any) {
             </h3>
           </div>
         </div>
-        <div className="w-full p-4 justify-start grid ">
+        {ShowPreguntas && (
           <div>
-            <p className="w-72">{parrafo}</p>
+            <div className="w-full p-4 justify-start grid ">
+              <div>
+                <p className="max-w-72 p-2">{parrafo}</p>
+              </div>
+            </div>
+            <div className="max-w-72 p-2">{children}</div>
           </div>
-        </div>
-        <div className="w-72 p-2">{children}</div>
+        )}
       </div>
     </div>
   );
