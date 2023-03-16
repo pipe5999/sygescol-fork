@@ -21,18 +21,26 @@ const Header = ({ children }: Props) => {
     <div className="flex flex-row justify-end">
       <div className="fixed top-0 left-0 w-[15%] md:w-[18%] lg:w-[20%] border-r-white border-r-2 bg-blue-900 h-screen flex flex-col items-center p-3">
         <div className="gap-2 w-full p-2 bg-blue-600 rounded-lg lg:flex lg:flex-row flex-col items-center justify-center">
-          <div style={{ textAlign: "center" }} className="lg:w-[50%] m-auto">
+          <div
+            style={{ textAlign: "center" }}
+            className="lg:w-[50%] m-auto rounded-md"
+          >
             <Image
               style={{ filter: "drop-shadow(0px 0px 6px white)" }}
+              className="rounded-full"
               width={80}
               height={80}
-              src="/Menu/IconoUser.png"
+              src={`${
+                JSON.parse(localStorage?.datosColegio)?.urlColegio
+              }/sygescol${new Date().getFullYear()}/images/fotos/docentes/${
+                dataHeader?.foto || "/no_imagen.jpg"
+              }`}
               alt=""
             />
           </div>
           <div className="hidden md:block w-full lg:flex lg:flex-col items-center text-center mt-2">
             <h1 className="font-bold text-white text-xs lg:text-[1rem] uppercase leading-none">
-              {dataHeader[0]?.nombre}
+              {dataHeader?.nombre}
             </h1>
             <hr className="w-full border-white border-dashed border-[2px] rounded-full my-2" />
             <p className="text-base p-0 font-normal leading-none m-0 text-white">

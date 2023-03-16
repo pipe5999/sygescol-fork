@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cabecera from "./Estructura/Cabecera";
 import Dimension from "./Estructura/Dimension";
+import Firmas from "./Estructura/Firmas";
 import PersonalInfo from "./Estructura/PersonalInfo";
 
 function BodyComponent() {
@@ -42,7 +43,7 @@ function BodyComponent() {
           <Document>
             {dataInfo?.estudiante.map((inf: any) => {
               return (
-                <Page size={"LEGAL"}>
+                <Page size={"A4"}>
                   <View
                     style={
                       {
@@ -57,6 +58,7 @@ function BodyComponent() {
                     <Cabecera data={data} />
                     <PersonalInfo data={inf} grup={dataInfo?.grupo} />
                     <Dimension dimensiones={dataInfo?.cga} data={inf} />
+                    <Firmas />
                   </View>
                 </Page>
               );

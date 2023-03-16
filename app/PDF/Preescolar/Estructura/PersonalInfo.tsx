@@ -97,7 +97,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   width: 80,
                   marginLeft: 30,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text
@@ -105,7 +105,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                     (style.tableCell,
                     {
                       fontSize: 10,
-                      fontWeight: 700,
+                      fontWeight: "bold",
                       margin: "auto",
                     })
                   }
@@ -119,7 +119,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   width: 200,
                   marginLeft: -1,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text
@@ -141,7 +141,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   width: 45,
                   marginLeft: -1,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text
@@ -163,7 +163,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   width: 55,
                   marginLeft: -1,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text
@@ -280,7 +280,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   marginLeft: 30,
                   marginTop: -1,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text
@@ -303,7 +303,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   marginLeft: -1,
                   marginTop: -1,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text
@@ -326,7 +326,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   marginLeft: -1,
                   marginTop: -1,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text
@@ -349,7 +349,7 @@ const PersonalInfo = ({ data, grup }: Props) => {
                   marginLeft: -1,
                   marginTop: -1,
                   padding: 1,
-                  backgroundColor: "#EBEBEB",
+                  backgroundColor: "#e7f1fe",
                 }}
               >
                 <Text

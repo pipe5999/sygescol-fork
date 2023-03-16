@@ -205,7 +205,6 @@ function Dimension({ dimensiones, data }: Props) {
                       let escala2 = desempeño.find(
                         (des: any) => des.value == pro?.escala
                       );
-                      console.log(escala2);
                       return (
                         <>
                           <View style={style.tableRow}>
@@ -237,6 +236,7 @@ function Dimension({ dimensiones, data }: Props) {
                                 style={{
                                   width: 50,
                                   height: 50,
+                                  margin: "auto",
                                 }}
                               />
                             </View>
