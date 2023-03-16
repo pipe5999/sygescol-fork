@@ -102,7 +102,7 @@ const Cabecera = ({ data }: Props) => {
             <View style={style.tableCell}>
               <Image
                 src={`/Escudos/escudo${localStorage?.colegio}.jpg`}
-                style={{ width: 100, height: 100 }}
+                style={{ width: 100 }}
               />
             </View>
           </View>
