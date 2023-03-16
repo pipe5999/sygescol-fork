@@ -113,7 +113,7 @@ function Dimension({ dimensiones, data }: Props) {
             </View>
           </View>
         </View>
-        {dimensiones.map((dim: any) => {
+        {dimensiones.map((dim: any, key: number) => {
           const notas = data?.notas?.find(
             (est: any) => dim.Asignaturas[0]?.id == est.Asignatura
           );
@@ -121,7 +121,7 @@ function Dimension({ dimensiones, data }: Props) {
 
           return (
             <>
-              <View style={style.tableRow}>
+              <View style={style.tableRow} key={key}>
                 <Text
                   style={{
                     border: 1,
@@ -148,7 +148,7 @@ function Dimension({ dimensiones, data }: Props) {
                   {escala?.label || ""}
                 </Text>
               </View>
-              {dim.Asignaturas.map((asig: any) => {
+              {dim.Asignaturas.map((asig: any, key2: number) => {
                 const notas = data?.notas?.find(
                   (est: any) => asig?.id == est.Asignatura
                 );
@@ -160,7 +160,7 @@ function Dimension({ dimensiones, data }: Props) {
                 );
                 return (
                   <>
-                    <View style={style.tableRow}>
+                    <View style={style.tableRow} key={key2}>
                       <Text
                         style={{
                           border: 1,

@@ -10,8 +10,11 @@ import PersonalInfo from "./Estructura/PersonalInfo";
 function BodyComponent() {
   const [data, setData] = useState(null as any);
   const [dataInfo, setInfo] = useState(null as any);
+  const [firma, setFirma] = useState(null as any);
+
   const GetInfoBase = () => {
     setData(JSON.parse(localStorage?.datosColegio || {}));
+    setFirma(JSON.parse(localStorage?.datosUsu)?.firma);
   };
   const GetDataStudents = async () => {
     axios
@@ -41,9 +44,9 @@ function BodyComponent() {
       {(data && dataInfo && (
         <PDFViewer style={{ width: "100%", height: "100Vh" }}>
           <Document>
-            {dataInfo?.estudiante.map((inf: any) => {
+            {dataInfo?.estudiante.map((inf: any, key: number) => {
               return (
-                <Page size={"A4"}>
+                <Page size={"A4"} key={key}>
                   <View
                     style={
                       {
@@ -58,7 +61,7 @@ function BodyComponent() {
                     <Cabecera data={data} />
                     <PersonalInfo data={inf} grup={dataInfo?.grupo} />
                     <Dimension dimensiones={dataInfo?.cga} data={inf} />
-                    <Firmas />
+                    <Firmas firma={firma} />
                   </View>
                 </Page>
               );
