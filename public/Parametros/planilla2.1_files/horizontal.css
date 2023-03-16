@@ -1,0 +1,409 @@
+/* Based partially on Matthew Carroll's keyboard accessible flavor of Suckerfish 
+ * Dropdowns by Patrick Griffiths and Dan Webb. 
+ * http://carroll.org.uk/sandbox/suckerfish/bones2.html
+ */
+
+/* ----[ LINKS ]----*/
+
+/* all menu links */
+
+#nav a {
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    imnt-size: 13px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#nav a:hover {
+    background: linear-gradient(to bottom,#f6f6f6,#ffffff);
+    color: #FFFFFF;
+    height: 10px;
+    color: #075695;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    
+    padding-top: 18px;
+}
+#subMenusContainer a{
+	text-decoration:none;
+	display:block;
+	padding:10px 20px;
+}
+
+/* Just main menu links --[for non-javascript users this applies to submenu links as well]*/
+#nav a {
+    margin: 0;
+    float: left;
+    padding-top: 18px;
+}
+
+/* Just sub menu links */
+#subMenusContainer a, #nav li li a {
+    text-align: left;
+    color: #ffffff;
+    font-family: Tahoma,Arial,Helvetica,Verdana,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    width: 100%;
+    height:auto;
+
+}
+
+/* All menu links on hover or focus */
+#nav a.mainMenuParentBtnFocused{
+	 background: linear-gradient(to bottom,#ffffff,#ededed);
+	color:#075695;
+	
+    padding-top: 18px;
+}
+#subMenusContainer a{
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+-ms-border-radius:7px;
+
+
+}
+/*acevedo*/
+#subMenusContainer a:hover, #subMenusContainer a:focus, #subMenusContainer a.subMenuParentBtnFocused{
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-ms-border-radius:7px;
+	background: linear-gradient(to bottom,#30AAD4,#1D2087);
+	color: #fff;
+}
+
+/* sub menu links on hover or focus */
+#subMenusContainer a:hover, 
+#subMenusContainer a:focus, 
+#subMenusContainer a.subMenuParentBtnFocused{
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-ms-border-radius:7px;
+	background: linear-gradient(to bottom,#fbfbfb,#ffffff);
+	color: #075695;
+    padding-right: 0px;
+    padding-left: 0px;
+    border:solid 1px #075695;
+    padding-top:9px;
+    padding-bottom:9px
+}
+
+/* Parent Sub Menu Links ---[javascript users only]*/
+.subMenuParentBtn{ 
+	background-image: url(../img/arrow_right.gif);
+	background-position:85%;
+	background-repeat:no-repeat;
+	
+}
+
+/* Parent Sub Menu Links on hover or focus ---[javascript users only]*/
+.subMenuParentBtnFocused{ 
+	background-image: url(../img/arrow_right_over.gif);  
+	background-position:right center;
+	background-repeat:no-repeat;
+}
+
+/* Parent Main Menu Links ---[javascript users only]*/
+.mainMenuParentBtn{	
+	background-image: url(../img/arrow_down.gif); 
+	background-position:right center;
+	background-repeat:no-repeat;
+}
+
+/* Parent Main Menu Links on hover or focus ---[javascript users only]*/
+.mainMenuParentBtnFocused{	
+	background-image: url(../img/arrow_down_over.gif);
+	background-position:right center;
+	background-repeat:no-repeat;
+}
+
+/* ----[ OLs ULs, LIs, and DIVs ]----*/
+
+/* Submenu Outer Wrapper - each submenu is inside a div with this class - javascript users only */
+.smOW{ 
+	display:none; 
+	position: absolute; 
+	overflow:hidden; 
+	/*the 2px left & right padding lets you have a 1px border 
+	  on the ul or ol inside since overflow is set to hidden*/
+	padding:0 2px;
+	margin:6px 0 0 -2px;
+	min-width:140px;
+}
+
+
+/* All ULs and OLs */
+#nav, #nav ul, #nav ol, #subMenusContainer ul, #subMenusContainer ol { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 1em;
+}
+
+/* All submenu OLs and ULs acevedo*/
+#subMenusContainer ul, #subMenusContainer ol {	
+	/*border around submenu goes here*/	 
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	background: linear-gradient(to bottom,rgba(7, 86, 149, 0.86),rgba(7, 86, 149, 0.89));
+	left:0;
+	-ms-border-radius:7px;
+	
+}
+
+
+/* List items in main menu --[for non-javascript users this applies to submenus as well]  */
+#nav li { 
+	/*great place to use a background image as a divider*/
+	display:inline-block;
+	list-style:none;
+	position:relative;
+	/*float:left;*/
+	
+}
+
+#subMenusContainer li{
+	list-style: none;
+}
+
+/* main menu ul or ol elment */
+#nav {
+    /* display: block; */
+    position: absolute;
+    list-style: none;
+    margin: 0 0 0 0;
+    z-index: 6;
+    left: 0%;
+    text-align: center;
+    font-family: Tahoma,Arial,Helvetica,Verdana,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    height: 30px;
+    min-width: 535px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#ContenidoMenu {
+    display: block;
+    position: absolute;
+    list-style: none;
+    margin: -4px 0 0 0;
+    text-align: center;
+    left: 0%;
+    font-family: Tahoma,Arial,Helvetica,Verdana,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    height: 43px;
+    min-width: 100%;
+    overflow-x: scroll;
+    float: left;
+    background: linear-gradient(to bottom,#075695,#075695);
+    border: 1px solid rgba(0,0,0, 0.1);
+    height: 50px;
+    min-height: 50px;
+}
+#ContenidoMenuBuscar{
+	display:block;
+	position: absolute;
+	list-style:none;
+	margin:0 0 0 0;
+	text-align: center;
+	left:87%;
+	font-family: Tahoma,Arial,Helvetica,Verdana,sans-serif;
+	font-size: 11px;
+ 	font-weight: bold;
+	color: #585858;
+
+	height:57px;
+	min-width:10%;
+}
+#BuscarMM {
+    display: block;
+    position: absolute;
+    background-color: #21439a;
+    right: -110%;
+    top: +0px;
+    z-index: 100;
+}
+#ContenidoMenuBuscar {
+    display: block;
+    position: absolute;
+    list-style: none;
+    margin: 41px 0 0 0;
+    text-align: center;
+    left: 0%;
+    font-family: Tahoma,Arial,Helvetica,Verdana,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #3391d6;
+    height: 57px;
+    min-width: 10%;
+}
+/* --------------------------- */
+nav {
+    width: auto;
+    margin: 0;
+	position: absolute;
+   	right:1em;
+   	top: 2.4em;
+}
+nav ul {
+    list-style: none;
+    text-align: left;	
+}
+nav > ul > li {
+    float: left;
+}
+nav ul li a {
+    background: hsl(200,80%,50%);
+    padding: 5px 5px;
+    margin: 0px;
+    color: #FFFFFF;
+    box-shadow: 0 1px 3px hsla(0,0%,0%,0.5);
+    display: block;
+}
+nav ul li a{
+	color:#FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+}
+nav ul li a:hover,
+a.flecha-abajo:hover,
+a.flecha-derecha:hover {
+    background-color: hsl(200,80%,35%);
+	color:#FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+}
+nav ul li a.flecha-abajo {
+    background: hsl(200,80%,50%);
+    background-position: 185px 50%;
+	color:#FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+}
+a.text-link{
+	color:#FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+	text-align: left;
+}
+a.text-activo{
+	background: hsl(450,80%,35%);
+	color: #FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+	text-align: left;
+}
+a.text-activo:hover{
+	background-color: hsl(450,80%,25%);
+	color:#FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+	text-align: left;
+}
+nav ul li a.flecha-derecha {
+    background: hsl(200,80%,50%);
+    background-position: 175px 50%;
+	color:#FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+}
+nav ul li ul {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: 100;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(+20px);
+    -ms-transform: translateY(+20px);
+    transform: translateY(+20px);
+    -webkit-transition: all 0.3s ease-out;  
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+nav ul li:hover > ul {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: all 0.3s ease-out;  
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+nav ul li ul li {
+    position: relative;
+	left: -100px;
+}
+nav ul li ul li ul {
+    right: -162px;
+    top: 10px;
+}
+/* --------------------------- */
+ 	
+#ContenidoMenu::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#ContenidoMenu::-webkit-scrollbar
+{
+	width: 10px;
+	height:10px;
+	background-color: #F5F5F5;
+}
+
+#ContenidoMenu::-webkit-scrollbar-thumb
+{
+	background-color: #439bde;	
+
+}
+
+#subMenusContainer{	display:block; 	position:absolute;	top:0;	left:0;	width:100%;	height:0;	overflow:visible;	z-index:1000000000; }
+
+
+/* --------------------------[ The below is just for non-javscript users ]--------------------------*/
+#nav li li{	float:none; }
+
+#nav li li a{ /* Just submenu links*/	
+	position:relative;
+	float:none;
+}
+
+#nav li ul { /* second-level lists */
+	position: absolute;
+	width: 10em;
+	margin-left: -1000em; /* using left instead of display to hide menus because display: none isn't read by screen readers */
+	margin-top:2.2em;
+}
+
+/* third-and-above-level lists */
+#nav li ul ul { margin: -1em 0 0 -1000em; }
+#nav li:hover ul ul {	margin-left: -1000em; }
+
+ /* lists nested under hovered list items */
+#nav li:hover ul{	margin-left: 0; }
+#nav li li:hover ul {	margin-left: 10em; margin-top:-2.5em;}
+
+/* extra positioning rules for limited noscript keyboard accessibility */
+#nav li a:focus + ul {  margin-left: 0; margin-top:2.2em; }
+#nav li li a:focus + ul { left:0; margin-left: 1010em; margin-top:-2.2em;}
+#nav li li a:focus {left:0;  margin-left:1000em; width:10em;  margin-top:0;}
+#nav li li li a:focus {left:0; margin-left: 2010em; width: 10em;  margin-top:-1em;}
+#nav li:hover a:focus{ margin-left: 0; }
+#nav li li:hover a:focus + ul { margin-left: 10em; }
