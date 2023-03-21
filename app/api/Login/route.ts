@@ -10,34 +10,63 @@ export async function GET(req: any) {
   try {
     const conexion = conecctions[colegio];
     const [datos]: any = await conexion.query(
-      `SELECT * FROM usuario WHERE usu_login = '${usuario}' AND usu_password = '${pass}' AND usu_tipo = 'DOCENTE' `
+      `SELECT * FROM usuario WHERE usu_login = '${usuario}' AND usu_password = '${pass}'`
     );
     console.log(
-      `SELECT * FROM usuario WHERE usu_login = '${usuario}' AND usu_password = '${pass}' AND usu_tipo = 'DOCENTE' `
+      `SELECT * FROM usuario WHERE usu_login = '${usuario}' AND usu_password = '${pass}'`
     );
     if (datos.length > 0) {
-      const docente = datos[0]?.usu_fk;
-      const [loginDcne]: any = await conexion.query(
-        `SELECT CONCAT(dcne_ape1,' ',dcne_ape2,' ',dcne_nom1,' ',dcne_nom2) AS nombre, dcne.i AS Id,dcne_firma AS firma, dcne_foto AS foto FROM usuario INNER JOIN dcne ON usu_fk = dcne.i WHERE usu_fk = ${docente}`
-      );
-      const [datosGrupo]: any = await conexion.query(
-        `SELECT DISTINCT grupo_nombre, grupo_id, grado_base FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${docente}`
-      );
-      const [dimensiones]: any = await conexion.query(
-        `SELECT aintrs.i AS idAsig, aintrs.b AS nombreAsigna, cga.i AS CgaId, aintrs.a AS Abreviatura FROM cga INNER JOIN aintrs ON cga.a = aintrs.i WHERE cga.g = ${docente}`
-      );
+      const id = datos[0]?.usu_fk;
       const [datosColegio]: any = await conexion.query(
         `SELECT b AS nombreInst, a AS urlEscudo, uu AS urlColegio, e AS telefono1, n AS telefono2, nn AS icfes, tt AS dane, c AS resolucion, fx AS fax, nit_institucion AS nit, resol_sem AS resolucionSem FROM clrp`
       );
-      return NextResponse.json(
-        {
-          datosUsu: loginDcne[0],
-          Grupo: datosGrupo[0],
-          dimesion: dimensiones,
-          colegio: datosColegio[0],
-        },
-        { status: 200 }
-      );
+      switch (datos[0]?.usu_rol) {
+        case 3:
+          const [loginDcne]: any = await conexion.query(
+            `SELECT CONCAT(dcne_ape1,' ',dcne_ape2,' ',dcne_nom1,' ',dcne_nom2) AS nombre, dcne.i AS Id,dcne_firma AS firma, dcne_foto AS foto, rol_nombre, usu_rol FROM usuario INNER JOIN dcne ON usu_fk = dcne.i INNER JOIN rol ON rol_id = usu_rol WHERE usu_fk = ${id}`
+          );
+          const [datosGrupo]: any = await conexion.query(
+            `SELECT DISTINCT grupo_nombre, grupo_id, grado_base FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${id}`
+          );
+          const [dimensiones]: any = await conexion.query(
+            `SELECT aintrs.i AS idAsig, aintrs.b AS nombreAsigna, cga.i AS CgaId, aintrs.a AS Abreviatura FROM cga INNER JOIN aintrs ON cga.a = aintrs.i WHERE cga.g = ${id}`
+          );
+          return NextResponse.json(
+            {
+              datosUsu: loginDcne[0],
+              Grupo: datosGrupo[0],
+              dimesion: dimensiones,
+              colegio: datosColegio[0],
+            },
+            { status: 200 }
+          );
+        case 1:
+          const [loginAdmco]: any = await conexion.query(
+            `SELECT CONCAT(admco_ape1,' ',admco_ape2,' ',admco_nom1,' ',admco_nom2) AS nombre, id AS Id, admco_firma AS firma, imagen AS foto, rol_nombre, usu_rol FROM usuario INNER JOIN admco ON admco.id = usu_fk INNER JOIN rol ON rol_id = usu_rol WHERE usu_fk = ${id}`
+          );
+          return NextResponse.json(
+            {
+              datosUsu: loginAdmco[0],
+              colegio: datosColegio[0],
+            },
+            { status: 200 }
+          );
+        case 99:
+          return NextResponse.json(
+            {
+              datosUsu: {
+                nombre: "SOPORTE",
+                firma: "",
+                foto: "",
+                Id: 99,
+                rol_nombre: "SOPORTE",
+                usu_rol: 99,
+              },
+              colegio: datosColegio[0],
+            },
+            { status: 200 }
+          );
+      }
     } else {
       return NextResponse.json(
         {
