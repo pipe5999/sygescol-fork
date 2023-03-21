@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Calendar } from "react-date-range";
 import "react-date-range/dist/styles.css"; // Importar estilos CSS
 import "react-date-range/dist/theme/default.css"; // Importar tema por defecto
 import { DateRange } from "react-date-range";
@@ -14,16 +13,19 @@ export default function Fechas() {
   const [FechaInciocalificacion, setFechaInciocalificacion] = useState(
     new Date()
   );
+
   const [FechaFinal, setFechaFinal] = useState(new Date());
 
   const selectionRange = {
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: FechaInciocalificacion,
+    endDate: FechaFinal,
     key: "selection",
   };
 
+  console.log("22222222", FechaInciocalificacion);
+  console.log("333333", FechaFinal);
+
   function handleSelect(ranges: any) {
-    console.log("Rango", ranges.selection);
     setFechaInciocalificacion(ranges.selection.startDate);
     setFechaFinal(ranges.selection.endDate);
   }
@@ -35,7 +37,6 @@ export default function Fechas() {
       rangeColors={["#3b82f6"]}
       onChange={handleSelect}
       locale={es}
-      // maxDate={Values.MaxSemestre}
     />
   );
 }
