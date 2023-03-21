@@ -464,33 +464,53 @@ export default function Par152() {
                       });
                     }}
                     type="text"
-                    placeholder="Ingrese el porcentaje"
+                    placeholder="Ingrese el Nombre de la competencia"
+                    className="border-[1px] rounded-sm border-inhereit h-8 flex mx-auto"
+                  />
+                  <label>Ingrese el Porcentaje</label>
+                  <input
+                    onChange={(e) => {
+                      const { value } = e.target;
+                      setItems((prev) => {
+                        const newItems = [...prev];
+                        newItems[index] = {
+                          ...newItems[index],
+                          DimensionCompetencia: value,
+                        };
+                        return newItems;
+                      });
+                    }}
+                    type="text"
+                    placeholder="Ingrese un porcentaje"
                     className="border-[1px] rounded-sm border-inhereit h-8 flex mx-auto"
                   />
                 </form>
               );
             })}
-            <button
-              onClick={() => {
-                setItems([...Items, {}]);
-              }}
-              className="flex"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
+            <div className="flex justify-center">
+              <button
+                onClick={() => {
+                  setItems([...Items, {}]);
+                }}
+                className="flex"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+                >
+                  <title>Ingreso de Areas y Porcentajes </title>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <p className="w-72 p-2">
             El docente ingresará a la planilla de calificaciones, acciones del
