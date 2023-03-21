@@ -11,8 +11,9 @@ export type Props = {
   colegio: any;
   setShow: any;
   setCont: any;
+  contador1: any;
 };
-function Banco({ cga, escala, colegio, setShow, setCont }: Props) {
+function Banco({ cga, escala, colegio, setShow, setCont, contador1 }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState([{}] as any);
   const [values, setValues] = useState({} as any);
@@ -111,7 +112,7 @@ function Banco({ cga, escala, colegio, setShow, setCont }: Props) {
         `/api/ObservacionesProcesos/Asignar?cga=${cga}&escala=${escala}&colegio=${colegio}&id=${id}`
       )
       .then((res: any) => {
-        setCont(contador + 1);
+        setCont(contador1 + 1);
         setShow(false);
       });
   };
