@@ -3,6 +3,10 @@
     {
       "path": "/api/hello",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/CierrePeriodo/cron",
+      "schedule": "0 0 * * *"
     }
   ]
 }
