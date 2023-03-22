@@ -9,7 +9,6 @@ export async function GET(req: any) {
     const [params]: any = await conexion.query(
       `SELECT conf_valor, conf_id AS id FROM conf_sygescol WHERE conf_id IN(153,79)`
     );
-    console.log(params);
     const [configAxio]: any = await conexion.query(
       "SELECT conf_valor,conf_id, conf_texto FROM evalua_axi_config"
     );
