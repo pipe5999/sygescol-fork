@@ -13,8 +13,6 @@ export async function GET() {
         `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${key}`
       ).then((res) => res.json());
 
-      console.log("DateCierrePeriodo", DateCierrePeriodo);
-
       if (DateCierrePeriodo?.GruposCerrar?.length) {
         const DateCierreConfig = await fetch(
           `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Students`,
@@ -29,7 +27,7 @@ export async function GET() {
             }),
           }
         ).then((res) => res.json());
-        console.log("DateCierreConfig", DateCierreConfig);
+        // console.log("DateCierreConfig", DateCierreConfig);
       }
     });
   }
