@@ -6,16 +6,23 @@ export async function GET() {
 
   if (colegios.length > 0) {
     //   console.log("ejecute el cron");
+    let cont = 0;
 
-    for (const iterator of colegios) {
-      console.log(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${iterator?.value}`
-      );
-
+    colegios.forEach(async (colegio, key) => {
       const DateCierrePeriodo = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${iterator?.value}`
+        `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${key}`
       ).then((res) => res.json());
-    }
+
+      console.log("DateCierrePeriodo", DateCierrePeriodo);
+
+      if (DateCierrePeriodo?.GruposCerrar?.length) {
+        const DateCierreConfig = await fetch(
+          `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Params?c=${colegio.value}`
+        ).then((res) => res.json());
+
+        console.log("DateCierreConfig", DateCierreConfig);
+      }
+    });
   }
 
   return NextResponse.json(
