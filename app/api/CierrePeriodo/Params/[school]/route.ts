@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { conecctions } from "../../../../utils/Conexions";
+import { conecctions } from "../../../../../utils/Conexions";
 
-export async function GET(req: any) {
+export async function GET(req: any, { params }: any) {
   const { searchParams } = req?.nextUrl;
   let colegio = searchParams.get("c");
   try {
