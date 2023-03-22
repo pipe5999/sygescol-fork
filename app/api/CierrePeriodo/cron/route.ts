@@ -7,7 +7,6 @@ export async function GET() {
   if (colegios.length > 0) {
     //   console.log("ejecute el cron");
     let cont = 0;
-
     colegios.forEach(async (colegio, key) => {
       const DateCierrePeriodo = await fetch(
         `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${key}`

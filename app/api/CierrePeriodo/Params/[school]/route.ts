@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
-import { conecctions } from "../../../../utils/Conexions";
+import { conecctions } from "../../../../../utils/Conexions";
 
-export async function GET(req: any) {
-  const { searchParams } = req?.nextUrl;
-  let colegio = searchParams.get("c");
+export async function GET(req: any, { params }: any) {
+  let colegio = params.school;
 
   try {
     const conexion = conecctions[colegio];
