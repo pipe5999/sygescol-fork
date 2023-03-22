@@ -4,3 +4,4 @@ declare module "react-date-range";
 declare module "react-froala-wysiwyg";
 declare module "react-froala-wysiwyg/FroalaEditorView";
 declare module "react-tribute";
+declare module "@material-tailwind/react";
