@@ -17,9 +17,18 @@ export async function GET() {
 
       if (DateCierrePeriodo?.GruposCerrar?.length) {
         const DateCierreConfig = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Params?c=${colegio.value}`
+          `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Students`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              colegio: colegio,
+              grupos: DateCierrePeriodo?.GruposCerrar,
+            }),
+          }
         ).then((res) => res.json());
-
         console.log("DateCierreConfig", DateCierreConfig);
       }
     });
