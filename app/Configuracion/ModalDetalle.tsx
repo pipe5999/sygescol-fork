@@ -6,7 +6,7 @@ const ModalDetalle = ({
   console.log("infoParams", infoParams);
 
   return (
-    <div className=" fixed inset-0 z-100  bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div className=" fixed inset-0 z-50  bg-black bg-opacity-50 flex justify-center items-center">
       <div className="sm:max-h-[50%] sm:w-full lg:max-h-screen p-3 lg:w-1/2  ">
         <div className="rounded-lg border border-gray-400 shadow-md m-5">
           <div className="flex justify-center flex-col   bg-gray-100 border-solid rounded-md text-md font-bold   px-4 py-1">
@@ -30,14 +30,20 @@ const ModalDetalle = ({
               </svg>
             </div>
             <div className="bg-cyan-800 rounded-b-md mb-2 text-gray-100 font-bold p-2">
-              <h1 className="sm:text-sm  lg:fond-bold lg:text-lg text-center uppercase">
-                {infoParams?.infoParametros?.TipoParam || ""}
-              </h1>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${infoParams?.infoParametros?.TipoParam || ""}`,
+                }}
+                className="sm:text-sm  lg:fond-bold lg:text-lg text-center uppercase"
+              ></div>
             </div>
             <div>
-              <p className="text-justify place-self-center px-6 font-semibold  text-gray-700 ">
-                {infoParams?.infoParametros?.Description || ""}
-              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${infoParams?.infoParametros?.Description || ""}`,
+                }}
+                className="text-justify place-self-center px-6 font-semibold  text-gray-700 "
+              ></div>
             </div>
           </div>
         </div>

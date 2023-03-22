@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import ReactSelect from "react-select";
+import School from "../utils/School";
 import WelcomeLogin from "./CompLogin/WelcomeLogin";
 export type Props = {
   set: any;
@@ -11,17 +12,8 @@ function Login({ set }: Props) {
   const search = useSearchParams();
   console.log(search.get("c"));
   const [data, setData] = useState({} as any);
-  const colegios = [
-    { label: "Seleccione", value: 0 },
-    { label: "Escuela Superior Normal de Ibagué", value: 2 },
-    { label: "I.E.T. Sagrada Familia", value: 1 },
-    { label: "I.E.T. Joaquín París", value: 6 },
-    { label: "I.E.T Francisco de Miranda", value: 7 },
-    { label: "I.E. Miguel de Cervantes Saavedra", value: 8 },
-    { label: "I.E. Leonidas Rubio Villegas", value: 5 },
-    { label: "I.E.T Celmira Huertas", value: 4 },
-    { label: "I.E. Niño Jesús de Praga", value: 3 },
-  ];
+  const colegios = School();
+
   const getDatos = async () => {
     await fetch(
       `/api/Login?colegio=${data.Colegio}&usuario=${data.usuario}&pass=${data.pass}`

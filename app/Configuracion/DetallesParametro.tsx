@@ -27,10 +27,12 @@ const DetallesParametro = ({ infoParams }: any) => {
       )}
 
       <div className="border border-gray-300 rounded-lg shadow-md  mx-auto items-center flex flex-col place-content-center mb-4 sm:w-1/2 lg:px-6   lg:h-24 lg:w-1/3">
-        <h1 className="uppercase sm:text-sm lg:font-extrabold :lg:text-xl text-sky-800">
-          Parámetro {infoParams?.infoParametros?.Id}
-          {console.log("p2", infoParams)}
-        </h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${infoParams?.infoParametros?.Id}`,
+          }}
+          className="uppercase sm:text-sm lg:font-extrabold :lg:text-xl text-sky-800"
+        ></div>
         <h3 className="sm:text-sm lg:text-xl lg:fotn-semibold text-sky-800 ">
           Detalle del Parámetro
         </h3>
