@@ -22,9 +22,6 @@ export default function Fechas() {
     key: "selection",
   };
 
-  console.log("22222222", FechaInciocalificacion);
-  console.log("333333", FechaFinal);
-
   function handleSelect(ranges: any) {
     setFechaInciocalificacion(ranges.selection.startDate);
     setFechaFinal(ranges.selection.endDate);
@@ -33,7 +30,7 @@ export default function Fechas() {
   return (
     <DateRange
       ranges={[selectionRange]}
-      minDate={new Date()}
+      // minDate={new Date()}
       rangeColors={["#3b82f6"]}
       onChange={handleSelect}
       locale={es}
