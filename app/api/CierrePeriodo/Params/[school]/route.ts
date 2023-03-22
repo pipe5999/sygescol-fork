@@ -3,7 +3,7 @@ import { conecctions } from "../../../../../utils/Conexions";
 
 export async function GET(req: any, { params }: any) {
   const { searchParams } = req?.nextUrl;
-  let colegio = searchParams.get("c");
+  let colegio = params.school;
 
   try {
     const conexion = conecctions[colegio];
