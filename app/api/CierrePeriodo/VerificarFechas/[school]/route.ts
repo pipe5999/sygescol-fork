@@ -19,6 +19,8 @@ export async function GET(req: any, { params }: any) {
   const newDateAnterior = dateAnterior?.setDate(dateAnterior?.getDate() - 1);
   // ponerla en formato año-mes-dia
 
+  const GruposCerrar = [];
+
   if (selectSchool?.TipoColegio == "Antiguo") {
     if (selectSchool?.label == "I.E.T. Sagrada Familia") {
     }
@@ -26,7 +28,7 @@ export async function GET(req: any, { params }: any) {
       // console.log("selectSchool", selectSchool);
 
       const [GradosNivel]: any = await conexion.query(
-        `SELECT grupo_nombre, grupo_sede, nivel FROM v_grupos INNER JOIN grados ON v_grupos.grado_base = grados.id_grado ORDER BY grados.nivel ASC, v_grupos.grupo_sede ASC
+        `SELECT grupo_nombre, grupo_sede, nivel, v_grupos.grupo_id as GrupoId FROM v_grupos INNER JOIN grados ON v_grupos.grado_base = grados.id_grado ORDER BY grados.nivel ASC, v_grupos.grupo_sede ASC
         `
       );
 
@@ -104,12 +106,13 @@ export async function GET(req: any, { params }: any) {
             NuevoLvl: NewLvl ? NewLvl : el.nivel,
             periodo: periodo.per_id,
             FinNotas: `${periodo?.fin_ing_notas}`,
+            GrupoId: el.GrupoId,
           };
         }
         return acc;
       }, {});
 
-      console.log("DataNormalizada", Object.values(DataNormalizada));
+      // console.log("DataNormalizada", Object.values(DataNormalizada));
       // console.log("selectSchool", selectSchool);
 
       const NewData = Object.values(DataNormalizada).filter((el: any) => {
@@ -123,7 +126,8 @@ export async function GET(req: any, { params }: any) {
         }
       });
 
-      console.log("NewData", NewData);
+      // console.log("NewData", NewData);
+      GruposCerrar.push(...NewData);
     }
   } else {
   }
@@ -135,7 +139,7 @@ export async function GET(req: any, { params }: any) {
   //   console.log(StructurePeriodoAcademico);
 
   return NextResponse.json(
-    { body: "Todo Naice señor" },
+    { GruposCerrar: GruposCerrar || [] },
     {
       status: 200,
     }

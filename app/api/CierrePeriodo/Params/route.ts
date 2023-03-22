@@ -4,6 +4,7 @@ import { conecctions } from "../../../../utils/Conexions";
 export async function GET(req: any) {
   const { searchParams } = req?.nextUrl;
   let colegio = searchParams.get("c");
+
   try {
     const conexion = conecctions[colegio];
     const [params]: any = await conexion.query(
