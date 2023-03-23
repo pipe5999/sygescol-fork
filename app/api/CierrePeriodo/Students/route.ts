@@ -18,7 +18,10 @@ export async function POST(req: any) {
       "SELECT cga.b as grupoId, cga.i AS cga, aintrs.b AS asignatura, aes.b AS area, efss.b as Enfasis, cga.g AS docente FROM cga INNER JOIN aintrs ON cga.a = aintrs.i INNER JOIN efr ON efr.i = aintrs.g INNER JOIN aes ON efr.a = aes.i INNER JOIN efss ON efr.b = efss.i"
     );
     const [notas]: any = await conexion.query(
-      "SELECT acciones_subacciones.id_cga AS cga, periodo, id_matri as matricula, valoracion, observacion, rel_notas_nuevo_sistema.fecha_registro AS registroNota, acciones_subacciones.fecha_registro AS registroAccion, acciones.nombre AS metodoCal, acciones.descripcion as instrumentoCal, acciones_subacciones.id_grupo AS grupo FROM acciones_subacciones INNER JOIN rel_notas_nuevo_sistema ON acciones_subacciones.id = rel_notas_nuevo_sistema.id_accion INNER JOIN acciones ON acciones_subacciones.id_relacional = acciones.id ORDER BY `matricula` ASC"
+      `SELECT acciones_subacciones.id_subaccion AS idRelacion, acciones_subacciones.id_cga AS cga, periodo, id_matri as matricula, valoracion, observacion, rel_notas_nuevo_sistema.fecha_registro AS registroNota, acciones_subacciones.fecha_registro AS registroAccion, acciones_subacciones.id_grupo AS grupo FROM acciones_subacciones INNER JOIN rel_notas_nuevo_sistema ON acciones_subacciones.id = rel_notas_nuevo_sistema.id_accion WHERE id_grupo IN (${gruposFind}) ORDER BY matricula ASC`
+    );
+    const [acciones]: any = await conexion.query(
+      `SELECT periodo, id_grupo, nombre, descripcion, acciones.id AS idPrincipal, acciones_subacciones.id AS idRelacion, grupo_nombre AS grupo FROM acciones_subacciones INNER JOIN acciones ON acciones.id = acciones_subacciones.id_relacional INNER JOIN v_grupos ON id_grupo = grupo_id WHERE grupo_id IN(${gruposFind})`
     );
     const [docentes]: any = await conexion.query(
       `SELECT dcne.i, CONCAT(dcne_nom1,' ',dcne_nom2,' ',dcne_ape1,' ',dcne_ape2) AS Nombre FROM dcne`
@@ -48,12 +51,17 @@ export async function POST(req: any) {
       acc[key].Data.push({ ...newData });
       return acc;
     }, {});
-    // console.log("==================DOCENTE==============");
-    // console.log(formatDocente);
-    // console.log("===============FIN DOCENTE==============");
-    // console.log("==================ESTUDIANTES==============");
-    // console.log(estudiantes);
-    // console.log("===============FIN ESTUDIANTES==============");
+    const formatAcciones = acciones?.reduce((acc: any, item: any) => {
+      let key = `${item.grupo}`;
+      if (!acc[key]) {
+        acc[key] = {
+          Grupo: item.id_grupo,
+          Acciones: [],
+        };
+      }
+      acc[key].Acciones.push({ ...item });
+      return acc;
+    }, {});
     const formatStudent = estudiantes?.reduce((acc: any, item: any) => {
       let key = `${item.grupo}`;
 
@@ -62,26 +70,28 @@ export async function POST(req: any) {
           Grupo: item.grupoId,
           Estudiantes: [],
           Asignaturas: [],
-          NotasPGI: [],
         };
         let newData = asignaturas.filter(
           (est: any) => est.grupoId == item.grupoId
         );
-        let data2 = notas.filter((not: any) => not.grupo == item.grupoId) || [];
-        acc[key].NotasPGI.push({
-          ...data2,
-        });
         acc[key].Asignaturas.push({
           ...newData,
         });
       }
+      const notasFormated = notas?.reduce((not: any) => {
+        let key = ` `;
+      });
       acc[key].Estudiantes.push({
         ...item,
+        NotasPGI: notas.filter((not: any) => not.matricula == item.matricula),
       });
 
       return acc;
     }, {});
-    return NextResponse.json({ estudiantes: formatStudent }, { status: 200 });
+    return NextResponse.json(
+      { estudiantes: formatStudent, acciones: formatAcciones },
+      { status: 200 }
+    );
   } catch (error) {
     console.log("Este es el error->", error);
     return NextResponse.json(
