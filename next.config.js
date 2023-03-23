@@ -8,7 +8,9 @@ module.exports = {
       "ietsagradafamilia.edu.co",
       "sygescol.iemiguelcervantessaavedra.sistemasivhorsnet.com",
       "ensiibague.edu.co",
-      "www.ensiibague.edu.co"
+      "www.ensiibague.edu.co",
+      "sygescol.sistemasivhorsnet.com",
+      "www.sygescol.sistemasivhorsnet.com"
     ],
   },
   experimental: {
