@@ -35,6 +35,7 @@ function Dimension({ dimensiones, data }: Props) {
       borderStyle: "solid",
       borderWidth: 0,
       margin: "1%",
+      marginTop: "3%",
     },
     table2: {
       display: "table" as any,
@@ -132,7 +133,8 @@ function Dimension({ dimensiones, data }: Props) {
                     marginTop: -1,
                   }}
                 >
-                  {dim.Area}
+                  {dim.Area.charAt(0).toUpperCase() +
+                    dim.Area.slice(1).toLowerCase()}
                 </Text>
                 <Text
                   style={{
