@@ -1,7 +1,12 @@
 import React from "react";
+import BodyComponent from "./BodyComponent";
 
 const CierrePeriodos = () => {
-  return <div>CierrePeriodos</div>;
+  return (
+    <>
+      <BodyComponent />
+    </>
+  );
 };
 
 export default CierrePeriodos;
