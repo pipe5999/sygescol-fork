@@ -139,10 +139,7 @@ export const Parametros = [
             tipoParametro:
               "Casos especiales de Estudiantes con Estado Académico NO PROMOVIDO. Que serán administrados por el perfil Rectoría en el siguiente año.",
           },
-          {
-            idParametro: "115",
-            tipoParametro: "Tipos de promoción Anticipada.",
-          },
+
           {
             idParametro: "135",
             tipoParametro:
@@ -373,18 +370,7 @@ export const Parametros = [
             idParametro: "124",
             tipoParametro: "Asignación de RUM a la matrícula.",
           },
-          {
-            idParametro: "156",
-            tipoParametro: "Aplicabilidad del decreto 3020 de 2002.",
-          },
-          {
-            idParametro: "115",
-            tipoParametro: "Proyección de grados, sedes y grupos..",
-          },
-          {
-            idParametro: "161",
-            tipoParametro: "Proyección de cupos.",
-          },
+
           {
             idParametro: "167",
             tipoParametro: "Parametrización Sistema Biométrico.",

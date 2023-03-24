@@ -1,11 +1,15 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Select from "react-select";
 import getDataParametro from "../../../../../utils/GetParametro";
+import { YesOrNot } from "../../../../../utils/OptionsParams";
+import CardsPreguntas from "../../../CardsPreguntas";
+import DetallesParametro from "../../../DetallesParametro";
+import HeaderParam from "../../../HeaderParam";
 
 export default function Par156() {
   const [data, setData] = React.useState({} as any);
-
-  console.log(data);
+  const [ModalLimit, setModalLimit] = useState(false);
 
   useEffect(() => {
     const GetInfo = async () => {
@@ -15,11 +19,5 @@ export default function Par156() {
     GetInfo();
   }, []);
 
-  return (
-    <div>
-      {/* <Parametro1 />
-      <CardsPreguntas /> */}
-      {data?.infoParametros?.TipoParam}
-    </div>
-  );
+  return <div></div>;
 }
