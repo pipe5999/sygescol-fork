@@ -8,11 +8,11 @@ export async function GET() {
     if (colegios?.length > 0) {
       let key = 0;
       for (const colegio of colegios) {
-        console.log("entro al for");
-
         const DateCierrePeriodo = await fetch(
           `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/VerificarFechas?Index=${key}`
-        ).then((res) => res.json());
+        )
+          .then((res) => res?.json())
+          .catch((err) => console.log(err));
 
         console.log("DateCierrePeriodo", DateCierrePeriodo);
 
