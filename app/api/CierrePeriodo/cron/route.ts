@@ -33,12 +33,12 @@ export async function GET() {
         key++;
       }
     }
-    return NextResponse.json(
-      { body: "todo bien señor" },
-      {
-        status: 200,
-      }
-    );
+    // return NextResponse.json(
+    //   { body: "todo bien señor" },
+    //   {
+    //     status: 200,
+    //   }
+    // );
   } catch (error) {
     console.log(error);
     return NextResponse.json(
