@@ -1,7 +1,13 @@
 import React from "react";
+import BodyComponent from "./BodyComponent";
+import HeaderTitle from "./HeaderTitle";
 
 const CierrePeriodos = () => {
-  return <div>CierrePeriodos</div>;
+  return (
+    <>
+      <HeaderTitle />
+    </>
+  );
 };
 
 export default CierrePeriodos;

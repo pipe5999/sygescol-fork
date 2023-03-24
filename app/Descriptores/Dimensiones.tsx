@@ -92,6 +92,7 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
       GetProcesos();
     }
   }, [dimensiones?.escala, contador]);
+  console.log(`${open} == ${posicion}`);
   return (
     <>
       {viewObser && (
@@ -132,8 +133,8 @@ const Dimensiones = ({ dimension, open, posicion, setOpen }: Props) => {
       )}
       <div>
         <h1
-          className={`uppercase  bg-blue-200 lg:text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1 cursor-pointer ${
-            open == posicion && "bg-green-800 text-white"
+          className={`uppercase  lg:text-lg font-medium rounded-tl-lg  rounded-tr-lg py-1 cursor-pointer ${
+            (open == posicion && "bg-green-800 text-white") || "bg-blue-200"
           }`}
           onClick={() => {
             setOpen(posicion);
