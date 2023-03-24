@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
-import { conecctions } from "../../../../../utils/Conexions";
-import School from "../../../../../utils/School";
+import { conecctions } from "../../../../utils/Conexions";
+import School from "../../../../utils/School";
 
-export async function GET(req: any, { params }: any) {
+export async function GET(req: any) {
+  const { searchParams } = new URL(req.url);
+  const school: any = searchParams.get("Index");
+  console.log("school", school);
+
   try {
     const UtilsSchool = School();
-    const school = params.school;
 
     const selectSchool = UtilsSchool[school];
 
@@ -158,10 +161,3 @@ export async function GET(req: any, { params }: any) {
     );
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-    responseLimit: false,
-  },
-};

@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { conecctions } from "../../../../../utils/Conexions";
+import { conecctions } from "../../../../utils/Conexions";
 
-export async function GET(req: any, { params }: any) {
-  let colegio = params.school;
+export async function GET(req: any) {
+  const { searchParams } = new URL(req.url);
+  const colegio: any = searchParams.get("school");
 
   try {
     const conexion = conecctions[colegio];
@@ -43,7 +44,9 @@ export async function GET(req: any, { params }: any) {
 
 export const config = {
   api: {
-    bodyParser: false,
-    responseLimit: false,
+    bodyParser: {
+      sizeLimit: "10mb",
+    },
+    responseLimit: "10mb",
   },
 };

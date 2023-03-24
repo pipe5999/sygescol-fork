@@ -51,7 +51,7 @@ export async function POST(req: any) {
       ORDER BY proceso_evaluacion_banco.proeva_cod`);
 
     const GetConfiguracionFetch = fetch(
-      `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Params/${colegio?.value}`
+      `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/Params?school=${colegio?.value}`
     ).then((res) => res?.json());
 
     const [
@@ -229,7 +229,7 @@ export async function POST(req: any) {
           // { estudiantes: formatStudent, acciones: formatAcciones },
           {
             Docentes: Object.values(newData),
-            Pendientes,
+            // Pendientes,
           },
           { status: 200 }
         );
@@ -319,7 +319,9 @@ export async function POST(req: any) {
 
 export const config = {
   api: {
-    bodyParser: false,
-    responseLimit: false,
+    bodyParser: {
+      sizeLimit: "10mb",
+    },
+    responseLimit: "10mb",
   },
 };

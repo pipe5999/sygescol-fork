@@ -5,13 +5,16 @@ export async function GET() {
   try {
     const colegios = School();
 
-    if (colegios.length > 0) {
-      console.log("colegios", colegios);
+    if (colegios?.length > 0) {
       let key = 0;
       for (const colegio of colegios) {
+        console.log("entro al for");
+
         const DateCierrePeriodo = await fetch(
-          `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/VerificarFechas/${key}`
+          `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/VerificarFechas?Index=${key}`
         ).then((res) => res.json());
+
+        console.log("DateCierrePeriodo", DateCierrePeriodo);
 
         if (DateCierrePeriodo?.GruposCerrar?.length) {
           const DateCierreConfig = await fetch(
@@ -45,13 +48,12 @@ export async function GET() {
         key++;
       }
     }
-
-    // return NextResponse.json(
-    //   { body: "todo bien señor" },
-    //   {
-    //     status: 200,
-    //   }
-    // );
+    return NextResponse.json(
+      { body: "todo bien señor" },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     console.log(error);
     return NextResponse.json(
@@ -63,7 +65,9 @@ export async function GET() {
 
 export const config = {
   api: {
-    bodyParser: false,
-    responseLimit: false,
+    bodyParser: {
+      sizeLimit: "10mb",
+    },
+    responseLimit: "10mb",
   },
 };
