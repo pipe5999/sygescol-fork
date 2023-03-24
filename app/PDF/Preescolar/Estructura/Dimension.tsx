@@ -249,7 +249,7 @@ function Dimension({ dimensiones, data }: Props) {
                         </>
                       );
                     })}
-                    {/* {observaciones?.map((obs: any) => {
+                    {observaciones?.map((obs: any) => {
                       return (
                         <>
                           <View style={style.tableRow}>
@@ -265,23 +265,23 @@ function Dimension({ dimensiones, data }: Props) {
                             >
                               Observación:
                             </Text>
-                          </View>
-                          <View
-                            style={{
-                              border: 1,
-                              width: "75%",
-                              fontSize: 10,
-                              padding: "1%",
-                              fontWeight: "bold",
-                              marginLeft: -1,
-                              marginTop: -1,
-                            }}
-                          >
-                            {obs.texto}
+                            <Text
+                              style={{
+                                border: 1,
+                                width: "85%",
+                                fontSize: 10,
+                                padding: "1%",
+                                fontWeight: "bold",
+                                marginTop: -1,
+                                marginLeft: -1,
+                              }}
+                            >
+                              {obs.texto}
+                            </Text>
                           </View>
                         </>
                       );
-                    })} */}
+                    })}
                   </>
                 );
               })}
