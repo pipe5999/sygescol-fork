@@ -1,10 +1,6 @@
-import { NextResponse } from "next/server";
 import { conecctions } from "../../../../utils/Conexions";
 
-export async function GET(req: any) {
-  const { searchParams } = new URL(req.url);
-  const colegio: any = searchParams.get("school");
-
+export default async function CheckConfig(colegio: any) {
   try {
     const conexion = conecctions[colegio];
     const [params]: any = await conexion.query(
@@ -23,30 +19,16 @@ export async function GET(req: any) {
     const axiologica: any = params?.find(
       (par: any) => par?.id == 153
     )?.conf_valor;
-    return NextResponse.json(
-      {
-        axiologica: axiologica,
-        forder: forder,
-        gruposAxiologica: configAxio,
-        planillas: confPlanilla,
-        notaSistema: nota,
-      },
-      { status: 200 }
-    );
+
+    return {
+      axiologica: axiologica,
+      forder: forder,
+      gruposAxiologica: configAxio,
+      planillas: confPlanilla,
+      notaSistema: nota,
+    };
   } catch (error) {
     console.log(error);
-    return NextResponse.json(
-      { body: "Error al consultar la información" },
-      { status: 404 }
-    );
+    return { body: "Error al consultar la información" };
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: "10mb",
-    },
-    responseLimit: "10mb",
-  },
-};

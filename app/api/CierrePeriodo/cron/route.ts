@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import School from "../../../../utils/School";
+import CierrePeriodo from "../Students/CierrePeriodo";
+import VerificarFechas from "../VerificarFechas/CheckDate";
 
 export async function GET() {
   try {
@@ -8,30 +10,13 @@ export async function GET() {
     if (colegios?.length > 0) {
       let key = 0;
       for (const colegio of colegios) {
-        const DateCierrePeriodo = await fetch(
-          `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/VerificarFechas?Index=${key}`
-        )
-          .then((res) => res?.json())
-          .catch((err) => console.log(err));
-
-        console.log("DateCierrePeriodo", DateCierrePeriodo);
+        let DateCierrePeriodo: any = await VerificarFechas(key);
 
         if (DateCierrePeriodo?.GruposCerrar?.length) {
-          const DateCierreConfig = await fetch(
-            `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/Students`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                colegio: colegio,
-                grupos: DateCierrePeriodo?.GruposCerrar || [],
-              }),
-            }
-          ).then((res) => res?.json());
-
-          // console.log("DateCierreConfig", DateCierreConfig);
+          let DateCierreConfig: any = await CierrePeriodo(
+            colegio,
+            DateCierrePeriodo?.GruposCerrar
+          );
 
           if (DateCierreConfig?.Docentes.length > 0) {
             return NextResponse.json(

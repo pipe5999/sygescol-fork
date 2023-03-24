@@ -1,9 +1,7 @@
-import { NextResponse } from "next/server";
 import { conecctions } from "../../../../utils/Conexions";
+import CheckConfig from "../Params/CheckConfig";
 
-export async function POST(req: any) {
-  let { colegio, grupos } = await req.json();
-
+export default async function CierrePeriodo(colegio: any, grupos: any) {
   try {
     let gruposFind = "";
     grupos?.find((grup: any) => {
@@ -46,13 +44,9 @@ export async function POST(req: any) {
     );
     const competenciasQueri: any =
       conexion.query(`SELECT DISTINCT proceso_evaluacion.proeva_sub_id, proceso_evaluacion_banco.proeva_id, proceso_evaluacion.cga_id, proceso_evaluacion.grupo_id ,proceso_evaluacion_banco.proeva_cod, proceso_evaluacion_banco.proeva_desc, proceso_evaluacion_banco.proeva_porcen 
-      FROM proceso_evaluacion_banco 
-      INNER JOIN proceso_evaluacion ON (proceso_evaluacion_banco.proeva_id = proceso_evaluacion.proeva_sub_id)
-      ORDER BY proceso_evaluacion_banco.proeva_cod`);
-
-    const GetConfiguracionFetch = fetch(
-      `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/Params?school=${colegio?.value}`
-    ).then((res) => res?.json());
+          FROM proceso_evaluacion_banco 
+          INNER JOIN proceso_evaluacion ON (proceso_evaluacion_banco.proeva_id = proceso_evaluacion.proeva_sub_id)
+          ORDER BY proceso_evaluacion_banco.proeva_cod`);
 
     const [
       ListDcne,
@@ -63,8 +57,7 @@ export async function POST(req: any) {
       docentes,
       direccionGrupo,
       competencias,
-      GetConfiguracion,
-    ]: [any, any, any, any, any, any, any, any, any] = await Promise.all([
+    ]: [any, any, any, any, any, any, any, any] = await Promise.all([
       ListDcneQueri,
       estudiantesQueri,
       asignaturasQueri,
@@ -73,8 +66,9 @@ export async function POST(req: any) {
       docentesQueri,
       direccionGrupoQueri,
       competenciasQueri,
-      GetConfiguracionFetch,
     ]);
+
+    const GetConfiguracion: any = await CheckConfig(colegio.value);
 
     if (GetConfiguracion?.forder == "S") {
       // const [ListDcne]: [any] = await Promise.all([DcneQuery]);
@@ -225,103 +219,14 @@ export async function POST(req: any) {
       console.log(Pendientes);
 
       if (Object.values(newData).length) {
-        return NextResponse.json(
-          // { estudiantes: formatStudent, acciones: formatAcciones },
-          {
-            Docentes: Object.values(newData),
-            // Pendientes,
-          },
-          { status: 200 }
-        );
+        return {
+          Docentes: Object.values(newData),
+          // Pendientes,
+        };
       }
-
-      // console.log("ListDcne", ListDcne[0]);
     }
-
-    // const formatDocente = docentes[0]?.reduce((acc: any, item: any) => {
-    //   let key = `${item.Nombre}`;
-    //   if (!acc[key]) {
-    //     acc[key] = {
-    //       Docente: item.i,
-    //       Data: [],
-    //       Asignaturas: [],
-    //       Direccion: [],
-    //     };
-    //     let data =
-    //       direccionGrupo[0].find((est: any) => est.docente == item.i) || [];
-    //     acc[key].Direccion.push({ ...data });
-    //   }
-    //   let newData = asignaturas[0].find((as: any) => as.docente == item.i);
-    //   acc[key].Data.push({ ...newData });
-    //   return acc;
-    // }, {});
-    // const formatAcciones = acciones[0]?.reduce((acc: any, item: any) => {
-    //   let key = `${item.grupo}`;
-    //   if (!acc[key]) {
-    //     acc[key] = {
-    //       Grupo: item.id_grupo,
-    //       Acciones: [],
-    //     };
-    //   }
-    //   acc[key].Acciones[0].push({ ...item });
-    //   return acc;
-    // }, {});
-    // const formatStudent = estudiantes[0]?.reduce((acc: any, item: any) => {
-    //   let key = `${item.grupo}`;
-
-    //   if (!acc[key]) {
-    //     acc[key] = {
-    //       Grupo: item.grupoId,
-    //       Estudiantes: [],
-    //       Asignaturas: [],
-    //     };
-    //     let newData = asignaturas[0].filter(
-    //       (est: any) => est.grupoId == item.grupoId
-    //     );
-    //     acc[key].Asignaturas.push({
-    //       ...newData,
-    //     });
-    //   }
-    //   const notasFormated = notas[0]?.reduce((not: any) => {
-    //     let key = ` `;
-    //   });
-    //   acc[key].Estudiantes.push({
-    //     ...item,
-    //     NotasPGI: notas[0].filter(
-    //       (not: any) => not.matricula == item.matricula
-    //     ),
-    //   });
-
-    //   return acc;
-    // }, {});
-    // return NextResponse.json(
-    //   // { estudiantes: formatStudent, acciones: formatAcciones },
-    //   {
-    //     Docentes: Object.values(newData),
-    //   },
-    //   { status: 200 }
-    // );
-
-    // return NextResponse.json(
-    //   {
-    //     estudiantes,
-    //   },
-    //   { status: 200 }
-    // );
   } catch (error) {
     console.log("Este es el error->", error);
-    return NextResponse.json(
-      { body: "Error al consultar los estudiantes" },
-      { status: 404 }
-    );
+    return { body: "Error al consultar los estudiantes" };
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: "10mb",
-    },
-    responseLimit: "10mb",
-  },
-};

@@ -1,10 +1,7 @@
-import { NextResponse } from "next/server";
 import { conecctions } from "../../../../utils/Conexions";
 import School from "../../../../utils/School";
 
-export async function GET(req: any) {
-  const { searchParams } = new URL(req.url);
-  const school: any = searchParams.get("Index");
+export default async function VerificarFechas(school: any) {
   console.log("school", school);
 
   try {
@@ -33,15 +30,13 @@ export async function GET(req: any) {
 
         const [GradosNivel]: any = await conexion.query(
           `SELECT grupo_nombre, grupo_sede, nivel, v_grupos.grupo_id as GrupoId FROM v_grupos INNER JOIN grados ON v_grupos.grado_base = grados.id_grado ORDER BY grados.nivel ASC, v_grupos.grupo_sede ASC
-        `
+            `
         );
 
         const [periodo_academicos]: any = await conexion.query(
           `SELECT periodo_academicos.nivel,periodo_academicos.fin_ing_notas,per_id FROM periodo_academicos        
-        `
+            `
         );
-
-        // console.log("periodo_academicos", periodo_academicos);
 
         const DataNormalizada = GradosNivel?.reduce((acc: any, el: any) => {
           let key = el.grupo_nombre;
@@ -145,19 +140,9 @@ export async function GET(req: any) {
 
     console.log("GruposCerrar", GruposCerrar);
 
-    return NextResponse.json(
-      { GruposCerrar: GruposCerrar || [] },
-      {
-        status: 200,
-      }
-    );
+    return { GruposCerrar: GruposCerrar || [] };
   } catch (error) {
     console.log("error", error);
-    return NextResponse.json(
-      { error: error },
-      {
-        status: 500,
-      }
-    );
+    return { error: error };
   }
 }
