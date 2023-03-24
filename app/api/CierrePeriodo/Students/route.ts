@@ -316,3 +316,10 @@ export async function POST(req: any) {
     );
   }
 }
+
+export const config = {
+  api: {
+    bodyParser: false,
+    responseLimit: false,
+  },
+};

@@ -34,3 +34,10 @@ export async function POST(req: any, { params }: any) {
     }
   );
 }
+
+export const config = {
+  api: {
+    bodyParser: false,
+    responseLimit: false,
+  },
+};

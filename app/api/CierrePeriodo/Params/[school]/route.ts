@@ -40,3 +40,10 @@ export async function GET(req: any, { params }: any) {
     );
   }
 }
+
+export const config = {
+  api: {
+    bodyParser: false,
+    responseLimit: false,
+  },
+};
