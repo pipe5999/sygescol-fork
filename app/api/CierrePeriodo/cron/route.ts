@@ -32,7 +32,10 @@ export async function GET() {
 
           if (DateCierreConfig?.Docentes.length > 0) {
             return NextResponse.json(
-              { body: DateCierreConfig?.Docentes },
+              {
+                body: DateCierreConfig?.Docentes,
+                Pendientes: DateCierreConfig?.Pendientes,
+              },
               {
                 status: 200,
               }
@@ -42,6 +45,13 @@ export async function GET() {
         key++;
       }
     }
+
+    // return NextResponse.json(
+    //   { body: "todo bien señor" },
+    //   {
+    //     status: 200,
+    //   }
+    // );
   } catch (error) {
     console.log(error);
     return NextResponse.json(

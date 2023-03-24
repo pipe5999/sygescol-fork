@@ -34,8 +34,7 @@ export async function GET(req: any, { params }: any) {
         );
 
         const [periodo_academicos]: any = await conexion.query(
-          `SELECT periodo_academicos.nivel,periodo_academicos.fin_ing_notas,per_id FROM periodo_academicos
-        
+          `SELECT periodo_academicos.nivel,periodo_academicos.fin_ing_notas,per_id FROM periodo_academicos        
         `
         );
 
@@ -140,6 +139,8 @@ export async function GET(req: any, { params }: any) {
     //     `);
 
     //   console.log(StructurePeriodoAcademico);
+
+    console.log("GruposCerrar", GruposCerrar);
 
     return NextResponse.json(
       { GruposCerrar: GruposCerrar || [] },
