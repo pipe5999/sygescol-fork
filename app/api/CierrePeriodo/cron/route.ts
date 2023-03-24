@@ -1,42 +1,58 @@
 import { NextResponse } from "next/server";
 import School from "../../../../utils/School";
+import CierrePeriodo from "../Students/CierrePeriodo";
+import VerificarFechas from "../VerificarFechas/CheckDate";
 
 export async function GET() {
-  const colegios = School();
+  try {
+    const colegios = School();
 
-  if (colegios.length > 0) {
-    //   console.log("ejecute el cron");
-    let cont = 0;
-    colegios.forEach(async (colegio, key) => {
-      const DateCierrePeriodo = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${key}`
-      ).then((res) => res.json());
+    if (colegios?.length > 0) {
+      let key = 0;
+      for (const colegio of colegios) {
+        let DateCierrePeriodo: any = await VerificarFechas(key);
 
-      console.log("DateCierrePeriodo", DateCierrePeriodo);
+        if (DateCierrePeriodo?.GruposCerrar?.length) {
+          let DateCierreConfig: any = await CierrePeriodo(
+            colegio,
+            DateCierrePeriodo?.GruposCerrar
+          );
 
-      if (DateCierrePeriodo?.GruposCerrar?.length) {
-        const DateCierreConfig = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Students`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              colegio: colegio,
-              grupos: DateCierrePeriodo?.GruposCerrar,
-            }),
+          if (DateCierreConfig?.Docentes.length > 0) {
+            return NextResponse.json(
+              {
+                body: DateCierreConfig?.Docentes,
+                Pendientes: DateCierreConfig?.Pendientes,
+              },
+              {
+                status: 200,
+              }
+            );
           }
-        ).then((res) => res.json());
-        console.log("DateCierreConfig", DateCierreConfig);
+        }
+        key++;
       }
-    });
-  }
-
-  return NextResponse.json(
-    { body: "Todo Naice señor" },
-    {
-      status: 200,
     }
-  );
+    // return NextResponse.json(
+    //   { body: "todo bien señor" },
+    //   {
+    //     status: 200,
+    //   }
+    // );
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { body: "Error al consultar la información" },
+      { status: 404 }
+    );
+  }
 }
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "10mb",
+    },
+    responseLimit: "10mb",
+  },
+};
