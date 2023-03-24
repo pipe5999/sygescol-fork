@@ -6,7 +6,9 @@ export async function GET() {
     const colegios = School();
 
     if (colegios.length > 0) {
-      colegios.forEach(async (colegio, key) => {
+      console.log("colegios", colegios);
+      let key = 0;
+      for (const colegio of colegios) {
         const DateCierrePeriodo = await fetch(
           `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${key}`
         ).then((res) => res.json());
@@ -26,29 +28,20 @@ export async function GET() {
             }
           ).then((res) => res?.json());
 
-          const DateCierreConfigDcne = await fetch(
-            `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Docentes`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                colegio: colegio,
-                grupos: DateCierrePeriodo?.GruposCerrar || [],
-              }),
-            }
-          ).then((res) => res?.json());
-        }
-      });
-    }
+          // console.log("DateCierreConfig", DateCierreConfig);
 
-    return NextResponse.json(
-      { body: "Todo Naice señor" },
-      {
-        status: 200,
+          if (DateCierreConfig?.Docentes.length > 0) {
+            return NextResponse.json(
+              { body: DateCierreConfig?.Docentes },
+              {
+                status: 200,
+              }
+            );
+          }
+        }
+        key++;
       }
-    );
+    }
   } catch (error) {
     console.log(error);
     return NextResponse.json(

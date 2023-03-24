@@ -21,9 +21,9 @@ export async function POST(req: any, { params }: any) {
   //     return acc;
   //   }, {});
 
-  //   let sqlBaseGruposDcne = `SELECT * FROM cga INNER JOIN dcne ON dcne.i=cga.g INNER JOIN v_grupos ON v_grupos.grupo_id=cga.b WHERE v_grupos.grupo_id in (${Object.keys(
-  //     gruposPorId
-  //   ).join(",")})`;
+  // let sqlBaseGruposDcne = `SELECT * FROM cga INNER JOIN dcne ON dcne.i=cga.g INNER JOIN v_grupos ON v_grupos.grupo_id=cga.b WHERE v_grupos.grupo_id in (${Object.keys(
+  //   gruposPorId
+  // ).join(",")})`;
 
   //   console.log(sqlBaseGruposDcne);
 
