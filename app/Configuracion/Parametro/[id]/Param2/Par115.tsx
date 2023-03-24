@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import Select from "react-select";
 import getDataParametro from "../../../../../utils/GetParametro";
 import CardsPreguntas from "../../../CardsPreguntas";
@@ -7,9 +8,18 @@ import DetallesParametro from "../../../DetallesParametro";
 import HeaderParam from "../../../HeaderParam";
 
 export default function Par115() {
-  const [data, setData] = React.useState({} as any);
-  const [Items, setItems] = useState([] as any[]);
+  const [data, setData] = React.useState({} as any[]);
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+  const [Items, setItems] = useState([] as any);
+
   console.log("items", Items);
+
+  const onSubmit = handleSubmit((data) => console.log("yarn", data));
 
   const SedeSelect = [
     {
@@ -39,7 +49,7 @@ export default function Par115() {
       label: "Jornda uínca",
     },
   ];
-  const GradosSelect = [
+  const GradoSelect = [
     {
       value: "31",
       label: "PA Párvulos",
@@ -101,7 +111,7 @@ export default function Par115() {
       label: "Undécimo",
     },
   ];
-  const NumeroGrados = [
+  const NumeroGradosSelect = [
     {
       value: "41",
       label: "1",
@@ -151,7 +161,7 @@ export default function Par115() {
       label: "12",
     },
   ];
-  const TipoGrado = [
+  const TipoGradoSelect = [
     {
       value: "51",
       label: "Númerico",
@@ -161,7 +171,7 @@ export default function Par115() {
       label: "Alfabético",
     },
   ];
-  const Profundizacion = [
+  const ProfundizacionSelect = [
     {
       value: "61",
       label: "Sistemas",
@@ -190,31 +200,139 @@ export default function Par115() {
             parrafo="Definir en el sistema, el número de grupos de acuerdo a las modalidades de la Institución Educativa, que se crearán en cada Sede, para cada Grado y Jornada"
           >
             <p className="p-2 text-center ">Agregar Grado</p>
-            <div>
-              <div className="flex justify-center">
-                <button
-                  onClick={() => {
-                    setItems([...Items, {}]);
-                  }}
-                  className="flex"
+
+            <div className="flex justify-center">
+              <button
+                onClick={() => {
+                  setItems(
+                    Items.push({
+                      value: "",
+                    })
+                  );
+                }}
+                className="flex"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
-                  >
-                    <title>Ingreso Grados </title>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  <title>Ingreso Grados </title>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div>
+              {Items?.map((item: any, index: any) => {
+                return (
+                  <div className="p-2 w-72">
+                    <p>Seleccione la Sede</p>
+                    <Select
+                      onChange={(e: any) => {
+                        console.log("XD", e);
+
+                        const { value } = e;
+                        setItems((prev: any) => {
+                          const newItems = [...prev];
+                          newItems[index] = {
+                            ...newItems[index],
+                            Sede: value,
+                          };
+                        });
+                      }}
+                      options={SedeSelect}
+                      placeholder="Seleccione"
                     />
-                  </svg>
-                </button>
-              </div>
+                    <br />
+                    <p>Seleccione la Jornada</p>
+                    <Select
+                      onChange={(e: any) => {
+                        const { value } = e;
+                        setItems((prev: any) => {
+                          const newItems = [...prev];
+                          newItems[index] = {
+                            ...newItems[index],
+                            Jornada: value,
+                          };
+                        });
+                      }}
+                      options={JornadaSelect}
+                      placeholder="Seleccione"
+                    />
+                    <br />
+                    <p>Seleccione el Grado</p>
+                    <Select
+                      onChange={(e: any) => {
+                        const { value } = e;
+                        setItems((prev: any) => {
+                          const newItems = [...prev];
+                          newItems[index] = {
+                            ...newItems[index],
+                            Grado: value,
+                          };
+                        });
+                      }}
+                      options={GradoSelect}
+                      placeholder="Seleccione"
+                    />
+                    <br />
+                    <p>Seleccione el Número de Grados</p>
+                    <Select
+                      onChange={(e: any) => {
+                        const { value } = e.target;
+                        setItems((prev: any) => {
+                          const newItems = [...prev];
+                          newItems[index] = {
+                            ...newItems[index],
+                            NGrado: value,
+                          };
+                        });
+                      }}
+                      options={NumeroGradosSelect}
+                      placeholder="Seleccione"
+                    />
+                    <br />
+                    <p>Seleccione el Tipo de Grado</p>
+                    <Select
+                      onChange={(e: any) => {
+                        const { value } = e.target;
+                        setItems((prev: any) => {
+                          const newItems = [...prev];
+                          newItems[index] = {
+                            ...newItems[index],
+                            TipoGrado: value,
+                          };
+                        });
+                      }}
+                      options={TipoGradoSelect}
+                      placeholder="Seleccione"
+                    />
+                    <br />
+                    <p>Seleccione la Profundización</p>
+                    <Select
+                      onChange={(e: any) => {
+                        const { value } = e.target;
+                        setItems((prev: any) => {
+                          const newItems = [...prev];
+                          newItems[index] = {
+                            ...newItems[index],
+                            Profundidad: value,
+                          };
+                        });
+                      }}
+                      options={ProfundizacionSelect}
+                      placeholder="Seleccione"
+                    />
+                  </div>
+                );
+              })}
             </div>
           </CardsPreguntas>
         </div>
