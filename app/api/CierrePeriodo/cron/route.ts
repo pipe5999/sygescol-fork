@@ -10,12 +10,12 @@ export async function GET() {
       let key = 0;
       for (const colegio of colegios) {
         const DateCierrePeriodo = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/VerificarFechas/${key}`
+          `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/VerificarFechas/${key}`
         ).then((res) => res.json());
 
         if (DateCierrePeriodo?.GruposCerrar?.length) {
           const DateCierreConfig = await fetch(
-            `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Students`,
+            `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/Students`,
             {
               method: "POST",
               headers: {
@@ -60,3 +60,10 @@ export async function GET() {
     );
   }
 }
+
+export const config = {
+  api: {
+    bodyParser: false,
+    responseLimit: false,
+  },
+};

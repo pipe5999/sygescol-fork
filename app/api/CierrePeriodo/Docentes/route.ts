@@ -4,7 +4,7 @@ export async function POST(req: any, { params }: any) {
   const { colegio, grupos } = await req.json();
 
   const GetConfiguracion = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/CierrePeriodo/Params/${colegio?.value}`
+    `${process.env.APP_URL_BACKEND}/api/CierrePeriodo/Params/${colegio?.value}`
   ).then((res) => res?.json());
 
   console.log(GetConfiguracion);
