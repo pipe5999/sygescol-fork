@@ -160,6 +160,9 @@ function Dimension({ dimensiones, data }: Props) {
                 const procesos = data?.notas?.filter(
                   (est: any) => asig?.id == est.Asignatura
                 );
+                const observaciones = data?.observaciones?.filter(
+                  (obs: any) => asig?.id == obs.Asignatura
+                );
                 return (
                   <>
                     <View style={style.tableRow} key={key2}>
@@ -246,6 +249,39 @@ function Dimension({ dimensiones, data }: Props) {
                         </>
                       );
                     })}
+                    {/* {observaciones?.map((obs: any) => {
+                      return (
+                        <>
+                          <View style={style.tableRow}>
+                            <Text
+                              style={{
+                                border: 1,
+                                width: "20%",
+                                fontSize: 11,
+                                padding: "1%",
+                                fontWeight: "bold",
+                                marginTop: -1,
+                              }}
+                            >
+                              Observación:
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              border: 1,
+                              width: "75%",
+                              fontSize: 10,
+                              padding: "1%",
+                              fontWeight: "bold",
+                              marginLeft: -1,
+                              marginTop: -1,
+                            }}
+                          >
+                            {obs.texto}
+                          </View>
+                        </>
+                      );
+                    })} */}
                   </>
                 );
               })}

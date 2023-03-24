@@ -49,13 +49,17 @@ export async function GET(req: any) {
     const [notas]: any = await conexion.query(
       `SELECT PE.escala, texto, estudiante, NEP.cga AS Asignatura FROM newProcesoEstudiante NEP INNER JOIN newProcesosEvaluacion PE ON NEP.proceso = PE.id INNER JOIN newBancoProcesos BP ON BP.id = PE.relacionBanco WHERE NEP.periodo = ${periodo[0]?.per_id}`
     );
-    const cgaFormat: any = [];
+    const [observaciones]: any = await conexion.query(
+      `SELECT estudiante, texto, NOE.cga AS Asignatura FROM newObservacionesEstudiante NOE INNER JOIN newObservacionesProcesos NOP ON NOE.observacion = NOP.id INNER JOIN newBancoObservacionesProcesos NBOP ON NBOP.id = NOP.relacionBanco WHERE NOE.periodo = ${periodo[0]?.per_id}`
+    );
     const studentFormat: any = [];
     for await (const est of estudiante) {
       const notasEstu = notas.filter(
         (not: any) => not.estudiante == est.matricula
       );
-
+      const observacionesEstu = observaciones.filter(
+        (obs: any) => obs.estudiante == est.matricula
+      );
       await axios
         .post(
           `${
@@ -74,6 +78,7 @@ export async function GET(req: any) {
                 est.rum
               }.jpg`,
               notas: notasEstu,
+              observaciones: observacionesEstu,
             });
           }
         })
@@ -84,6 +89,7 @@ export async function GET(req: any) {
               dataColegio[0]?.url
             }sygescol${new Date().getFullYear()}/images/fotos/estudiantes/no_imagen.jpg`,
             notas: notasEstu,
+            observaciones: observacionesEstu,
           });
         });
     }
