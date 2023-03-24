@@ -1,14 +1,25 @@
 import React from "react";
+import { Fragment, useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
 
 const data = [
   {
     asignatura: "Humanidades",
-    docente: "Brahian",
+    docente: "Brahian Orozco",
     detalle: "deleted",
   },
 ];
 
 const Tabla = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(!open);
+
   return (
     <>
       <table className="border-collapse w-full">
@@ -58,8 +69,36 @@ const Tabla = () => {
                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                   ESTUDIANTES
                 </span>
-
-                {/* {item.estudiantes} */}
+                <Fragment>
+                  <Button onClick={handleOpen} variant="gradient">
+                    Ver
+                  </Button>
+                  <Dialog open={open} handler={handleOpen}>
+                    <DialogHeader>Listado Estudiantes</DialogHeader>
+                    <DialogBody divider>
+                      <p>Hugo Hernandez</p>
+                      <p>Paco Jimenez</p>
+                      <p>Luis Chaverra</p>
+                    </DialogBody>
+                    <DialogFooter>
+                      <Button
+                        variant="text"
+                        color="red"
+                        onClick={handleOpen}
+                        className="mr-1"
+                      >
+                        <span>Cancel</span>
+                      </Button>
+                      {/* <Button
+                        variant="gradient"
+                        color="green"
+                        onClick={handleOpen}
+                      >
+                        <span>Confirm</span>
+                      </Button> */}
+                    </DialogFooter>
+                  </Dialog>
+                </Fragment>
               </td>
             </tr>
           ))}
