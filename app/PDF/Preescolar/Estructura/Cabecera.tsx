@@ -111,7 +111,10 @@ const Cabecera = ({ data }: Props) => {
               style={
                 (style.tableCell,
                 {
-                  fontSize: 20,
+                  fontSize:
+                    (data?.nombreInst?.length > 40 && 15) ||
+                    (data?.nombreInst?.lengt > 30 && 18) ||
+                    20,
                   marginLeft: 60,
                   fontWeight: 700,
                   textAlign: "center",

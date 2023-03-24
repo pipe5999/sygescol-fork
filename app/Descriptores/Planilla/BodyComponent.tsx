@@ -100,10 +100,12 @@ function BodyComponent() {
           />
         </>
       ),
+      maxWidth: "15px",
     },
     {
       name: "Código",
       selector: (row: any) => row.codigo,
+      maxWidth: "50px",
     },
     {
       name: "Nombre",
@@ -120,9 +122,9 @@ function BodyComponent() {
               return (
                 <div
                   className={`rounded-lg cursor-pointer ${
-                    escala[key] == nac?.id && nac?.id < 3
+                    escala[row.matricula] == nac?.id && nac?.id < 3
                       ? "bg-green-600"
-                      : escala[key] == nac?.id && nac?.id > 2
+                      : escala[row.matricula] == nac?.id && nac?.id > 2
                       ? "bg-red-600"
                       : "bg-blue-100"
                   } 2xl:p-2 p-0`}
@@ -130,8 +132,8 @@ function BodyComponent() {
                     if (dimension?.CgaId) {
                       const dat = [...escala];
                       const newEst = [...estudent];
-                      newEst[key] = row.matricula;
-                      dat[key] = nac?.id;
+                      newEst[row.matricula] = row.matricula;
+                      dat[row.matricula] = nac?.id;
                       setEscala(dat);
                       setEstudent(newEst);
                     }
