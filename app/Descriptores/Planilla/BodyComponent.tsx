@@ -163,7 +163,7 @@ function BodyComponent() {
               disabled={estudent.indexOf(row.matricula) >= 0 ? false : true}
               onClick={() => {
                 if (estudent.indexOf(row.matricula) >= 0) {
-                  openRegistro(row.matricula, escala[key]);
+                  openRegistro(row.matricula, escala[row.matricula]);
                 }
               }}
             >
