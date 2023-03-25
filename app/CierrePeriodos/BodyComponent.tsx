@@ -24,21 +24,21 @@ const BodyComponent = () => {
 
   const buttons = [
     {
-      text: "6-01",
+      text: "Grupo 6-01",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 6-01 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
-      text: "6-02",
+      text: "Grupo 6-02",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 6-02 periodo 3",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
-      text: "6-03",
+      text: "Grupo 6-03",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 6-03 periodo 4",
       content:
@@ -46,49 +46,49 @@ const BodyComponent = () => {
     },
 
     {
-      text: "7-01",
+      text: "Grupo 7-01",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 7-01 periodo 1",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.tro",
     },
     {
-      text: "7-02",
+      text: "Grupo 7-02",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 7-02 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.co",
     },
     {
-      text: "7-03",
+      text: "Grupo 7-03",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 7-03 periodo 3",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
-      text: "7-04",
+      text: "Grupo 7-04",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 7-04 periodo 4",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
-      text: "8-01",
+      text: "Grupo 8-01",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 8-01 periodo 1",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
-      text: "8-02",
+      text: "Grupo 8-02",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 8-02 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
-      text: "8-03",
+      text: "Grupo 8-03",
       variant: "gradient",
       title: "Pdts. Cierre Grupo 8-03 periodo 3",
       content:

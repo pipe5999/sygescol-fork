@@ -12,7 +12,7 @@ const data = [
   {
     asignatura: "Humanidades",
     docente: "Brahian Orozco",
-    detalle: "deleted",
+    detalle: "No se han subido Calificaciones",
   },
 ];
 
