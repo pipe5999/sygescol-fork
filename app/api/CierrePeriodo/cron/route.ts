@@ -6,6 +6,7 @@ import VerificarFechas from "../VerificarFechas/CheckDate";
 export async function GET() {
   try {
     const colegios = School();
+    let DataResponse: any = [];
 
     if (colegios?.length > 0) {
       let key = 0;
@@ -19,26 +20,18 @@ export async function GET() {
           );
 
           if (DateCierreConfig?.Docentes.length > 0) {
-            return NextResponse.json(
-              {
-                body: DateCierreConfig?.Docentes,
-                Pendientes: DateCierreConfig?.Pendientes,
-              },
-              {
-                status: 200,
-              }
-            );
+            DataResponse = [...DataResponse, DateCierreConfig];
           }
         }
         key++;
       }
     }
-    // return NextResponse.json(
-    //   { body: "todo bien señor" },
-    //   {
-    //     status: 200,
-    //   }
-    // );
+    return NextResponse.json(
+      { body: DataResponse || "No hay información" },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     console.log(error);
     return NextResponse.json(
