@@ -26,7 +26,7 @@ export default function Par241() {
           {" "}
           <div className=" fixed inset-0 z-50  bg-gray-900 bg-opacity-50 flex justify-center items-center">
             <div className="sm:max-h-[full] sm:w-full lg:max-h-full">
-              <div className="h-[36rem] rounded-lg border border-gray-400 shadow-md m-5 bg-slate-50  ">
+              <div className="h-[36rem] rounded-lg border border-gray-400 shadow-md m-5 bg-gray-50  ">
                 <div className="flex justify-center items-center m-8">
                   <h1 className="uppercase font-extrabold text-center text-cyan-700">
                     Según el Decreto <strong>3011</strong>{" "}
@@ -49,46 +49,46 @@ export default function Par241() {
                     </thead>
                     <tbody className="bg-gray-200  border-gray-100 hover:bg-violet-300">
                       <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           <input type="number" placeholder=" Edad en Años" />
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           1°, 2° o 3° De Primaria{" "}
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           CICLO I
                         </td>
                       </tr>
                       <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           <input type="number" placeholder=" Edad en Años" />
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           4° o 5° De Primaria{" "}
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           CICLO II
                         </td>
                       </tr>
                       <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           <input type="number" placeholder=" Edad en Años" />
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           6° o 7° De secundaria{" "}
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           CICLO III
                         </td>
                       </tr>
                       <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           <input type="number" placeholder=" Edad en Años" />
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           8° o 9° De secundaria{" "}
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           CICLO IV
                         </td>
                       </tr>
@@ -140,7 +140,7 @@ export default function Par241() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 stroke-cyan-700 hover:stroke-lime-700"
+              className="w-6 h-6 stroke-cyan-700 hover:stroke-green-500"
             >
               <path
                 strokeLinecap="round"

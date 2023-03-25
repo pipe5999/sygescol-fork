@@ -66,20 +66,20 @@ export default function Par167() {
           <div className=" fixed inset-0 z-40  bg-gray-900 bg-opacity-50 flex justify-center items-center py-4">
             <div className="sm:max-h-[full] sm:w-full lg:h-max lg:w-max ">
               <div className="h-[38rem]  rounded-lg border border-gray-400 shadow-md m-5 overflow-y-scroll">
-                <div className="flex flex-col  items-center gap-4 bg-slate-50  p-8">
+                <div className="flex flex-col  items-center gap-4 bg-gray-50  p-8">
                   <div className="flex justify-center rounded-md p-2 ">
                     <h1 className="font-extrabold text-xl text-cyan-700 uppercase">
                       Parámetros de configuración
                     </h1>
                   </div>
-                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-slate-50 w-1/3 text-center">
+                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3 text-center">
                     <p className="p-4">
                       Activar Registro Automático de asistencía :
                     </p>
 
                     <Select options={YesOrNot} placeholder="Seleccione" />
                   </div>
-                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-slate-50 w-1/3 text-center">
+                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3 text-center">
                     <p className="p-2">
                       Configuración del control de asistencía :
                     </p>
@@ -88,7 +88,7 @@ export default function Par167() {
                       placeholder="Seleccione"
                     />
                   </div>
-                  <div className=" flex  flex-col  items-center rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-slate-50 w-1/3 text-center  ">
+                  <div className=" flex  flex-col  items-center rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3 text-center  ">
                     <p className="p-2  text-center ">
                       Rango de tiempo para el acceso, permanencia y salida del
                       estudiante:
@@ -133,7 +133,7 @@ export default function Par167() {
                       </tbody>
                     </table>
                   </div>
-                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-slate-50 w-1/3">
+                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3">
                     <p className="p-2 text-center ">
                       A que Perfiles de la institución se realizara el control
                       de Asistencia :
@@ -144,7 +144,7 @@ export default function Par167() {
                       placeholder="Seleccione"
                     />
                   </div>
-                  <div className=" flex  flex-col  items-center rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-slate-50  ">
+                  <div className=" flex  flex-col  items-center rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50  ">
                     <p className="p-2 text-center ">
                       Definir el tiempo de envió de los mensajes para el control
                       de asistencia:
@@ -178,7 +178,7 @@ export default function Par167() {
                       </tbody>
                     </table>
                   </div>
-                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-slate-50 w-1/3">
+                  <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3">
                     <p className="p-2 text-center ">
                       Pausar el Envío de Mensajes a Celulares y Correos
                       Electrónicos:
@@ -211,7 +211,7 @@ export default function Par167() {
           <div className="sm:max-h-[50%] sm:w-full lg:max-h-screen  lg:w-max overflow-y-scroll ">
             <div className="rounded-lg border border-gray-400 shadow-md m-5 ">
               <div className="flex items-center flex-col   bg-gray-100 border-solid rounded-md text-md font-bold   px-4 py-1">
-                <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-slate-50 w-1/3 ">
+                <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3 ">
                   <p className="p-2 text-center font-bold text-cyan-700  ">
                     CASOS DE REINCIDENCIA DE INASISTENCIA PARA ENVIÓ DE
                     CITACIONES A ACUDIENTES.
@@ -227,7 +227,7 @@ export default function Par167() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 stroke-cyan-700 hover:stroke-lime-500   "
+                      className="w-6 h-6 stroke-cyan-700 hover:stroke-green-500   "
                     >
                       <title>Abrir Tabla</title>
                       <path
@@ -255,7 +255,7 @@ export default function Par167() {
                             className="bg-cyan-700 border-gray-200 "
                           >
                             <td
-                              className="px-4 py-2 border text-slate-50 text-center  "
+                              className="px-4 py-2 border text-gray-50 text-center  "
                               colSpan={4}
                             >
                               INASISTENCIA INJUSTIFICADA
@@ -280,7 +280,7 @@ export default function Par167() {
                                 </th>
                               </tr>
 
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Llegadas Tarde a Clase
                                 </td>
@@ -305,14 +305,14 @@ export default function Par167() {
                               </tr>
                               <tr className="bg-sky-900 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-slate-50 text-center  "
+                                  className="px-4 py-2 border text-gray-50 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
                                   reincidencia
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td
                                   className="px-4 py-2 border  text-center  "
                                   colSpan={4}
@@ -320,7 +320,7 @@ export default function Par167() {
                                   <WysWyget />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Llegadas Tarde a la Institución
                                 </td>
@@ -345,14 +345,14 @@ export default function Par167() {
                               </tr>
                               <tr className="bg-sky-900 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-slate-50 text-center  "
+                                  className="px-4 py-2 border text-gray-50 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
                                   reincidencia
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td
                                   className="px-4 py-2 border  text-center  "
                                   colSpan={4}
@@ -360,7 +360,7 @@ export default function Par167() {
                                   <WysWyget />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Evasión de la Institución
                                 </td>
@@ -385,14 +385,14 @@ export default function Par167() {
                               </tr>
                               <tr className="bg-sky-900 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-slate-50 text-center  "
+                                  className="px-4 py-2 border text-gray-50 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
                                   reincidencia
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td
                                   className="px-4 py-2 border  text-center  "
                                   colSpan={4}
@@ -400,7 +400,7 @@ export default function Par167() {
                                   <WysWyget />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Evasión de Clases
                                 </td>
@@ -425,14 +425,14 @@ export default function Par167() {
                               </tr>
                               <tr className="bg-sky-900 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-slate-50 text-center  "
+                                  className="px-4 py-2 border text-gray-50 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
                                   reincidencia
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td
                                   className="px-4 py-2 border  text-center  "
                                   colSpan={4}
@@ -440,7 +440,7 @@ export default function Par167() {
                                   <WysWyget />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Evasión de Clases
                                 </td>
@@ -463,7 +463,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td
                                   className="px-4 py-2 border  text-center  "
                                   colSpan={4}
@@ -471,7 +471,7 @@ export default function Par167() {
                                   <WysWyget />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   No ingresó a la Institución
                                 </td>
@@ -496,14 +496,14 @@ export default function Par167() {
                               </tr>
                               <tr className="bg-sky-900 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-slate-50 text-center  "
+                                  className="px-4 py-2 border text-gray-50 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
                                   reincidencia
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td
                                   className="px-4 py-2 border  text-center  "
                                   colSpan={4}
@@ -525,7 +525,7 @@ export default function Par167() {
                             className="bg-cyan-700 border-gray-200 "
                           >
                             <td
-                              className="px-4 py-2 border text-slate-50 text-center  "
+                              className="px-4 py-2 border text-gray-50 text-center  "
                               colSpan={4}
                             >
                               INASISTENCIA JUSTIFICADA
@@ -549,7 +549,7 @@ export default function Par167() {
                                   Reincidencia
                                 </th>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Cita en Coordinación
                                 </td>
@@ -572,7 +572,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Cita en Delegación Académica
                                 </td>
@@ -595,7 +595,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Cita en Delegación Deportiva
                                 </td>
@@ -618,7 +618,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Servicio Social
                                 </td>
@@ -641,7 +641,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Servicio Social
                                 </td>
@@ -664,7 +664,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Con incapacidad
                                 </td>
@@ -687,7 +687,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Con Permiso
                                 </td>
@@ -710,7 +710,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Cita en Orientación Escolar
                                 </td>
@@ -733,7 +733,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Semi-Escolarización
                                 </td>
@@ -756,7 +756,7 @@ export default function Par167() {
                                   />
                                 </td>
                               </tr>
-                              <tr className="bg-slate-50 border-gray-200 ">
+                              <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Trabajo en casa por guías Inasistencia
                                   Justificada
@@ -793,7 +793,7 @@ export default function Par167() {
                       e.preventDefault;
                       setModalParam2(false);
                     }}
-                    className="w-40 my-8 rounded-md bg-cyan-700 shadow-lg shadow-cyan-500 hover:bg-red-700 p-2 hover:shadow-lg hover:shadow-red-500 text-slate-100"
+                    className="w-40 my-8 rounded-md bg-cyan-700 shadow-lg shadow-cyan-500 hover:bg-red-700 p-2 hover:shadow-lg hover:shadow-red-500 text-gray-100"
                   >
                     Cerrar
                   </button>
@@ -812,7 +812,7 @@ export default function Par167() {
                   e.preventDefault;
                   alert("Es necesario Traer los Grados de la Base de Datos");
                 }}
-                className="h-[36rem] rounded-lg border border-gray-400 shadow-md m-5 bg-slate-50  "
+                className="h-[36rem] rounded-lg border border-gray-400 shadow-md m-5 bg-gray-50  "
               >
                 <div className="flex justify-center  flex-col">
                   <p className="p-2  font-bold text-center text-cyan-700 ">
@@ -846,7 +846,7 @@ export default function Par167() {
                       e.preventDefault;
                       setModalParam3(false);
                     }}
-                    className="rounded-md w-40 h-8 bg-cyan-700 hover:bg-red-700 text-slate-50 shadow-lg shadow-cyan-500 hover:shadow-lg hover:shadow-red-500 "
+                    className="rounded-md w-40 h-8 bg-cyan-700 hover:bg-red-700 text-gray-50 shadow-lg shadow-cyan-500 hover:shadow-lg hover:shadow-red-500 "
                   >
                     {" "}
                     Cerrar
@@ -879,7 +879,7 @@ export default function Par167() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 stroke-cyan-700 hover:stroke-lime-700"
+                className="w-6 h-6 stroke-cyan-700 hover:stroke-green-500"
               >
                 <path
                   strokeLinecap="round"
@@ -907,7 +907,7 @@ export default function Par167() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 stroke-cyan-700 hover:stroke-lime-700"
+                className="w-6 h-6 stroke-cyan-700 hover:stroke-green-500"
               >
                 <path
                   strokeLinecap="round"
@@ -935,7 +935,7 @@ export default function Par167() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500 "
+                className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500 "
               >
                 Abrir Modal
                 <path

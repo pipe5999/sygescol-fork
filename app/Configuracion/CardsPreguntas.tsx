@@ -5,8 +5,8 @@ export default function CardsPreguntas({ children, titulo, parrafo }: any) {
 
   return (
     <div className="">
-      <div className="w-full md:w-72 justify-center items-center bg-gray-50  border-gray-300 shadow-lg rounded-lg flex flex-col ">
-        <div className="w-full flex items-center justify-center bg-sky-900 p-4 rounded-t-lg rounded-b-lg border-dotted border-2 border-white ">
+      <div className="w-full md:w-72 justify-center items-center border-gray-300 shadow-lg rounded-lg flex flex-col ">
+        <div className="w-full flex items-center justify-center  bg-light-blue-800 p-4 rounded-t-lg rounded-b-lg border-dotted border-2 border-white ">
           <div
             onClick={() => {
               setShowPreguntas(!ShowPreguntas);
@@ -27,10 +27,10 @@ export default function CardsPreguntas({ children, titulo, parrafo }: any) {
           </div>
         </div>
         {ShowPreguntas && (
-          <div>
+          <div className="bg-gray-50">
             <div className="w-full p-4 justify-start grid ">
-              <div>
-                <p className="max-w-72  text-justify font-semibold ">
+              <div className="">
+                <p className="max-w-72  text-justify font-semibold text-gray-700">
                   {parrafo}
                 </p>
               </div>

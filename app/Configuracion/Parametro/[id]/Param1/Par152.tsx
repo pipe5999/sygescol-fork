@@ -253,7 +253,7 @@ export default function Par152() {
                 type="text"
                 name=""
                 id=""
-                className="h-8 rounded-md shadow-lg ring-1 ring-slate-200"
+                className="h-8 rounded-md shadow-lg ring-1 ring-gray-200"
               />
             </div>
           )}
@@ -324,25 +324,25 @@ export default function Par152() {
               small={"/Parametros/planilla1.1.png"}
               large={"/Parametros/planilla1.1.png"}
               alt="Planilla 1.1!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
             <ModalImage
               small={"/Parametros/planilla1.2.png"}
               large={"/Parametros/planilla1.2.png"}
               alt="Planilla 1.2!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
             <ModalImage
               small={"/Parametros/planilla1.3.png"}
               large={"/Parametros/planilla1.3.png"}
               alt="Planilla 1.3!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
             <ModalImage
               small={"/Parametros/planilla1.4.png"}
               large={"/Parametros/planilla1.4.png"}
               alt="Planilla 1.4!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
           </div>
           <Select options={TipoPlanilla} placeholder="Seleccione" />
@@ -354,25 +354,25 @@ export default function Par152() {
               small={"/Parametros/planilla2.1.png"}
               large={"/Parametros/planilla2.1.png"}
               alt="Planilla 2.1!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
             <ModalImage
               small={"/Parametros/planilla2.2.png"}
               large={"/Parametros/planilla2.2.png"}
               alt="Planilla 2.2!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
             <ModalImage
               small={"/Parametros/planilla2.3.png"}
               large={"/Parametros/planilla2.3.png"}
               alt="Planilla 2.3!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
             <ModalImage
               small={"/Parametros/planilla2.4.png"}
               large={"/Parametros/planilla2.4.png"}
               alt="Planilla 2.4!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
           </div>
           <Select options={TipoPlanillaPreescolar} placeholder="Seleccione" />
@@ -402,7 +402,7 @@ export default function Par152() {
               small={"/Parametros/EscuelaNueva.png"}
               large={"/Parametros/EscuelaNueva.png"}
               alt="¡Planilla Escuela Nueva!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />{" "}
           </div>
           <p className="text-justify">
@@ -414,7 +414,7 @@ export default function Par152() {
               small={"/Parametros/PlanillaAceleracion.png"}
               large={"/Parametros/PlanillaAceleracion.png"}
               alt="¡Planilla Aceleración!"
-              className="h-8 w-8 rounded-full ring-2 ring-lime-500"
+              className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
           </div>
           <p className="text-justify">
@@ -500,7 +500,7 @@ export default function Par152() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+                  className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
                 >
                   <title>Ingreso de Areas y Porcentajes </title>
                   <path

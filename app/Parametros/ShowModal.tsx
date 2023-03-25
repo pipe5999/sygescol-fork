@@ -131,7 +131,7 @@ export default function ShowModal({
                 onClick={() => {
                   setVisible(false);
                 }}
-                className=" w28 rounded-full bg-cyan-900 p-2 px-4 text-white hover:bg-red-600 "
+                className=" w-28 rounded-full bg-cyan-800 shadow-lg shadow-cyan-500 p-2 px-4 text-white hover:bg-red-600 hover:shadow_lg hover:shadow-red-700"
               >
                 {" "}
                 Cerrar

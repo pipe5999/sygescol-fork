@@ -30,7 +30,7 @@ export default function Par255() {
       {ModalParam1 && (
         <div className=" fixed inset-0 z-50  bg-gray-900 bg-opacity-50 flex justify-center items-center">
           <div className="sm:max-h-[full] sm:w-full lg:max-h-full">
-            <div className="h-[36rem] rounded-lg border border-gray-400 shadow-md m-5 bg-slate-50  ">
+            <div className="h-[36rem] rounded-lg border border-gray-400 shadow-md m-5 bg-gray-50  ">
               <div className="flex justify-center m-8">
                 {" "}
                 <table className=" table-auto rounded-lg p-4 ">
@@ -46,10 +46,10 @@ export default function Par255() {
                   </thead>
                   <tbody className="bg-gray-200  border-gray-100 hover:bg-violet-300">
                     <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
-                      <td className="px-4 py-2 border text-slate-700 uppercase">
+                      <td className="px-4 py-2 border text-gray-700 uppercase">
                         <input type="number" placeholder="Edad en Años" />
                       </td>
-                      <td className="px-4 py-2 border text-slate-700 uppercase">
+                      <td className="px-4 py-2 border text-gray-700 uppercase">
                         Primero
                       </td>
                     </tr>
@@ -90,7 +90,7 @@ export default function Par255() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-8 h-8 stroke-cyan-800 hover:stroke-lime-500"
+              className="w-8 h-8 stroke-cyan-800 hover:stroke-green-500"
             >
               <title>Abrir Tabla</title>
               <path
