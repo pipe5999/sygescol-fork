@@ -25,6 +25,9 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
     let InsertBulkInsertNotas =
       "INSERT INTO rel_notas_nuevo_sistema(id_accion,id_matri,id_periodo,id_cga,valoracion,observacion,fecha_registro) VALUES";
 
+    let InsertBulkAuditoriaPeriodo =
+      "INSERT INTO auditoria_periodo(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha) VALUES";
+
     const ListDcneQueri: any = conexion.query(
       `SELECT cga.i as CgaId,dcne.i as DocenteId,dcne.dcne_num_docu as Documento, CONCAT (dcne.dcne_nom1," ",dcne.dcne_nom2) as Nombre, CONCAT (dcne.dcne_ape1," ",dcne.dcne_ape2) as Apellidos,v_grupos.grupo_id as GrupoId,v_grupos.gao_nombre, v_grupos.grupo_sede,v_grupos.jornada_id, v_grupos.grupo_nombre AS gradoGrupo  FROM cga INNER JOIN dcne ON dcne.i=cga.g INNER JOIN v_grupos ON v_grupos.grupo_id=cga.b WHERE v_grupos.grupo_id in (${gruposFind})`
     );
@@ -125,7 +128,9 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         });
 
         let NewArrayEstudiantes = estudiantes[0]?.map((estu: any) => {
-          // let showNotas: any = [];
+          let MatriculaId = "";
+
+          let showNotas: any = [];
 
           const NotasEstudiante = NewNotas?.filter((nota: any) => {
             return (
@@ -146,10 +151,12 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
               );
             });
 
-            // showNotas = NotasFaltantes;
+            showNotas = NotasFaltantes;
             if (NotasFaltantes?.length > 0) {
+              MatriculaId = `${MatriculaId}${estu?.matricula},`;
               NotasFaltantess.push({
                 ...estu,
+
                 NotasFaltantes: NotasFaltantes || [],
               });
             }
@@ -169,8 +176,9 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           estu = {
             ...estu,
             Notas: NotasEstudiante || [],
-            // showNotas: showNotas || [],
+            NotasFaltantes: showNotas || [],
             LengthRes: LengthRes,
+            MatriculaId: MatriculaId,
           };
           return estu;
         });
@@ -255,7 +263,6 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       }, {});
 
       //  Generate build insert
-
       if (NotasFaltantess.length > 0) {
         NotasFaltantess.map((estu: any) => {
           if (estu?.NotasFaltantes?.length > 0) {
@@ -269,7 +276,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           }
         });
 
+        InsertBulkAuditoriaPeriodo = InsertBulkAuditoriaPeriodo.slice(0, -1);
+
         InsertBulkInsertNotas = InsertBulkInsertNotas.slice(0, -1);
+
+        console.log("InsertBulkInsertNotas", InsertBulkInsertNotas);
 
         const [InsertNota]: any = await conexion.query(InsertBulkInsertNotas);
 
