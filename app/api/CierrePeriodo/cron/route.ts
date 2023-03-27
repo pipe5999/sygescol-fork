@@ -8,16 +8,21 @@ export async function GET() {
     const colegios = School();
     let DataResponse: any = [];
 
+    let Grupos: any = [];
+
     if (colegios?.length > 0) {
       let key = 0;
       for (const colegio of colegios) {
         let DateCierrePeriodo: any = await VerificarFechas(key);
+        Grupos = [...Grupos, DateCierrePeriodo?.GruposCerrar];
 
         if (DateCierrePeriodo?.GruposCerrar?.length) {
           let DateCierreConfig: any = await CierrePeriodo(
             colegio,
             DateCierrePeriodo?.GruposCerrar
           );
+
+          // console.log(DateCierreConfig);
 
           if (DateCierreConfig?.Docentes.length > 0) {
             DataResponse = [...DataResponse, DateCierreConfig];
@@ -27,7 +32,14 @@ export async function GET() {
       }
     }
     return NextResponse.json(
-      { body: DataResponse || "No hay información" },
+      {
+        body: {
+          DataResponse,
+          Grupos,
+        },
+
+        // ,
+      },
       {
         status: 200,
       }

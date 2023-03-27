@@ -10,12 +10,20 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     let Pendientes: any = [];
 
+    // fecha actual  y hora actual formato 2021-05-20 12:00:00
+    const dateActual = new Date();
+    const dateActualFormat = `${dateActual.getFullYear()}-${
+      dateActual.getMonth() + 1
+    }-${dateActual.getDate()} ${dateActual.getHours()}:${dateActual.getMinutes()}:${dateActual.getSeconds()}`;
+
     gruposFind = gruposFind.substring(0, gruposFind.length - 1);
 
     const { periodo } = grupos.find((grup: any) => grup.periodo);
-    console.log(periodo);
 
     const conexion = conecctions[colegio.value];
+
+    let InsertBulkInsertNotas =
+      "INSERT INTO rel_notas_nuevo_sistema(id_accion,id_matri,id_periodo,id_cga,valoracion,observacion,fecha_registro) VALUES";
 
     const ListDcneQueri: any = conexion.query(
       `SELECT cga.i as CgaId,dcne.i as DocenteId,dcne.dcne_num_docu as Documento, CONCAT (dcne.dcne_nom1," ",dcne.dcne_nom2) as Nombre, CONCAT (dcne.dcne_ape1," ",dcne.dcne_ape2) as Apellidos,v_grupos.grupo_id as GrupoId,v_grupos.gao_nombre, v_grupos.grupo_sede,v_grupos.jornada_id, v_grupos.grupo_nombre AS gradoGrupo  FROM cga INNER JOIN dcne ON dcne.i=cga.g INNER JOIN v_grupos ON v_grupos.grupo_id=cga.b WHERE v_grupos.grupo_id in (${gruposFind})`
@@ -78,6 +86,8 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         DcneFindId = `${DcneFindId}${listDcne.CgaId},`;
       });
 
+      let NotasFaltantess: any = [];
+
       DcneFindId = DcneFindId.substring(0, DcneFindId.length - 1);
 
       const [DcneQueryFordeb]: any = await conexion.query(
@@ -85,6 +95,10 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       );
 
       const newData = ListDcne[0]?.reduce((acc: any, item: any) => {
+        let LengthRes = acciones[0].filter((accion: any) => {
+          return accion.id_grupo == item.GrupoId && accion.cga == item.CgaId;
+        });
+
         const AsignaturaDcne = asignaturas[0]?.find(
           (asig: any) =>
             item?.DocenteId?.toString()?.includes(asig?.docente?.toString()) &&
@@ -111,6 +125,8 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         });
 
         let NewArrayEstudiantes = estudiantes[0]?.map((estu: any) => {
+          // let showNotas: any = [];
+
           const NotasEstudiante = NewNotas?.filter((nota: any) => {
             return (
               nota?.matricula
@@ -119,6 +135,25 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
               nota?.cga.toString().includes(item?.CgaId.toString())
             );
           });
+
+          if (NotasEstudiante.length != LengthRes.length) {
+            let NotasFaltantes = LengthRes?.filter((accion: any) => {
+              return !NotasEstudiante.find(
+                (nota: any) =>
+                  nota?.idRelacion == accion?.idRelacion &&
+                  nota?.cga == item?.CgaId &&
+                  nota.valoracion
+              );
+            });
+
+            // showNotas = NotasFaltantes;
+            if (NotasFaltantes?.length > 0) {
+              NotasFaltantess.push({
+                ...estu,
+                NotasFaltantes: NotasFaltantes || [],
+              });
+            }
+          }
 
           if (NotasEstudiante?.length == 0) {
             Pendientes.push({
@@ -134,6 +169,8 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           estu = {
             ...estu,
             Notas: NotasEstudiante || [],
+            // showNotas: showNotas || [],
+            LengthRes: LengthRes,
           };
           return estu;
         });
@@ -154,6 +191,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             },
             Estudiantes: EstudianteGrupo,
             Asignaturas: AsignaturaDcne,
+            CantNotas: LengthRes.length,
           };
         }
 
@@ -216,12 +254,32 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         return acc;
       }, {});
 
-      console.log(Pendientes);
+      //  Generate build insert
+
+      if (NotasFaltantess.length > 0) {
+        NotasFaltantess.map((estu: any) => {
+          if (estu?.NotasFaltantes?.length > 0) {
+            estu?.NotasFaltantes.map((nota: any) => {
+              InsertBulkInsertNotas += `('${nota.idPrincipal}','${
+                estu?.matricula
+              }','${periodo}','${nota.cga}','${
+                GetConfiguracion.notaSistema || "0.1"
+              }','sistema','${dateActualFormat}'),`;
+            });
+          }
+        });
+
+        InsertBulkInsertNotas = InsertBulkInsertNotas.slice(0, -1);
+
+        const [InsertNota]: any = await conexion.query(InsertBulkInsertNotas);
+
+        console.log("InsertNota", InsertNota);
+      }
 
       if (Object.values(newData).length) {
         return {
           Docentes: Object.values(newData),
-          // Pendientes,
+          NotasFaltantess: NotasFaltantess,
         };
       }
     }
