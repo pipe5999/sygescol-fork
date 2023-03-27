@@ -159,7 +159,7 @@ export default function Par93() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+              className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
             >
               <title>Abrir Modal</title>
               <path
@@ -310,7 +310,7 @@ export default function Par93() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+                className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
               >
                 <title>Abrir Componente</title>
                 <path
@@ -349,7 +349,7 @@ export default function Par93() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+                className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
               >
                 <title>Abrir Componente</title>
                 <path
@@ -443,7 +443,7 @@ export default function Par93() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+              className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
             >
               <path
                 strokeLinecap="round"
@@ -491,7 +491,7 @@ export default function Par93() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+              className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
             >
               <path
                 strokeLinecap="round"
@@ -526,7 +526,7 @@ export default function Par93() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+              className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
             >
               <path
                 strokeLinecap="round"

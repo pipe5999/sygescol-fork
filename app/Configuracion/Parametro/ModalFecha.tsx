@@ -84,7 +84,7 @@ const ModalFecha = ({ setShowModalFecha }: any) => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500 text-center"
+                      className="w-6 h-6 stroke-cyan-800 hover:stroke-green-400 text-center"
                     >
                       <path
                         strokeLinecap="round"

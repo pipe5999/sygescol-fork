@@ -13,7 +13,7 @@ export default function HeaderParam({ infoParams, newText }: any) {
           dangerouslySetInnerHTML={{
             __html: `${infoParams?.infoParametros?.TipoParam || ""}`,
           }}
-          className="sm:text-sm  lg:fond-bold lg:text-lg text-center text-slate-50  m-1"
+          className="sm:text-sm  lg:fond-bold lg:text-lg text-center text-gray-50  m-1"
         ></div>
       </div>
     </div>
