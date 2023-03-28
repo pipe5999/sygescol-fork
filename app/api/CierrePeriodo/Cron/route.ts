@@ -34,8 +34,9 @@ export async function GET() {
     return NextResponse.json(
       {
         body: {
-          DataResponse,
+          // DataResponse,
           Grupos,
+          Msn: "Cierre de periodo realizado",
         },
 
         // ,
