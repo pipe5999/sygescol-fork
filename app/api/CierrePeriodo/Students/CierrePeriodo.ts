@@ -303,10 +303,6 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         const [InsertAuditoriaPeriodo]: any = await conexion.query(
           InsertBulkAuditoriaPeriodo
         );
-
-        console.log("InsertAuditoriaPeriodo", InsertAuditoriaPeriodo);
-
-        console.log("InsertNota", InsertNota);
       }
 
       if (Object.values(newData).length) {
