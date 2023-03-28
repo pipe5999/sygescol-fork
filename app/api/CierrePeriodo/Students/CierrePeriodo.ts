@@ -120,11 +120,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         );
 
         let NewNotas = notas.map((nota: any) => {
-          let newData = acciones[0].find((accion: any) => {
+          let newData = acciones.find((accion: any) => {
             return (
-              accion.idPrincipal == nota.idRelacion &&
-              accion.cga == item.CgaId &&
-              accion.id_grupo == item.GrupoId
+              accion?.idPrincipal == nota.idRelacion &&
+              accion?.cga == item.CgaId &&
+              accion?.id_grupo == item.GrupoId
             );
           });
 
