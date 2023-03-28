@@ -8,6 +8,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import Tabla from "./Tabla";
+import BotonPermiso from "./BotonPermiso";
 
 type Component = {
   text: string;
@@ -33,14 +34,14 @@ const BodyComponent = () => {
     {
       text: "Grupo 6-02",
       variant: "gradient",
-      title: "Pdts. Cierre Grupo 6-02 periodo 3",
+      title: "Pdts. Cierre Grupo 6-02 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
       text: "Grupo 6-03",
       variant: "gradient",
-      title: "Pdts. Cierre Grupo 6-03 periodo 4",
+      title: "Pdts. Cierre Grupo 6-03 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
@@ -48,7 +49,7 @@ const BodyComponent = () => {
     {
       text: "Grupo 7-01",
       variant: "gradient",
-      title: "Pdts. Cierre Grupo 7-01 periodo 1",
+      title: "Pdts. Cierre Grupo 7-01 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.tro",
     },
@@ -62,21 +63,21 @@ const BodyComponent = () => {
     {
       text: "Grupo 7-03",
       variant: "gradient",
-      title: "Pdts. Cierre Grupo 7-03 periodo 3",
+      title: "Pdts. Cierre Grupo 7-03 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
       text: "Grupo 7-04",
       variant: "gradient",
-      title: "Pdts. Cierre Grupo 7-04 periodo 4",
+      title: "Pdts. Cierre Grupo 7-04 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
     {
       text: "Grupo 8-01",
       variant: "gradient",
-      title: "Pdts. Cierre Grupo 8-01 periodo 1",
+      title: "Pdts. Cierre Grupo 8-01 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
@@ -90,7 +91,7 @@ const BodyComponent = () => {
     {
       text: "Grupo 8-03",
       variant: "gradient",
-      title: "Pdts. Cierre Grupo 8-03 periodo 3",
+      title: "Pdts. Cierre Grupo 8-03 periodo 2",
       content:
         " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
     },
@@ -98,7 +99,7 @@ const BodyComponent = () => {
 
   return (
     <>
-      <div className="mx-10">
+      <div className="mx-16">
         <Fragment>
           {buttons.map((button, index) => (
             <Button
@@ -153,6 +154,9 @@ const BodyComponent = () => {
             </DialogFooter>
           </Dialog>
         </Fragment>
+        <div className="mt-10 text-center">
+          <BotonPermiso />
+        </div>
       </div>
     </>
   );
