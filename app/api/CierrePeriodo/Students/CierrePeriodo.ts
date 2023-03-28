@@ -81,11 +81,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     const GetConfiguracion: any = await CheckConfig(colegio.value);
 
-    console.log("ListDcne --------------->", ListDcne[0]);
-
     if (GetConfiguracion?.forder == "S") {
-      // const [ListDcne]: [any] = await Promise.all([DcneQuery]);
-
       let DcneFindId = "";
       ListDcne[0]?.find((listDcne: any) => {
         DcneFindId = `${DcneFindId}${listDcne?.CgaId || 0},`;
@@ -95,12 +91,15 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
       DcneFindId = DcneFindId.substring(0, DcneFindId.length - 1);
 
-      const [DelateNotes]: any = await conexion.query(
+      const DelateNotesQuery: any = conexion.query(
         `DELETE FROM rel_notas_nuevo_sistema WHERE id_cga in (${DcneFindId}) and  id_periodo='${periodo}' and observacion LIKE '%sistema%'`
       );
-      const [DelateAuditoriaPeriodos]: any = await conexion.query(
+      const DelateAuditoriaPeriodosQuery: any = conexion.query(
         `DELETE FROM auditoriaPeriodos WHERE cga_id in (${DcneFindId}) and per_id='${periodo}'`
       );
+
+      const [[DelateNotes], [DelateAuditoriaPeriodos]]: [any, any] =
+        await Promise.all([DelateNotesQuery, DelateAuditoriaPeriodosQuery]);
 
       const [DcneQueryFordeb]: any = await conexion.query(
         `SELECT fordeb.fordeb_id as FordebId,fordeb.cga_id ,fordeb.fordeb_tipo,fordeb_banco.asignatura_id,fordeb_banco.dcne_id, fordeb_banco.fordeb_desc ,fordeb_banco.peri_id, fordeb.esca_nac_id AS escala,fordeb_banco.fordeb_id as IdBanco FROM fordeb LEFT JOIN fordeb_banco ON (fordeb_banco.fordeb_id=fordeb.fordeb_subid) WHERE fordeb.cga_id in (${DcneFindId}) and fordeb_banco.peri_id='${periodo}'`
