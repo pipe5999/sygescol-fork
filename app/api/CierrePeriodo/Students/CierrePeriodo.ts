@@ -79,7 +79,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       competenciasQueri,
     ]);
 
-    const GetConfiguracion: any = await CheckConfig(colegio.value);
+    const GetConfiguracion: any = await CheckConfig(colegio?.value);
 
     if (GetConfiguracion?.forder == "S") {
       let DcneFindId = "";
@@ -123,8 +123,8 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           let newData = acciones.find((accion: any) => {
             return (
               accion?.idPrincipal == nota.idRelacion &&
-              accion?.cga == item.CgaId &&
-              accion?.id_grupo == item.GrupoId
+              accion?.cga == item?.CgaId &&
+              accion?.id_grupo == item?.GrupoId
             );
           });
 
