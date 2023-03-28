@@ -60,14 +60,14 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           ORDER BY proceso_evaluacion_banco.proeva_cod`);
 
     const [
-      ListDcne,
-      estudiantes,
-      asignaturas,
-      notas,
-      acciones,
-      docentes,
-      direccionGrupo,
-      competencias,
+      [ListDcne],
+      [estudiantes],
+      [asignaturas],
+      [notas],
+      [acciones],
+      [docentes],
+      [direccionGrupo],
+      [competencias],
     ]: [any, any, any, any, any, any, any, any] = await Promise.all([
       ListDcneQueri,
       estudiantesQueri,
@@ -83,7 +83,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     if (GetConfiguracion?.forder == "S") {
       let DcneFindId = "";
-      ListDcne[0]?.find((listDcne: any) => {
+      ListDcne?.find((listDcne: any) => {
         DcneFindId = `${DcneFindId}${listDcne?.CgaId || 0},`;
       });
 
@@ -105,12 +105,12 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         `SELECT fordeb.fordeb_id as FordebId,fordeb.cga_id ,fordeb.fordeb_tipo,fordeb_banco.asignatura_id,fordeb_banco.dcne_id, fordeb_banco.fordeb_desc ,fordeb_banco.peri_id, fordeb.esca_nac_id AS escala,fordeb_banco.fordeb_id as IdBanco FROM fordeb LEFT JOIN fordeb_banco ON (fordeb_banco.fordeb_id=fordeb.fordeb_subid) WHERE fordeb.cga_id in (${DcneFindId}) and fordeb_banco.peri_id='${periodo}'`
       );
 
-      const newData = ListDcne[0]?.reduce((acc: any, item: any) => {
-        let LengthRes = acciones[0].filter((accion: any) => {
+      const newData = ListDcne?.reduce((acc: any, item: any) => {
+        let LengthRes = acciones.filter((accion: any) => {
           return accion.id_grupo == item.GrupoId && accion.cga == item.CgaId;
         });
 
-        const AsignaturaDcne = asignaturas[0]?.find(
+        const AsignaturaDcne = asignaturas?.find(
           (asig: any) =>
             item?.DocenteId?.toString()?.includes(asig?.docente?.toString()) &&
             item?.CgaId?.toString()?.includes(asig?.cga?.toString())
@@ -119,7 +119,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           (dcne: any) => dcne.cga_id == item.CgaId
         );
 
-        let NewNotas = notas[0].map((nota: any) => {
+        let NewNotas = notas.map((nota: any) => {
           let newData = acciones[0].find((accion: any) => {
             return (
               accion.idPrincipal == nota.idRelacion &&
@@ -135,7 +135,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           return nota;
         });
 
-        let NewArrayEstudiantes = estudiantes[0]?.map((estu: any) => {
+        let NewArrayEstudiantes = estudiantes?.map((estu: any) => {
           let MatriculaId = "";
 
           let showNotas: any = [];
@@ -144,12 +144,12 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             return (
               nota?.matricula
                 ?.toString()
-                .includes(estu?.matricula.toString()) &&
+                .includes(estu?.matricula?.toString()) &&
               nota?.cga.toString().includes(item?.CgaId.toString())
             );
           });
 
-          if (NotasEstudiante.length != LengthRes.length) {
+          if (NotasEstudiante?.length != LengthRes?.length) {
             let NotasFaltantes = LengthRes?.filter((accion: any) => {
               return !NotasEstudiante.find(
                 (nota: any) =>

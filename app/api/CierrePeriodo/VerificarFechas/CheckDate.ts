@@ -28,15 +28,18 @@ export default async function VerificarFechas(school: any) {
       if (selectSchool?.label == "Escuela Superior Normal de Ibagué") {
         // console.log("selectSchool", selectSchool);
 
-        const [GradosNivel]: any = await conexion.query(
+        const GradosNivelQuery: any = conexion.query(
           `SELECT grupo_nombre, grupo_sede, nivel, v_grupos.grupo_id as GrupoId FROM v_grupos INNER JOIN grados ON v_grupos.grado_base = grados.id_grado ORDER BY grados.nivel ASC, v_grupos.grupo_sede ASC
             `
         );
 
-        const [periodo_academicos]: any = await conexion.query(
+        const periodo_academicosQuery: any = conexion.query(
           `SELECT periodo_academicos.nivel,periodo_academicos.fin_ing_notas,per_id FROM periodo_academicos        
             `
         );
+
+        const [[GradosNivel], [periodo_academicos]]: [any, any] =
+          await Promise.all([GradosNivelQuery, periodo_academicosQuery]);
 
         const DataNormalizada = GradosNivel?.reduce((acc: any, el: any) => {
           let key = el.grupo_nombre;
