@@ -26,7 +26,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       "INSERT INTO rel_notas_nuevo_sistema(id_accion,id_matri,id_periodo,id_cga,valoracion,observacion,fecha_registro) VALUES";
 
     let InsertBulkAuditoriaPeriodo =
-      "INSERT INTO auditoria_periodo(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha) VALUES";
+      "INSERT INTO auditoriaPeriodos(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha,estado) VALUES";
 
     const ListDcneQueri: any = conexion.query(
       `SELECT cga.i as CgaId,dcne.i as DocenteId,dcne.dcne_num_docu as Documento, CONCAT (dcne.dcne_nom1," ",dcne.dcne_nom2) as Nombre, CONCAT (dcne.dcne_ape1," ",dcne.dcne_ape2) as Apellidos,v_grupos.grupo_id as GrupoId,v_grupos.gao_nombre, v_grupos.grupo_sede,v_grupos.jornada_id, v_grupos.grupo_nombre AS gradoGrupo  FROM cga INNER JOIN dcne ON dcne.i=cga.g INNER JOIN v_grupos ON v_grupos.grupo_id=cga.b WHERE v_grupos.grupo_id in (${gruposFind})`
@@ -81,17 +81,26 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     const GetConfiguracion: any = await CheckConfig(colegio.value);
 
+    console.log("ListDcne --------------->", ListDcne[0]);
+
     if (GetConfiguracion?.forder == "S") {
       // const [ListDcne]: [any] = await Promise.all([DcneQuery]);
 
       let DcneFindId = "";
       ListDcne[0]?.find((listDcne: any) => {
-        DcneFindId = `${DcneFindId}${listDcne.CgaId},`;
+        DcneFindId = `${DcneFindId}${listDcne?.CgaId || 0},`;
       });
 
       let NotasFaltantess: any = [];
 
       DcneFindId = DcneFindId.substring(0, DcneFindId.length - 1);
+
+      const [DelateNotes]: any = await conexion.query(
+        `DELETE FROM rel_notas_nuevo_sistema WHERE id_cga in (${DcneFindId}) and  id_periodo='${periodo}' and observacion LIKE '%sistema%'`
+      );
+      const [DelateAuditoriaPeriodos]: any = await conexion.query(
+        `DELETE FROM auditoriaPeriodos WHERE cga_id in (${DcneFindId}) and per_id='${periodo}'`
+      );
 
       const [DcneQueryFordeb]: any = await conexion.query(
         `SELECT fordeb.fordeb_id as FordebId,fordeb.cga_id ,fordeb.fordeb_tipo,fordeb_banco.asignatura_id,fordeb_banco.dcne_id, fordeb_banco.fordeb_desc ,fordeb_banco.peri_id, fordeb.esca_nac_id AS escala,fordeb_banco.fordeb_id as IdBanco FROM fordeb LEFT JOIN fordeb_banco ON (fordeb_banco.fordeb_id=fordeb.fordeb_subid) WHERE fordeb.cga_id in (${DcneFindId}) and fordeb_banco.peri_id='${periodo}'`
@@ -183,9 +192,20 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           return estu;
         });
 
-        const EstudianteGrupo = NewArrayEstudiantes.filter((estu: any) => {
+        let EstudianteGrupo = NewArrayEstudiantes.filter((estu: any) => {
           return estu?.grupoId == item?.GrupoId;
         });
+
+        let EstudiIdMatricula = "";
+        EstudianteGrupo?.find((estu: any) => {
+          if (estu?.NotasFaltantes?.length > 0) {
+            EstudiIdMatricula = `${EstudiIdMatricula}${estu.matricula},`;
+          }
+        });
+
+        if (EstudiIdMatricula.length > 0) {
+          InsertBulkAuditoriaPeriodo += `('${item.GrupoId}','${periodo}','${item.CgaId}','${item.DocenteId}','${EstudiIdMatricula}','El sistema genero las notas faltantes','calificaciones','${dateActualFormat}','1'),`;
+        }
 
         const key = `${item.DocenteId}`;
 
@@ -223,20 +243,20 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           });
         }
 
-        if (acc[key].Fordeb?.Fortalezas.length == 0) {
+        if (acc[key].Fordeb?.Fortalezas?.length == 0) {
           Pendientes.push({
             ...item,
             mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra fortalezas en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
           });
         }
 
-        if (acc[key].Fordeb?.Debilidades.length == 0) {
+        if (acc[key].Fordeb?.Debilidades?.length == 0) {
           Pendientes.push({
             ...item,
             mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
           });
         }
-        if (acc[key].Fordeb?.Recomentaciones.length == 0) {
+        if (acc[key].Fordeb?.Recomentaciones?.length == 0) {
           Pendientes.push({
             ...item,
             mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra recomendaciones en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
@@ -277,12 +297,14 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         });
 
         InsertBulkAuditoriaPeriodo = InsertBulkAuditoriaPeriodo.slice(0, -1);
-
         InsertBulkInsertNotas = InsertBulkInsertNotas.slice(0, -1);
 
-        console.log("InsertBulkInsertNotas", InsertBulkInsertNotas);
-
         const [InsertNota]: any = await conexion.query(InsertBulkInsertNotas);
+        const [InsertAuditoriaPeriodo]: any = await conexion.query(
+          InsertBulkAuditoriaPeriodo
+        );
+
+        console.log("InsertAuditoriaPeriodo", InsertAuditoriaPeriodo);
 
         console.log("InsertNota", InsertNota);
       }
