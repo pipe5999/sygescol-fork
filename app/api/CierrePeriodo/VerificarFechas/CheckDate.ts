@@ -2,8 +2,6 @@ import { conecctions } from "../../../../utils/Conexions";
 import School from "../../../../utils/School";
 
 export default async function VerificarFechas(school: any) {
-  console.log("school", school);
-
   try {
     const UtilsSchool = School();
 

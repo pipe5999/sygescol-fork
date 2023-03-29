@@ -8,6 +8,7 @@ const School = () => [
   { label: "I.E.T. Sagrada Familia", value: 1, TipoColegio: "Antiguo" },
   { label: "I.E.T. Joaquín París", value: 6, TipoColegio: "Nuevo" },
   { label: "I.E.T Francisco de Miranda", value: 7, TipoColegio: "Antiguo" },
+  { label: "I.E Laureles", value: 9, TipoColegio: "Nuevo" },
   {
     label: "I.E. Miguel de Cervantes Saavedra",
     value: 8,
