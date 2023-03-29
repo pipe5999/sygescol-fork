@@ -24,12 +24,23 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     let InsertBulkInsertNotas =
       "INSERT INTO rel_notas_nuevo_sistema(id_accion,id_matri,id_periodo,id_cga,valoracion,observacion,fecha_registro) VALUES";
+    let NotasBoolean = false;
 
     let InsertBulkAuditoriaPeriodo =
       "INSERT INTO auditoriaPeriodos(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha,estado) VALUES";
 
     let InsertBulkForder =
       "INSERT INTO auditoriaPeriodos(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha,estado) VALUES";
+
+    let ForderBoolean = false;
+
+    let InsertBulkCompetenciaDcne =
+      "INSERT INTO auditoriaPeriodos(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha,estado) VALUES";
+    let CompetenciaBolean = false;
+
+    let InsertBulkComportamiento =
+      "INSERT INTO auditoriaPeriodos(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha,estado) VALUES";
+    let ComportabmientoBolean = false;
 
     const [ListDcne]: any = await conexion.query(
       `SELECT cga.i as CgaId,dcne.i as DocenteId,dcne.dcne_num_docu as Documento, CONCAT (dcne.dcne_nom1," ",dcne.dcne_nom2) as Nombre, CONCAT (dcne.dcne_ape1," ",dcne.dcne_ape2) as Apellidos,v_grupos.grupo_id as GrupoId,v_grupos.gao_nombre, v_grupos.grupo_sede,v_grupos.jornada_id, v_grupos.grupo_nombre AS gradoGrupo  FROM cga INNER JOIN dcne ON dcne.i=cga.g INNER JOIN v_grupos ON v_grupos.grupo_id=cga.b WHERE v_grupos.grupo_id in (${gruposFind})`
@@ -60,7 +71,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       await Promise.all([DelateNotesQuery, DelateAuditoriaPeriodosQuery]);
 
     const estudiantesQueri: any = conexion.query(
-      `SELECT alumno.alumno_id AS alumno, matri_id AS matricula,CONCAT(alumno_nom1,' ',alumno_nom2,' ',alumno_ape1,' ',alumno_ape2) AS nombre, grupo_nombre AS grupo, matricula.grupo_id AS grupoId, matricula.matri_extraordinaria AS extraordinaria FROM alumno INNER JOIN matricula ON matricula.alumno_id = alumno.alumno_id INNER JOIN v_grupos ON matricula.grupo_id = v_grupos.grupo_id WHERE matri_id NOT IN (SELECT matri_id FROM novedad_estudiante) AND matri_estado = 0 AND matricula.grupo_id IN (${gruposFind}) ORDER BY grado_base, jornada_id, grupo_codigo,alumno_nom1,alumno_nom2,alumno_ape1,alumno_ape2 ASC`
+      `SELECT alumno.alumno_id AS alumno, matricula.matri_id AS matricula,CONCAT(alumno_nom1,' ',alumno_nom2,' ',alumno_ape1,' ',alumno_ape2) AS nombre, grupo_nombre AS grupo, matricula.grupo_id AS grupoId, matricula.matri_extraordinaria AS extraordinaria,comportamiento.compo_id, comportamiento.compo_observacion FROM alumno INNER JOIN matricula ON matricula.alumno_id = alumno.alumno_id INNER JOIN v_grupos ON matricula.grupo_id = v_grupos.grupo_id LEFT JOIN comportamiento ON(matricula.matri_id=comportamiento.matri_id) WHERE matricula.matri_id NOT IN (SELECT matri_id FROM novedad_estudiante) AND matricula.matri_estado = 0 AND matricula.grupo_id IN (${gruposFind}) ORDER BY grado_base, jornada_id, grupo_codigo,alumno_nom1,alumno_nom2,alumno_ape1,alumno_ape2 ASC`
     );
 
     const asignaturasQueri: any = conexion.query(
@@ -82,7 +93,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       `SELECT u AS docente, i AS gradoGrupo FROM cg WHERE b IN (${gruposFind})`
     );
     const competenciasQueri: any =
-      conexion.query(`SELECT DISTINCT proceso_evaluacion.proeva_sub_id, proceso_evaluacion_banco.proeva_id, proceso_evaluacion.cga_id, proceso_evaluacion.grupo_id ,proceso_evaluacion_banco.proeva_cod, proceso_evaluacion_banco.proeva_desc, proceso_evaluacion_banco.proeva_porcen 
+      conexion.query(`SELECT DISTINCT proceso_evaluacion.proeva_sub_id, proceso_evaluacion_banco.proeva_id, proceso_evaluacion.cga_id, proceso_evaluacion.grupo_id ,proceso_evaluacion_banco.proeva_cod, proceso_evaluacion_banco.proeva_desc, proceso_evaluacion_banco.proeva_porcen,proceso_evaluacion_banco.dcne_id 
           FROM proceso_evaluacion_banco 
           INNER JOIN proceso_evaluacion ON (proceso_evaluacion_banco.proeva_id = proceso_evaluacion.proeva_sub_id)
           WHERE proceso_evaluacion.grupo_id in ('${gruposFind}')
@@ -107,6 +118,10 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
     ]);
 
     const GetConfiguracion: any = await CheckConfig(colegio?.value);
+
+    const NameProcesoEvaluacion: any = GetConfiguracion.planillas?.find(
+      (item: any) => item.nombre.includes("Proceso de Evaluación")
+    )?.texto;
 
     if (GetConfiguracion?.forder == "S") {
       const [DcneQueryFordeb]: any = await conexion.query(
@@ -204,14 +219,47 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         });
 
         let EstudiIdMatricula = "";
+        let EstudiIdComportamiento = "";
+
         EstudianteGrupo?.find((estu: any) => {
           if (estu?.NotasFaltantes?.length > 0) {
             EstudiIdMatricula = `${EstudiIdMatricula}${estu.matricula},`;
+          }
+          if (!estu?.campo_id) {
+            EstudiIdComportamiento = `${EstudiIdComportamiento}${estu.matricula},`;
           }
         });
 
         if (EstudiIdMatricula.length > 0) {
           InsertBulkAuditoriaPeriodo += `('${item.GrupoId}','${periodo}','${item.CgaId}','${item.DocenteId}','${EstudiIdMatricula}','El sistema genero las notas faltantes','calificaciones','${dateActualFormat}','1'),`;
+        }
+
+        if (EstudiIdComportamiento.length > 0) {
+          ComportabmientoBolean = true;
+
+          const directorGupo = direccionGrupo.find(
+            (dir: any) => dir?.docente == item?.DocenteId
+          );
+
+          if (!directorGupo?.docente) {
+            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','${item.CgaId}','','','Este grupo no tiene director de grupo','coordinador','${dateActualFormat}','1'),`;
+          } else {
+            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','${item.CgaId}','${directorGupo?.docente}','${EstudiIdMatricula}','Existen estudiantes sin registro de comportamiento','comportamiento','${dateActualFormat}','1'),`;
+          }
+        }
+
+        const CompetenciasDcne = competencias?.filter((com: any) => {
+          return com?.dcne_id == item?.DocenteId;
+        });
+
+        if (!CompetenciasDcne.length) {
+          InsertBulkCompetenciaDcne += `('${item.GrupoId}','${periodo}','${
+            item.CgaId
+          }','${
+            item.DocenteId
+          }','0','${`No se han definido ${NameProcesoEvaluacion} `}','proceso_evaluacion','${dateActualFormat}','1'),`;
+
+          CompetenciaBolean = true;
         }
 
         const key = `${item.DocenteId}`;
@@ -339,6 +387,24 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       if (Pendientes?.length > 0) {
         InsertBulkForder = InsertBulkForder?.slice(0, -1);
         const [InsertForder]: any = await conexion.query(InsertBulkForder);
+      }
+      if (CompetenciaBolean) {
+        InsertBulkCompetenciaDcne = InsertBulkCompetenciaDcne?.slice(0, -1);
+        const [InsertCompetencia]: any = await conexion.query(
+          InsertBulkCompetenciaDcne
+        );
+      }
+      if (ComportabmientoBolean) {
+        InsertBulkComportamiento = InsertBulkComportamiento?.slice(0, -1);
+
+        console.log(
+          "InsertBulkComportamiento ----------->",
+          InsertBulkComportamiento
+        );
+
+        const [InsertComportamiento]: any = await conexion.query(
+          InsertBulkComportamiento
+        );
       }
 
       if (Object.values(newData).length) {
