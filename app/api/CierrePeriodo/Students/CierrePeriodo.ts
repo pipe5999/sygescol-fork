@@ -16,7 +16,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       dateActual.getMonth() + 1
     }-${dateActual.getDate()} ${dateActual.getHours()}:${dateActual.getMinutes()}:${dateActual.getSeconds()}`;
 
-    gruposFind = gruposFind.substring(0, gruposFind.length - 1);
+    gruposFind = gruposFind?.substring(0, gruposFind.length - 1);
 
     const { periodo } = grupos.find((grup: any) => grup?.periodo);
 
@@ -67,7 +67,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       `SELECT cga.b as grupoId, cga.i AS cga, aintrs.b AS asignatura, aes.b AS area, efss.b as Enfasis, cga.g AS docente FROM cga INNER JOIN aintrs ON cga.a = aintrs.i INNER JOIN efr ON efr.i = aintrs.g INNER JOIN aes ON efr.a = aes.i INNER JOIN efss ON efr.b = efss.i where cga.g in (${DcneFindId})`
     );
     const notasQueri: any = conexion.query(
-      `SELECT acciones_subacciones.id_subaccion AS idRelacion, acciones_subacciones.id_cga AS cga, periodo, id_matri as matricula, valoracion, observacion, rel_notas_nuevo_sistema.fecha_registro AS registroNota, acciones_subacciones.fecha_registro AS registroAccion, acciones_subacciones.id_grupo AS grupo FROM acciones_subacciones INNER JOIN rel_notas_nuevo_sistema ON acciones_subacciones.id_subaccion = rel_notas_nuevo_sistema.id_accion WHERE id_grupo IN (${gruposFind}) and periodo=${periodo}   ORDER BY matricula ASC`
+      `SELECT acciones_subacciones.id_subaccion AS idRelacion, acciones_subacciones.id_cga AS cga, periodo, id_matri as matricula, valoracion, observacion, rel_notas_nuevo_sistema.fecha_registro AS registroNota, acciones_subacciones.fecha_registro AS registroAccion, acciones_subacciones.id_grupo AS grupo FROM acciones_subacciones INNER JOIN rel_notas_nuevo_sistema ON acciones_subacciones.id_subaccion = rel_notas_nuevo_sistema.id_accion WHERE id_grupo IN (${gruposFind}) and periodo=${periodo} ORDER BY matricula ASC`
     );
 
     const accionesQueri: any = conexion.query(
@@ -342,9 +342,10 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       }
 
       if (Object.values(newData).length) {
+        console.log("entro");
+
         return {
-          Docentes: Object.values(newData),
-          NotasFaltantess: NotasFaltantess,
+          grupos: grupos,
         };
       } else {
         return {

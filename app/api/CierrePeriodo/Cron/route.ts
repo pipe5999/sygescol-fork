@@ -1,9 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import School from "../../../../utils/School";
 import CierrePeriodo from "../Students/CierrePeriodo";
 import VerificarFechas from "../VerificarFechas/CheckDate";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  let coleGruposio: any = searchParams.get("Grupos");
+
   try {
     const colegios = School();
     let DataResponse: any = [];
@@ -24,17 +27,18 @@ export async function GET() {
 
           // console.log(DateCierreConfig);
 
-          if (DateCierreConfig?.Docentes.length > 0) {
+          if (DateCierreConfig?.grupos.length > 0) {
             DataResponse = [...DataResponse, DateCierreConfig];
           }
         }
         key++;
+        console.log("hay señor");
       }
       return NextResponse.json(
         {
           body: {
             DataResponse,
-            Grupos,
+            // Grupos,
             Msn: "Cierre de periodo realizado",
           },
 
