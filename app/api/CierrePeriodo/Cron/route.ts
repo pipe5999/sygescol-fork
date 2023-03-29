@@ -30,21 +30,21 @@ export async function GET() {
         }
         key++;
       }
-    }
-    return NextResponse.json(
-      {
-        body: {
-          // DataResponse,
-          Grupos,
-          Msn: "Cierre de periodo realizado",
-        },
+      return NextResponse.json(
+        {
+          body: {
+            // DataResponse,
+            Grupos,
+            Msn: "Cierre de periodo realizado",
+          },
 
-        // ,
-      },
-      {
-        status: 200,
-      }
-    );
+          // ,
+        },
+        {
+          status: 200,
+        }
+      );
+    }
   } catch (error) {
     console.log(error);
     return NextResponse.json(

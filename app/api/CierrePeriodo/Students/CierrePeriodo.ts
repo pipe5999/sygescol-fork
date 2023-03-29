@@ -5,12 +5,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
   try {
     let gruposFind = "";
     grupos?.find((grup: any) => {
-      gruposFind = `${gruposFind}${grup.GrupoId},`;
+      gruposFind = `${gruposFind}${grup?.GrupoId},`;
     });
 
     let Pendientes: any = [];
 
-    // fecha actual  y hora actual formato 2021-05-20 12:00:00
     const dateActual = new Date();
     const dateActualFormat = `${dateActual.getFullYear()}-${
       dateActual.getMonth() + 1
@@ -18,7 +17,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     gruposFind = gruposFind.substring(0, gruposFind.length - 1);
 
-    const { periodo } = grupos.find((grup: any) => grup.periodo);
+    const { periodo } = grupos.find((grup: any) => grup?.periodo);
 
     const conexion = conecctions[colegio.value];
 
@@ -26,6 +25,9 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       "INSERT INTO rel_notas_nuevo_sistema(id_accion,id_matri,id_periodo,id_cga,valoracion,observacion,fecha_registro) VALUES";
 
     let InsertBulkAuditoriaPeriodo =
+      "INSERT INTO auditoriaPeriodos(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha,estado) VALUES";
+
+    let InsertBulkForder =
       "INSERT INTO auditoriaPeriodos(grupo_id,per_id,cga_id,dcne_id,matri_id,detalle,tipo_pendiente,fecha,estado) VALUES";
 
     const ListDcneQueri: any = conexion.query(
@@ -116,7 +118,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item?.CgaId?.toString()?.includes(asig?.cga?.toString())
         );
         const dcneFordeb = DcneQueryFordeb.filter(
-          (dcne: any) => dcne.cga_id == item.CgaId
+          (dcne: any) => dcne?.cga_id == item?.CgaId
         );
 
         let NewNotas = notas.map((nota: any) => {
@@ -145,42 +147,42 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
               nota?.matricula
                 ?.toString()
                 .includes(estu?.matricula?.toString()) &&
-              nota?.cga.toString().includes(item?.CgaId.toString())
+              nota?.cga?.toString()?.includes(item?.CgaId?.toString())
             );
           });
 
           if (NotasEstudiante?.length != LengthRes?.length) {
             let NotasFaltantes = LengthRes?.filter((accion: any) => {
-              return !NotasEstudiante.find(
+              return !NotasEstudiante?.find(
                 (nota: any) =>
                   nota?.idRelacion == accion?.idRelacion &&
                   nota?.cga == item?.CgaId &&
-                  nota.valoracion
+                  nota?.valoracion
               );
             });
 
             showNotas = NotasFaltantes;
-            if (NotasFaltantes?.length > 0) {
-              MatriculaId = `${MatriculaId}${estu?.matricula},`;
-              NotasFaltantess.push({
-                ...estu,
+            // if (NotasFaltantes?.length > 0) {
+            //   MatriculaId = `${MatriculaId}${estu?.matricula},`;
+            //   NotasFaltantess.push({
+            //     ...estu,
 
-                NotasFaltantes: NotasFaltantes || [],
-              });
-            }
+            //     NotasFaltantes: NotasFaltantes || [],
+            //   });
+            // }
           }
 
-          if (NotasEstudiante?.length == 0) {
-            Pendientes.push({
-              ...estu,
+          // if (NotasEstudiante?.length == 0) {
+          //   Pendientes?.push({
+          //     ...estu,
 
-              mensaje: `El estudiante ${
-                estu?.nombre
-              } no tiene notas registradas en la asignatura ${
-                AsignaturaDcne?.asignatura || ""
-              }  en el grupo ${item?.gradoGrupo || ""} `,
-            });
-          }
+          //     mensaje: `El estudiante ${
+          //       estu?.nombre
+          //     } no tiene notas registradas en la asignatura ${
+          //       AsignaturaDcne?.asignatura || ""
+          //     }  en el grupo ${item?.gradoGrupo || ""} `,
+          //   });
+          // }
           estu = {
             ...estu,
             Notas: NotasEstudiante || [],
@@ -225,17 +227,17 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         if (dcneFordeb?.length > 0) {
           dcneFordeb.forEach((fordeb: any) => {
             if (fordeb.fordeb_tipo == "F") {
-              acc[key].Fordeb?.Fortalezas.push({
+              acc[key].Fordeb?.Fortalezas?.push({
                 ...fordeb,
               });
             }
             if (fordeb.fordeb_tipo == "D") {
-              acc[key].Fordeb?.Debilidades.push({
+              acc[key].Fordeb?.Debilidades?.push({
                 ...fordeb,
               });
             }
             if (fordeb?.fordeb_tipo == "R") {
-              acc[key].Fordeb.Recomentaciones.push({
+              acc[key].Fordeb.Recomentaciones?.push({
                 ...fordeb,
               });
             }
@@ -243,20 +245,38 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         }
 
         if (acc[key].Fordeb?.Fortalezas?.length == 0) {
-          Pendientes.push({
+          InsertBulkForder += `('${item.GrupoId}','${periodo}','${
+            item.CgaId
+          }','${
+            item.DocenteId
+          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra fortalezas en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+
+          Pendientes?.push({
             ...item,
             mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra fortalezas en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
           });
         }
 
-        if (acc[key].Fordeb?.Debilidades?.length == 0) {
-          Pendientes.push({
+        if (acc[key]?.Fordeb?.Debilidades?.length == 0) {
+          InsertBulkForder += `('${item.GrupoId}','${periodo}','${
+            item.CgaId
+          }','${
+            item.DocenteId
+          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+
+          Pendientes?.push({
             ...item,
             mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
           });
         }
         if (acc[key].Fordeb?.Recomentaciones?.length == 0) {
-          Pendientes.push({
+          InsertBulkForder += `('${item.GrupoId}','${periodo}','${
+            item.CgaId
+          }','${
+            item.DocenteId
+          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra recomendaciones en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+
+          Pendientes?.push({
             ...item,
             mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra recomendaciones en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
           });
@@ -270,6 +290,12 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             acc[key].Fordeb?.Debilidades.length
           )
         ) {
+          InsertBulkForder += `('${item.GrupoId}','${periodo}','${
+            item.CgaId
+          }','${
+            item.DocenteId
+          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra la misma cantidad de recomendaciones y debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+
           Pendientes.push({
             ...item,
             mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra la misma cantidad de recomendaciones y debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
@@ -295,8 +321,8 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           }
         });
 
-        InsertBulkAuditoriaPeriodo = InsertBulkAuditoriaPeriodo.slice(0, -1);
-        InsertBulkInsertNotas = InsertBulkInsertNotas.slice(0, -1);
+        InsertBulkAuditoriaPeriodo = InsertBulkAuditoriaPeriodo?.slice(0, -1);
+        InsertBulkInsertNotas = InsertBulkInsertNotas?.slice(0, -1);
 
         const [InsertNota]: any = await conexion.query(InsertBulkInsertNotas);
         const [InsertAuditoriaPeriodo]: any = await conexion.query(
@@ -304,10 +330,24 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         );
       }
 
+      if (Pendientes?.length > 0) {
+        console.log("InsertBulkForder", InsertBulkForder);
+
+        InsertBulkForder = InsertBulkForder?.slice(0, -1);
+        const [InsertForder]: any = await conexion.query(InsertBulkForder);
+
+        console.log("InsertForder", InsertForder);
+      }
+
       if (Object.values(newData).length) {
         return {
           Docentes: Object.values(newData),
           NotasFaltantess: NotasFaltantess,
+        };
+      } else {
+        return {
+          Docentes: [],
+          NotasFaltantess: [],
         };
       }
     }
