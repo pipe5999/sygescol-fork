@@ -19,7 +19,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     const { periodo } = grupos.find((grup: any) => grup?.periodo);
 
-    const conexion = conecctions[colegio.value];
+    const conexion = conecctions[colegio?.value];
 
     let InsertBulkInsertNotas =
       "INSERT INTO rel_notas_nuevo_sistema(id_accion,id_matri,id_periodo,id_cga,valoracion,observacion,fecha_registro) VALUES";
@@ -100,12 +100,19 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         `DELETE FROM auditoriaPeriodos WHERE cga_id in (${DcneFindId}) and per_id='${periodo}'`
       );
 
-      const [[DelateNotes], [DelateAuditoriaPeriodos]]: [any, any] =
-        await Promise.all([DelateNotesQuery, DelateAuditoriaPeriodosQuery]);
-
-      const [DcneQueryFordeb]: any = await conexion.query(
+      const DcneQueryFordebQuery: any = conexion.query(
         `SELECT fordeb.fordeb_id as FordebId,fordeb.cga_id ,fordeb.fordeb_tipo,fordeb_banco.asignatura_id,fordeb_banco.dcne_id, fordeb_banco.fordeb_desc ,fordeb_banco.peri_id, fordeb.esca_nac_id AS escala,fordeb_banco.fordeb_id as IdBanco FROM fordeb LEFT JOIN fordeb_banco ON (fordeb_banco.fordeb_id=fordeb.fordeb_subid) WHERE fordeb.cga_id in (${DcneFindId}) and fordeb_banco.peri_id='${periodo}'`
       );
+
+      const [[DelateNotes], [DelateAuditoriaPeriodos], [DcneQueryFordeb]]: [
+        any,
+        any,
+        any
+      ] = await Promise.all([
+        DelateNotesQuery,
+        DelateAuditoriaPeriodosQuery,
+        DcneQueryFordebQuery,
+      ]);
 
       const newData = ListDcne?.reduce((acc: any, item: any) => {
         let LengthRes = acciones.filter((accion: any) => {
@@ -117,7 +124,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item?.DocenteId?.toString()?.includes(asig?.docente?.toString()) &&
             item?.CgaId?.toString()?.includes(asig?.cga?.toString())
         );
-        const dcneFordeb = DcneQueryFordeb.filter(
+        const dcneFordeb = DcneQueryFordeb?.filter(
           (dcne: any) => dcne?.cga_id == item?.CgaId
         );
 
