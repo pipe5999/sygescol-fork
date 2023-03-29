@@ -5,7 +5,6 @@ import VerificarFechas from "../VerificarFechas/CheckDate";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  let coleGruposio: any = searchParams.get("Grupos");
 
   try {
     const colegios = School();
@@ -32,7 +31,6 @@ export async function GET(req: NextRequest) {
           }
         }
         key++;
-        console.log("hay señor");
       }
       return NextResponse.json(
         {
