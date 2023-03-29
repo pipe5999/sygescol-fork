@@ -10,7 +10,9 @@ module.exports = {
       "ensiibague.edu.co",
       "www.ensiibague.edu.co",
       "sygescol.sistemasivhorsnet.com",
-      "www.sygescol.sistemasivhorsnet.com"
+      "www.sygescol.sistemasivhorsnet.com",
+      "sygescol.ielaureles.sistemasivhorsnet.com",
+      "www.sygescol.ielaureles.sistemasivhorsnet.com",
     ],
   },
   experimental: {

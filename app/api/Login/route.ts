@@ -17,13 +17,14 @@ export async function GET(req: any) {
     );
     if (datos.length > 0) {
       const id = datos[0]?.usu_fk;
+      const usuar = datos[0]?.usu_id;
       const [datosColegio]: any = await conexion.query(
         `SELECT b AS nombreInst, a AS urlEscudo, uu AS urlColegio, e AS telefono1, n AS telefono2, nn AS icfes, tt AS dane, c AS resolucion, fx AS fax, nit_institucion AS nit, resol_sem AS resolucionSem FROM clrp`
       );
       switch (datos[0]?.usu_rol) {
         case 3:
           const [loginDcne]: any = await conexion.query(
-            `SELECT CONCAT(dcne_ape1,' ',dcne_ape2,' ',dcne_nom1,' ',dcne_nom2) AS nombre, dcne.i AS Id,dcne_firma AS firma, dcne_foto AS foto, rol_nombre, usu_rol FROM usuario INNER JOIN dcne ON usu_fk = dcne.i INNER JOIN rol ON rol_id = usu_rol WHERE usu_fk = ${id}`
+            `SELECT CONCAT(dcne_ape1,' ',dcne_ape2,' ',dcne_nom1,' ',dcne_nom2) AS nombre, dcne.i AS Id,dcne_firma AS firma, dcne_foto AS foto, rol_nombre, usu_rol FROM usuario INNER JOIN dcne ON usu_fk = dcne.i INNER JOIN rol ON rol_id = usu_rol WHERE usu_id = ${usuar}`
           );
           const [datosGrupo]: any = await conexion.query(
             `SELECT DISTINCT grupo_nombre, grupo_id, grado_base FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${id}`
