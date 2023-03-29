@@ -209,7 +209,7 @@ export default function Par65() {
               type="number"
               name=""
               id=""
-              className="rounded-lg h-8 border-2 border-slate-300 "
+              className="rounded-lg h-8 border-2 border-gray-300 "
             />
           </div>
         </CardsPreguntas>
@@ -229,7 +229,7 @@ export default function Par65() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 stroke-cyan-800 hover:stroke-lime-500"
+              className="w-6 h-6 stroke-cyan-800 hover:stroke-green-500"
             >
               <path
                 strokeLinecap="round"
@@ -406,7 +406,7 @@ export default function Par65() {
               type="text"
               name=""
               id=""
-              className="h-8 p-4 border-lg border-slate-400 shadow-md"
+              className="h-8 p-4 border-lg border-gray-400 shadow-md"
             />
           </div>
         </CardsPreguntas>
@@ -436,7 +436,7 @@ export default function Par65() {
             <input
               type="text"
               name=""
-              className=" border-slate-100 shadow-xl border-2 h-8 p-4 ml-4"
+              className=" border-gray-100 shadow-xl border-2 h-8 p-4 ml-4"
             />
           </div>
         </CardsPreguntas>
@@ -461,7 +461,7 @@ export default function Par65() {
               <input
                 type="number"
                 name=""
-                className="rounded-lg shadow-lg ring-2 ring-slate-200"
+                className="rounded-lg shadow-lg ring-2 ring-gray-200"
               />
             </div>
           )}
@@ -472,7 +472,7 @@ export default function Par65() {
             <input
               type="text"
               name=""
-              className="rounded-md shadow-lg ring-1 ring-slate-200 h-8"
+              className="rounded-md shadow-lg ring-1 ring-gray-200 h-8"
             />
           </div>
         </CardsPreguntas>
@@ -497,7 +497,7 @@ export default function Par65() {
               <input
                 type="number"
                 name=""
-                className="rounded-lg shadow-lg ring-2 ring-slate-200"
+                className="rounded-lg shadow-lg ring-2 ring-gray-200"
               />
             </div>
           )}
@@ -509,7 +509,7 @@ export default function Par65() {
               type="text"
               name=""
               id=""
-              className="rounded-md shadow-lg ring-1 ring-slate-200 h-8"
+              className="rounded-md shadow-lg ring-1 ring-gray-200 h-8"
             />
           </div>
         </CardsPreguntas>

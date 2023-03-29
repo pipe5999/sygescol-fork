@@ -70,6 +70,16 @@ const Niveles = [
     label: "Ciclos de la Media",
   },
 ];
+const Reincidencia = [
+  {
+    value: "Continua",
+    label: "Continua",
+  },
+  {
+    value: "Aleatoria",
+    label: "Aleatoria",
+  },
+];
 
 // const ColorTituloPreguntas = () => {
 //   const random: any = () => Math.floor(Math.random() * 3);
@@ -80,4 +90,4 @@ const Niveles = [
 //   return numero;
 // };
 
-export { YesOrNot, EstadoAcdemico, Niveles };
+export { YesOrNot, EstadoAcdemico, Niveles, Reincidencia };

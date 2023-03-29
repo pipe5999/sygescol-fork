@@ -1,9 +1,6 @@
-import { NextResponse } from "next/server";
-import { conecctions } from "../../../../../utils/Conexions";
+import { conecctions } from "../../../../utils/Conexions";
 
-export async function GET(req: any, { params }: any) {
-  let colegio = params.school;
-
+export default async function CheckConfig(colegio: any) {
   try {
     const conexion = conecctions[colegio];
     const [params]: any = await conexion.query(
@@ -22,21 +19,16 @@ export async function GET(req: any, { params }: any) {
     const axiologica: any = params?.find(
       (par: any) => par?.id == 153
     )?.conf_valor;
-    return NextResponse.json(
-      {
-        axiologica: axiologica,
-        forder: forder,
-        gruposAxiologica: configAxio,
-        planillas: confPlanilla,
-        notaSistema: nota,
-      },
-      { status: 200 }
-    );
+
+    return {
+      axiologica: axiologica,
+      forder: forder,
+      gruposAxiologica: configAxio,
+      planillas: confPlanilla,
+      notaSistema: nota,
+    };
   } catch (error) {
     console.log(error);
-    return NextResponse.json(
-      { body: "Error al consultar la información" },
-      { status: 404 }
-    );
+    return { body: "Error al consultar la información" };
   }
 }

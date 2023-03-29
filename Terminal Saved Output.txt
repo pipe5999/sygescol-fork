@@ -1,0 +1,2335 @@
+Last login: Wed Mar 22 06:56:00 on ttys000
+carvajal5999@Daniels-MacBook-Air sygescol % sudo yarn dev
+Password:
+yarn run v1.22.19
+warning ../../../package.json: No license field
+$ next dev
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+info  - Loaded env from /Users/carvajal5999/Documents/repositorios/sygescol/.env
+warn  - You have enabled experimental feature (appDir) in next.config.js.
+warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback
+warning ../../../package.json: No license field
+event - compiled client and server successfully in 485 ms (262 modules)
+wait  - compiling...
+event - compiled client and server successfully in 141 ms (262 modules)
+wait  - compiling /Parametros/page (client and server)...
+event - compiled client and server successfully in 1389 ms (692 modules)
+wait  - compiling...
+event - compiled successfully in 458 ms (413 modules)
+`head.js` is being used in route /. Please migrate to the Metadata API for an improved experience: https://beta.nextjs.org/docs/api-reference/metadata
+null
+wait  - compiling /Configuracion/Parametro/[id]/page (client and server)...
+event - compiled client and server successfully in 1162 ms (2736 modules)
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled client and server successfully in 364 ms (2888 modules)
+id 95
+95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+95
+null
+id 95
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1018 ms (2750 modules)
+95
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 421 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 637 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 465 ms (2750 modules)
+95
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 98 ms (1514 modules)
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 569 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 634 ms (2750 modules)
+95
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 92 ms (1514 modules)
+id 95
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 595 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 587 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 635 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 635 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 544 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 653 ms (2750 modules)
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 669 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 836 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 620 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 703 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 783 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 467 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 715 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 434 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 441 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 630 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 538 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 472 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 428 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 529 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 735 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 584 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 630 ms (2750 modules)
+wait  - compiling...
+95
+event - compiled client and server successfully in 461 ms (2750 modules)
+95
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 338 ms (1514 modules)
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 559 ms (2902 modules)
+95
+95
+null
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 588 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 628 ms (2750 modules)
+95
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 121 ms (1514 modules)
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 573 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 797 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 708 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 593 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 641 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 659 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 861 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 882 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 784 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 521 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 459 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 449 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 781 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 684 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 713 ms (2750 modules)
+wait  - compiling...
+event - compiled successfully in 0 ms (1362 modules)
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 699 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 590 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 750 ms (2750 modules)
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 588 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 606 ms (2750 modules)
+wait  - compiling...
+event - compiled successfully in 0 ms (1362 modules)
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 827 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 712 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 701 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 706 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 508 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 757 ms (2750 modules)
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 747 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 792 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 882 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 658 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 612 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 967 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 638 ms (2750 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 740 ms (2750 modules)
+warn  - The server is running out of memory, restarting to free up memory.
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+warn  - You have enabled experimental feature (appDir) in next.config.js.
+warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback
+warning ../../../package.json: No license field
+event - compiled client and server successfully in 596 ms (262 modules)
+wait  - compiling...
+event - compiled client and server successfully in 154 ms (262 modules)
+wait  - compiling /Configuracion/Parametro/[id]/page (client and server)...
+event - compiled client and server successfully in 2.5s (2733 modules)
+wait  - compiling...
+event - compiled successfully in 430 ms (1381 modules)
+`head.js` is being used in route /. Please migrate to the Metadata API for an improved experience: https://beta.nextjs.org/docs/api-reference/metadata
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled client and server successfully in 640 ms (2871 modules)
+id 95
+id 95
+95
+95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 612 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 608 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 576 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 455 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 578 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 840 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 569 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 610 ms (2733 modules)
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 537 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 573 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 704 ms (2733 modules)
+95
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 599 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 537 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 650 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 533 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 583 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 627 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 484 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 449 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 903 ms (2733 modules)
+95
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 562 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 534 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 579 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 733 ms (2733 modules)
+95
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 592 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 503 ms (2733 modules)
+95
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 343 ms (1504 modules)
+id 95
+95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 505 ms (2885 modules)
+95
+95
+null
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+95
+null
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 489 ms (2885 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 921 ms (2733 modules)
+95
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 100 ms (1504 modules)
+id 95
+95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1186 ms (2733 modules)
+95
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 966 ms (2733 modules)
+95
+95
+95
+wait  - compiling...
+event - compiled client and server successfully in 661 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 652 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 665 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 614 ms (2733 modules)
+95
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 344 ms (1504 modules)
+id 95
+95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 971 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 534 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 458 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 487 ms (2733 modules)
+95
+wait  - compiling...
+event - compiled client and server successfully in 865 ms (2733 modules)
+95
+96
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 114 ms (1504 modules)
+id 96
+96
+infoParametros [
+  {
+    Description: 'La Institución Educativa establece en el sistema por niveles de educación y por modalidades, las fechas de inicio y cierre de cada periodo académico, vigencia desde la cual se controlará el ingreso y registro de datos por parte del docente, fechas de cierre de cada periodo para efecto de auditoria del coordinador académico y fecha de cierre de año.\r\n' +
+      ' \r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 96,
+    TipoParam: 'Fechas para cada periodo académico '
+  }
+]
+id 96
+infoParametros [
+  {
+    Description: 'La Institución Educativa establece en el sistema por niveles de educación y por modalidades, las fechas de inicio y cierre de cada periodo académico, vigencia desde la cual se controlará el ingreso y registro de datos por parte del docente, fechas de cierre de cada periodo para efecto de auditoria del coordinador académico y fecha de cierre de año.\r\n' +
+      ' \r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 96,
+    TipoParam: 'Fechas para cada periodo académico '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1097 ms (2733 modules)
+96
+wait  - compiling...
+event - compiled client and server successfully in 618 ms (2733 modules)
+96
+wait  - compiling...
+event - compiled client and server successfully in 855 ms (2733 modules)
+96
+wait  - compiling...
+event - compiled client and server successfully in 716 ms (2733 modules)
+96
+wait  - compiling...
+event - compiled client and server successfully in 777 ms (2733 modules)
+96
+wait  - compiling...
+event - compiled client and server successfully in 817 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+96
+96
+null
+wait  - compiling...
+event - compiled client and server successfully in 753 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+96
+96
+null
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 389 ms (1504 modules)
+id 96
+96
+infoParametros [
+  {
+    Description: 'La Institución Educativa establece en el sistema por niveles de educación y por modalidades, las fechas de inicio y cierre de cada periodo académico, vigencia desde la cual se controlará el ingreso y registro de datos por parte del docente, fechas de cierre de cada periodo para efecto de auditoria del coordinador académico y fecha de cierre de año.\r\n' +
+      ' \r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 96,
+    TipoParam: 'Fechas para cada periodo académico '
+  }
+]
+id 96
+infoParametros [
+  {
+    Description: 'La Institución Educativa establece en el sistema por niveles de educación y por modalidades, las fechas de inicio y cierre de cada periodo académico, vigencia desde la cual se controlará el ingreso y registro de datos por parte del docente, fechas de cierre de cada periodo para efecto de auditoria del coordinador académico y fecha de cierre de año.\r\n' +
+      ' \r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 96,
+    TipoParam: 'Fechas para cada periodo académico '
+  }
+]
+95
+null
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1295 ms (2733 modules)
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 137 ms (1504 modules)
+95
+96
+id 95
+95
+96
+95
+96
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+id 95
+infoParametros [
+  {
+    Description: 'Definir el número de periodos académicos que debe generar el sistema por cada modalidad educativa implementada en la Institución Educativa.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 95,
+    TipoParam: 'Número de periodos académicos por nivel y modalidad '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 992 ms (2733 modules)
+96
+95
+wait  - compiling...
+event - compiled client and server successfully in 871 ms (2733 modules)
+96
+96
+96
+wait  - compiling...
+event - compiled client and server successfully in 790 ms (2733 modules)
+96
+wait  - compiling...
+event - compiled client and server successfully in 744 ms (2733 modules)
+96
+wait  - compiling...
+event - compiled client and server successfully in 981 ms (2733 modules)
+96
+96
+96
+100
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 192 ms (1504 modules)
+id 100
+infoParametros [
+  {
+    Description: 'Establecer los datos que debe subir el sistema a las planillas, boletines y certificados de estudio, como proceso de la valoración comportamental del estudiante.\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 100,
+    TipoParam: 'Registros en la Planilla de Comportamiento  '
+  }
+]
+id 100
+infoParametros [
+  {
+    Description: 'Establecer los datos que debe subir el sistema a las planillas, boletines y certificados de estudio, como proceso de la valoración comportamental del estudiante.\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 100,
+    TipoParam: 'Registros en la Planilla de Comportamiento  '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1049 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+100
+100
+null
+wait  - compiling...
+event - compiled client and server successfully in 882 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+100
+100
+null
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 119 ms (1504 modules)
+id 100
+100
+infoParametros [
+  {
+    Description: 'Establecer los datos que debe subir el sistema a las planillas, boletines y certificados de estudio, como proceso de la valoración comportamental del estudiante.\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 100,
+    TipoParam: 'Registros en la Planilla de Comportamiento  '
+  }
+]
+id 100
+infoParametros [
+  {
+    Description: 'Establecer los datos que debe subir el sistema a las planillas, boletines y certificados de estudio, como proceso de la valoración comportamental del estudiante.\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 100,
+    TipoParam: 'Registros en la Planilla de Comportamiento  '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 585 ms (2885 modules)
+100
+wait  - compiling...
+event - compiled client and server successfully in 1231 ms (2733 modules)
+100
+100
+100
+wait  - compiling...
+event - compiled client and server successfully in 890 ms (2733 modules)
+100
+wait  - compiling...
+event - compiled client and server successfully in 667 ms (2733 modules)
+100
+wait  - compiling...
+event - compiled client and server successfully in 762 ms (2733 modules)
+100
+wait  - compiling...
+event - compiled client and server successfully in 989 ms (2733 modules)
+100
+100
+wait  - compiling...
+event - compiled client and server successfully in 874 ms (2733 modules)
+100
+100
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 373 ms (1504 modules)
+id 100
+100
+infoParametros [
+  {
+    Description: 'Establecer los datos que debe subir el sistema a las planillas, boletines y certificados de estudio, como proceso de la valoración comportamental del estudiante.\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 100,
+    TipoParam: 'Registros en la Planilla de Comportamiento  '
+  }
+]
+id 100
+infoParametros [
+  {
+    Description: 'Establecer los datos que debe subir el sistema a las planillas, boletines y certificados de estudio, como proceso de la valoración comportamental del estudiante.\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 100,
+    TipoParam: 'Registros en la Planilla de Comportamiento  '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 844 ms (2885 modules)
+100
+100
+100
+wait  - compiling...
+event - compiled client and server successfully in 1610 ms (2733 modules)
+100
+100
+100
+100
+wait  - compiling...
+event - compiled client and server successfully in 605 ms (2733 modules)
+100
+wait  - compiling...
+event - compiled client and server successfully in 768 ms (2733 modules)
+100
+wait  - compiling...
+event - compiled client and server successfully in 957 ms (2733 modules)
+100
+100
+100
+wait  - compiling...
+event - compiled client and server successfully in 1246 ms (2733 modules)
+100
+100
+100
+wait  - compiling...
+event - compiled client and server successfully in 990 ms (2733 modules)
+100
+100
+100
+wait  - compiling...
+event - compiled client and server successfully in 910 ms (2733 modules)
+100
+wait  - compiling...
+event - compiled client and server successfully in 595 ms (2733 modules)
+100
+96
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 311 ms (1504 modules)
+id 96
+96
+100
+infoParametros [
+  {
+    Description: 'La Institución Educativa establece en el sistema por niveles de educación y por modalidades, las fechas de inicio y cierre de cada periodo académico, vigencia desde la cual se controlará el ingreso y registro de datos por parte del docente, fechas de cierre de cada periodo para efecto de auditoria del coordinador académico y fecha de cierre de año.\r\n' +
+      ' \r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 96,
+    TipoParam: 'Fechas para cada periodo académico '
+  }
+]
+id 96
+infoParametros [
+  {
+    Description: 'La Institución Educativa establece en el sistema por niveles de educación y por modalidades, las fechas de inicio y cierre de cada periodo académico, vigencia desde la cual se controlará el ingreso y registro de datos por parte del docente, fechas de cierre de cada periodo para efecto de auditoria del coordinador académico y fecha de cierre de año.\r\n' +
+      ' \r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 96,
+    TipoParam: 'Fechas para cada periodo académico '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1186 ms (2733 modules)
+96
+100
+wait  - compiling...
+event - compiled client and server successfully in 709 ms (2733 modules)
+100
+96
+109
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 142 ms (1504 modules)
+id 109
+109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+id 109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1088 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 1020 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 939 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 842 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 695 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 554 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 741 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 772 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 878 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 869 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 994 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 745 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 1085 ms (2733 modules)
+109
+109
+109
+wait  - compiling...
+event - compiled client and server successfully in 902 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 741 ms (2733 modules)
+warn  - The server is running out of memory, restarting to free up memory.
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+warn  - You have enabled experimental feature (appDir) in next.config.js.
+warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback
+warning ../../../package.json: No license field
+event - compiled client and server successfully in 611 ms (262 modules)
+wait  - compiling...
+wait  - compiling /Configuracion/Parametro/[id]/page (client and server)...
+event - compiled client and server successfully in 3.3s (2733 modules)
+`head.js` is being used in route /. Please migrate to the Metadata API for an improved experience: https://beta.nextjs.org/docs/api-reference/metadata
+109
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 217 ms (1504 modules)
+id 109
+109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+id 109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1193 ms (2733 modules)
+109
+109
+109
+wait  - compiling...
+event - compiled client and server successfully in 707 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 635 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 662 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 909 ms (2733 modules)
+109
+109
+109
+wait  - compiling...
+event - compiled client and server successfully in 784 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 552 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 725 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 802 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 736 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 614 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 621 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 625 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 681 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 654 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 705 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 631 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 661 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 571 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 473 ms (2733 modules)
+109
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 258 ms (1504 modules)
+id 109
+109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+id 109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 610 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 657 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+109
+109
+null
+wait  - compiling...
+event - compiled client and server successfully in 697 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+109
+109
+null
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 145 ms (1504 modules)
+id 109
+109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+id 109
+infoParametros [
+  {
+    Description: 'Establecer en el sistema, qué tipo de información debe verificar que se haya ingresado a la base de datos, para proceder con la impresión del boletín resumen y del boletín detallado. \r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 109,
+    TipoParam: 'Directrices de control para la impresión de los informes valorativos '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1028 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 516 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 606 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 707 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 709 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 772 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 675 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 700 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 646 ms (2733 modules)
+109
+wait  - compiling...
+event - compiled client and server successfully in 683 ms (2733 modules)
+109
+68
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 291 ms (1504 modules)
+id 68
+68
+109
+infoParametros [
+  {
+    Description: 'Con este parámetro, el sistema dará paso a que se efectúe Matrícula Administrativa Provisional a aquellos estudiantes, cuyo estado académico del año inmediatamente anterior, EN EL CIERRE DE AÑO hayan terminado con estado académico POR DEFINIR. Este proceso solo es válido si en los CRITERIOS DE PROMOCIÓN del año anterior (PASO 1) , se parametrizó el estado académico POR DEFINIR. ',
+    Id: 68,
+    TipoParam: 'Configuración de la matrícula provisional EXCLUSIVAMENTE PARA I.E. CON ESTADO ACADÉMICO POR DEFINIR, DESPUÉS DEL CIERRE DE NIVELACIONES. '
+  }
+]
+id 68
+infoParametros [
+  {
+    Description: 'Con este parámetro, el sistema dará paso a que se efectúe Matrícula Administrativa Provisional a aquellos estudiantes, cuyo estado académico del año inmediatamente anterior, EN EL CIERRE DE AÑO hayan terminado con estado académico POR DEFINIR. Este proceso solo es válido si en los CRITERIOS DE PROMOCIÓN del año anterior (PASO 1) , se parametrizó el estado académico POR DEFINIR. ',
+    Id: 68,
+    TipoParam: 'Configuración de la matrícula provisional EXCLUSIVAMENTE PARA I.E. CON ESTADO ACADÉMICO POR DEFINIR, DESPUÉS DEL CIERRE DE NIVELACIONES. '
+  }
+]
+73
+null
+id 73
+infoParametros [
+  {
+    Description: 'El sistema a través de la Inscripción virtual permite subir por estudiante, aproximadamente 84 datos relacionados con el estudiante, el acudiente, el padre y la madre, además de otra información de tipo datos personales y datos administrativos.\r\n' +
+      'A partir de esta información, se generará el libro de matrículas.\r\n' +
+      'Qué información se debe cargar al libro, para su correspondiente impresión y empaste?\r\n' +
+      ' ',
+    Id: 73,
+    TipoParam: 'Información para el Libro de Matrículas '
+  }
+]
+id 73
+infoParametros [
+  {
+    Description: 'El sistema a través de la Inscripción virtual permite subir por estudiante, aproximadamente 84 datos relacionados con el estudiante, el acudiente, el padre y la madre, además de otra información de tipo datos personales y datos administrativos.\r\n' +
+      'A partir de esta información, se generará el libro de matrículas.\r\n' +
+      'Qué información se debe cargar al libro, para su correspondiente impresión y empaste?\r\n' +
+      ' ',
+    Id: 73,
+    TipoParam: 'Información para el Libro de Matrículas '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1065 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+109
+73
+73
+null
+wait  - compiling...
+event - compiled client and server successfully in 611 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+109
+73
+73
+null
+null
+wait  - compiling...
+event - compiled client and server successfully in 892 ms (2733 modules)
+warn  - Fast Refresh had to perform a full reload due to a runtime error.
+73
+73
+109
+null
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 103 ms (1504 modules)
+id 73
+73
+109
+infoParametros [
+  {
+    Description: 'El sistema a través de la Inscripción virtual permite subir por estudiante, aproximadamente 84 datos relacionados con el estudiante, el acudiente, el padre y la madre, además de otra información de tipo datos personales y datos administrativos.\r\n' +
+      'A partir de esta información, se generará el libro de matrículas.\r\n' +
+      'Qué información se debe cargar al libro, para su correspondiente impresión y empaste?\r\n' +
+      ' ',
+    Id: 73,
+    TipoParam: 'Información para el Libro de Matrículas '
+  }
+]
+id 73
+infoParametros [
+  {
+    Description: 'El sistema a través de la Inscripción virtual permite subir por estudiante, aproximadamente 84 datos relacionados con el estudiante, el acudiente, el padre y la madre, además de otra información de tipo datos personales y datos administrativos.\r\n' +
+      'A partir de esta información, se generará el libro de matrículas.\r\n' +
+      'Qué información se debe cargar al libro, para su correspondiente impresión y empaste?\r\n' +
+      ' ',
+    Id: 73,
+    TipoParam: 'Información para el Libro de Matrículas '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1162 ms (2733 modules)
+73
+109
+wait  - compiling...
+event - compiled client and server successfully in 688 ms (2733 modules)
+109
+73
+wait  - compiling...
+event - compiled client and server successfully in 710 ms (2733 modules)
+73
+109
+wait  - compiling...
+event - compiled client and server successfully in 747 ms (2733 modules)
+73
+109
+wait  - compiling...
+event - compiled client and server successfully in 731 ms (2733 modules)
+73
+109
+wait  - compiling...
+event - compiled client and server successfully in 838 ms (2733 modules)
+73
+109
+73
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 321 ms (1504 modules)
+id 73
+73
+109
+73
+infoParametros [
+  {
+    Description: 'El sistema a través de la Inscripción virtual permite subir por estudiante, aproximadamente 84 datos relacionados con el estudiante, el acudiente, el padre y la madre, además de otra información de tipo datos personales y datos administrativos.\r\n' +
+      'A partir de esta información, se generará el libro de matrículas.\r\n' +
+      'Qué información se debe cargar al libro, para su correspondiente impresión y empaste?\r\n' +
+      ' ',
+    Id: 73,
+    TipoParam: 'Información para el Libro de Matrículas '
+  }
+]
+id 73
+infoParametros [
+  {
+    Description: 'El sistema a través de la Inscripción virtual permite subir por estudiante, aproximadamente 84 datos relacionados con el estudiante, el acudiente, el padre y la madre, además de otra información de tipo datos personales y datos administrativos.\r\n' +
+      'A partir de esta información, se generará el libro de matrículas.\r\n' +
+      'Qué información se debe cargar al libro, para su correspondiente impresión y empaste?\r\n' +
+      ' ',
+    Id: 73,
+    TipoParam: 'Información para el Libro de Matrículas '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1190 ms (2733 modules)
+109
+73
+73
+109
+73
+73
+73
+wait  - compiling...
+event - compiled client and server successfully in 643 ms (2733 modules)
+73
+109
+73
+wait  - compiling...
+event - compiled client and server successfully in 635 ms (2733 modules)
+73
+109
+73
+99
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 301 ms (1504 modules)
+id 99
+99
+infoParametros [
+  {
+    Description: 'Validar que para al momento de guardar una matrícula Extraordinaria, el sistema revise si se registró las calificaciones de los periodos que anteceden a la matrícula efectuada, o de lo contrario no permita al almacenamiento del proceso como matrícula administrativa. El usuario asignado para matricular tiene tres opciones de registro de calificaciones: 1° Solicitud de Homologación, 2° Remisión para registro por perfil docente, 3° Registro directo de calificaciones procedentes.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '     \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 99,
+    TipoParam: 'Almacenamiento del formulario de la matrícula Extraordinaria '
+  }
+]
+id 99
+infoParametros [
+  {
+    Description: 'Validar que para al momento de guardar una matrícula Extraordinaria, el sistema revise si se registró las calificaciones de los periodos que anteceden a la matrícula efectuada, o de lo contrario no permita al almacenamiento del proceso como matrícula administrativa. El usuario asignado para matricular tiene tres opciones de registro de calificaciones: 1° Solicitud de Homologación, 2° Remisión para registro por perfil docente, 3° Registro directo de calificaciones procedentes.\r\n' +
+      ' \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '     \r\n' +
+      '\r\n' +
+      '\r\n' +
+      '\r\n' +
+      '      ',
+    Id: 99,
+    TipoParam: 'Almacenamiento del formulario de la matrícula Extraordinaria '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1133 ms (2733 modules)
+99
+wait  - compiling...
+event - compiled client and server successfully in 515 ms (2733 modules)
+99
+wait  - compiling...
+event - compiled client and server successfully in 774 ms (2733 modules)
+99
+wait  - compiling...
+event - compiled client and server successfully in 795 ms (2733 modules)
+99
+wait  - compiling...
+event - compiled client and server successfully in 670 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 833 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 740 ms (2733 modules)
+65
+null
+wait  - compiling /api/Configuracion/Parametros/[id]/route (client and server)...
+event - compiled successfully in 215 ms (1504 modules)
+id 65
+65
+infoParametros [
+  {
+    Description: 'Validar en el sistema cómo debe administrar el software los procesos asociados a:\r\n' +
+      '- El sistema de Calificación \t\t\r\n' +
+      '- El rango Numérico \r\n' +
+      '- El número de decimales a registrar en la planilla\r\n' +
+      '- la equivalencia de la escala nacional  \r\n' +
+      '- la forma como debe calcular los promedios en las planillas de calificaciones \r\n' +
+      '- La verificación del registro de superaciones en cada periodo\r\n' +
+      '- Si existe o no, registro en el sistema de superaciones semestrales\r\n' +
+      '- Entre otros procesos. \r\n',
+    Id: 65,
+    TipoParam: 'Definición de los Criterios de Evaluación según SIEPE. '
+  }
+]
+id 65
+infoParametros [
+  {
+    Description: 'Validar en el sistema cómo debe administrar el software los procesos asociados a:\r\n' +
+      '- El sistema de Calificación \t\t\r\n' +
+      '- El rango Numérico \r\n' +
+      '- El número de decimales a registrar en la planilla\r\n' +
+      '- la equivalencia de la escala nacional  \r\n' +
+      '- la forma como debe calcular los promedios en las planillas de calificaciones \r\n' +
+      '- La verificación del registro de superaciones en cada periodo\r\n' +
+      '- Si existe o no, registro en el sistema de superaciones semestrales\r\n' +
+      '- Entre otros procesos. \r\n',
+    Id: 65,
+    TipoParam: 'Definición de los Criterios de Evaluación según SIEPE. '
+  }
+]
+152
+null
+id 152
+infoParametros [
+  {
+    Description: 'Establecer criterios relacionados con los PROCESOS DE EVALULACIÓN: \r\n' +
+      '1. Nombre específico de cada proceso \r\n' +
+      '2. Obligatoriedad de registro del FORDEB\r\n' +
+      '3. Tipo de Planilla de calificación por Modalidad\r\n' +
+      '4. Registro de descriptores.\r\n' +
+      ' ',
+    Id: 152,
+    TipoParam: 'Definición de procesos de evaluación según SIEPE '
+  }
+]
+id 152
+infoParametros [
+  {
+    Description: 'Establecer criterios relacionados con los PROCESOS DE EVALULACIÓN: \r\n' +
+      '1. Nombre específico de cada proceso \r\n' +
+      '2. Obligatoriedad de registro del FORDEB\r\n' +
+      '3. Tipo de Planilla de calificación por Modalidad\r\n' +
+      '4. Registro de descriptores.\r\n' +
+      ' ',
+    Id: 152,
+    TipoParam: 'Definición de procesos de evaluación según SIEPE '
+  }
+]
+152
+null
+id 152
+id 152
+infoParametros [
+  {
+    Description: 'Establecer criterios relacionados con los PROCESOS DE EVALULACIÓN: \r\n' +
+      '1. Nombre específico de cada proceso \r\n' +
+      '2. Obligatoriedad de registro del FORDEB\r\n' +
+      '3. Tipo de Planilla de calificación por Modalidad\r\n' +
+      '4. Registro de descriptores.\r\n' +
+      ' ',
+    Id: 152,
+    TipoParam: 'Definición de procesos de evaluación según SIEPE '
+  }
+]
+infoParametros [
+  {
+    Description: 'Establecer criterios relacionados con los PROCESOS DE EVALULACIÓN: \r\n' +
+      '1. Nombre específico de cada proceso \r\n' +
+      '2. Obligatoriedad de registro del FORDEB\r\n' +
+      '3. Tipo de Planilla de calificación por Modalidad\r\n' +
+      '4. Registro de descriptores.\r\n' +
+      ' ',
+    Id: 152,
+    TipoParam: 'Definición de procesos de evaluación según SIEPE '
+  }
+]
+wait  - compiling...
+event - compiled client and server successfully in 1303 ms (2733 modules)
+65
+152
+65
+152
+65
+152
+wait  - compiling...
+event - compiled client and server successfully in 875 ms (2733 modules)
+152
+65
+wait  - compiling...
+event - compiled client and server successfully in 743 ms (2733 modules)
+152
+wait  - compiling...
+event - compiled client and server successfully in 820 ms (2733 modules)
+152
+wait  - compiling...
+event - compiled client and server successfully in 793 ms (2733 modules)
+152
+wait  - compiling...
+event - compiled client and server successfully in 829 ms (2733 modules)
+152
+wait  - compiling...
+event - compiled client and server successfully in 760 ms (2733 modules)
+wait  - compiling...
+event - compiled client and server successfully in 772 ms (2733 modules)
+^Z
+zsh: suspended  sudo yarn dev
+carvajal5999@Daniels-MacBook-Air sygescol % git status 
+On branch main
+Your branch is behind 'origin/main' by 11 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   app/Configuracion/Parametro/Fechas.tsx
+	modified:   app/Configuracion/Parametro/ModalFecha.tsx
+	new file:   app/Configuracion/Parametro/ModalSelectDate.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param1/Par100.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param1/Par109.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param1/Par95.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param1/Par96.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param2/Par115.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param2/Par123.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param2/Par68.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param2/Par73.tsx
+	modified:   app/Configuracion/Parametro/[id]/Param2/Par99.tsx
+
+carvajal5999@Daniels-MacBook-Air sygescol % git add . 
+carvajal5999@Daniels-MacBook-Air sygescol % git commit -m "Cambios Parametro 96"
+[main 98d8509] Cambios Parametro 96
+ 12 files changed, 1282 insertions(+), 97 deletions(-)
+ create mode 100644 app/Configuracion/Parametro/ModalSelectDate.tsx
+carvajal5999@Daniels-MacBook-Air sygescol % git push origin main 
+To https://github.com/SygescolEntreprise/sygescol.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/SygescolEntreprise/sygescol.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+carvajal5999@Daniels-MacBook-Air sygescol % git branch
+  daniel
+* main
+carvajal5999@Daniels-MacBook-Air sygescol % git pull origin main 
+From https://github.com/SygescolEntreprise/sygescol
+ * branch            main       -> FETCH_HEAD
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+carvajal5999@Daniels-MacBook-Air sygescol % git pull origin main --ff
+From https://github.com/SygescolEntreprise/sygescol
+ * branch            main       -> FETCH_HEAD
+hint: Waiting for your editor to close the file... 
+Merge branch 'main' of https://github.com/SygescolEntreprise/sygescol
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+"~/Documents/repositorios/sygescol/.git/MERGE_MSG" 6L, 296B

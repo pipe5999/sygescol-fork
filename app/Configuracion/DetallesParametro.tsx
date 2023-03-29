@@ -46,7 +46,7 @@ const DetallesParametro = ({ infoParams }: any) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 stroke-cyan-900 text-sky-900 hover:stroke-lime-600 hover:text-lime-600"
+            className="w-6 h-6 stroke-cyan-900 text-indigo-900 hover:stroke-green-600 hover:text-green-600"
           >
             <path
               strokeLinecap="round"
