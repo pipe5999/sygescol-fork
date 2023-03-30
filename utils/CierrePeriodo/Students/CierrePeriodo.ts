@@ -1,4 +1,4 @@
-import { conecctions } from "../../../../utils/Conexions";
+import { conecctions } from "../../Conexions";
 import CheckConfig from "../Params/CheckConfig";
 
 export default async function CierrePeriodo(colegio: any, grupos: any) {

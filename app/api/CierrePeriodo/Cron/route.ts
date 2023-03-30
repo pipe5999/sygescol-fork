@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import CierrePeriodo from "../../../../utils/CierrePeriodo/Students/CierrePeriodo";
+import VerificarFechas from "../../../../utils/CierrePeriodo/VerificarFechas/CheckDate";
 import School from "../../../../utils/School";
-import CierrePeriodo from "../Students/CierrePeriodo";
-import VerificarFechas from "../VerificarFechas/CheckDate";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
