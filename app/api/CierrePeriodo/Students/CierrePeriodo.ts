@@ -90,7 +90,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
     );
 
     const direccionGrupoQueri = conexion.query(
-      `SELECT u AS docente, i AS gradoGrupo FROM cg WHERE b IN (${gruposFind})`
+      `SELECT u AS docente, i AS gradoGrupo,b as GrupoId FROM cg WHERE b IN (${gruposFind})`
     );
     const competenciasQueri: any =
       conexion.query(`SELECT DISTINCT proceso_evaluacion.proeva_sub_id, proceso_evaluacion_banco.proeva_id, proceso_evaluacion.cga_id, proceso_evaluacion.grupo_id ,proceso_evaluacion_banco.proeva_cod, proceso_evaluacion_banco.proeva_desc, proceso_evaluacion_banco.proeva_porcen,proceso_evaluacion_banco.dcne_id 
@@ -238,22 +238,27 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           ComportabmientoBolean = true;
 
           const directorGupo = direccionGrupo.find(
-            (dir: any) => dir?.docente == item?.DocenteId
+            (dir: any) =>
+              dir?.docente == item?.DocenteId && dir?.GrupoId == item?.GrupoId
           );
 
           if (!directorGupo?.docente) {
             InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','${item.CgaId}','','','Este grupo no tiene director de grupo','coordinador','${dateActualFormat}','1'),`;
           } else {
-            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','${item.CgaId}','${directorGupo?.docente}','${EstudiIdMatricula}','Existen estudiantes sin registro de comportamiento','comportamiento','${dateActualFormat}','1'),`;
+            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','${item?.CgaId}','${directorGupo?.docente}','${EstudiIdMatricula}','Existen estudiantes sin registro de comportamiento','comportamiento','${dateActualFormat}','1'),`;
           }
         }
 
         const CompetenciasDcne = competencias?.filter((com: any) => {
-          return com?.dcne_id == item?.DocenteId;
+          return (
+            com?.dcne_id == item?.DocenteId &&
+            com.grupo_id == item?.GrupoId &&
+            com?.cga_id == item?.CgaId
+          );
         });
 
-        if (!CompetenciasDcne.length) {
-          InsertBulkCompetenciaDcne += `('${item.GrupoId}','${periodo}','${
+        if (CompetenciasDcne.length == 0) {
+          InsertBulkCompetenciaDcne += `('${item?.GrupoId}','${periodo}','${
             item.CgaId
           }','${
             item.DocenteId
@@ -275,6 +280,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             Estudiantes: EstudianteGrupo,
             Asignaturas: AsignaturaDcne,
             CantNotas: LengthRes.length,
+            EstudiIdComportamiento: EstudiIdComportamiento,
           };
         }
 
@@ -408,10 +414,9 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       }
 
       if (Object.values(newData).length) {
-        console.log("entro");
-
         return {
           grupos: grupos,
+          // Docentes: Object.values(newData),
         };
       } else {
         return {
