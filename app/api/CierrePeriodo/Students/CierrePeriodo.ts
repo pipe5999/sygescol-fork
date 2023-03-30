@@ -85,34 +85,34 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       `SELECT periodo, id_grupo, nombre, descripcion, acciones.id AS idPrincipal, acciones_subacciones.id AS idRelacion, grupo_nombre AS grupo, acciones_subacciones.id_cga AS cga FROM acciones_subacciones INNER JOIN acciones ON acciones.id = acciones_subacciones.id_subaccion INNER JOIN v_grupos ON id_grupo = grupo_id WHERE grupo_id IN(${gruposFind}) and periodo=${periodo}`
     );
 
-    const docentesQueri: any = conexion.query(
-      `SELECT dcne.i, CONCAT(dcne_nom1,' ',dcne_nom2,' ',dcne_ape1,' ',dcne_ape2) AS Nombre FROM dcne where dcne.i in (${DcneFindId})`
-    );
+    // const docentesQueri: any = conexion.query(
+    //   `SELECT dcne.i, CONCAT(dcne_nom1,' ',dcne_nom2,' ',dcne_ape1,' ',dcne_ape2) AS Nombre FROM dcne where dcne.i in (${DcneFindId})`
+    // );
 
     const direccionGrupoQueri = conexion.query(
       `SELECT u AS docente, i AS gradoGrupo,b as GrupoId FROM cg WHERE b IN (${gruposFind})`
     );
     const competenciasQueri: any =
-      conexion.query(`SELECT DISTINCT proceso_evaluacion.proeva_sub_id, proceso_evaluacion_banco.proeva_id, proceso_evaluacion.cga_id, proceso_evaluacion.grupo_id ,proceso_evaluacion_banco.proeva_cod, proceso_evaluacion_banco.proeva_desc, proceso_evaluacion_banco.proeva_porcen,proceso_evaluacion_banco.dcne_id 
-          FROM proceso_evaluacion_banco 
-          INNER JOIN proceso_evaluacion ON (proceso_evaluacion_banco.proeva_id = proceso_evaluacion.proeva_sub_id)
-          WHERE proceso_evaluacion.grupo_id in ('${gruposFind}')
-          ORDER BY proceso_evaluacion_banco.proeva_cod`);
+      conexion.query(`SELECT DISTINCT proceso_evaluacion.proeva_sub_id, proceso_evaluacion_banco.proeva_id, proceso_evaluacion.grupo_id ,proceso_evaluacion_banco.proeva_cod, proceso_evaluacion_banco.proeva_porcen,proceso_evaluacion_banco.dcne_id,proceso_evaluacion.cga_id
+      FROM proceso_evaluacion_banco 
+      INNER JOIN proceso_evaluacion ON (proceso_evaluacion_banco.proeva_id = proceso_evaluacion.proeva_sub_id) 
+      WHERE proceso_evaluacion_banco.per_id ='${periodo}'
+      AND proceso_evaluacion_banco.dcne_id IN (${DcneFindId})`);
 
     const [
       [estudiantes],
       [asignaturas],
       [notas],
       [acciones],
-      [docentes],
+      // [docentes],
       [direccionGrupo],
       [competencias],
-    ]: [any, any, any, any, any, any, any] = await Promise.all([
+    ]: [any, any, any, any, any, any] = await Promise.all([
       estudiantesQueri,
       asignaturasQueri,
       notasQueri,
       accionesQueri,
-      docentesQueri,
+      // docentesQueri,
       direccionGrupoQueri,
       competenciasQueri,
     ]);
@@ -177,7 +177,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
               return !NotasEstudiante?.find(
                 (nota: any) =>
                   nota?.idRelacion == accion?.idRelacion &&
-                  nota?.cga == item?.CgaId &&
+                  nota?.cga_id == item?.CgaId &&
                   nota?.valoracion
               );
             });
@@ -403,10 +403,10 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       if (ComportabmientoBolean) {
         InsertBulkComportamiento = InsertBulkComportamiento?.slice(0, -1);
 
-        console.log(
-          "InsertBulkComportamiento ----------->",
-          InsertBulkComportamiento
-        );
+        // console.log(
+        //   "InsertBulkComportamiento ----------->",
+        //   InsertBulkComportamiento
+        // );
 
         const [InsertComportamiento]: any = await conexion.query(
           InsertBulkComportamiento
