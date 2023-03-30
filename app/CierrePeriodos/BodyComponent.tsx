@@ -122,6 +122,7 @@ const BodyComponent = () => {
           ))}
           <Dialog
             // open={open}
+            className="overflow-y-scroll h-96"
             open={size === "xl"}
             size={size || "xl"}
             handler={handleOpen}

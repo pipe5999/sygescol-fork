@@ -14,6 +14,17 @@ const data = [
     docente: "Brahian Orozco",
     detalle: "No se han subido Calificaciones",
   },
+  {
+    asignatura: "Humanidades",
+    docente: "Brahian Orozco",
+    detalle: "No se han subido Calificaciones",
+  },
+
+  {
+    asignatura: "Humanidades",
+    docente: "Brahian Orozco",
+    detalle: "No se han subido Calificaciones",
+  },
 ];
 
 const Tabla = () => {
@@ -45,35 +56,39 @@ const Tabla = () => {
               key={index}
               className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
             >
-              <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+              <td className="w-full lg:w-auto p-6 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                <span className="lg:hidden absolute top-0 left-0  px-2 py-1 text-xs font-bold uppercase">
                   ASIGNATURA
                 </span>
                 {item.asignatura}
               </td>
-              <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+              <td className="w-full lg:w-auto p-6 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span className="lg:hidden absolute top-0 left-0  px-2 py-1 text-xs font-bold uppercase">
                   DOCENTE
                 </span>
                 {item.docente}
               </td>
-              <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+              <td className="w-full lg:w-auto p-6 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span className="lg:hidden absolute top-0 left-0  px-2 py-1 text-xs font-bold uppercase">
                   DETALLE
                 </span>
                 <span className="rounded bg-red-200 py-1 px-3 text-xs font-bold">
                   {item.detalle}
                 </span>
               </td>
-              <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+              <td className="w-full lg:w-auto p-6 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span className="lg:hidden absolute top-0 left-0  px-2 py-1 text-xs font-bold uppercase">
                   ESTUDIANTES
                 </span>
                 <Fragment>
                   <Button onClick={handleOpen} variant="gradient">
                     Ver
                   </Button>
-                  <Dialog open={open} handler={handleOpen}>
+                  <Dialog
+                    className="overflow-y-scroll h-86"
+                    open={open}
+                    handler={handleOpen}
+                  >
                     <DialogHeader>Listado Estudiantes</DialogHeader>
                     <DialogBody divider>
                       <p>Hugo Hernandez</p>

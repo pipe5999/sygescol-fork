@@ -11,22 +11,31 @@ import {
 
 const BotonDenega = () => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+  // const handleOpen = () => setOpen(!open);
+  const [size, setSize] = useState(null);
+  const handleOpen = (value: any) => setSize(value);
 
   return (
     <>
       <Fragment>
-        <Button onClick={handleOpen} variant="gradient">
+        {/* <Button onClick={handleOpen} variant="gradient">
+          ver
+        </Button> */}
+        <Button onClick={() => handleOpen("lg")} variant="gradient">
           ver
         </Button>
-        <Dialog open={open} handler={handleOpen}>
+        <Dialog
+          className="overflow-y-scroll h-auto"
+          // open={open}
+          open={size === "lg"}
+          size={size || "lg"}
+          handler={handleOpen}
+        >
           <DialogHeader>Causa de la Devolución</DialogHeader>
+
           <DialogBody divider>
-            <div className="flex flex-col w-100 gap-6">
-              <Textarea
-                label="Redacte aquí por favor la causa de la devolución..."
-                error
-              />
+            <div className="    flex flex-col w-auto gap-6">
+              <Textarea label="causa de la devolución..." Message />
               {/* <Textarea label="Textarea Success" success /> */}
             </div>
           </DialogBody>
@@ -41,7 +50,7 @@ const BotonDenega = () => {
               <span>Cancel</span>
             </Button> */}
             <Button variant="gradient" color="green" onClick={handleOpen}>
-              <span>Enviar</span>
+              <span>Enviar Novedad</span>
             </Button>
           </DialogFooter>
         </Dialog>

@@ -19,7 +19,12 @@ const BotonModifica = () => {
           ver
         </Button>
         {/* <Dialog open={open} handler={handleOpen}> */}
-        <Dialog open={size === "xl"} size={size || "xl"} handler={handleOpen}>
+        <Dialog
+          open={size === "xl"}
+          className="overflow-y-scroll h-96"
+          size={size || "xl"}
+          handler={handleOpen}
+        >
           <DialogHeader>Señor Profesor John Delgado.</DialogHeader>
           <DialogBody divider>
             Durante el cierre del 2 periodo académico, se han detectado
@@ -39,7 +44,7 @@ const BotonModifica = () => {
               <span>Enviar</span>
             </Button> */}
             <Button variant="gradient" color="green" onClick={handleOpen}>
-              <span>Enviar</span>
+              <span>Enviar Solicitud</span>
             </Button>
           </DialogFooter>
         </Dialog>
