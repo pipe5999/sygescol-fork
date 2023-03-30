@@ -1,5 +1,5 @@
-import { conecctions } from "../../../../utils/Conexions";
-import School from "../../../../utils/School";
+import { conecctions } from "../../Conexions";
+import School from "../../School";
 
 export default async function VerificarFechas(school: any) {
   try {
