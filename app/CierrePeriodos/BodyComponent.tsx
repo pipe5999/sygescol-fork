@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import {
   Button,
   Dialog,
@@ -15,126 +15,52 @@ const BodyComponent = () => {
   const [open, setOpen] = useState(false);
   // const handleOpen = () => setOpen(!open);
   const [showInfo, setShowInfo] = useState({} as any);
-
   const [size, setSize] = useState(null);
-
+  const [data, setData] = useState(null as any);
   const handleOpen = (value: any) => setSize(value);
-  const [InfoUser, setInfoUser] = useState([] as any);
-
-  // const buttons = [
-  //   {
-  //     text: "Grupo 6-01",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 6-01 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-  //   {
-  //     text: "Grupo 6-02",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 6-02 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-  //   {
-  //     text: "Grupo 6-03",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 6-03 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-
-  //   {
-  //     text: "Grupo 7-01",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 7-01 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.tro",
-  //   },
-  //   {
-  //     text: "Grupo 7-02",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 7-02 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.co",
-  //   },
-  //   {
-  //     text: "Grupo 7-03",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 7-03 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-  //   {
-  //     text: "Grupo 7-04",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 7-04 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-  //   {
-  //     text: "Grupo 8-01",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 8-01 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-  //   {
-  //     text: "Grupo 8-02",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 8-02 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-  //   {
-  //     text: "Grupo 8-03",
-  //     variant: "gradient",
-  //     title: "Pdts. Cierre Grupo 8-03 periodo 2",
-  //     content:
-  //       " Este proceso revisa las planillas de los docentes, buscando registros sin calificar para asignarles una calificación según los parámetros establecidos.",
-  //   },
-  // ];
-
-  const GetData = async (IdDocente: any, Col: any) => {
-    const Data = await fetch(
-      `/api/CierrePeriodo/InfoCierre?IdDocente=${IdDocente}&colegio=${Col}`
-    ).then((res) => res.json());
-
-    setInfoUser(Data?.body);
+  const getDataPendiente = async () => {
+    axios
+      .post(`/api/CierrePeriodo/ConsultaAdmin`, {
+        colegio: localStorage.colegio,
+      })
+      .then((res: any) => {
+        if (res.status == 200) {
+          setData(res.data);
+        }
+      })
+      .catch((error: any) => {
+        alert("Existe un error al consultar la información");
+        console.log(error);
+      });
   };
   useEffect(() => {
-    const DatosUser = JSON.parse(localStorage?.datosUsu || "{}");
-
-    const Colegio: any = localStorage?.colegio;
-    if (DatosUser?.Id) {
-      GetData(DatosUser?.Id, Colegio);
-    }
+    getDataPendiente();
   }, []);
 
   return (
     <>
       <div className="mx-16">
         <Fragment>
-          {InfoUser?.map((TipoPendiente: any, index: any) => (
-            <Button
-              key={index}
-              variant="gradient"
-              onClick={(e: any) => {
-                e.preventDefault();
-                handleOpen("xl");
-                setOpen(true);
-                setShowInfo({
-                  ...TipoPendiente,
-                });
-              }}
-              className={`mt-5 
-             
-              `}
-            >
-              <span>{TipoPendiente.TipoPendiente}</span>
-            </Button>
-          ))}
-
+          {data &&
+            data?.pendiente?.map((button: any, index: any) => (
+              <Button
+                key={index}
+                variant={"gradient"}
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  handleOpen("xl");
+                  setOpen(true);
+                  setShowInfo({
+                    ...button,
+                  });
+                }}
+                className={`mt-5 ${
+                  index !== data?.pendiente?.length - 1 ? "mr-5" : ""
+                }`}
+              >
+                <span>{button.nombre}</span>
+              </Button>
+            ))}
           <Dialog
             // open={open}
             className="overflow-y-scroll h-96"
