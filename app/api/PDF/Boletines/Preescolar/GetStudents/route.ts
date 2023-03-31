@@ -26,7 +26,10 @@ export async function GET(req: any) {
     );
 
     const [cga]: any = await conexion.query(
-      `SELECT cga.i AS id, aintrs.b AS asignatura, aes.b AS Area, cga.u AS Horas FROM cga INNER JOIN aintrs ON aintrs.i = cga.a INNER JOIN efr ON aintrs.g = efr.i INNER JOIN aes ON efr.a = aes.i WHERE cga.b = ${grupo}`
+      `SELECT cga.i AS id, aintrs.b AS asignatura, aes.b AS Area, cga.u AS Horas FROM cga INNER JOIN aintrs ON aintrs.i = cga.a INNER JOIN efr ON aintrs.g = efr.i INNER JOIN aes ON efr.a = aes.i  INNER JOIN v_grupos ON cga.b = v_grupos.grupo_id WHERE cga.b = ${grupo} AND grado_base = 0`
+    );
+    console.log(
+      `SELECT cga.i AS id, aintrs.b AS asignatura, aes.b AS Area, cga.u AS Horas FROM cga INNER JOIN aintrs ON aintrs.i = cga.a INNER JOIN efr ON aintrs.g = efr.i INNER JOIN aes ON efr.a = aes.i  INNER JOIN v_grupos ON cga.b = v_grupos.grupo_id WHERE cga.b = ${grupo} AND grado_base = 0`
     );
     const formatCga = cga?.reduce((acc: any, item: any) => {
       let key = `${item.Area}`;

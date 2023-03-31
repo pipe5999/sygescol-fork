@@ -27,7 +27,7 @@ export async function GET(req: any) {
             `SELECT CONCAT(dcne_ape1,' ',dcne_ape2,' ',dcne_nom1,' ',dcne_nom2) AS nombre, dcne.i AS Id,dcne_firma AS firma, dcne_foto AS foto, rol_nombre, usu_rol FROM usuario INNER JOIN dcne ON usu_fk = dcne.i INNER JOIN rol ON rol_id = usu_rol WHERE usu_id = ${usuar}`
           );
           const [datosGrupo]: any = await conexion.query(
-            `SELECT DISTINCT grupo_nombre, grupo_id, grado_base FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${id}`
+            `SELECT DISTINCT grupo_nombre, grupo_id, grado_base FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${id} AND grado_base = 0`
           );
           const [dimensiones]: any = await conexion.query(
             `SELECT aintrs.i AS idAsig, aintrs.b AS nombreAsigna, cga.i AS CgaId, aintrs.a AS Abreviatura FROM cga INNER JOIN aintrs ON cga.a = aintrs.i INNER JOIN v_grupos ON cga.b = v_grupos.grupo_id WHERE cga.g = ${id} AND grado_base = 0`
