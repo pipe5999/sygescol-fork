@@ -19,9 +19,11 @@ type Component = {
 
 const BodyComponent = () => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+  // const handleOpen = () => setOpen(!open);
   const [showInfo, setShowInfo] = useState({} as Component);
   console.log(showInfo);
+  const [size, setSize] = useState(null);
+  const handleOpen = (value: any) => setSize(value);
 
   const buttons = [
     {
@@ -107,6 +109,7 @@ const BodyComponent = () => {
               variant={button.variant}
               onClick={(e: any) => {
                 e.preventDefault();
+                handleOpen("xl");
                 setOpen(true);
                 setShowInfo({
                   ...button,
@@ -118,7 +121,10 @@ const BodyComponent = () => {
             </Button>
           ))}
           <Dialog
-            open={open}
+            // open={open}
+            className="overflow-y-scroll h-96"
+            open={size === "xl"}
+            size={size || "xl"}
             handler={handleOpen}
             animate={{
               mount: { scale: 1, y: 0 },
@@ -136,7 +142,7 @@ const BodyComponent = () => {
                 //   color: "red",
                 // },
                 {
-                  text: "Guardar",
+                  text: "Cerrar",
                   variant: "gradient",
                   color: "green",
                 },
