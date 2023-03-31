@@ -1,5 +1,4 @@
 import React from "react";
-import BodyComponent from "./BodyComponent";
 
 const HeaderTitle = () => {
   return (
@@ -20,7 +19,6 @@ const HeaderTitle = () => {
           requeridos por cada profesor, los cuales verá relacionados en esta
           interfaz:
         </p>
-        <BodyComponent />
       </div>
     </>
   );
