@@ -9,7 +9,7 @@ const HeaderTitle = () => {
         <div className="mb-5 text-center font-bold font-regular relative block w-full rounded-lg bg-blue-900 p-4 text-xl leading-5 text-white opacity-100">
           <h1>CIERRE DE PERIODOS</h1>
         </div>
-        <p className="font-bold text-lg mb-3">
+        <p className="font-bold text-lg mb-2">
           Señor Coordinador Brahian Orozco:
         </p>
         <p className="text-justify font-semibold mb-4">
