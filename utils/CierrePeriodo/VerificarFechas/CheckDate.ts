@@ -139,8 +139,6 @@ export default async function VerificarFechas(school: any) {
 
     //   console.log(StructurePeriodoAcademico);
 
-    console.log("GruposCerrar", GruposCerrar);
-
     return { GruposCerrar: GruposCerrar || [] };
   } catch (error) {
     console.log("error", error);

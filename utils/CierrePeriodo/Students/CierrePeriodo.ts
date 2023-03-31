@@ -231,7 +231,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         });
 
         if (EstudiIdMatricula.length > 0) {
-          InsertBulkAuditoriaPeriodo += `('${item.GrupoId}','${periodo}','${item.CgaId}','${item.DocenteId}','${EstudiIdMatricula}','El sistema genero las notas faltantes','calificaciones','${dateActualFormat}','1'),`;
+          InsertBulkAuditoriaPeriodo += `('${item.GrupoId}','${periodo}','${item.CgaId}','${item.DocenteId}','${EstudiIdMatricula}','Verifique los estudiantes con calificaciones pendientes.','calificaciones','${dateActualFormat}','1'),`;
         }
 
         if (EstudiIdComportamiento.length > 0) {
@@ -262,7 +262,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.CgaId
           }','${
             item.DocenteId
-          }','0','${`No se han definido ${NameProcesoEvaluacion} `}','proceso_evaluacion','${dateActualFormat}','1'),`;
+          }','0','${`En la asignatura no se refleja el registro de  ${NameProcesoEvaluacion} `}','proceso_evaluacion','${dateActualFormat}','1'),`;
 
           CompetenciaBolean = true;
         }
@@ -309,11 +309,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.CgaId
           }','${
             item.DocenteId
-          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra fortalezas en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+          }','0','${`La asignatura no registra fortalezas para los desempeños Superior y Alto.`}','forder','${dateActualFormat}','1'),`;
 
           Pendientes?.push({
             ...item,
-            mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra fortalezas en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
+            mensaje: `La asignatura no registra fortalezas para los desempeños Superior y Alto.`,
           });
         }
 
@@ -322,11 +322,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.CgaId
           }','${
             item.DocenteId
-          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+          }','0','${`La asignatura no registra debilidades para los desempeños Básico y Bajo.`}','forder','${dateActualFormat}','1'),`;
 
           Pendientes?.push({
             ...item,
-            mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
+            mensaje: `La asignatura no registra debilidades para los desempeños Básico y Bajo.`,
           });
         }
         if (acc[key].Fordeb?.Recomentaciones?.length == 0) {
@@ -334,11 +334,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.CgaId
           }','${
             item.DocenteId
-          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra recomendaciones en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+          }','0','${`La asignatura no registra recomendaciones para los desempeños Básico y Bajo.`}','forder','${dateActualFormat}','1'),`;
 
           Pendientes?.push({
             ...item,
-            mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra recomendaciones en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
+            mensaje: `La asignatura no registra recomendaciones para los desempeños Básico y Bajo.`,
           });
         }
 
@@ -354,7 +354,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.CgaId
           }','${
             item.DocenteId
-          }','0','${`el docente ${item?.Nombre} ${item?.Apellidos} no registra la misma cantidad de recomendaciones y debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`}','forder','${dateActualFormat}','1'),`;
+          }','0','${`el docente no registra la misma cantidad de recomendaciones y debilidades `}','forder','${dateActualFormat}','1'),`;
 
           Pendientes.push({
             ...item,
@@ -402,11 +402,6 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       }
       if (ComportabmientoBolean) {
         InsertBulkComportamiento = InsertBulkComportamiento?.slice(0, -1);
-
-        // console.log(
-        //   "InsertBulkComportamiento ----------->",
-        //   InsertBulkComportamiento
-        // );
 
         const [InsertComportamiento]: any = await conexion.query(
           InsertBulkComportamiento

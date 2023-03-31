@@ -147,13 +147,13 @@ const BodyComponent = () => {
             }}
           >
             <DialogHeader>
-              Pdts. Cierre Grupo {showInfo?.nombre || ""} en el periodo{" "}
+              Pendientes Cierre Grupo {showInfo?.nombre || ""} en el periodo{" "}
               {showInfo?.Periodo}
             </DialogHeader>
             <DialogBody divider>
-              Este proceso revisa las planillas de los docentes, buscando
-              registros sin calificar para asignarles una calificación según los
-              parámetros establecidos.
+              Este proceso permite filtrar las planillas de calificaciones, con
+              el fin de establecer  los pendientes y asignárseles la valoración
+              definida para esta Institución.
             </DialogBody>
             <Tabla data={showInfo?.Pendiente} />
             <DialogFooter>
