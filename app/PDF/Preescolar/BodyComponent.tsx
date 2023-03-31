@@ -62,7 +62,7 @@ function BodyComponent() {
                     <Cabecera data={data} />
                     <PersonalInfo data={inf} grup={dataInfo?.grupo} />
                     <Dimension dimensiones={dataInfo?.cga} data={inf} />
-                    {/* <Comportamiento data={inf} /> */}
+                    <Comportamiento data={inf} />
                     <Firmas firma={firma} />
                   </View>
                 </Page>

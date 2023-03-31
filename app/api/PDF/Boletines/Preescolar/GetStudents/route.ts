@@ -28,8 +28,8 @@ export async function GET(req: any) {
     const [cga]: any = await conexion.query(
       `SELECT cga.i AS id, aintrs.b AS asignatura, aes.b AS Area, cga.u AS Horas FROM cga INNER JOIN aintrs ON aintrs.i = cga.a INNER JOIN efr ON aintrs.g = efr.i INNER JOIN aes ON efr.a = aes.i  INNER JOIN v_grupos ON cga.b = v_grupos.grupo_id WHERE cga.b = ${grupo} AND grado_base = 0`
     );
-    console.log(
-      `SELECT cga.i AS id, aintrs.b AS asignatura, aes.b AS Area, cga.u AS Horas FROM cga INNER JOIN aintrs ON aintrs.i = cga.a INNER JOIN efr ON aintrs.g = efr.i INNER JOIN aes ON efr.a = aes.i  INNER JOIN v_grupos ON cga.b = v_grupos.grupo_id WHERE cga.b = ${grupo} AND grado_base = 0`
+    const [comportamiento]: any = await conexion.query(
+      `SELECT compo_observacion, compo_nota_num_def, matri_id, per_id, esca_nac_nombre FROM comportamiento INNER JOIN escala_nacional ON escala_nacional.esca_nac_id = comportamiento.esca_nac_id_def WHERE per_id = '${periodo[0]?.per_id}'`
     );
     const formatCga = cga?.reduce((acc: any, item: any) => {
       let key = `${item.Area}`;
@@ -63,6 +63,9 @@ export async function GET(req: any) {
       const observacionesEstu = observaciones.filter(
         (obs: any) => obs.estudiante == est.matricula
       );
+      const comportamientoEstu = comportamiento.find(
+        (com: any) => com.matri_id == est.matricula
+      );
       await axios
         .post(
           `${
@@ -82,6 +85,7 @@ export async function GET(req: any) {
               }.jpg`,
               notas: notasEstu,
               observaciones: observacionesEstu,
+              comportamiento: comportamientoEstu,
             });
           }
         })
@@ -93,6 +97,7 @@ export async function GET(req: any) {
             }sygescol${new Date().getFullYear()}/images/fotos/estudiantes/no_imagen.jpg`,
             notas: notasEstu,
             observaciones: observacionesEstu,
+            comportamiento: comportamientoEstu,
           });
         });
     }

@@ -45,6 +45,7 @@ function Comportamiento({ data }: Props) {
       fontWeight: "bold",
     },
     tableCell: {
+      width: "26.5%",
       border: 1,
       marginTop: 5,
       textAlign: "center",
@@ -53,12 +54,29 @@ function Comportamiento({ data }: Props) {
       fontWeight: "bold",
       marginLeft: -1,
     },
+    tableCell2: {
+      width: "100%",
+      border: 1,
+      marginTop: -1,
+      textAlign: "left",
+      fontSize: 10,
+      padding: "2%",
+      fontWeight: "bold",
+    },
   };
   return (
     <>
       <View style={style.table}>
         <View style={style.tableRow}>
           <Text style={style.tableCellTitle}>COMPORTAMIENTO</Text>
+          <Text style={style.tableCell}>
+            {data?.comportamiento?.esca_nac_nombre || ""}
+          </Text>
+        </View>
+        <View style={style.tableRow}>
+          <Text style={style.tableCell2}>
+            {data?.comportamiento?.compo_observacion || ""}
+          </Text>
         </View>
       </View>
     </>
