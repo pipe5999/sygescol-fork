@@ -30,7 +30,7 @@ export async function GET(req: any) {
             `SELECT DISTINCT grupo_nombre, grupo_id, grado_base FROM cga INNER JOIN v_grupos ON grupo_id = cga.b WHERE cga.g = ${id}`
           );
           const [dimensiones]: any = await conexion.query(
-            `SELECT aintrs.i AS idAsig, aintrs.b AS nombreAsigna, cga.i AS CgaId, aintrs.a AS Abreviatura FROM cga INNER JOIN aintrs ON cga.a = aintrs.i WHERE cga.g = ${id}`
+            `SELECT aintrs.i AS idAsig, aintrs.b AS nombreAsigna, cga.i AS CgaId, aintrs.a AS Abreviatura FROM cga INNER JOIN aintrs ON cga.a = aintrs.i INNER JOIN v_grupos ON cga.b = v_grupos.grupo_id WHERE cga.g = ${id} AND grado_base = 0`
           );
           return NextResponse.json(
             {
