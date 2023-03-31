@@ -66,7 +66,7 @@ export async function GET(req: any) {
     }, {});
 
     return NextResponse.json(
-      { body: Object.values(DataNormalizada) },
+      { body: Object.values(DataNormalizada) || [] },
       {
         status: 200,
       }
