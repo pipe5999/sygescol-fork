@@ -9,18 +9,12 @@ import {
 } from "@material-tailwind/react";
 import Tabla from "./Tabla";
 import BotonPermiso from "./BotonPermiso";
-
-type Component = {
-  text: string;
-  variant: string;
-  title: string;
-  content: string;
-};
+import axios from "axios";
 
 const BodyComponent = () => {
   const [open, setOpen] = useState(false);
   // const handleOpen = () => setOpen(!open);
-  const [showInfo, setShowInfo] = useState({} as Component);
+  const [showInfo, setShowInfo] = useState({} as any);
 
   const [size, setSize] = useState(null);
 
@@ -152,16 +146,18 @@ const BodyComponent = () => {
               unmount: { scale: 0.9, y: -100 },
             }}
           >
-            <DialogHeader>{showInfo?.title || ""}</DialogHeader>
-            <DialogBody divider>{showInfo?.content || ""}</DialogBody>
-            <Tabla />
+            <DialogHeader>
+              Pdts. Cierre Grupo {showInfo?.nombre || ""} en el periodo{" "}
+              {showInfo?.Periodo}
+            </DialogHeader>
+            <DialogBody divider>
+              Este proceso revisa las planillas de los docentes, buscando
+              registros sin calificar para asignarles una calificación según los
+              parámetros establecidos.
+            </DialogBody>
+            <Tabla data={showInfo?.Pendiente} />
             <DialogFooter>
               {[
-                // {
-                //   text: "Cancel",
-                //   variant: "text",
-                //   color: "red",
-                // },
                 {
                   text: "Cerrar",
                   variant: "gradient",
