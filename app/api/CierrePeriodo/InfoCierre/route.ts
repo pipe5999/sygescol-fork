@@ -1,4 +1,3 @@
-import { log } from "console";
 import { NextResponse } from "next/server";
 import { conecctions } from "../../../../utils/Conexions";
 
@@ -13,8 +12,6 @@ export async function GET(req: any) {
     const [AuditoriaDocente]: any = await conexion.query(
       `SELECT * FROM auditoriaPeriodos WHERE dcne_id = '${IdDocente}' and estado='1' `
     );
-
-    // console.log("AuditoriaDocente", AuditoriaDocente);
 
     if (AuditoriaDocente?.length == 0) {
       return NextResponse.json(
