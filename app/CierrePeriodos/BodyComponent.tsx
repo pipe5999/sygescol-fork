@@ -16,7 +16,7 @@ const BodyComponent = () => {
   // const handleOpen = () => setOpen(!open);
   const [showInfo, setShowInfo] = useState({} as any);
   const [size, setSize] = useState(null);
-  const [data, setData] = useState({} as any);
+  const [data, setData] = useState(null as any);
   const handleOpen = (value: any) => setSize(value);
   const getDataPendiente = async () => {
     axios
@@ -41,25 +41,26 @@ const BodyComponent = () => {
     <>
       <div className="mx-16">
         <Fragment>
-          {data?.pendiente?.map((button: any, index: any) => (
-            <Button
-              key={index}
-              variant={"gradient"}
-              onClick={(e: any) => {
-                e.preventDefault();
-                handleOpen("xl");
-                setOpen(true);
-                setShowInfo({
-                  ...button,
-                });
-              }}
-              className={`mt-5 ${
-                index !== data?.pendiente?.length - 1 ? "mr-5" : ""
-              }`}
-            >
-              <span>{button.nombre}</span>
-            </Button>
-          ))}
+          {data &&
+            data?.pendiente?.map((button: any, index: any) => (
+              <Button
+                key={index}
+                variant={"gradient"}
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  handleOpen("xl");
+                  setOpen(true);
+                  setShowInfo({
+                    ...button,
+                  });
+                }}
+                className={`mt-5 ${
+                  index !== data?.pendiente?.length - 1 ? "mr-5" : ""
+                }`}
+              >
+                <span>{button.nombre}</span>
+              </Button>
+            ))}
           <Dialog
             // open={open}
             className="overflow-y-scroll h-96"
