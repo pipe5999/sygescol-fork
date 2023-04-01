@@ -212,15 +212,15 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
         EstudianteGrupo?.find((estu: any) => {
           if (estu?.NotasFaltantes?.length > 0) {
-            EstudiIdMatricula = `${EstudiIdMatricula}${estu.matricula},`;
+            EstudiIdMatricula = `${EstudiIdMatricula}${estu?.matricula},`;
           }
           if (!estu?.campo_id) {
-            EstudiIdComportamiento = `${EstudiIdComportamiento}${estu.matricula},`;
+            EstudiIdComportamiento = `${EstudiIdComportamiento}${estu?.matricula},`;
           }
         });
 
         if (EstudiIdMatricula.length > 0) {
-          InsertBulkAuditoriaPeriodo += `('${item.GrupoId}','${periodo}','${item.CgaId}','${item.DocenteId}','${EstudiIdMatricula}','Verifique los estudiantes con calificaciones pendientes.','calificaciones','${dateActualFormat}','1'),`;
+          InsertBulkAuditoriaPeriodo += `('${item?.GrupoId}','${periodo}','${item?.CgaId}','${item?.DocenteId}','${EstudiIdMatricula}','Verifique los estudiantes con calificaciones pendientes.','calificaciones','${dateActualFormat}','1'),`;
         }
 
         if (EstudiIdComportamiento.length > 0) {
@@ -232,9 +232,9 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           );
 
           if (!directorGupo?.docente) {
-            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','${item.CgaId}','','','Este grupo no tiene director de grupo','coordinador','${dateActualFormat}','1'),`;
+            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','','','','Este grupo no tiene director de grupo','coordinador','${dateActualFormat}','1'),`;
           } else {
-            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','${item?.CgaId}','${directorGupo?.docente}','${EstudiIdMatricula}','Existen estudiantes sin registro de comportamiento','comportamiento','${dateActualFormat}','1'),`;
+            InsertBulkComportamiento += `('${item.GrupoId}','${periodo}','','${directorGupo?.docente}','${EstudiIdMatricula}','Existen estudiantes sin registro de comportamiento','comportamiento','${dateActualFormat}','1'),`;
           }
         }
 
