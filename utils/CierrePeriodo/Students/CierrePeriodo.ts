@@ -368,7 +368,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       }, {});
 
       //  Generate build insert
-      if (NotasFaltantess.length > 0) {
+      if (NotasFaltantess?.length > 0) {
         NotasFaltantess.map((estu: any) => {
           if (estu?.NotasFaltantes?.length > 0) {
             estu?.NotasFaltantes.map((nota: any) => {
