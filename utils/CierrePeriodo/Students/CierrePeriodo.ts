@@ -8,7 +8,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
       gruposFind = `${gruposFind}${grup?.GrupoId},`;
     });
 
-    let Pendientes: any = [];
+    // let Pendientes: any = [];
     let NotasFaltantess: any = [];
 
     const dateActual = new Date();
@@ -119,7 +119,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
 
     const GetConfiguracion: any = await CheckConfig(colegio?.value);
 
-    const NameProcesoEvaluacion: any = GetConfiguracion.planillas?.find(
+    const NameProcesoEvaluacion: any = GetConfiguracion?.planillas?.find(
       (item: any) => item.nombre.includes("Proceso de Evaluación")
     )?.texto;
 
@@ -142,8 +142,8 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
           (dcne: any) => dcne?.cga_id == item?.CgaId
         );
 
-        let NewNotas = notas.map((nota: any) => {
-          let newData = acciones.find((accion: any) => {
+        let NewNotas = notas?.map((nota: any) => {
+          let newData = acciones?.find((accion: any) => {
             return (
               accion?.idPrincipal == nota.idRelacion &&
               accion?.cga == item?.CgaId &&
@@ -193,17 +193,6 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             }
           }
 
-          // if (NotasEstudiante?.length == 0) {
-          //   Pendientes?.push({
-          //     ...estu,
-
-          //     mensaje: `El estudiante ${
-          //       estu?.nombre
-          //     } no tiene notas registradas en la asignatura ${
-          //       AsignaturaDcne?.asignatura || ""
-          //     }  en el grupo ${item?.gradoGrupo || ""} `,
-          //   });
-          // }
           estu = {
             ...estu,
             Notas: NotasEstudiante || [],
@@ -311,10 +300,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.DocenteId
           }','0','${`La asignatura no registra fortalezas para los desempeños Superior y Alto.`}','forder','${dateActualFormat}','1'),`;
 
-          Pendientes?.push({
-            ...item,
-            mensaje: `La asignatura no registra fortalezas para los desempeños Superior y Alto.`,
-          });
+          // Pendientes?.push({
+          //   ...item,
+          //   mensaje: `La asignatura no registra fortalezas para los desempeños Superior y Alto.`,
+          // });
+          ForderBoolean = true;
         }
 
         if (acc[key]?.Fordeb?.Debilidades?.length == 0) {
@@ -324,10 +314,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.DocenteId
           }','0','${`La asignatura no registra debilidades para los desempeños Básico y Bajo.`}','forder','${dateActualFormat}','1'),`;
 
-          Pendientes?.push({
-            ...item,
-            mensaje: `La asignatura no registra debilidades para los desempeños Básico y Bajo.`,
-          });
+          // Pendientes?.push({
+          //   ...item,
+          //   mensaje: `La asignatura no registra debilidades para los desempeños Básico y Bajo.`,
+          // });
+          ForderBoolean = true;
         }
         if (acc[key].Fordeb?.Recomentaciones?.length == 0) {
           InsertBulkForder += `('${item.GrupoId}','${periodo}','${
@@ -336,10 +327,11 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.DocenteId
           }','0','${`La asignatura no registra recomendaciones para los desempeños Básico y Bajo.`}','forder','${dateActualFormat}','1'),`;
 
-          Pendientes?.push({
-            ...item,
-            mensaje: `La asignatura no registra recomendaciones para los desempeños Básico y Bajo.`,
-          });
+          // Pendientes?.push({
+          //   ...item,
+          //   mensaje: `La asignatura no registra recomendaciones para los desempeños Básico y Bajo.`,
+          // });
+          ForderBoolean = true;
         }
 
         if (
@@ -356,12 +348,13 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
             item.DocenteId
           }','0','${`el docente no registra la misma cantidad de recomendaciones y debilidades `}','forder','${dateActualFormat}','1'),`;
 
-          Pendientes.push({
-            ...item,
-            mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra la misma cantidad de recomendaciones y debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
-            lengthRecomendaciones: acc[key].Fordeb?.Recomentaciones.length,
-            lengthDebilidades: acc[key].Fordeb?.Debilidades.length,
-          });
+          // Pendientes.push({
+          //   ...item,
+          //   mensaje: `el docente ${item?.Nombre} ${item?.Apellidos} no registra la misma cantidad de recomendaciones y debilidades en la asignatura ${AsignaturaDcne?.asignatura} en el grupo ${item?.gradoGrupo}`,
+          //   lengthRecomendaciones: acc[key].Fordeb?.Recomentaciones.length,
+          //   lengthDebilidades: acc[key].Fordeb?.Debilidades.length,
+          // });
+          ForderBoolean = true;
         }
 
         return acc;
@@ -390,7 +383,7 @@ export default async function CierrePeriodo(colegio: any, grupos: any) {
         );
       }
 
-      if (Pendientes?.length > 0) {
+      if (ForderBoolean) {
         InsertBulkForder = InsertBulkForder?.slice(0, -1);
         const [InsertForder]: any = await conexion.query(InsertBulkForder);
       }

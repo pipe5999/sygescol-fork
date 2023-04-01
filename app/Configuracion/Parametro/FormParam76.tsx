@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function FormParam76(title: any, abbr: any) {
+export default function FormParam76({
+  title,
+  abbr,
+}: {
+  title: string;
+  abbr: string;
+}) {
   return (
     <div>
       <div className="flex flex-col justify-center">
