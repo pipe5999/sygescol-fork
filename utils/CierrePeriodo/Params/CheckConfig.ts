@@ -1,4 +1,4 @@
-import { conecctions } from "../../../../utils/Conexions";
+import { conecctions } from "../../Conexions";
 
 export default async function CheckConfig(colegio: any) {
   try {
