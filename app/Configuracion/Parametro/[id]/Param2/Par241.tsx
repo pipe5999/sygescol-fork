@@ -93,13 +93,13 @@ export default function Par241() {
                         </td>
                       </tr>
                       <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           <input type="number" placeholder=" Edad en Años" />
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           De 10° u 11° media{" "}
                         </td>
-                        <td className="px-4 py-2 border text-slate-700 uppercase">
+                        <td className="px-4 py-2 border text-gray-700 uppercase">
                           CICLO V
                         </td>
                       </tr>
@@ -112,7 +112,7 @@ export default function Par241() {
                       e.preventDefault;
                       setModalParam1(false);
                     }}
-                    className="h-8 w-40 text-slate-50 rounded-md bg-cyan-700  hover:bg-red-700 shadow-lg shadow-cyan-500 hover:shadow-lg hover:shadow-red-700 "
+                    className="h-8 w-40 text-gray-50 rounded-md bg-cyan-700  hover:bg-red-700 shadow-lg shadow-cyan-500 hover:shadow-lg hover:shadow-red-700 "
                   >
                     Cerrar
                   </button>

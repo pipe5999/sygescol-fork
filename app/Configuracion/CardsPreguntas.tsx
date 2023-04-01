@@ -30,7 +30,7 @@ export default function CardsPreguntas({ children, titulo, parrafo }: any) {
           <div className="bg-gray-50">
             <div className="w-full p-4 justify-start grid ">
               <div className="">
-                <p className="max-w-72  text-justify font-semibold text-gray-700">
+                <p className="max-w-72  text-justify font-semibold text-gray-800">
                   {parrafo}
                 </p>
               </div>
