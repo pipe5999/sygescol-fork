@@ -10,8 +10,6 @@ export async function GET(req: NextRequest) {
     const colegios = School();
     let DataResponse: any = [];
 
-    console.log("colegios", colegios);
-
     let Grupos: any = [];
 
     if (colegios?.length > 0) {
@@ -37,8 +35,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(
         {
           body: {
-            colegios,
-            DataResponse,
+            Response: DataResponse,
             // Grupos,
             Msn: "Cierre de periodo realizado",
           },

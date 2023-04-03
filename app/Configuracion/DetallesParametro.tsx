@@ -1,7 +1,15 @@
+import { Fragment } from "react";
+import {
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
+
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Parametros } from "../../utils/Parametros";
-import ModalDetalle from "./ModalDetalle";
 
 const DetallesParametro = ({ infoParams }: any) => {
   console.log("infoParamsdfsdf", infoParams);
@@ -9,6 +17,9 @@ const DetallesParametro = ({ infoParams }: any) => {
   const searchParams = useSearchParams();
   const [Menu, setMenu] = useState({} as any);
   const [ShowModalDetalle, setShowModalDetalle] = useState(false);
+  const handleOpen = () => {
+    setShowModalDetalle(!ShowModalDetalle);
+  };
 
   useEffect(() => {
     const IndexPrincipal: any = searchParams.get("IndexPrincipal");
@@ -19,13 +30,6 @@ const DetallesParametro = ({ infoParams }: any) => {
 
   return (
     <>
-      {ShowModalDetalle && (
-        <ModalDetalle
-          infoParams={infoParams}
-          setShowModalDetalle={setShowModalDetalle}
-        />
-      )}
-
       <div className="border border-gray-300 rounded-lg shadow-md  mx-auto items-center flex flex-col place-content-center mb-4 sm:w-1/2 lg:px-6   lg:h-24 lg:w-1/3">
         <div
           dangerouslySetInnerHTML={{
@@ -36,25 +40,48 @@ const DetallesParametro = ({ infoParams }: any) => {
         <h3 className="sm:text-sm lg:text-xl lg:fotn-semibold text-sky-800 ">
           Detalle del Parámetro
         </h3>
-        <button>
-          <svg
-            onClick={() => {
-              setShowModalDetalle(true);
-            }}
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 stroke-cyan-900 text-indigo-900 hover:stroke-green-600 hover:text-green-600"
+
+        <Fragment>
+          <Button onClick={handleOpen} variant="text" color="cyan">
+            Abrir Detalle
+          </Button>
+          <Dialog
+            open={ShowModalDetalle}
+            handler={handleOpen}
+            className="overflow-auto"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
-            />
-          </svg>
-        </button>
+            <DialogHeader>
+              <div className="bg-cyan-800  text-gray-100 font-bold p-2">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `${infoParams?.infoParametros?.TipoParam || ""}`,
+                  }}
+                  className="sm:text-sm  lg:fond-bold lg:text-lg text-center uppercase"
+                ></div>
+              </div>
+            </DialogHeader>
+            <DialogBody divider className="overflow-y-scroll h-40">
+              <div className="">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `${infoParams?.infoParametros?.Description || ""}`,
+                  }}
+                  className="text-justify place-self-center px-6 font-semibold  text-gray-700 overflow-y-auto "
+                ></div>
+              </div>{" "}
+            </DialogBody>
+            <DialogFooter className="flex justify-center">
+              <Button
+                variant="text"
+                color="red"
+                onClick={handleOpen}
+                className="mr-1"
+              >
+                Cerrar
+              </Button>
+            </DialogFooter>
+          </Dialog>
+        </Fragment>
       </div>
     </>
   );
