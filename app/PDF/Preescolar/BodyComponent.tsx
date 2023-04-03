@@ -2,6 +2,7 @@
 import { Document, Page, PDFViewer, Text, View } from "@react-pdf/renderer";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Asistencia from "./Estructura/Asistencia";
 import Cabecera from "./Estructura/Cabecera";
 import Comportamiento from "./Estructura/Comportamiento";
 import Dimension from "./Estructura/Dimension";
@@ -63,6 +64,7 @@ function BodyComponent() {
                     <PersonalInfo data={inf} grup={dataInfo?.grupo} />
                     <Dimension dimensiones={dataInfo?.cga} data={inf} />
                     <Comportamiento data={inf} />
+                    <Asistencia data={inf} />
                     <Firmas firma={firma} />
                   </View>
                 </Page>

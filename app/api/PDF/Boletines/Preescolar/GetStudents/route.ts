@@ -14,13 +14,15 @@ export async function GET(req: any) {
     );
 
     const [estudiante]: any = await conexion.query(
-      `SELECT CONCAT(alumno_ape1,' ',alumno_ape2,' ',alumno_nom1,' ',alumno_nom2,' ') AS nombre, alumno.alumno_id AS alumno, matri_id AS matricula, alumno_num_docu AS documento, alumno_rum AS rum FROM alumno INNER JOIN matricula ON alumno.alumno_id = matricula.alumno_id WHERE grupo_id = ${grupo} AND matri_id NOT IN (SELECT matri_id FROM novedad_estudiante) ORDER BY alumno_ape1,alumno_ape2,alumno_nom1,alumno_nom2 ASC`
+      `SELECT CONCAT(alumno_ape1,' ',alumno_ape2,' ',alumno_nom1,' ',alumno_nom2,' ') AS nombre, alumno.alumno_id AS alumno, matri_id AS matricula, alumno_num_docu AS documento, alumno_rum AS rum FROM alumno INNER JOIN matricula ON alumno.alumno_id = matricula.alumno_id WHERE grupo_id = ${grupo} AND matri_id NOT IN (SELECT matri_id FROM novedad_estudiante) AND matri_estado = 0 ORDER BY alumno_ape1,alumno_ape2,alumno_nom1,alumno_nom2 ASC`
     );
 
     const [grupodData]: any = await conexion.query(
       `SELECT grupo_nombre AS grupo, jornada_nombre AS jornada, sede_nombre AS sede FROM v_grupos INNER JOIN sedes ON grupo_sede = sede_consecutivo WHERE grupo_id = ${grupo}`
     );
-
+    const [asistencia]: any = await conexion.query(
+      "SELECT * FROM inasistencia WHERE cga_id = 0 AND ina_tipo LIKE 'INJ'"
+    );
     const [periodo]: any = await conexion.query(
       `SELECT periodo_academicos.per_id, per_nombre FROM periodo_academicos INNER JOIN periodo_fechas ON periodo_academicos.per_id = periodo_fechas.per_id  INNER JOIN v_grupos ON v_grupos.per_con_id = periodo_academicos.per_con_id INNER JOIN grados ON v_grupos.grado_base = grados.id_grado AND grados.nivel = periodo_academicos.nivel WHERE grupo_id = ${grupo} AND periodo_academicos.inicio_ing_notas <= CURDATE() AND periodo_academicos.fin_ing_notas >= CURDATE()`
     );
@@ -66,6 +68,9 @@ export async function GET(req: any) {
       const comportamientoEstu = comportamiento.find(
         (com: any) => com.matri_id == est.matricula
       );
+      const asistenciaEstu = asistencia.filter(
+        (as: any) => (as.matri_id = est.matricula)
+      );
       await axios
         .post(
           `${
@@ -86,6 +91,7 @@ export async function GET(req: any) {
               notas: notasEstu,
               observaciones: observacionesEstu,
               comportamiento: comportamientoEstu,
+              asistencia: asistenciaEstu,
             });
           }
         })
@@ -98,6 +104,7 @@ export async function GET(req: any) {
             notas: notasEstu,
             observaciones: observacionesEstu,
             comportamiento: comportamientoEstu,
+            asistencia: asistenciaEstu,
           });
         });
     }

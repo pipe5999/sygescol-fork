@@ -7,8 +7,9 @@ export type Props = {
   show: any;
   id: any;
   cga: any;
+  type?: any;
 };
-function ShowRegistro({ show, id, cga }: Props) {
+function ShowRegistro({ show, id, cga, type }: Props) {
   const [data, setData] = useState({} as any);
   let desempeño = [
     {
@@ -86,7 +87,9 @@ function ShowRegistro({ show, id, cga }: Props) {
               <div className="grid grid-cols-2 gap-2 mt-2">
                 <div>
                   <DataTable
-                    title="Lista de Procesos"
+                    title={`${
+                      (type && "Procesos Asignados") || "Lista de Procesos"
+                    }`}
                     data={data?.procesos}
                     columns={columns}
                     customStyles={customStyles}
@@ -99,7 +102,10 @@ function ShowRegistro({ show, id, cga }: Props) {
                 </div>
                 <div>
                   <DataTable
-                    title="Lista de Observaciones"
+                    title={`${
+                      (type && "Observaciones Asignadas") ||
+                      "Lista de Observaciones"
+                    }`}
                     data={data?.observaciones}
                     columns={columns}
                     customStyles={customStyles}

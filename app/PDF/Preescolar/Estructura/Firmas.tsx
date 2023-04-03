@@ -7,15 +7,8 @@ const Firmas = ({ firma }: Props) => {
   return (
     <>
       <View style={{ width: "100%" }}>
-        <View style={{ marginHorizontal: "auto" }}>
-          {firma && (
-            <Image style={{ width: 150, height: "auto" }} src={firma || ""} />
-          )}
-        </View>
         {(firma && (
-          <Text style={{ margin: "auto", marginTop: -50 }}>
-            _________________
-          </Text>
+          <Text style={{ margin: "auto" }}>_________________</Text>
         )) || <Text style={{ margin: "auto" }}>_________________</Text>}
         <Text style={{ margin: "auto", fontSize: 12, marginTop: 3 }}>
           {JSON.parse(localStorage?.datosUsu)?.nombre}
@@ -23,6 +16,9 @@ const Firmas = ({ firma }: Props) => {
         <Text style={{ margin: "auto", fontSize: 12 }}>
           Director/a de Grupo
         </Text>
+        <View style={{ marginHorizontal: "auto", border: 2 }}>
+          {firma && <Image style={{ width: 150 }} src={firma || ""} />}
+        </View>
       </View>
     </>
   );

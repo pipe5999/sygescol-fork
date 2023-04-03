@@ -75,7 +75,6 @@ const Cabecera = ({ data }: Props) => {
     },
     tableCell: {
       margin: "auto",
-      marginTop: 5,
       fontSize: 10,
       padding: "3%",
       fontWeight: "bold",
