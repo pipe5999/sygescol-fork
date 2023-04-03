@@ -120,8 +120,13 @@ function BodyComponent({
         `/api/ProcesosEvaluacion/Asignar?cga=${cga}&escala=${escala}&colegio=${colegio}&id=${id}`
       )
       .then((res: any) => {
-        setCont(contador1 + 1);
-        setShow(false);
+        console.log(res);
+        if (!res.data?.error) {
+          setCont(contador1 + 1);
+          setShow(false);
+        } else {
+          alert(res.data?.body);
+        }
       });
   };
   function handleClick() {
