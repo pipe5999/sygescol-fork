@@ -1,10 +1,10 @@
 const YesOrNot = [
   {
-    value: "Si",
+    value: "S",
     label: "Si",
   },
   {
-    value: "No",
+    value: "N",
     label: "No",
   },
 ];
@@ -80,6 +80,20 @@ const Reincidencia = [
     label: "Aleatoria",
   },
 ];
+const TipoInasistencia = [
+  {
+    value: "1",
+    label: "Anecdotario",
+  },
+  {
+    value: "2",
+    label: "Injustificada",
+  },
+  {
+    value: "3",
+    label: "Justificada",
+  },
+];
 
 // const ColorTituloPreguntas = () => {
 //   const random: any = () => Math.floor(Math.random() * 3);
@@ -90,4 +104,4 @@ const Reincidencia = [
 //   return numero;
 // };
 
-export { YesOrNot, EstadoAcdemico, Niveles, Reincidencia };
+export { YesOrNot, EstadoAcdemico, Niveles, Reincidencia, TipoInasistencia };
