@@ -133,8 +133,7 @@ function Dimension({ dimensiones, data }: Props) {
                     marginTop: -1,
                   }}
                 >
-                  {dim.Area.charAt(0).toUpperCase() +
-                    dim.Area.slice(1).toLowerCase()}
+                  {dim.Area}
                 </Text>
                 <Text
                   style={{
