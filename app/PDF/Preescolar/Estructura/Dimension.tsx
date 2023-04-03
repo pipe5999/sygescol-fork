@@ -44,7 +44,6 @@ function Dimension({ dimensiones, data }: Props) {
       borderStyle: "solid",
       borderWidth: 0,
       marginLeft: -1,
-      marginTop: 5,
     },
     tableRow: {
       flexDirection: "row",
@@ -60,7 +59,6 @@ function Dimension({ dimensiones, data }: Props) {
     tableCellTitle: {
       border: 1,
       width: "75%",
-      marginTop: 5,
       textAlign: "center",
       fontSize: 10,
       padding: "2%",
@@ -68,7 +66,6 @@ function Dimension({ dimensiones, data }: Props) {
     },
     tableCell: {
       border: 1,
-      marginTop: 5,
       textAlign: "center",
       fontSize: 10,
       padding: "2%",

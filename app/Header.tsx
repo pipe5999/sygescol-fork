@@ -131,7 +131,7 @@ const Header = ({ children }: Props) => {
                   submenu="Planilla de Comportamiento"
                 />
                 <MenuItem
-                  id={5}
+                  id={6}
                   setActive={setActive}
                   active={active}
                   target={1}
