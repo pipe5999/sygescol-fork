@@ -7,6 +7,7 @@ type Props = {
   posicion: number;
   setOpen: any;
   setDim: any;
+  escala: any;
 };
 const DimensionAbreviatura = ({
   dimension,
@@ -14,6 +15,7 @@ const DimensionAbreviatura = ({
   posicion,
   setOpen,
   setDim,
+  escala,
 }: Props) => {
   return (
     <>
@@ -26,6 +28,7 @@ const DimensionAbreviatura = ({
         onClick={() => {
           setOpen(posicion);
           setDim(dimension);
+          escala([]);
         }}
       >
         <h1 className="text-center uppercase">{dimension?.Abreviatura}</h1>

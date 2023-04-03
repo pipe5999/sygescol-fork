@@ -55,7 +55,7 @@ const Tabla = ({ data }: Props) => {
                 <span className="lg:hidden absolute top-0 left-0  px-2 py-1 text-xs font-bold uppercase">
                   DETALLE
                 </span>
-                <span className="rounded bg-red-200 py-1 px-3 text-xs font-bold">
+                <span className="rounded text-white bg-red-200 py-1 px-3 text-xs font-bold">
                   {item.detalle}
                 </span>
               </td>

@@ -11,7 +11,9 @@ export type Props = {
 function Proceso({ showModal, id, contador, setContador }: Props) {
   const [data, setData] = useState({} as any);
   const handleDelete = async () => {
-    const acepta = confirm("¿Esta seguro que desea eliminar este proceso?");
+    const acepta = confirm(
+      "¿Esta seguro que desea eliminar este proceso?, tenga en cuenta que al eliminar este proceso, tambien se eliminará las calificaciones asociadas"
+    );
     if (acepta) {
       try {
         axios
