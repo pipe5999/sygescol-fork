@@ -223,6 +223,7 @@ function BodyComponent() {
                 posicion={key}
                 open={open}
                 setOpen={setOpen}
+                escala={setEscala}
               />
             );
           })}
