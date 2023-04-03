@@ -1,5 +1,4 @@
-import { type } from "os";
-import React, { Children, Fragment, HtmlHTMLAttributes, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog } from "@material-tailwind/react";
 import { DialogFooter } from "@material-tailwind/react";
 import { DialogBody } from "@material-tailwind/react";
@@ -48,16 +47,6 @@ export default function FormParam76({
     setSelectedLltcSms(event.target.value);
   };
 
-<<<<<<< HEAD
-=======
-export default function FormParam76({
-  title,
-  abbr,
-}: {
-  title: string;
-  abbr: string;
-}) {
->>>>>>> 1476fd433514eaa12257c1b84d30fc304165b12c
   return (
     <div>
       <div className="flex flex-col justify-center items-center">
@@ -146,8 +135,10 @@ export default function FormParam76({
                 />
                 <p>Texto Por Defecto en el observador</p>
                 <WysWyget
-                  TextDefault={TextObservador}
-                  TextChange={setTextObservador}
+                  TextObservador={TextObservador.lltc}
+                  setTextObservador={setTextObservador}
+                  VaribableEdit="lltc"
+                  TextBase={TextObservador}
                 />
               </div>
             </DialogBody>

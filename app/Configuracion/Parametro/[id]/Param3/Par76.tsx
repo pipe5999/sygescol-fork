@@ -56,7 +56,7 @@ export default function Par76() {
               SelectedLltcCorreo={SelectedLltcCorreo}
               setSelectedLltcSms={setSelectedLltcSms}
               SelectedLltcSms={SelectedLltcSms}
-              TextObservador={TextObservador.lltc}
+              TextObservador={TextObservador}
               setTextObservador={setTextObservador}
             />
           </div>

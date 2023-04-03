@@ -2,21 +2,32 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 type TextProps = {
-  TextDefault: string;
-  TextChange: any;
+  TextObservador?: string;
+
+  setTextObservador?: any;
+  VaribableEdit?: string | any;
+  TextBase?: any;
 };
 
-export default function WysWyget({ TextDefault, TextChange }: TextProps) {
-  const [value, setValue] = useState("");
+export default function WysWyget({
+  TextObservador,
+  setTextObservador,
+  VaribableEdit,
+  TextBase,
+}: TextProps) {
   return (
     <div>
       <ReactQuill
         theme="snow"
-        value={TextDefault}
-        onChange={TextChange}
+        value={TextObservador}
+        onChange={(e) => {
+          setTextObservador({
+            ...TextBase,
+            [VaribableEdit]: e,
+          });
+        }}
         defaultValue=""
       />
-      ;
     </div>
   );
 }
