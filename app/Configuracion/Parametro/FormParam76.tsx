@@ -48,13 +48,6 @@ export default function FormParam76({
     setSelectedLltcSms(event.target.value);
   };
 
-export default function FormParam76({
-  title,
-  abbr,
-}: {
-  title: string;
-  abbr: string;
-}) {
   return (
     <div>
       <div className="flex flex-col justify-center items-center">
