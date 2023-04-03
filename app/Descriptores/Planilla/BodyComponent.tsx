@@ -200,7 +200,12 @@ function BodyComponent() {
         />
       )}
       {view.open && (
-        <ShowRegistro id={view.id} show={setView} cga={dimension.CgaId} />
+        <ShowRegistro
+          id={view.id}
+          show={setView}
+          cga={dimension.CgaId}
+          type={1}
+        />
       )}
       {registro && (
         <Registro
