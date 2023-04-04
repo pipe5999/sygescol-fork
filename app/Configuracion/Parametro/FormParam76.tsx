@@ -23,6 +23,8 @@ export default function FormParam76({
   SelectedLltcSms,
   setTextObservador,
   TextObservador,
+  TextoMensaje,
+  setTextoMensaje,
 }: any) {
   const [ModalParam, setModalParam] = useState(false);
 
@@ -50,7 +52,7 @@ export default function FormParam76({
   return (
     <div>
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-center text-light-blue-800">{title}</h1>
+        <h1 className="text-center text-light-blue-800 underline">{title}</h1>
         <h2 className="text-center text-cyan-900">{abbr}</h2>
         <Fragment>
           <Button onClick={handleOpen} color="cyan" variant="text">
@@ -68,8 +70,8 @@ export default function FormParam76({
                 </div>
               </div>
             </DialogHeader>
-            <DialogBody divider>
-              <div className="flex justify-center flex-col items-center">
+            <DialogBody divider className="overflow-y-auto h-96">
+              <div className="flex justify-center flex-col items-center ">
                 <p className=" uppercase font-bold text-light-blue-600">
                   {title}
                 </p>
@@ -111,6 +113,7 @@ export default function FormParam76({
                   options={YesOrNot}
                   placeholder="Seleccione"
                 />
+                <br />
                 <p>Enviar Correo Electrónico</p>
                 <ReactSelect
                   onChange={(e) => {
@@ -122,6 +125,7 @@ export default function FormParam76({
                   options={YesOrNot}
                   placeholder="Seleccione"
                 />
+                <br />
                 <p>Enviar SMS</p>
                 <ReactSelect
                   onChange={(e) => {
@@ -133,11 +137,22 @@ export default function FormParam76({
                   options={YesOrNot}
                   placeholder="Seleccione"
                 />
+                <br />
                 <p>Texto Por Defecto en el observador</p>
                 <WysWyget
                   TextObservador={TextObservador.lltc}
                   setTextObservador={setTextObservador}
                   VaribableEdit="lltc"
+                  TextBase={TextObservador}
+                />
+                <br />
+                <p>Texto Por Defecto en el Correo Electrónico</p>
+                <WysWyget
+                  TextObservador={TextObservador}
+                  setTextObservador={setTextObservador}
+                  TextoMensaje={TextoMensaje}
+                  setTextoMensaje={setTextoMensaje}
+                  VaribableEdit="llti,lltc"
                   TextBase={TextObservador}
                 />
               </div>

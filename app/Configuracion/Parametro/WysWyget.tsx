@@ -7,6 +7,8 @@ type TextProps = {
   setTextObservador?: any;
   VaribableEdit?: string | any;
   TextBase?: any;
+  TextoMensaje?: string | any;
+  setTextoMensaje?: string | any;
 };
 
 export default function WysWyget({
@@ -14,18 +16,20 @@ export default function WysWyget({
   setTextObservador,
   VaribableEdit,
   TextBase,
+  TextoMensaje,
+  setTextoMensaje,
 }: TextProps) {
   return (
     <div>
       <ReactQuill
         theme="snow"
         value={TextObservador}
-        onChange={(e) => {
-          setTextObservador({
-            ...TextBase,
-            [VaribableEdit]: e,
-          });
-        }}
+        // onChange={(e) => {
+        //   // setTextObservador({
+        //   //   ...TextBase,
+        //   //   [VaribableEdit]: e,
+        //   });
+        // }}
         defaultValue=""
       />
     </div>

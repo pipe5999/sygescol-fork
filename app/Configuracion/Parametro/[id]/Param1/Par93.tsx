@@ -1,4 +1,5 @@
 "use client";
+import { Input } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import getDataParametro from "../../../../../utils/GetParametro";
@@ -18,8 +19,30 @@ export default function Par93() {
   const [Paso33Select, setPaso33Select] = useState(false);
   const [Paso33InSelect, setPaso33InSelect] = useState(false);
   const [Paso4Select, setPaso4Select] = useState(false);
+  const [SelectedPaso1, setSelectedPaso1] = useState({});
+  const [SelectedPaso21, setSelectedPaso21] = useState({});
+  const [SelectedPaso22, setSelectedPaso22] = useState({});
 
-  console.log(data);
+  console.log("Any ??", SelectedPaso22);
+
+  const handlerChangePaso1 = (e: any) => {
+    setSelectedPaso1({
+      ...SelectedPaso1,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerChangePaso21 = (e: any) => {
+    setSelectedPaso21({
+      ...SelectedPaso21,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerChangePaso22 = (e: any) => {
+    setSelectedPaso22({
+      ...SelectedPaso22,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const Paso22Bajo = [
     {
@@ -226,6 +249,12 @@ export default function Par93() {
                         </td>
                         <td className="px-6 py-2 border text-center text-gray-700 font-semibold w-8">
                           <Select
+                            onChange={(e) => {
+                              setSelectedPaso1({
+                                ...SelectedPaso1,
+                                EstadoAcademicoUnoDos: e?.value,
+                              });
+                            }}
                             options={EstadoAcdemico}
                             className="w-72"
                             placeholder="Elija"
@@ -247,6 +276,12 @@ export default function Par93() {
                         </td>
                         <td className="px-6 py-2 border text-center text-gray-700 font-semibold w-8">
                           <Select
+                            onChange={(e) => {
+                              setSelectedPaso1({
+                                ...SelectedPaso1,
+                                EstadoAcademicoTresCuatro: e?.value,
+                              });
+                            }}
                             options={EstadoAcdemico}
                             className="w-72"
                             placeholder="Elija"
@@ -268,6 +303,12 @@ export default function Par93() {
                         </td>
                         <td className="px-6 py-2 border text-center text-gray-700 font-semibold w-8">
                           <Select
+                            onChange={(e) => {
+                              setSelectedPaso1({
+                                ...SelectedPaso1,
+                                EstadoAcademicoCincoSeis: e?.value,
+                              });
+                            }}
                             options={EstadoAcdemico}
                             className="w-72"
                             placeholder="Elija"
@@ -322,15 +363,15 @@ export default function Par93() {
             </div>
             {Paso21 && (
               <div className="flex flex-col gap-1 justify-center w-72 p-4 ">
-                <label className=" text-center text-wrap">
+                <p className=" text-center text-wrap">
                   El sistema no relacionará en las planillas de superación fin
                   de año, a estudiantes cuyo promedio ponderado detodos los
                   periodos académicos, sea igual o menor a:
-                </label>
-                <input
+                </p>
+                <Input
+                  onChange={handlerChangePaso21}
                   type="text"
-                  name=""
-                  id=""
+                  name="RelacionPlanillas1"
                   placeholder="Ingrese el promedio"
                   className="h-6 rounded-md border-2 border-gray-400"
                 />
@@ -360,34 +401,37 @@ export default function Par93() {
               </svg>
             </div>
             {Paso212 && (
-              <div className="flex flex-col gap-1 text-center p-2">
-                <label className="text-center">
+              <div className="flex flex-col gap-1 text-center w-72 p-2">
+                <p className="text-center">
                   El sistema no enviará a las planillas de SEGUNDA SUPERACIÓN
                   FIN DE AÑO, a aquellos estudiantes que registren valoraciones
                   del primer proceso de superación fin de año, menor o gual a:{" "}
-                </label>
-                <input
+                </p>
+                <Input
+                  onChange={handlerChangePaso21}
                   type="text"
-                  name=""
-                  className="h-6 rounded-md border-2 border-gray-400"
+                  name="CondicionesDelProceso"
+                  label="Ingrese la valoración"
                 />
-                <label>
+                <p>
                   La calificación máxima permitida en la planilla de la{" "}
                   <strong>Priemra</strong> superación fin de año, será de:
-                </label>
-                <input
+                </p>
+                <Input
+                  onChange={handlerChangePaso21}
                   type="text"
-                  name=""
-                  className="h-6 rounded-md border-2 border-gray-400"
+                  name="CalificacionPlanillaPaso21"
+                  label="Ingrese la Calificación"
                 />
-                <label>
+                <p>
                   La calificación máxima permitida en la planilla de la{" "}
                   <strong>Segundo</strong> superación fin de año, será de:
-                </label>
-                <input
+                </p>
+                <Input
+                  onChange={handlerChangePaso21}
                   type="text"
-                  name=""
-                  className="h-6 rounded-md border-2 border-gray-400"
+                  name="CalificacionPlanillaPaso212"
+                  label="Ingrese la Calificación"
                 />
                 <p className="font-semibold">
                   Para que un área reprobada en el cierre de áreas, cambie su
@@ -397,7 +441,17 @@ export default function Par93() {
                   mínima del desempeño básico.
                 </p>
                 <>
-                  <Select options={YesOrNot} />
+                  <Select
+                    onChange={(e) => {
+                      setSelectedPaso21({
+                        ...SelectedPaso21,
+                        YesOrNotPaso521: e?.value,
+                      });
+                    }}
+                    name="ReproveORAprove"
+                    options={YesOrNot}
+                    placeholder="Seleccione"
+                  />
                 </>
               </div>
             )}
@@ -410,7 +464,17 @@ export default function Par93() {
               <strong>BAJO</strong>, despues del proceso de superación fin de
               año, el sistema deberá dejar como valoración final:
             </p>
-            <Select options={Paso22Bajo} />
+            <Select
+              onChange={(e) => {
+                setSelectedPaso22({
+                  ...SelectedPaso22,
+                  Bajo: e?.value,
+                });
+              }}
+              options={Paso22Bajo}
+              placeholder="Seleccione"
+              name="Paso22Bajo"
+            />
             <p>
               Para los casos de áreas calificadas con desempeño BÁSICO, ALTO o
               SUPERIOR, despues del proceso de superación fin de año, el sistema

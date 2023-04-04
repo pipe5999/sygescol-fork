@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import getDataParametro from "../../../../../utils/GetParametro";
 import CardsPreguntas from "../../../CardsPreguntas";
 import DetallesParametro from "../../../DetallesParametro";
@@ -14,8 +14,16 @@ export default function Par76() {
   const [SelectedLltecObsevador, setSelectedLltecObsevador] = useState({});
   const [SelectedLltcCorreo, setSelectedLltcCorreo] = useState({});
   const [SelectedLltcSms, setSelectedLltcSms] = useState({});
+  const [TextoMensaje, setTextoMesnaje] = useState({
+    lltcSms:
+      "El estudiante #ESTUDIANTE# Llegó a clase después de la hora de iniciación en la Asignatura: #ASIGNATURA# el día #FECHA# con el Docente #DOCENTE#... Inasistencia Injustificada.",
+    lltiSms:
+      "El estudiante #ESTUDIANTE# Por presentarse después de la hora e ingreso a la Institución se le registra inasistencia a clase en la Asignatura: #ASIGNATURA# el día #FECHA# con el Docente #DOCENTE#... Inasistencia Injustificada",
+  });
   const [TextObservador, setTextObservador] = useState({
     lltc: "El estudiante #ESTUDIANTE# Llegó a clase después de la hora de iniciación en la Asignatura: #ASIGNATURA# el día #FECHA# con el Docente #DOCENTE#... Inasistencia Injustificada.",
+
+    llti: "El estudiante #ESTUDIANTE# Por presentarse después de la hora e ingreso a la Institución se le registra inasistencia a clase en la Asignatura: #ASIGNATURA# el día #FECHA# con el Docente #DOCENTE#... Inasistencia Injustificada",
   });
 
   console.log("Que no use any", SelectedLltcCorreo);
@@ -42,9 +50,28 @@ export default function Par76() {
           titulo="Tipos de Inasistencia. 1"
           parrafo="Defina las variables de cada tipo de inasistencia"
         >
-          <div className="flex justify-center">
+          <div className="flex justify-center flex-col">
             <FormParam76
               title="Llegadas Tarde la Intitucion"
+              abbr="LLTI"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Llegadas Tarde A Clase"
               abbr="LLTC"
               setSelectedLltcControl={setSelectedLltcControl}
               SelectedLltcControl={SelectedLltcControl}
@@ -58,6 +85,311 @@ export default function Par76() {
               SelectedLltcSms={SelectedLltcSms}
               TextObservador={TextObservador}
               setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Evasion de la Institución"
+              abbr="EVA"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Evasion de la Clase"
+              abbr="EVAC"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+          </div>
+        </CardsPreguntas>
+        <CardsPreguntas
+          titulo="Tipos de Inasistencia. 2  "
+          parrafo="Defina las variables de cada tipo de inasistencia"
+        >
+          <div className="flex justify-center flex-col">
+            <FormParam76
+              title="Ausencia No Justificada"
+              abbr="INJ"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="No ingresó a la institución"
+              abbr="NOLL"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Cita en Coordinación"
+              abbr="CO"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Delegación Académica"
+              abbr="DEAC"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Delegación Deportiva"
+              abbr="DEDP"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+          </div>
+        </CardsPreguntas>
+        <CardsPreguntas
+          titulo="Tipos de Inasistencia. 3 "
+          parrafo="Defina las variables de cada tipo de inasistencia"
+        >
+          <div className="flex justify-center flex-col">
+            <FormParam76
+              title="En servicio Social"
+              abbr="ENSER"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Con Excusa"
+              abbr="EXC"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Con Incapacidad"
+              abbr="INC"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Con Permiso"
+              abbr="PER"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+          </div>
+        </CardsPreguntas>
+        <CardsPreguntas
+          titulo="Tipos de Inasistencia. 4"
+          parrafo="Defina las variables de cada tipo de inasistencia"
+        >
+          <div className="flex justify-center flex-col">
+            <FormParam76
+              title="Cita en Orientación Escolar"
+              abbr="PS"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Semi-Escolarización"
+              abbr="SE"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Suspensión"
+              abbr="SP"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
+            />
+            <br />
+            <FormParam76
+              title="Trabajo en Casa con guías"
+              abbr="TCG"
+              setSelectedLltcControl={setSelectedLltcControl}
+              SelectedLltcControl={SelectedLltcControl}
+              setSelectedLltcTipoI={setSelectedLltcTipoI}
+              SelectedLltcTipoI={SelectedLltcTipoI}
+              setSelectedLltecObsevador={setSelectedLltecObsevador}
+              SelectedLltecObsevador={SelectedLltecObsevador}
+              setSelectedLltcCorreo={setSelectedLltcCorreo}
+              SelectedLltcCorreo={SelectedLltcCorreo}
+              setSelectedLltcSms={setSelectedLltcSms}
+              SelectedLltcSms={SelectedLltcSms}
+              TextObservador={TextObservador}
+              setTextObservador={setTextObservador}
+              TextoMensaje={TextoMensaje}
+              setTextoMensaje={TextoMensaje}
             />
           </div>
         </CardsPreguntas>

@@ -6,6 +6,7 @@ import CardsPreguntas from "../../../CardsPreguntas";
 import HeaderParam from "../../../HeaderParam";
 import Select from "react-select";
 import { YesOrNot } from "../../../../../utils/OptionsParams";
+import { Input } from "@material-tailwind/react";
 
 export default function Par65() {
   const [data, setData] = React.useState({} as any);
@@ -13,6 +14,59 @@ export default function Par65() {
   const [Paso53Eleccion, setPaso53Eleccion] = useState(false);
   const [Paso54Eleccion, setPaso54Eleccion] = useState(false);
   const [Paso3, setPaso3] = useState(false);
+  const [SelectedPaso1, setSelectedPaso1] = useState({});
+  const [InputPaso2, setInputPaso2] = useState({});
+  const [InputPaso3, setInputPaso3] = useState({});
+  const [SelectedPaso4, setSelectedPaso4] = useState({});
+  const [SelectedPaso51, setSelectedPaso51] = useState({});
+  const [SelectedPaso52, setSelectedPaso52] = useState({});
+  const [SelectedPaso53, setSelectedPaso53] = useState({});
+  const [SelectedPaso54, setSelectedPaso54] = useState({});
+
+  const handleChangePaso1 = (e: any) => {
+    setSelectedPaso1({
+      ...SelectedPaso1,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChangePaso2 = (e: any) => {
+    setInputPaso2({
+      ...InputPaso2,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleChangePaso3 = (e: any) => {
+    setInputPaso3({
+      ...InputPaso3,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleChangePaso51 = (e: any) => {
+    setSelectedPaso51({
+      ...SelectedPaso51,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleChangePaso52 = (e: any) => {
+    setSelectedPaso52({
+      ...SelectedPaso52,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleChangePaso53 = (e: any) => {
+    setSelectedPaso53({
+      ...SelectedPaso53,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleChangePaso54 = (e: any) => {
+    setSelectedPaso54({
+      ...SelectedPaso54,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   useEffect(() => {
     const GetInfo = async () => {
       const resultado = await getDataParametro(65, 2);
@@ -158,32 +212,39 @@ export default function Par65() {
         >
           <Select
             onChange={(e: any) => {
+              setSelectedPaso1({
+                ...SelectedPaso1,
+                Qality: e?.value,
+              });
+
               e.value == "Cuantitativo" && setEleccion(true);
               e.value == "Cualitativo" && setEleccion(true);
             }}
             options={Paso1}
             placeholder="Seleccione"
+            name="CoC"
             className="w-72 p-4"
           />
           {Eleccion == true && (
             <>
               <p className="text-center w-72 p-4">Rango Númerico</p>
               <div className="flex flex-col w-72 p-4 ">
-                <label> Desde</label>
-                <input
+                <Input
+                  label="Desde"
+                  onChange={handleChangePaso1}
                   type="number"
-                  name=""
+                  name="Desde"
                   id=""
                   className="h-6 rounded-md border-2 border-gray-400"
-                  placeholder="Ingrese el Rango Númerico"
                 />
-                <label>Hasta</label>
-                <input
+                <br />
+                <Input
+                  label="Hasta"
+                  onChange={handleChangePaso1}
                   type="number"
-                  name=""
+                  name="Hasta"
                   id=""
                   className="h-6 rounded-md border-2 border-gray-400"
-                  placeholder="Ingrese el Rango Númerico"
                 />
               </div>
             </>
@@ -193,7 +254,14 @@ export default function Par65() {
             cuatro Desempeños Nacionales
           </p>
           <Select
+            onChange={(e: any) => {
+              setSelectedPaso1({
+                ...SelectedPaso1,
+                Desempeños: e?.value,
+              });
+            }}
             options={YesOrNot}
+            name="Desempeños"
             placeholder="Seleccione"
             className="w-72 p-4"
           />
@@ -204,12 +272,11 @@ export default function Par65() {
           parrafo="Cantidad de decimales requeridos para realizar los registros valorativos a los estudiantes, en las planillas de calificación"
         >
           <div className="w-72 p-4">
-            <label>Ingrese el Número de decimales</label>
-            <input
+            <Input
+              onChange={handleChangePaso2}
+              label="Ingrese el Número de decimales"
+              name="DecimalNum"
               type="number"
-              name=""
-              id=""
-              className="rounded-lg h-8 border-2 border-gray-300 "
             />
           </div>
         </CardsPreguntas>
@@ -266,21 +333,27 @@ export default function Par65() {
                             Superior
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese la Abreviatura"
+                              label="Ingrese la abreviatura"
+                              name="abbrSup"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Desde "
+                              label="Ingrese el Rango Desde"
+                              name="RangDesdeSup"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Hasta"
+                              label="Ingrese el Rango Hasta"
+                              name="RangHastaSup"
                             />
                           </td>
                         </tr>
@@ -289,21 +362,27 @@ export default function Par65() {
                             Alto
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese la Abreviatura"
+                              label="Ingrese la Abreviatura"
+                              name="abbrAlt"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Desde "
+                              label="Ingrese el Rango Desde "
+                              name="RangDesdeAlt"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Hasta"
+                              label="Ingrese el Rango Hasta"
+                              name="RangHastaAlt"
                             />
                           </td>
                         </tr>
@@ -312,21 +391,27 @@ export default function Par65() {
                             Básico
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese la Abreviatura"
+                              label="Ingrese la Abreviatura"
+                              name="abbrBas"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Desde "
+                              label="Ingrese el Rango Desde "
+                              name="RangDesdeBas"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Hasta"
+                              label="Ingrese el Rango Hasta"
+                              name="RangHastaBas"
                             />
                           </td>
                         </tr>
@@ -335,21 +420,27 @@ export default function Par65() {
                             Bajo
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese la Abreviatura"
+                              label="Ingrese la Abreviatura"
+                              name="abbrBajo"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Desde "
+                              label="Ingrese el Rango Desde "
+                              name="RangDesdeBajo"
                             />
                           </td>
                           <td className="px-16 py-2 border">
-                            <input
+                            <Input
+                              onChange={handleChangePaso3}
                               type="text"
-                              placeholder="Ingrese el Rango Hasta"
+                              label="Ingrese el Rango Hasta"
+                              name="RangHastaBajo"
                             />
                           </td>
                         </tr>
@@ -377,7 +468,13 @@ export default function Par65() {
           titulo="Paso 4"
           parrafo="Definir la forma como el sistema debe realizar los cálculos promediales frente a los registros valorativos ingresados ppor los docentes."
         >
-          <Select options={Paso4} />
+          <Select
+            onChange={(e: any) => {
+              setSelectedPaso4(e);
+            }}
+            options={Paso4}
+            placeholder="Seleccione"
+          />
         </CardsPreguntas>
         {/* Paso 5.1 */}
         <CardsPreguntas
@@ -385,28 +482,42 @@ export default function Par65() {
           parrafo="En el proceso de superación por periodos, si el estudiante vuelve a reprobar la asignatura:"
         >
           <Select
+            onChange={(e) => {
+              setSelectedPaso51({
+                ...SelectedPaso51,
+                Paso51Selected: e?.value,
+              });
+            }}
             options={Paso51}
             placeholder="Seleccione"
             className="w-72 p-4"
+            name="paso51"
           />
           <p className="text-justify p-4">
             Si el estudiante pasa la evaluación
           </p>
           <Select
+            onChange={(e) => {
+              setSelectedPaso51({
+                ...SelectedPaso51,
+                Paso512Selected: e?.value,
+              });
+            }}
             options={Paso512}
             placeholder="Seleccione"
             className="w-72 p-4"
+            name="paso512"
           />
           <div className="w-72  p-4 text-center">
-            <label className="w-72 p-4 text-center">
+            <p className="w-72 p-4 text-center">
               {" "}
               La valoración máxima permitida en esta planilla será de:
-            </label>
-            <input
+            </p>
+            <Input
+              onChange={handleChangePaso51}
               type="text"
-              name=""
-              id=""
-              className="h-8 p-4 border-lg border-gray-400 shadow-md"
+              name="ValoracionPlanilla51"
+              label="Ingrese la valoración"
             />
           </div>
         </CardsPreguntas>
@@ -419,24 +530,37 @@ export default function Par65() {
             Si el estudiante vuelve a reprobar la asignatura:
           </p>
           <Select
+            onChange={(e) => {
+              setSelectedPaso52({
+                ...SelectedPaso52,
+                Reprubed: e?.value,
+              });
+            }}
             options={Paso52}
             placeholder="Seleccione"
             className="p-4 w-72"
           />
           <p className="w-72 p-4">Si el estudiante pasa la evaluación:</p>
           <Select
+            onChange={(e) => {
+              setSelectedPaso52({
+                ...SelectedPaso52,
+                Aprubed: e?.value,
+              });
+            }}
             options={Paso521}
             placeholder="Seleccione"
             className="p-4 w-72"
           />
-          <div className="text-center">
-            <label className=" p-4 text-center">
+          <div className="w-72 p-4 text-center">
+            <p className=" p-4 text-center">
               La valoración máxima permitida en esta planilla será de:{" "}
-            </label>
-            <input
+            </p>
+            <Input
+              onChange={handleChangePaso52}
               type="text"
-              name=""
-              className=" border-gray-100 shadow-xl border-2 h-8 p-4 ml-4"
+              name="ValoracionPlanillaPaso"
+              label="Ingrese la Valoración"
             />
           </div>
         </CardsPreguntas>
@@ -447,6 +571,10 @@ export default function Par65() {
         >
           <Select
             onChange={(e) => {
+              setSelectedPaso53({
+                ...SelectedPaso53,
+                Paso53Seleccion: e?.value,
+              });
               e?.value == "2"
                 ? setPaso53Eleccion(true)
                 : setPaso53Eleccion(false);
@@ -456,23 +584,24 @@ export default function Par65() {
             placeholder="Seleccione"
           />
           {Paso53Eleccion && (
-            <div className="p-4">
-              <label>Ingrese el número de áreas</label>
-              <input
+            <div className="p-4 w-72">
+              <Input
+                onChange={handleChangePaso53}
+                label="Ingrese el número de áreas"
                 type="number"
-                name=""
-                className="rounded-lg shadow-lg ring-2 ring-gray-200"
+                name="AreaNumbers"
               />
             </div>
           )}
-          <div className="p-4 text-center">
-            <label className="">
+          <div className="p-4 text-center w-72">
+            <p className="">
               La valoración máxima permitida en esta planilla será de:
-            </label>
-            <input
+            </p>
+            <Input
+              onChange={handleChangePaso53}
               type="text"
-              name=""
-              className="rounded-md shadow-lg ring-1 ring-gray-200 h-8"
+              name="ValoracionPlanillaPaso53"
+              label="Ingrese la Valoración"
             />
           </div>
         </CardsPreguntas>
@@ -483,6 +612,10 @@ export default function Par65() {
         >
           <Select
             onChange={(e) => {
+              setSelectedPaso54({
+                ...SelectedPaso54,
+                Paso54Seleccion: e?.value,
+              });
               e?.value == "2"
                 ? setPaso54Eleccion(true)
                 : setPaso54Eleccion(false);
@@ -492,24 +625,24 @@ export default function Par65() {
             placeholder="Seleccione"
           />
           {Paso54Eleccion && (
-            <div className="p-4">
-              <label>Ingrese el número de áreas</label>
-              <input
+            <div className="p-4 w-72 ">
+              <Input
+                onChange={handleChangePaso54}
+                label="Ingrese el número de áreas"
                 type="number"
-                name=""
-                className="rounded-lg shadow-lg ring-2 ring-gray-200"
+                name="NumemberAreasPaso54"
               />
             </div>
           )}
           <div className="p-4 text-center">
-            <label className="">
+            <p className="">
               La valoración máxima permitida en esta planilla será de:
-            </label>
-            <input
+            </p>
+            <Input
+              onChange={handleChangePaso54}
+              label="Ingrese la valoración"
               type="text"
-              name=""
-              id=""
-              className="rounded-md shadow-lg ring-1 ring-gray-200 h-8"
+              name="ValoraciónMaximaPaso54"
             />
           </div>
         </CardsPreguntas>
