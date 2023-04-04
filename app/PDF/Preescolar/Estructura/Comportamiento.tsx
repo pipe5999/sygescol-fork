@@ -12,17 +12,9 @@ function Comportamiento({ data }: Props) {
       heigth: "100%",
       borderStyle: "solid",
       borderWidth: 0,
-      margin: "1%",
-      marginTop: -11,
-    },
-    table2: {
-      display: "table" as any,
-      width: "30%",
-      heigth: "100%",
-      borderStyle: "solid",
-      borderWidth: 0,
-      marginLeft: -1,
-      marginTop: 5,
+      marginLeft: "1%",
+      marginRight: "1%",
+      marginTop: -7,
     },
     tableRow: {
       flexDirection: "row",
@@ -38,7 +30,6 @@ function Comportamiento({ data }: Props) {
     tableCellTitle: {
       border: 1,
       width: "73.7%",
-      marginTop: 5,
       textAlign: "center",
       fontSize: 10,
       padding: "2%",
@@ -47,7 +38,6 @@ function Comportamiento({ data }: Props) {
     tableCell: {
       width: "26.5%",
       border: 1,
-      marginTop: 5,
       textAlign: "center",
       fontSize: 10,
       padding: "2%",
@@ -60,8 +50,7 @@ function Comportamiento({ data }: Props) {
       marginTop: -1,
       textAlign: "left",
       fontSize: 10,
-      padding: "2%",
-      fontWeight: "bold",
+      padding: "1%",
     },
   };
   return (

@@ -27,7 +27,7 @@ const MenuItem = ({
       <Link
         href={link}
         onClick={() => setActive(id)}
-        target={`${target && "_blank"}`}
+        target={`${target ? "_blank" : "_self"}`}
       >
         <div
           className={`cursor-pointer border-2 ${
