@@ -1,7 +1,7 @@
 "use client";
 import { Option } from "@material-tailwind/react";
 import { Select } from "@material-tailwind/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import getDataParametro from "../../../../../utils/GetParametro";
 import { YesOrNot } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
@@ -10,8 +10,8 @@ import HeaderParam from "../../../HeaderParam";
 
 export default function Par256() {
   const [data, setData] = React.useState({} as any);
-
-  console.log(data);
+  const [SelectedParam256, setSelectedParam256] = useState({});
+  console.log("chanchito Feliz", SelectedParam256);
 
   useEffect(() => {
     const GetInfo = async () => {
@@ -31,9 +31,16 @@ export default function Par256() {
           parrafo="El sistema solicitará que el estudiante primero registre la fotografía en base de datos, y luego si proceda con el registro de la matrícula."
         >
           <div className="flex w-72 flex-col gap-6">
-            <Select color="cyan" label="Seleccione" isMulti>
-              {YesOrNot.map((option) => {
-                return <Option>{option.label}</Option>;
+            <Select
+              onChange={(e: any) => {
+                setSelectedParam256(e);
+                console.log("Chanchito", e);
+              }}
+              color="cyan"
+              label="Seleccione"
+            >
+              {YesOrNot.map((item) => {
+                return <Option value={item.value}>{item.label}</Option>;
               })}
             </Select>
           </div>

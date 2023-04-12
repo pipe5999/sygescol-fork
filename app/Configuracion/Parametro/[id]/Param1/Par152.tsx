@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import getDataParametro from "../../../../../utils/GetParametro";
 import DetallesParametro from "../../../DetallesParametro";
 import HeaderParam from "../../../HeaderParam";
-import Select from "react-select";
+import { Select, Option } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import CardsPreguntas from "../../../CardsPreguntas";
 import { YesOrNot } from "../../../../../utils/OptionsParams";
 import ModalImage from "react-modal-image";
+import { Input } from "@material-tailwind/react";
 
 type FormData = {
   NombrePlanilla: any;
@@ -15,6 +16,15 @@ type FormData = {
 
 export default function Par152() {
   const [data, setData] = React.useState({} as any);
+  const [SelectedParam152, setSelectedParam152] = useState({});
+  console.log("Any Dónde", SelectedParam152);
+
+  const handlerChangePara152 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParam152({
+      ...SelectedParam152,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const [Eleccion, setEleccion] = React.useState(false);
 
@@ -99,24 +109,11 @@ export default function Par152() {
     },
   ];
 
-  const EstudiantesInclusion = [
-    {
-      value: "Si",
-
-      label: "Si",
-    },
-    {
-      value: "No",
-
-      label: "No",
-    },
-  ];
   const RegistroDescriptoresRegistroDocente = [
     {
       value: "1",
 
-      label:
-        "Por carga masiva con ventana emergente, (Sin ningún tipo de modificación)",
+      label: "Por carga masiva con ventana emergente.",
     },
     {
       value: "2",
@@ -230,7 +227,7 @@ export default function Par152() {
 
       <HeaderParam infoParams={data} />
       <DetallesParametro infoParams={data} />
-      {/* <ModalDetalle InfoParametro={data.infoParametros} /> */}
+
       <div className="flex flex-wrap gap-6 justify-center p-4 ">
         <CardsPreguntas
           titulo="Procesos de Evaluación"
@@ -238,22 +235,29 @@ export default function Par152() {
         >
           <Select
             onChange={(e: any) => {
-              console.log(e);
+              setSelectedParam152({
+                ...SelectedParam152,
+                TipoProceso: e,
+              });
 
-              e.value == "Otros" ? setEleccion(true) : setEleccion(false);
+              e == "Otros" ? setEleccion(true) : setEleccion(false);
             }}
             options={TipoProceso}
-            placeholder="Seleccione"
+            label="Seleccione"
             className="w-full p-4 text-center"
-          />
+          >
+            {TipoProceso?.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
+
           {Eleccion && (
-            <div className=" text-center p-4 flex flex-col">
-              <label>Cúal</label>
-              <input
+            <div className=" text-center mt-2 flex flex-col">
+              <Input
+                onChange={handlerChangePara152}
                 type="text"
-                name=""
-                id=""
-                className="h-8 rounded-md shadow-lg ring-1 ring-gray-200"
+                name="TipoProcesoInput"
+                label="Cual"
               />
             </div>
           )}
@@ -263,22 +267,41 @@ export default function Par152() {
           parrafo="¿El docente deberá conceptualizar el proceso en el sistema?"
         >
           <Select
-            options={YesOrNot}
-            placeholder="Seleccione"
-            className="w-full p-4 text-center"
-          />
+            onChange={(e: any) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                ProcesoDesarollo: e,
+              });
+            }}
+            label="Seleccione"
+            name="Proceso desarrollo"
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Registro ForDeb"
           parrafo=" ¿El docente deberá registrar desriptores para cada uno FOR
-      -DEB- REC?"
+          -DEB- REC?"
         >
           <div>
             <Select
+              onChange={(e: any) => {
+                setSelectedParam152({
+                  ...SelectedParam152,
+                  RegistroForDeb: e,
+                });
+              }}
               options={YesOrNot}
-              placeholder="Seleccione"
-              className="w-full p-4 text-center"
-            />
+              label="Seleccione"
+              name="RegistroForDeb"
+            >
+              {YesOrNot.map((item) => {
+                return <Option value={item.value}>{item.label}</Option>;
+              })}
+            </Select>
           </div>
         </CardsPreguntas>
         <CardsPreguntas
@@ -287,33 +310,81 @@ export default function Par152() {
                 superaciones en cada periodo académico?"
         >
           <Select
-            options={YesOrNot}
-            placeholder="Seleccione"
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                RegistroSuperaciones: e,
+              });
+            }}
+            label="Seleccione"
             className="w-full p-4 text-center"
-          />
-
-          <form>
-            <label>¿Qué nombre de debe dar a la planilla?</label>
-            <input
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
+          <div className="my-2">
+            <Input
+              onChange={handlerChangePara152}
+              label="¿Nombre de la Planilla?"
               type="text"
-              className="border-[1px] rounded-sm border-inhereit h-8 flex mx-auto"
+              name="NamePlanillaRegSup"
             />
-          </form>
+          </div>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Procesos de evaluación Semestral"
           parrafo="¿El sistema Generará Fechas para procesos de evaluación Semestral?"
         >
-          <Select options={YesOrNot} placeholder="Seleccione" />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                ProcesosEvaluacion: e,
+              });
+            }}
+            label="Seleccione"
+            name="ProcEvSemestral"
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
           <p>
             ¿El sistema Generará planillas para proceos de evaluación Semestral?
           </p>
-          <Select options={YesOrNot} placeholder="Seleccione" />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                PlanillasProcesosEvaluacion: e,
+              });
+            }}
+            label="Seleccione"
+            name="PlanillaProcEvaSeme"
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
           <p>
             ¿El sistema Generará planillas para proceos de Reconsideración
             Semestral?
           </p>
-          <Select options={YesOrNot} placeholder="Seleccione" />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                PlanillasProcesosRecons: e,
+              });
+            }}
+            label="Seleccione"
+            name="PlanillaProcesosRecons"
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Tipos de planillas que se debe habliitar a los profesores 1"
@@ -345,7 +416,21 @@ export default function Par152() {
               className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
           </div>
-          <Select options={TipoPlanilla} placeholder="Seleccione" />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                PlanillaTipo1: e,
+              });
+            }}
+            label="Seleccione"
+            name="PlanillaTipo1"
+          >
+            {TipoPlanilla.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
+          <br />
           <p className="text-justify p-4">
             Para la modalidad tradicional en los niveles de Preescolar
           </p>
@@ -375,22 +460,48 @@ export default function Par152() {
               className="h-8 w-8 rounded-full ring-2 ring-green-500"
             />
           </div>
-          <Select options={TipoPlanillaPreescolar} placeholder="Seleccione" />
+          <Select
+            onChange={(e: number) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                PlanillaPreescolar: e,
+              });
+            }}
+            name="PlanillaPreEscolar"
+            label="Seleccione"
+          >
+            {TipoPlanillaPreescolar.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
           <p className="text-justify p-4">
             El registro de la Valoración, incluye Desempeños Nacionales
           </p>
-          <Select options={YesOrNot} placeholder="Seleccione" />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                PlanillaRegistroValoracion: e,
+              });
+            }}
+            name="PlanillaTipo2SiONo"
+            label="Seleccione"
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
 
-          <form>
-            <label>
-              Si el tipo de planilla corresponde a 2.1 / 2.2 , cuál será el
-              profesor (a) encargado de subir las imágenes de las dimensiones
-            </label>
-            <input
-              type="text"
-              className="border-[1px] rounded-sm border-inhereit h-8 flex mx-auto"
-            />
-          </form>
+          <p className="my-2">
+            Si el tipo de planilla corresponde a 2.1 / 2.2 , cuál será el
+            profesor (a) encargado de subir las imágenes de las dimensiones
+          </p>
+          <Input
+            onChange={handlerChangePara152}
+            type="text"
+            name="PlanillaTipo2Input"
+            label="Nombre Del Profesor"
+          />
         </CardsPreguntas>
         <CardsPreguntas titulo="Tipos de planillas que se debe habliitar a los profesores 2">
           <p className="text-justify">
@@ -422,25 +533,66 @@ export default function Par152() {
             colocar el prefijo INCLUSÍON junto al nombre del estudiante, en las
             planillas
           </p>
-          <Select options={EstudiantesInclusion} placeholder="Seleccione" />
+          <br />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                EstudiantesInclusion: e,
+              });
+            }}
+            label="Seleccione"
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Proceso a seguir en el registro de descriptores 1"
           parrafo="Si se evalua por Competencias, Logros o Desempeños, Modo de Ingreso del Texto Descriptivo, se hará:"
         >
           <Select
-            options={RegistroDescriptoresRegistroDocente}
-            placeholder="Seleccione"
-          />
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                Proceso: e,
+              });
+            }}
+            label="Seleccione"
+            name="RegistroDescriptores1"
+          >
+            {RegistroDescriptoresRegistroDocente.map((item) => {
+              return (
+                <Option key={item.value} value={item.value}>
+                  {item.label}
+                </Option>
+              );
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Proceso a seguir en el registro de descriptores 2"
           parrafo="Si se exige el registro de descriptores para Dimesnsiones de la competencia, el modo de ingreso de textos, se hará:"
         >
           <Select
-            options={RegistroDescriptoresDimensiones}
-            placeholder="Seleccione"
-          />
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                Descriptores2: e,
+              });
+            }}
+            label="Seleccione"
+            name="Descriptores2"
+          >
+            {RegistroDescriptoresDimensiones.map((item) => {
+              return (
+                <Option key={item.value} value={item.value}>
+                  {item.label}
+                </Option>
+              );
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Proceso a seguir en el registro de descriptores 3"
@@ -450,39 +602,19 @@ export default function Par152() {
             {Items?.map((item, index) => {
               return (
                 <form>
-                  <label>Nombre de la Dimensión de la competencia</label>
-                  <input
-                    onChange={(e) => {
-                      const { value } = e.target;
-                      setItems((prev) => {
-                        const newItems = [...prev];
-                        newItems[index] = {
-                          ...newItems[index],
-                          DimensionCompetencia: value,
-                        };
-                        return newItems;
-                      });
-                    }}
+                  <p>Nombre de la Dimensión de la competencia</p>
+                  <Input
+                    onChange={handlerChangePara152}
                     type="text"
-                    placeholder="Ingrese el Nombre de la competencia"
-                    className="border-[1px] rounded-sm border-inhereit h-8 flex mx-auto"
+                    label="Ingrese el Nombre de la competencia"
+                    name="NombreDimensión"
                   />
-                  <label>Ingrese el Porcentaje</label>
-                  <input
-                    onChange={(e) => {
-                      const { value } = e.target;
-                      setItems((prev) => {
-                        const newItems = [...prev];
-                        newItems[index] = {
-                          ...newItems[index],
-                          DimensionCompetencia: value,
-                        };
-                        return newItems;
-                      });
-                    }}
+
+                  <Input
+                    onChange={handlerChangePara152}
                     type="text"
-                    placeholder="Ingrese un porcentaje"
-                    className="border-[1px] rounded-sm border-inhereit h-8 flex mx-auto"
+                    label="Ingrese un porcentaje"
+                    name="Porcentaje1"
                   />
                 </form>
               );
@@ -516,11 +648,25 @@ export default function Par152() {
             El docente ingresará a la planilla de calificaciones, acciones del
             proceso evaluativo, así:
           </p>
+          <br />
           <Select
-            options={RegistroDescriptoresDimensiones2}
-            placeholder="Seleccione"
-            className="w-72 p-4"
-          />
+            onChange={(e: number) =>
+              setSelectedParam152({
+                ...SelectedParam152,
+                RegistroDescriptores2: e,
+              })
+            }
+            label="Seleccione"
+            name="RegistroDescriptoresD2"
+          >
+            {RegistroDescriptoresDimensiones2.map((item) => {
+              return (
+                <Option key={item.value} value={item.value}>
+                  {item.label}
+                </Option>
+              );
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Proceso a seguir en el registro de descriptores 4"
@@ -530,17 +676,67 @@ export default function Par152() {
             <strong>Fortalezas </strong>Para los desempeños nacionales SUPRIOR Y
             ALTO
           </p>
-          <Select options={YesOrNot} placeholder="Seleccione" />
+          <Select
+            onChange={(e: number) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                RegistroAlto: e,
+              });
+            }}
+            label="Seleccione"
+          >
+            {YesOrNot.map((item) => {
+              return (
+                <Option key={item.value} value={item.value}>
+                  {item.label}
+                </Option>
+              );
+            })}
+          </Select>
           <p>
             <strong>Debilidades </strong> Para los desempeños nacionales BÁSICO
             Y BAJO
           </p>
-          <Select options={YesOrNot} placeholder="Seleccione" />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                RegistroBasico: e,
+              });
+            }}
+            label="Seleccione"
+            name="ResgistroBasico"
+          >
+            {YesOrNot.map((item) => {
+              return (
+                <Option key={item.value} value={item.value}>
+                  {item.label}
+                </Option>
+              );
+            })}
+          </Select>
           <p>
             <strong>Recomendaciones </strong>Para los desempeños nacionales
             BÁSICO Y BAJO
           </p>
-          <Select options={YesOrNot} placeholder="Seleccione" />
+          <Select
+            onChange={(e: string) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                RegistroBajo: e,
+              });
+            }}
+            label="Seleccione"
+            name="RegsitroBajo"
+          >
+            {YesOrNot.map((item) => {
+              return (
+                <Option key={item.value} value={item.value}>
+                  {item.label}
+                </Option>
+              );
+            })}
+          </Select>
         </CardsPreguntas>
       </div>
     </div>

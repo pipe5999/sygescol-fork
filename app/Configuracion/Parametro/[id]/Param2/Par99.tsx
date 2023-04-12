@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import getDataParametro from "../../../../../utils/GetParametro";
 import CardsPreguntas from "../../../CardsPreguntas";
@@ -8,6 +8,8 @@ import HeaderParam from "../../../HeaderParam";
 
 export default function Par99() {
   const [data, setData] = React.useState({} as any);
+  const [SelectedParam99, setSelectedParam99] = useState({});
+  console.log("Any ??", SelectedParam99);
 
   const Param99Select = [
     {
@@ -48,6 +50,9 @@ export default function Par99() {
           >
             <p className="p-2">Selección Múltiple</p>
             <Select
+              onChange={(e: any) => {
+                setSelectedParam99(e);
+              }}
               isMulti
               options={Param99Select}
               className="p-2"

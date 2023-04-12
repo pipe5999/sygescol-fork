@@ -18,7 +18,7 @@ export default function Par297() {
   const [SelectedModulos, setSelectedModulos] = useState<[]>([]);
   const [EleccionModulos, setEleccionModulos] = useState(false);
 
-  console.log(data);
+  console.log("Chanchito", SelectedModulos);
   const handleOpen = () => setModalParam(!ModalParam);
 
   const SelectModulos = [

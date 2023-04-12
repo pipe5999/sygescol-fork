@@ -1,12 +1,16 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
-import Select from "react-select";
+import { Select } from "@material-tailwind/react";
+import { Input } from "@material-tailwind/react";
+import { Option } from "@material-tailwind/react";
+import reactSelect from "react-select";
+import React, { useEffect, useState } from "react";
 import getDataParametro from "../../../../../utils/GetParametro";
 import { Reincidencia, YesOrNot } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
 import DetallesParametro from "../../../DetallesParametro";
 import HeaderParam from "../../../HeaderParam";
 import WysWyget from "../../WysWyget";
+import ReactSelect from "react-select";
 
 export default function Par167() {
   const [data, setData] = React.useState({} as any);
@@ -17,6 +21,22 @@ export default function Par167() {
   const [InasistenciaJustificada, setInasistenciaJustificada] = useState(false);
   const [ModalParam2, setModalParam2] = useState(false);
   const [ModalParam3, setModalParam3] = useState(false);
+  const [SelectedParam167Part1, setSelectedParam167Part1] = useState({});
+  const [SelectedParam167Part2, setSelectedParam167Part2] = useState({});
+  console.log("any 2 ???", SelectedParam167Part2);
+
+  const handlerChangePart1 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParam167Part1({
+      ...SelectedParam167Part1,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerChangePart2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParam167Part2({
+      ...SelectedParam167Part2,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const ControlAsistenciaSelect = [
     {
@@ -77,16 +97,39 @@ export default function Par167() {
                       Activar Registro Automático de asistencía :
                     </p>
 
-                    <Select options={YesOrNot} placeholder="Seleccione" />
+                    <Select
+                      onChange={(e: any) => {
+                        setSelectedParam167Part1({
+                          ...SelectedParam167Part1,
+                          RegistroAutomatico: e,
+                        });
+                      }}
+                      label="Seleccione"
+                      name="RegistroAutomático"
+                    >
+                      {YesOrNot.map((item) => {
+                        return <Option value={item.value}>{item.label}</Option>;
+                      })}
+                    </Select>
                   </div>
                   <div className=" rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3 text-center">
                     <p className="p-2">
                       Configuración del control de asistencía :
                     </p>
                     <Select
-                      options={ControlAsistenciaSelect}
-                      placeholder="Seleccione"
-                    />
+                      onChange={(e: any) => {
+                        setSelectedParam167Part1({
+                          ...SelectedParam167Part1,
+                          ControlAsistencia: e,
+                        });
+                      }}
+                      label="Seleccione"
+                      name="ControlAsistencia"
+                    >
+                      {ControlAsistenciaSelect.map((item) => {
+                        return <Option value={item.value}>{item.label}</Option>;
+                      })}
+                    </Select>
                   </div>
                   <div className=" flex  flex-col  items-center rounded-md border-cyan-700 shadow-lg shadow-cyan-50 bg-gray-50 w-1/3 text-center  ">
                     <p className="p-2  text-center ">
@@ -110,23 +153,27 @@ export default function Par167() {
                       <tbody className="bg-gray-200  border-gray-100 hover:bg-violet-300">
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className=" py-2 border  text-gray-700 font-semibold text-center">
-                            <input
+                            <Input
+                              onChange={handlerChangePart1}
                               type="number"
-                              placeholder="Ingrese los minutos"
+                              label="Ingrese los minutos"
+                              name="accesosIntitucion"
                             />
                           </td>
                           <td className=" py-2 border  text-gray-700 font-semibold text-center">
-                            {" "}
-                            <input
+                            <Input
+                              onChange={handlerChangePart1}
                               type="number"
-                              placeholder="Ingrese los minutos"
+                              label="Ingrese los minutos"
+                              name="IntervaloDeclase"
                             />
                           </td>
                           <td className=" py-2 border  text-gray-700 font-semibold text-center">
-                            {" "}
-                            <input
+                            <Input
+                              onChange={handlerChangePart1}
                               type="number"
-                              placeholder="Ingrese los minutos"
+                              label="Ingrese los minutos"
+                              name="SalidaInstitucion"
                             />
                           </td>
                         </tr>
@@ -138,7 +185,7 @@ export default function Par167() {
                       A que Perfiles de la institución se realizara el control
                       de Asistencia :
                     </p>
-                    <Select
+                    <ReactSelect
                       isMulti
                       options={PerfilesControlAistenciaSelect}
                       placeholder="Seleccione"
@@ -163,15 +210,19 @@ export default function Par167() {
                       <tbody className="bg-white border-gray-200 ">
                         <tr className="bg-white border-gray-200 ">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChangePart1}
                               type="number"
-                              placeholder="Ingrese los Minutos"
+                              label="Ingrese los Minutos"
+                              name="AccesoInstitucion2"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChangePart1}
                               type="number"
-                              placeholder="Ingrese los Minutos"
+                              label="Ingrese los Minutos"
+                              name="IntervalosClases"
                             />
                           </td>
                         </tr>
@@ -184,10 +235,20 @@ export default function Par167() {
                       Electrónicos:
                     </p>
                     <Select
+                      onChange={(e: any) => {
+                        setSelectedParam167Part1({
+                          ...setSelectedParam167Part1,
+                          EnvioCorreoSms: e,
+                        });
+                      }}
                       options={YesOrNot}
-                      placeholder="Seleccione"
+                      label="Seleccione"
                       className="p-2"
-                    />
+                    >
+                      {YesOrNot.map((item) => {
+                        return <Option value={item.value}>{item.label}</Option>;
+                      })}
+                    </Select>
                   </div>
                   <div className="flex justify-center p-2">
                     <button
@@ -286,26 +347,55 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        AplicaLltc: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="AplicaLLegadasTarde"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}{" "}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="LltcInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        ControlReincidenciaLltc: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
-                              <tr className="bg-sky-900 border-gray-200 ">
+                              <tr className="bg-gray-100 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-gray-50 text-center  "
+                                  className="px-4 py-2 border text-cyan-500 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
@@ -326,26 +416,56 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        AplicaLlti: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="AplicaLlti"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="LltiInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        LltiReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="LltiReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
-                              <tr className="bg-sky-900 border-gray-200 ">
+                              <tr className="bg-gray-100 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-gray-50 text-center  "
+                                  className="px-4 py-2 border text-cyan-500 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
@@ -366,26 +486,56 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        EvasionInstituciónAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="EvasiónInstitucionAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="EvasionInstiInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        EvasionInstituciónReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="ReincidenciaEvasionInstu"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
-                              <tr className="bg-sky-900 border-gray-200 ">
+                              <tr className="bg-gray-100 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-gray-50 text-center  "
+                                  className="px-4 py-2 border text-cyan-500 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
@@ -406,26 +556,56 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        EvasionClasesAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="EvasionClaseAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
                                     placeholder="Ingrese Un número"
+                                    name="EvasionClasesInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        EvasionClasesReincidencia: e,
+                                      });
+                                    }}
                                     placeholder="Seleccione"
-                                  />
+                                    name="ReincidenciaEvacionClase"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
-                              <tr className="bg-sky-900 border-gray-200 ">
+                              <tr className="bg-gray-100 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-gray-50 text-center  "
+                                  className="px-4 py-2 border text-cyan-500 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
@@ -442,25 +622,56 @@ export default function Par167() {
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  Evasión de Clases
+                                  Evasión de Institución
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        EvasionInstituciónAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="EvacionInstitucionAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="EvasionInstitucionInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        EvasionInstituciónReincidencia: e,
+                                      });
+                                    }}
                                     placeholder="Seleccione"
-                                  />
+                                    label="Seleccione"
+                                    name="EvasionInstitucionReicidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
@@ -477,26 +688,56 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        NoIngresoAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="NoIngresoAlaInstitucionAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="NoIngresoAplica"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        NoIngresoReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="NoIngresoReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
-                              <tr className="bg-sky-900 border-gray-200 ">
+                              <tr className="bg-gray-100 border-gray-200 ">
                                 <td
-                                  className="px-4 py-2 border text-gray-50 text-center  "
+                                  className="px-4 py-2 border text-cyan-500 text-center  "
                                   colSpan={4}
                                 >
                                   Texto de Notificación para casos de
@@ -555,21 +796,51 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: string) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaCoordinacion: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaCoordinacionAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="CitaCoordinacionInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaCoordinacionReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaCoordinacionReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
@@ -578,44 +849,104 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaDelegacionAcademicaAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaDelegacionAcademicaAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="CitaDelegacionAcademicaInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaDelegacionAcademicaReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaDelegacionAcademicaReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
-                                <td className="px-4 py-2 border text-gray-700 ">
+                                <td className="px-4 py-2 border text-cyan-700 ">
                                   Cita en Delegación Deportiva
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaDelegacionDeportivaAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaDelegacionDeportivaAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="CitaDelegacionDeportivaInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaDelegacionDeportivaReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaDelegacionDeportivaReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
@@ -624,67 +955,105 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        ServicioSocialAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="ServicioSocialAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="ServicioSocialInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        ServicioSocialReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="ServicioSocialReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
-                              <tr className="bg-gray-50 border-gray-200 ">
-                                <td className="px-4 py-2 border text-gray-700 ">
-                                  Servicio Social
-                                </td>
-                                <td className="px-4 py-2 border text-gray-700 ">
-                                  <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
-                                </td>
-                                <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
-                                    type="number"
-                                    placeholder="Ingrese Un número"
-                                  />
-                                </td>
-                                <td className="px-4 py-2 border text-gray-700 ">
-                                  <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
-                                </td>
-                              </tr>
+
                               <tr className="bg-gray-50 border-gray-200 ">
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   Con incapacidad
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        ConIcapacidadAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="ConIncapacidadAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="ConIncapacidad"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        ConIncapacidadReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="ConIncapacidadReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
@@ -693,21 +1062,51 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        ConPermisoAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="ConPermisoAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="ConPermisoInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        ConPermisoReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="ConPermisoReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
@@ -716,21 +1115,51 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaOrientacionEscolarAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaOrientadorEscolarAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onChange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="CitaOrientacionEscolarInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        CitaOrientacionEscolarReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="CitaOrientacionEscolarReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
@@ -739,21 +1168,51 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        SemiEscolarizacionAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="SemiEscolarizacionAplica"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onchange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="SemeEscolarizaciónInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        SemeEscolarizacionReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="SemiEscolarizacionReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 border-gray-200 ">
@@ -763,21 +1222,51 @@ export default function Par167() {
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={YesOrNot}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        TrabajoInCasaAplica: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="TrabajoInasistenciaJustificada"
+                                  >
+                                    {YesOrNot.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
-                                  <input
+                                  <Input
+                                    onchange={handlerChangePart2}
                                     type="number"
-                                    placeholder="Ingrese Un número"
+                                    label="Ingrese Un número"
+                                    name="TrabajoInCasaAplicaInput"
                                   />
                                 </td>
                                 <td className="px-4 py-2 border text-gray-700 ">
                                   <Select
-                                    options={Reincidencia}
-                                    placeholder="Seleccione"
-                                  />
+                                    onChange={(e: any) => {
+                                      setSelectedParam167Part2({
+                                        ...SelectedParam167Part2,
+                                        TrabajoInCasaReincidencia: e,
+                                      });
+                                    }}
+                                    label="Seleccione"
+                                    name="TrabajoInCasaReincidencia"
+                                  >
+                                    {Reincidencia.map((item) => {
+                                      return (
+                                        <Option value={item.value}>
+                                          {item.label}
+                                        </Option>
+                                      );
+                                    })}
+                                  </Select>
                                 </td>
                               </tr>
                             </div>

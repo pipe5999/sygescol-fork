@@ -10,11 +10,10 @@ import HeaderParam from "../../../HeaderParam";
 
 export default function Par299() {
   const [data, setData] = React.useState({} as any);
-  const [SelectedParam, setSelectedParam] = useState("");
+  const [SelectedParam, setSelectedParam] = useState({});
   const [Eleccion, setEleccion] = useState(false);
-  const [InputParam, setInputParam] = useState("");
-  console.log("Any no es bueno", SelectedParam);
-  console.log("Any sigue siendo malo", InputParam);
+
+  console.log("Chanchito bueno", SelectedParam);
 
   const SelectParam = [
     {
@@ -35,6 +34,13 @@ export default function Par299() {
     },
   ];
 
+  const handlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParam({
+      ...SelectedParam,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   useEffect(() => {
     const GetInfo = async () => {
       const resultado = await getDataParametro(299, 2);
@@ -42,9 +48,6 @@ export default function Par299() {
     };
     GetInfo();
   }, []);
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputParam(event.target.value);
-  };
 
   return (
     <div>
@@ -58,12 +61,17 @@ export default function Par299() {
           <Select
             onChange={(e: any) => {
               // console.log("este es el change", e);
+              setSelectedParam({
+                ...SelectedParam,
+                SelectParam: e,
+              });
               setSelectedParam(e);
               e == "4" ? setEleccion(true) : setEleccion(false);
             }}
             variant="outlined"
             label="Seleccione"
             color="cyan"
+            name="SelectName"
           >
             {SelectParam.map((item) => {
               return <Option value={item.value}>{item.label}</Option>;
@@ -73,8 +81,9 @@ export default function Par299() {
           {Eleccion && (
             <div className="flex justify-center">
               <Input
-                value={InputParam}
-                onChange={handleInputChange}
+                onChange={handlerChange}
+                type="text"
+                name="InputParam"
                 label="Cúal"
               />
             </div>

@@ -15,20 +15,32 @@ import {
 } from "@material-tailwind/react";
 
 export default function Par281() {
-  const [data, setData] = React.useState({} as any);
+  const [data, setData] = useState({} as any);
   const [ModalParam, setModalParam] = useState(false);
+  const [SelectedParam1, setSelectedParam1] = useState({});
+  const [SelectedParam2, setSelectedParam2] = useState({});
 
-  const [SelectedPrematricula, setSelectedPrematricula] = useState<[]>([]);
-  const [SelectedTradicional, setSelectedTradicional] = useState<[]>([]);
-  const [SelectedCleis, setSelectedCleis] = useState<[]>([]);
-  const [ModalParam2, setModalParam2] = useState(false);
-  const [SelectedInter, setSelectedInter] = useState<[]>([]);
-  const [SelectedControles, setSelectedControles] = useState<[]>([]);
-  const [SelectedAdministracion, setSelectedAdministracion] = useState<[]>([]);
-  const [SelectedProcesos, setSelectedProcesos] = useState<[]>([]);
+  const [TipoMatricula2, setTipoMatricula2] = useState(false);
 
-  const handleOpen = () => setModalParam(!ModalParam);
-  const handleOpen2 = () => setModalParam2(!ModalParam2);
+  console.log("TipoMatricula2 1", TipoMatricula2);
+  console.log("Chanchito 2", SelectedParam2);
+
+  const handlerChange1 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParam1({
+      ...SelectedParam1,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParam2({
+      ...SelectedParam2,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleOpen = () => {
+    setModalParam(!ModalParam);
+  };
 
   console.log(data);
 
@@ -160,6 +172,10 @@ export default function Par281() {
     GetInfo();
   }, []);
 
+  const hanlerOpenNewModal = () => {
+    setTipoMatricula2(!TipoMatricula2);
+  };
+
   return (
     <div>
       <HeaderParam infoParams={data} />
@@ -170,15 +186,19 @@ export default function Par281() {
           parrafo="Módulos a los que tendrá acceso el Rol Secretaría Académica, para el registro de matrículas en el sistema, una vez establecido este parámetro."
         >
           <div className="flex justify-center">
-            <Fragment>
+            <>
               <Button onClick={handleOpen} color="cyan" variant="gradient">
                 Abrir selección
               </Button>
-              <Dialog open={ModalParam} handler={handleOpen}>
+              <Dialog
+                open={ModalParam}
+                handler={handleOpen}
+                className="overflow-auto max-h-screen"
+              >
                 <DialogHeader className="text-center text-cyan-700">
                   Tipos de Matrícula, procesos, administración y controles
                 </DialogHeader>
-                <DialogBody divider>
+                <DialogBody divider className="overflow-auto h-90">
                   <div className="flex justify-center flex-col items-center overflow-auto">
                     <p className="text-center text-cyan-500 font-extrabold">
                       Prematrícula
@@ -187,9 +207,10 @@ export default function Par281() {
                       options={SelectPrematriculas}
                       isMulti
                       onChange={(e: any) => {
-                        console.log(e);
-
-                        setSelectedPrematricula(e);
+                        setSelectedParam1({
+                          ...SelectedParam1,
+                          SelectedPrematriculas: e,
+                        });
                       }}
                       closeMenuOnSelect={false}
                       placeholder="Seleccione"
@@ -204,9 +225,10 @@ export default function Par281() {
                       options={SelectTradicionales}
                       isMulti
                       onChange={(e: any) => {
-                        console.log(e);
-
-                        setSelectedTradicional(e);
+                        setSelectedParam1({
+                          ...SelectedParam1,
+                          SelectTradicionales: e,
+                        });
                       }}
                       closeMenuOnSelect={false}
                       placeholder="Seleccione"
@@ -221,9 +243,10 @@ export default function Par281() {
                       options={SelectCleis}
                       isMulti
                       onChange={(e: any) => {
-                        console.log(e);
-
-                        setSelectedCleis(e);
+                        setSelectedParam1({
+                          ...SelectedParam1,
+                          SelectCleis: e,
+                        });
                       }}
                       closeMenuOnSelect={false}
                       placeholder="Seleccione"
@@ -242,7 +265,7 @@ export default function Par281() {
                   </Button>
                 </DialogFooter>
               </Dialog>
-            </Fragment>
+            </>
           </div>
         </CardsPreguntas>
         <CardsPreguntas
@@ -251,19 +274,28 @@ export default function Par281() {
         >
           <div className="flex justify-center">
             <Fragment>
-              <Button onClick={handleOpen2} color="cyan" variant="gradient">
+              <Button
+                onClick={() => {
+                  hanlerOpenNewModal();
+                }}
+                color="cyan"
+                variant="gradient"
+              >
                 Abrir Selección
               </Button>
               <Dialog
-                open={ModalParam2}
-                handler={handleOpen2}
-                className="overflow-auto"
+                open={TipoMatricula2}
+                size={"xl"}
+                handler={() => {
+                  hanlerOpenNewModal();
+                }}
+                className="overflow-auto max-h-full "
               >
                 <DialogHeader className="text-center text-cyan-700">
                   Tipos de Matrícula, procesos, administración y controles
                 </DialogHeader>
-                <DialogBody divider className="overflow-auto">
-                  <div className="flex flex-col items-center overflow-auto">
+                <DialogBody divider className="overflow-auto h-90">
+                  <div className="flex flex-col items-center overflow-auto ">
                     <p className="text-center font-bold text-cyan-500">
                       Matrícula Inter-Institucional
                     </p>
@@ -271,15 +303,16 @@ export default function Par281() {
                       isMulti
                       options={SelectInter}
                       onChange={(e: any) => {
-                        console.log(e);
-
-                        setSelectedInter(e);
+                        setSelectedParam2({
+                          ...SelectedParam2,
+                          SelectInter: e,
+                        });
                       }}
                       closeMenuOnSelect={false}
                       placeholder="Seleccione"
-                      className="w-72 "
+                      className="w-72 mb-1"
                     />
-                    <br />
+
                     <p className="text-center font-bold text-cyan-500">
                       Controles de la Matrícula
                     </p>
@@ -287,15 +320,16 @@ export default function Par281() {
                       isMulti
                       options={SelectControles}
                       onChange={(e: any) => {
-                        console.log(e);
-
-                        setSelectedControles(e);
+                        setSelectedParam2({
+                          ...SelectedParam2,
+                          SelectControles: e,
+                        });
                       }}
                       closeMenuOnSelect={false}
                       placeholder="Seleccione"
-                      className="w-72 "
+                      className="w-72 mb-1"
                     />
-                    <br />
+
                     <p className="text-center font-bold text-cyan-500">
                       Administración de la Matrícula
                     </p>
@@ -303,15 +337,16 @@ export default function Par281() {
                       isMulti
                       options={SelectAdministracion}
                       onChange={(e: any) => {
-                        console.log(e);
-
-                        setSelectedAdministracion(e);
+                        setSelectedParam2({
+                          ...SelectedParam2,
+                          SelectAdministracion: e,
+                        });
                       }}
                       closeMenuOnSelect={false}
                       placeholder="Seleccione"
-                      className="w-72 "
+                      className="w-72 mb-1"
                     />
-                    <br />
+
                     <p className="text-center font-bold text-cyan-500">
                       Procesos de Matrícula
                     </p>
@@ -319,24 +354,28 @@ export default function Par281() {
                       isMulti
                       options={SelectProcesos}
                       onChange={(e: any) => {
-                        console.log(e);
-
-                        setSelectedProcesos(e);
+                        setSelectedParam2({
+                          ...SelectedParam2,
+                          SelectProcesos: e,
+                        });
                       }}
                       closeMenuOnSelect={false}
                       placeholder="Seleccione"
-                      className="w-72 "
+                      className="w-72 mb-1"
                     />
                   </div>
+                  <br />
                 </DialogBody>
+
                 <DialogFooter className="flex justify-center">
                   <Button
                     variant="text"
-                    onClick={handleOpen2}
+                    onClick={() => {
+                      hanlerOpenNewModal();
+                    }}
                     color="red"
-                    className="mr-1"
                   >
-                    <span>Cerrar</span>
+                    Cerrar
                   </Button>
                 </DialogFooter>
               </Dialog>

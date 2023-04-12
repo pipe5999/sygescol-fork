@@ -12,14 +12,23 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+import { Input } from "@material-tailwind/react";
 
 export default function Par255() {
   const [data, setData] = React.useState({} as any);
   const [newText, setNewText] = React.useState("" as string);
   const [ModalParam1, setModalParam1] = useState(false);
-  console.log("aprender", data);
-  const handleOpen = () => setModalParam1(!ModalParam1);
 
+  const handleOpen = () => setModalParam1(!ModalParam1);
+  const [SelectedParam1, setSelectedParam1] = useState({});
+  console.log("ChanchitoFeliz", SelectedParam1);
+
+  const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedParam1({
+      ...SelectedParam1,
+      [e.target.name]: e.target.value,
+    });
+  };
   useEffect(() => {
     const GetInfo = async () => {
       const resultado = await getDataParametro(255, 2);
@@ -76,10 +85,11 @@ export default function Par255() {
                       <tbody className="bg-gray-200  border-gray-100 hover:bg-violet-300">
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase w-72">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadPrimero"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase ">
@@ -88,10 +98,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadSegundo"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -100,10 +111,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadTercero"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -112,10 +124,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadCuarto"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -124,10 +137,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadQuinto"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -136,10 +150,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadSexto"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -148,10 +163,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadSeptimo"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -160,10 +176,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadOctavo"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -172,10 +189,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadNoveno"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -184,10 +202,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadDecimo"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">
@@ -196,10 +215,11 @@ export default function Par255() {
                         </tr>
                         <tr className="bg-white border-4 border-gray-200 hover:bg-gray-50">
                           <td className="px-4 py-2 border text-gray-700 uppercase">
-                            <input
+                            <Input
+                              onChange={handlerChange}
                               type="number"
-                              placeholder="Ingrese La Edad en Años"
-                              className="w-full"
+                              label="Ingrese La Edad en Años"
+                              name="EdadOnce"
                             />
                           </td>
                           <td className="px-4 py-2 border text-gray-700 uppercase">

@@ -55,7 +55,7 @@ const Niveles = [
   },
   {
     value: "5",
-    labe: "Media Once",
+    label: "Media Once",
   },
   {
     value: "6",
@@ -94,6 +94,24 @@ const TipoInasistencia = [
     label: "Justificada",
   },
 ];
+const CiclosEscolares = [
+  {
+    value: "1",
+    label: "Uno",
+  },
+  {
+    value: "2",
+    label: "Dos",
+  },
+  {
+    value: "3",
+    label: "Tres",
+  },
+  {
+    value: "4",
+    label: "Cuatro",
+  },
+];
 
 // const ColorTituloPreguntas = () => {
 //   const random: any = () => Math.floor(Math.random() * 3);
@@ -104,4 +122,11 @@ const TipoInasistencia = [
 //   return numero;
 // };
 
-export { YesOrNot, EstadoAcdemico, Niveles, Reincidencia, TipoInasistencia };
+export {
+  YesOrNot,
+  EstadoAcdemico,
+  Niveles,
+  Reincidencia,
+  TipoInasistencia,
+  CiclosEscolares,
+};

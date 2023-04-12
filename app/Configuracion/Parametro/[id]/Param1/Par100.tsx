@@ -1,24 +1,34 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
+import { Select, Option } from "@material-tailwind/react";
 import getDataParametro from "../../../../../utils/GetParametro";
 import { YesOrNot } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
 import DetallesParametro from "../../../DetallesParametro";
 import HeaderParam from "../../../HeaderParam";
+import { Input } from "@material-tailwind/react";
 
 export default function Par100() {
   const [data, setData] = React.useState({} as any);
   const [PorcentajeRegistro, setPorcentajeRegistro] = useState(false);
+  const [SelectedParam100, setSelectedParam100] = useState({});
+  console.log("any Dónde", SelectedParam100);
+
+  const handlerChangeParam100 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParam100({
+      ...SelectedParam100,
+      [e.target?.name]: e.target?.value,
+    });
+  };
 
   const ParamRegistro = [
     {
-      value: "11",
+      value: "1",
       label:
         "El registro lo podrá hacer cada docente que le oriente clase al estudiante.",
     },
     {
-      value: "12",
+      value: "2",
       label: "El registro lo hará solo el Director de grupo.",
     },
   ];
@@ -42,28 +52,66 @@ export default function Par100() {
           parrafo="Establecer los datos que debe subir el sistema a las planillas, boletines y certificados de estudio, como proceso de la valoración comportamental del estudiante."
         >
           <Select
-            onChange={(e: any) => {
-              e.value == "11" && setPorcentajeRegistro(true);
-              e.value == "12" && setPorcentajeRegistro(true);
+            onChange={(e: number) => {
+              // console.log("No es any", e.target.value);
+              setSelectedParam100({
+                ...SelectedParam100,
+                Resgistro: e,
+              });
+              if (e == 1 || e == 2) {
+                setPorcentajeRegistro(true);
+              }
             }}
             options={ParamRegistro}
-          />
+            label="Seleccione"
+          >
+            {ParamRegistro?.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
           {PorcentajeRegistro && (
-            <div className="m-2 flex justify-center">
-              <input
+            <div className="mt-2 flex justify-center">
+              <Input
+                onChange={handlerChangeParam100}
                 type="text"
-                placeholder="Ingrese el Porcentaje"
-                className="h-8 rounded-sm ring-1 ring-gray-300 shadow-sm"
+                label="Ingrese el Porcentaje"
+                name="PorcentajeRegistro"
               />
             </div>
           )}
           <br />
 
           <p className="p-2">Generar consolidado para fin de año:</p>
-          <Select options={YesOrNot} placeholder="Seleccione" className="p-2" />
+          <Select
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setSelectedParam100({
+                ...SelectedParam100,
+                ConsolidadoFin: e,
+              })
+            }
+            label="Seleccione"
+            className="p-2"
+          >
+            {YesOrNot?.map((item) => {
+              return <Option value={item?.value}>{item?.label}</Option>;
+            })}
+          </Select>
           <br />
           <p className="p-2">Habilitar carga masiva de conceptos</p>
-          <Select options={YesOrNot} placeholder="Seleccione" className="p-2" />
+          <Select
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+              setSelectedParam100({
+                ...SelectedParam100,
+                CargaMasiva: e,
+              });
+            }}
+            label="Seleccione"
+            className="p-2"
+          >
+            {YesOrNot?.map((item) => {
+              return <Option value={item?.value}>{item?.label}</Option>;
+            })}
+          </Select>
         </CardsPreguntas>
       </div>
     </div>

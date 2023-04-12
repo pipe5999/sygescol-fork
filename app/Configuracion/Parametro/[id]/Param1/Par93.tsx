@@ -22,24 +22,51 @@ export default function Par93() {
   const [SelectedPaso1, setSelectedPaso1] = useState({});
   const [SelectedPaso21, setSelectedPaso21] = useState({});
   const [SelectedPaso22, setSelectedPaso22] = useState({});
+  const [SelectedPaso3, setSelectedPaso3] = useState({});
+  const [SelectedPaso4, setSelectedPaso4] = useState({});
+  const [SelectedPaso5, setSelectedPaso5] = useState({});
+  const [SelectedPaso6, setSelectedPaso6] = useState({});
 
-  console.log("Any ??", SelectedPaso22);
-
-  const handlerChangePaso1 = (e: any) => {
+  const handlerChangePaso1 = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedPaso1({
       ...SelectedPaso1,
       [e.target.name]: e.target.value,
     });
   };
-  const handlerChangePaso21 = (e: any) => {
+  const handlerChangePaso21 = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedPaso21({
       ...SelectedPaso21,
       [e.target.name]: e.target.value,
     });
   };
-  const handlerChangePaso22 = (e: any) => {
+  const handlerChangePaso22 = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedPaso22({
       ...SelectedPaso22,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerChangePaso3 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedPaso3({
+      ...SelectedPaso3,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handlerChangePaso4 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedPaso4({
+      ...SelectedPaso4,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerChangePaso5 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedPaso5({
+      ...SelectedPaso5,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerChangePaso6 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedPaso6({
+      ...SelectedPaso6,
       [e.target.name]: e.target.value,
     });
   };
@@ -524,18 +551,26 @@ export default function Par93() {
               </p>
               <Select
                 onChange={(e: any) => {
+                  setSelectedPaso3({
+                    ...SelectedPaso3,
+                    Select31: e?.value,
+                  });
                   e.value == "2"
                     ? setPaso31InSelect(true)
                     : setPaso31InSelect(false);
                 }}
                 options={Paso31}
+                name="Select31"
+                placeholder="Seleccione"
               />
+
               {Paso31InSelect && (
-                <div>
-                  <input
+                <div className="flex justify-center w-72 mt-2">
+                  <Input
+                    onChange={handlerChangePaso3}
                     type="text"
-                    placeholder="Defina la calificación"
-                    className="p-2 "
+                    label="Defina la calificación"
+                    name="Paso31Input"
                   />
                 </div>
               )}
@@ -565,13 +600,23 @@ export default function Par93() {
             </svg>
 
             {Paso32Select && (
-              <div className="">
+              <div className="flex justify-center flex-col w-72">
                 <p>
                   Cuando en la planilla de calificaciones sea el docente quien
                   no registre la calificación ni el NP al estudiante, el
                   sistema:
                 </p>
-                <Select options={Paso32} />
+                <Select
+                  onChange={(e) => {
+                    setSelectedPaso3({
+                      ...SelectedPaso3,
+                      paso32Select: e?.value,
+                    });
+                  }}
+                  options={Paso32}
+                  placeholder="Seleccione"
+                  name="paso31Select"
+                />
               </div>
             )}
             <br />
@@ -600,25 +645,32 @@ export default function Par93() {
             </svg>
           </div>
           {Paso33Select && (
-            <div>
+            <div className="flex justify-center  flex-col w-72 p-4">
               <p>
                 Si se trata de una planilla de superación fin de año, se enviará
                 un NC (No calificado por el docente)
               </p>
               <Select
                 onChange={(e: any) => {
+                  setSelectedPaso3({
+                    ...SelectedPaso3,
+                    paso33Select: e?.value,
+                  });
                   e.value == "4"
                     ? setPaso33InSelect(true)
                     : setPaso33InSelect(false);
                 }}
                 options={Paso33}
+                placeholder="Seleccione"
+                name="paso33Select"
               />
               {Paso33InSelect && (
-                <div>
-                  <input
+                <div className="w-60 mt-2">
+                  <Input
+                    onChange={handlerChangePaso3}
                     type="text"
-                    placeholder="Defina la nota"
-                    className="p-2 m-1"
+                    label="Defina la nota"
+                    name="Paso33Input"
                   />
                 </div>
               )}
@@ -634,32 +686,39 @@ export default function Par93() {
             La reprobación por Inasistencia se realizará por:
           </p>
           <Select
-            onChange={() => {
+            onChange={(e) => {
+              setSelectedPaso4({
+                ...SelectedPaso4,
+                paso4Select: e?.value,
+              });
               setPaso4Select(true);
             }}
             options={Paso4}
             placeholder="Seleccione"
             className="p-2"
+            name="paso4Select"
           />
           {Paso4Select && (
             <div className="flex flex-col gap-1 p-4">
-              <label>
+              <p>
                 Tasa porcentual para la inasistencia{" "}
                 <strong>Injustificada</strong>:
-              </label>
-              <input
+              </p>
+              <Input
+                onChange={handlerChangePaso4}
                 type="text"
-                placeholder="Defina la tasa Porcentual"
-                className="h-8 rounded-sm ring-1 ring-gray-200 shadow-md"
+                label="Defina la tasa Porcentual"
+                name="Paso4Input"
               />
-              <label>
+              <p>
                 Tasa porcentual para la inasistencia{" "}
                 <strong>Justificada</strong>:
-              </label>
-              <input
+              </p>
+              <Input
+                onChange={handlerChangePaso4}
                 type="text"
-                placeholder="Defina la tasa Porcentual"
-                className="h-8 rounded-sm ring-1 ring-gray-200 shadow-md"
+                label="Defina la tasa Porcentual"
+                name="Paso4Input2"
               />
             </div>
           )}
@@ -678,11 +737,13 @@ export default function Par93() {
             último periodo.
           </p>
           <br />
-          <label className="p-2">Ingrese La valoración:</label>
-          <input
+          <Input
+            onChange={handlerChangePaso5}
+            label="Ingrese La valoración"
             type="text"
-            placeholder="..."
-            className="rounded-sm ring-1 ring-gray-200 shadow-lg h-8 w-64 p-4  "
+            name="paso5Input"
+            pattern="/^([1-4](\.\d+)?|5(\.0)?)$|^[1-9]\d*$/
+            "
           />
         </CardsPreguntas>
         {/* Paso 6 */}
@@ -696,37 +757,50 @@ export default function Par93() {
             valoraciones y la carga de estados académicos para la matrícula del
             año escolar siguiente.
           </p>
-          <Select options={YesOrNot} className="P-2" placeholder="Seleccione" />
+          <Select
+            onChange={(e) => {
+              setSelectedPaso6({
+                ...SelectedPaso6,
+                paso6: e?.value,
+              });
+            }}
+            options={YesOrNot}
+            className="P-2"
+            placeholder="Seleccione"
+          />
           <div className="p-2 flex flex-col gap-1">
             <p className="p-2">
               Cambio de valoración para área reprobada si el promedio le
               favorece
             </p>
-            <label className="p-2">
+            <p className="p-2">
               1. Cuando un estudiante al cierre de áreas obtiene como promedio
               en todas las áreas, una calificación mayor o igual a
-            </label>
-            <input
+            </p>
+            <Input
+              onChange={handlerChangePaso6}
               type="text"
-              placeholder="Ingrese la valoración"
-              className="ring-1 ring-gray-200 rounded-sm h8 shadow-lg "
+              label="Ingrese la valoración"
+              name="InputPaso6Num1"
             />
-            <label className="p-2">
+            <p className="p-2">
               2. Si la valoración DEFINITIVA del área reprobada, es mayor o
               igual a:
-            </label>
-            <input
+            </p>
+            <Input
+              onChange={handlerChangePaso6}
               type="text"
-              placeholder="Ingrese la valoración"
-              className="ring-1 ring-gray-200 rounded-sm h8 shadow-lg "
+              label="Ingrese la valoración"
+              name="InputPaso6Num2"
             />
-            <label className="p-2">
+            <p className="p-2">
               3. El sistema cambiará la nota de la asignatura reprobada, por:
-            </label>
-            <input
+            </p>
+            <Input
+              onChange={handlerChangePaso6}
               type="text"
-              placeholder="Ingrese la valoración"
-              className="ring-1 ring-gray-200 rounded-sm h8 shadow-lg "
+              label="Ingrese la valoración"
+              name="InputPaso6Num3"
             />
           </div>
         </CardsPreguntas>

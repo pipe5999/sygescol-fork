@@ -1,6 +1,6 @@
 "use client";
-import { SelectTailwind, Option } from "@material-tailwind/react";
-import Select from "react-select";
+import { Select, Option } from "@material-tailwind/react";
+import ReactSelect from "react-select";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import getDataParametro from "../../../../../utils/GetParametro";
 import { YesOrNot } from "../../../../../utils/OptionsParams";
@@ -15,16 +15,15 @@ interface OptionType {
 
 export default function Par14() {
   const [data, setData] = React.useState({} as any);
-  const [SelectedGeneralMethod, setSelectedGeneralMethod] = useState("");
-  const [SelectedDetailMethod, setSelectedDetailMethod] = useState([] as []);
-  const [SelectedAccesControl, setSelectedAccesControl] = useState<[]>([]);
-  const [selectedCheckOutContro, setSelectedCheckOutContro] = useState(
-    [] as OptionType[]
-  );
-  console.log("Any No es bueno", selectedCheckOutContro);
+  const [SelectedParmam, setSelectedParmam] = useState({});
 
-  const handleSelectChange = (newValue: OptionType[]) => {
-    setSelectedCheckOutContro(newValue);
+  console.log("Chanchito", SelectedParmam);
+
+  const handlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedParmam({
+      ...SelectedParmam,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const SelectDatailMtehod = [
@@ -108,12 +107,18 @@ export default function Par14() {
           parrafo="MÉTODO GENERAL: Indica que se van a ingresar las inasistencias del periodo directamente en la planilla de calificaciones de cada asignatura, sin tener en cuenta la fecha, ni el horario de clases."
         >
           <Select
-            options={YesOrNot}
-            onChange={(e: any) => {
-              setSelectedGeneralMethod(e);
-            }}
-            placeholder="Seleccione"
-          />
+            onChange={(e: any) =>
+              setSelectedParmam({
+                ...SelectedParmam,
+                MetodoGeneral: e,
+              })
+            }
+            label="Seleccione"
+          >
+            {YesOrNot.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas
           titulo="Método para el registro de las Inasistencias a los estudiantes. 2"
@@ -123,9 +128,12 @@ export default function Par14() {
             En el Observador del Alumno y correo electrónico del acudiente debe
             ir:
           </p>
-          <Select
+          <ReactSelect
             onChange={(e: any) => {
-              setSelectedDetailMethod(e);
+              setSelectedParmam({
+                ...SelectedParmam,
+                CorreoObservador: e,
+              });
             }}
             isMulti
             options={SelectDatailMtehod}
@@ -137,9 +145,12 @@ export default function Par14() {
           titulo="Método para el registro de las Inasistencias a los estudiantes. 3"
           parrafo="CONTROL DE ACCESO POR BIOMETRÍA: El sistema de modo automático, una vez registrado el ingreso del estudiante al inicio de la jornada, quedará en capacidad de establecer:"
         >
-          <Select
+          <ReactSelect
             onChange={(e: any) => {
-              setSelectedAccesControl(e);
+              setSelectedParmam({
+                ...SelectedParmam,
+                ControlAcceso: e,
+              });
             }}
             isMulti
             options={SelectAccesControl}
@@ -151,8 +162,13 @@ export default function Par14() {
           titulo="Método para el registro de las Inasistencias a los estudiantes. 4"
           parrafo="CONTROL DE SALIDA CON REGISTRO BIOMÉTRICO: El sistema de modo automático, si el estudiante no se registra al Salir:"
         >
-          <Select
-            onChange={(e: any) => handleSelectChange(e)}
+          <ReactSelect
+            onChange={(e: any) => {
+              setSelectedParmam({
+                ...SelectedParmam,
+                ControlSalida: e,
+              });
+            }}
             isMulti
             options={SelectCheckOut}
             placeholder="Seleccione"

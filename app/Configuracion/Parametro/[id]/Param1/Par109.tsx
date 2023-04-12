@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import getDataParametro from "../../../../../utils/GetParametro";
 import CardsPreguntas from "../../../CardsPreguntas";
@@ -8,6 +8,15 @@ import HeaderParam from "../../../HeaderParam";
 
 export default function Par109() {
   const [data, setData] = React.useState({} as any);
+  const [SelectedPara109, setSelectedPara109] = useState({});
+  console.log("any Dónde", SelectedPara109);
+
+  const handlerChangeParam100 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedPara109({
+      ...SelectedPara109,
+      [e.target?.name]: e.target?.value,
+    });
+  };
 
   const BoletinDetallado = [
     {
@@ -267,6 +276,12 @@ export default function Par109() {
               impresión del boletín DETALLADO.
             </p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  BoletinDetail: e,
+                });
+              }}
               isMulti
               options={BoletinDetallado}
               placeholder="Seleccione"
@@ -279,6 +294,12 @@ export default function Par109() {
               impresión del boletín RESUMEN.
             </p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  BoletinResumen: e,
+                });
+              }}
               isMulti
               options={BoletinResumen}
               placeholder="Seleccione"
@@ -291,6 +312,12 @@ export default function Par109() {
               Parametros para la carga del Necsito para pasar (N.P.P.)
             </p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  NecsitoPaso: e,
+                });
+              }}
               isMulti
               options={NecesitoParaPasar}
               placeholder="Seleccione"
@@ -302,6 +329,12 @@ export default function Par109() {
               previsualización e Impresión de los boletines
             </p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  TipoUsuario: e,
+                });
+              }}
               isMulti
               options={TipoUsuario}
               placeholder="Seleccione"
@@ -314,7 +347,17 @@ export default function Par109() {
               impresión de informes valorativos por periodos y cierre de año."
           >
             <p className="p-2">Periodos en los cuales se activará el control</p>
-            <Select isMulti options={PeriodoControl} placeholder="Seleccione" />
+            <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  PeriodoControl: e,
+                });
+              }}
+              isMulti
+              options={PeriodoControl}
+              placeholder="Seleccione"
+            />
           </CardsPreguntas>
           <CardsPreguntas
             titulo="Razones por la cual el sistema, no deba dejar previsualizar, ni imprimir boletines. 2"
@@ -325,6 +368,12 @@ export default function Par109() {
               Ante la ausencia de descriptores de la competencia
             </p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  DescripcionCompetencia: e,
+                });
+              }}
               options={DescripcionCompetencia}
               placeholder="Seleccione"
               className="p-2"
@@ -332,6 +381,12 @@ export default function Par109() {
             <br />
             <p className="p-2">Ante la ausencia de descriptores del FORDER</p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  DescripcionFORDER: e,
+                });
+              }}
               options={DescripcionFORDER}
               placeholder="Seleccione"
               className="p-2"
@@ -339,11 +394,26 @@ export default function Par109() {
             <p className="p-2">
               Ante la ausencia de registro de calificaciones
             </p>
-            <Select options={RegistroCalificaciones} />
+            <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  RegistroCalificacion: e,
+                });
+              }}
+              options={RegistroCalificaciones}
+              placeholder="Seleccione"
+            />
             <p className="p-2">
               Ante la ausencia de registro del Compoortamiento
             </p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  RegistroComportamiento: e,
+                });
+              }}
               options={RegistroComportamiento}
               placeholder="Seleccione"
               className="p-2"
@@ -352,12 +422,24 @@ export default function Par109() {
               No generar el boletín del estudiante, si falta:
             </p>
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  Boletin: e,
+                });
+              }}
               isMulti
               options={NoGenera}
               placeholder="Seleccione"
               className="p-2"
             />
             <Select
+              onChange={(e) => {
+                setSelectedPara109({
+                  ...SelectedPara109,
+                  Boletin: e,
+                });
+              }}
               isMulti
               options={AplicaPara}
               placeholder="Aplica Para"

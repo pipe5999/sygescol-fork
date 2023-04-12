@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
-import Select from "react-select";
+import { Select, Option } from "@material-tailwind/react";
+import React, { useEffect, useState } from "react";
 import getDataParametro from "../../../../../utils/GetParametro";
 import { YesOrNot } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
@@ -9,8 +9,8 @@ import HeaderParam from "../../../HeaderParam";
 
 export default function Par123() {
   const [data, setData] = React.useState({} as any);
-
-  console.log(data);
+  const [SelectedParam123, setSelectedParam123] = useState({});
+  console.log("Any ???", SelectedParam123);
 
   useEffect(() => {
     const GetInfo = async () => {
@@ -32,10 +32,20 @@ export default function Par123() {
           >
             <p className="p-2">Defina Si Aplica o no </p>
             <Select
-              options={YesOrNot}
-              placeholder="Seleccione"
-              className="p-2"
-            />
+              onChange={(e: any) => {
+                setSelectedParam123(e);
+              }}
+              label="Seleccione"
+              name="Param99S"
+            >
+              {YesOrNot.map((item) => {
+                return (
+                  <Option key={item.value} value={item.value}>
+                    {item.label}
+                  </Option>
+                );
+              })}
+            </Select>
           </CardsPreguntas>
         </div>
       </div>

@@ -1,3 +1,3 @@
-export type Open =  {
-  open?: any,
-}
+export type Open = {
+  open?: any;
+};

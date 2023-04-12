@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import getDataParametro from "../../../../../utils/GetParametro";
 import CardsPreguntas from "../../../CardsPreguntas";
@@ -8,6 +8,8 @@ import HeaderParam from "../../../HeaderParam";
 
 export default function Par73() {
   const [data, setData] = React.useState({} as any);
+  const [SelectedParam73, setSelectedParam73] = useState({});
+  console.log("any Dónde", SelectedParam73);
 
   const Modules = [
     {
@@ -81,7 +83,14 @@ export default function Par73() {
             titulo="Información para el libro de matrículas"
             parrafo="Información que el sistema debe indexar en el libro de matrículas"
           >
-            <Select isMulti options={Modules} placeholder="Seleccione" />
+            <Select
+              onChange={(e: any) => {
+                setSelectedParam73(e);
+              }}
+              isMulti
+              options={Modules}
+              placeholder="Seleccione"
+            />
           </CardsPreguntas>
         </div>
       </div>

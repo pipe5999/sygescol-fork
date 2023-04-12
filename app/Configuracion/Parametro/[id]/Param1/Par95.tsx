@@ -1,68 +1,23 @@
 "use client";
+import { Select, Option } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
 import getDataParametro from "../../../../../utils/GetParametro";
+import { CiclosEscolares } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
 import DetallesParametro from "../../../DetallesParametro";
 import HeaderParam from "../../../HeaderParam";
 
 export default function Par95() {
   const [data, setData] = React.useState({} as any);
+  const [SelectedPara95, setSelectedPara95] = useState({});
+  console.log("Any Dónde", SelectedPara95);
 
-  const EducacionTradicional = [
-    {
-      value: "11",
-      label: "Uno",
-    },
-    {
-      value: "12",
-      label: "Dos",
-    },
-    {
-      value: "13",
-      label: "Tres",
-    },
-    {
-      value: "14",
-      label: "Cuatro",
-    },
-  ];
-  const CiclosUnoCu = [
-    {
-      value: "21",
-      label: "Uno",
-    },
-    {
-      value: "22",
-      label: "Dos",
-    },
-    {
-      value: "23",
-      label: "Tres",
-    },
-    {
-      value: "24",
-      label: "Cuatro",
-    },
-  ];
-  const CiclosCincoSeis = [
-    {
-      value: "31",
-      label: "Uno",
-    },
-    {
-      value: "32",
-      label: "Dos",
-    },
-    {
-      value: "33",
-      label: "Tres",
-    },
-    {
-      value: "34",
-      label: "Cuatro",
-    },
-  ];
+  const handlerChangeParam95 = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedPara95({
+      ...SelectedPara95,
+      [e.target?.name]: e.target?.value,
+    });
+  };
 
   useEffect(() => {
     const GetInfo = async () => {
@@ -74,7 +29,6 @@ export default function Par95() {
 
   return (
     <div>
-      {/* {data?.infoParametros?.TipoParam} */}
       <HeaderParam infoParams={data} />
       <DetallesParametro infoParams={data} />
       <div className="flex flex-wrap gap-6 justify-center p-4 ">
@@ -83,13 +37,54 @@ export default function Par95() {
           parrafo="Defina el número de periodos para:"
         >
           <p className="p-2">Educación tradicional</p>
-          <Select options={EducacionTradicional} placeholder="Seleccione" />
+          <Select
+            label="Seleccione"
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+              setSelectedPara95({
+                ...SelectedPara95,
+                EduTrad: e,
+              });
+            }}
+            name="EduTrad"
+          >
+            {CiclosEscolares?.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
           <br />
           <p className="p-2">Ciclos I, II, III, IV</p>
-          <Select options={CiclosUnoCu} placeholder="Seleccione" />
+          <Select
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setSelectedPara95({
+                ...SelectedPara95,
+                EduCicloI: e,
+              })
+            }
+            label="Seleccione"
+            name="EduCicloI"
+          >
+            {CiclosEscolares?.map((item) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
           <br />
           <p className="p-2">Ciclos V, VI</p>
-          <Select options={CiclosCincoSeis} placeholder="Seleccione" />
+          <Select
+            label="Seleccione"
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+              console.log("---------------------------->", e);
+
+              setSelectedPara95({
+                ...SelectedPara95,
+                EduCicloV: e,
+              });
+            }}
+            name="EduCicloV"
+          >
+            {CiclosEscolares?.map((item) => {
+              return <Option value={item?.value}>{item?.label}</Option>;
+            })}
+          </Select>
         </CardsPreguntas>
       </div>
     </div>
