@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import getDataParametro from "../../../../../utils/GetParametro";
+import { getDataParametro } from "../../../../../utils/GetParametro";
 import DetallesParametro from "../../../DetallesParametro";
 import CardsPreguntas from "../../../CardsPreguntas";
 import HeaderParam from "../../../HeaderParam";

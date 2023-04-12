@@ -2,7 +2,7 @@
 import { Input } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import getDataParametro from "../../../../../utils/GetParametro";
+import { getDataParametro } from "../../../../../utils/GetParametro";
 import { EstadoAcdemico, YesOrNot } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
 import DetallesParametro from "../../../DetallesParametro";

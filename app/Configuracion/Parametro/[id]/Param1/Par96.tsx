@@ -7,7 +7,7 @@ import { DialogFooter } from "@material-tailwind/react";
 import { DialogHeader } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
 import React, { Fragment, useEffect, useState } from "react";
-import getDataParametro from "../../../../../utils/GetParametro";
+import { getDataParametro } from "../../../../../utils/GetParametro";
 import { Niveles } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
 import DetallesParametro from "../../../DetallesParametro";

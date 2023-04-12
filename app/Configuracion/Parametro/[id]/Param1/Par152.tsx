@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import getDataParametro from "../../../../../utils/GetParametro";
+import {
+  getDataParametro,
+  getInforParametro,
+} from "../../../../../utils/GetParametro";
 import DetallesParametro from "../../../DetallesParametro";
 import HeaderParam from "../../../HeaderParam";
 import { Select, Option } from "@material-tailwind/react";
@@ -31,7 +34,7 @@ export default function Par152() {
   const [EscualaNuevaPlanilla, setEscualaNuevaPlanilla] = useState(false);
 
   const [PlanillaAceleracion, setPlanillaAceleracion] = useState(false);
-
+  const [info, setInfo] = useState(null as any);
   const {
     register,
     setValue,
@@ -49,7 +52,12 @@ export default function Par152() {
       const resultado = await getDataParametro(152, 2);
       setData(resultado);
     };
+    const GetData = async () => {
+      const resultado = await getInforParametro(152, 1);
+      setInfo(resultado);
+    };
     GetInfo();
+    GetData();
   }, []);
   const TipoProceso = [
     {
@@ -246,9 +254,10 @@ export default function Par152() {
             label="Seleccione"
             className="w-full p-4 text-center"
           >
-            {TipoProceso?.map((item) => {
+            {info?.procesoEvaluacion?.map((item: any) => {
               return <Option value={item.value}>{item.label}</Option>;
             })}
+            <Option value="Otros">Otros</Option>
           </Select>
 
           {Eleccion && (
@@ -496,12 +505,21 @@ export default function Par152() {
             Si el tipo de planilla corresponde a 2.1 / 2.2 , cuál será el
             profesor (a) encargado de subir las imágenes de las dimensiones
           </p>
-          <Input
-            onChange={handlerChangePara152}
-            type="text"
+          <Select
+            onChange={(e: any) => {
+              setSelectedParam152({
+                ...SelectedParam152,
+                PlanillaProfesor: e,
+              });
+            }}
+            className="w-72"
             name="PlanillaTipo2Input"
             label="Nombre Del Profesor"
-          />
+          >
+            {info?.DocentePreescolar?.map((item: any) => {
+              return <Option value={item.value}>{item.label}</Option>;
+            })}
+          </Select>
         </CardsPreguntas>
         <CardsPreguntas titulo="Tipos de planillas que se debe habliitar a los profesores 2">
           <p className="text-justify">

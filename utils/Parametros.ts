@@ -532,8 +532,39 @@ export const Parametros = [
             tipoParametro:
               "Registro de inasistencias para el reporte de FAMILIAS EN ACCIÓN.",
           },
-          {},
-          {},
+          {
+            idParametro: "111",
+            tipoParametro:
+              "Autorización para modificación de inasistencias registradas.",
+          },
+          {
+            idParametro: "127",
+            tipoParametro:
+              "Inasistencias para la modalidad Escuela Unitaria y Multigrado",
+          },
+          {
+            idParametro: "132",
+            tipoParametro:
+              "Grupos con control de mortalidad por Inasistencia Injustificada",
+          },
+          {
+            idParametro: "141",
+            tipoParametro:
+              "Porcentaje para la reprobación de áreas, por inasistencia injustificada",
+          },
+          {
+            idParametro: "149",
+            tipoParametro:
+              "Procedimiento a seguir con la reprobación de áreas por inasistencia injustificada.",
+          },
+          {
+            idParametro: "163",
+            tipoParametro: "Parametrización sistema biométrico",
+          },
+          {
+            idParametro: "236",
+            tipoParametro: "Registro automático de novedades",
+          },
         ],
       },
       {

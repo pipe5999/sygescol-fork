@@ -1,7 +1,7 @@
 "use client";
 import { Select, Option } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
-import getDataParametro from "../../../../../utils/GetParametro";
+import { getDataParametro } from "../../../../../utils/GetParametro";
 import { CiclosEscolares } from "../../../../../utils/OptionsParams";
 import CardsPreguntas from "../../../CardsPreguntas";
 import DetallesParametro from "../../../DetallesParametro";
